@@ -1,14 +1,14 @@
 import React from 'react';
-import './Tile.css'
+import './Tile.css';
 
 const Tile = (props) => {
-	const { header, children } = props
+	const { header, children } = props;
 	return (
-		<div className='tile'>
-			<div className='tileHeader'>{header}</div>
-			<div className='tileContent'>{children}</div>
+		<div className="tile">
+			<div className="tileHeader">{header}</div>
+			<div className="tileContent">{children}</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Tile
+export default Tile;
