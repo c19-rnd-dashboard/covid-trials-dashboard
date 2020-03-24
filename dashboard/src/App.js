@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Tile from './Tile/Tile';
 import Graph from './Graph/Graph';
+import Details from './Details/Details';
 
 function App() {
 	const trialData = [
@@ -43,6 +44,9 @@ function App() {
 				</div>
 				<Tile header="Vaccine Progress">
 					<Graph />
+				</Tile>
+				<Tile header="Vaccine Details">
+					<Details />
 				</Tile>
 			</div>
 		</div>
