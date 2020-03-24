@@ -18,5 +18,4 @@ Inside the dashboard directory, you can run several commands:
 
 We suggest that you begin by typing:
 
-  cd dashboard
-  yarn start
+  cd dashboard && yarn start
