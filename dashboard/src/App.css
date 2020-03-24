@@ -1,0 +1,16 @@
+.App {
+  height: auto;
+}
+
+.headerBanner {
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: #3f51b5;
+}
+
+.content {
+  padding: 5px;
+  background-color: black;
+  display: flex;
+}
