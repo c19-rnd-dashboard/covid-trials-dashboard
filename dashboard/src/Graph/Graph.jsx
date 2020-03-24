@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryTheme, VictoryChart, VictoryGroup, VictoryStack, VictoryBar } from 'victory'
+import { VictoryTheme, VictoryChart, VictoryGroup, VictoryStack, VictoryBar, VictoryAxis } from 'victory'
 
 const Graph = (props) => {
   const getBarData = () => {
