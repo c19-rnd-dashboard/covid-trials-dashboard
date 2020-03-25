@@ -10,3 +10,14 @@
   background-color: black;
   display: flex;
 }
+
+.trialContainer {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+.trialCountry {
+  color: white;
+  padding-left: 10px;
+}
