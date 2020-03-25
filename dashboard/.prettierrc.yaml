@@ -1,0 +1,40 @@
+# Prettier configuration for the frontend app
+
+# Maximum suggested line length
+printWidth: 80
+
+# Indent with spaces
+useTabs: false
+
+# Two spaces for indentation
+tabWidth: 2
+
+# Remove semicolons
+semi: false
+
+# Prefer single quotes. This is ignored in JSX
+singleQuote: true
+
+# Use double quotes for JSX elements. True means otherwise
+jsxSingleQuote: false
+
+# Put the > of a multi-line JSX element at the end of the last line instead of being alone on the next line (does not apply to self closing elements).
+jsxBracketSameLine: false
+
+# Only add where the ES5 spec allows them
+trailingComma: es5
+
+# Adds spaces between brackets and items on object literals
+bracketSpacing: true
+
+# Avoid when there's only one parameter
+arrowParens: avoid
+
+# Leave Markdown files as-is
+proseWrap: "preserve"
+
+# Default HTML whitespace rules
+htmlWhitespaceSensitivity: "css"
+
+# Unix linefeed line endings
+endOfLine: "lf"
