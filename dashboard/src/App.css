@@ -21,3 +21,15 @@
   color: white;
   padding-left: 10px;
 }
+
+.sortTitle {
+  margin-right: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.actionItems {
+  float: right;
+  display: flex;
+  align-items: center;
+}
