@@ -1,0 +1,30 @@
+.volunteersWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	flex-direction: column;
+	color: white;
+	align-items: center;
+}
+
+.volunteersContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+}
+
+.volunteersDivider {
+	padding: 10px;
+}
+
+.learnMoreButton {
+	background-color: rgb(68, 68, 68);
+	color: white;
+	padding: 10px;
+	border: none;
+	font-size: 14px;
+	width: 40%;
+	cursor: pointer;
+	outline: none;
+}
