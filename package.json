@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.js(x?)\"",
+    "precommit-msg": "echo 'RUNNING PRE-COMMIT CHECKS...' && exit 0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,20 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0"
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js(x?)": [
+      "npm run precommit-msg",
+      "npm run format",
+      "npm run lint"
+    ]
   }
 }
