@@ -19,3 +19,5 @@ Inside the dashboard directory, you can run several commands:
 We suggest that you begin by typing:
 
   cd dashboard && yarn start
+  
+  NOTE: you may also need to do a 'yarn install' the first time you download and run the repo. 
