@@ -46,8 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run precommit-msg && npm run format && npm run lintfix",
-      "pre-push": "npm test"
+      "pre-commit": "npm run precommit-msg && npm run format && npm run lintfix"
     }
   }
 }
