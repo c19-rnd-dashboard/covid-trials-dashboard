@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Select from 'react-select'
 import './SortDropdown.css'
 
@@ -12,14 +12,14 @@ const SortDropdown = props => {
   ]
 
   const customStyles = {
-    option: (provided) => ({
+    option: provided => ({
       ...provided,
       color: 'black',
       padding: '2px',
       fontSize: '14px',
       cursor: 'pointer',
     }),
-    control: (provided) => ({
+    control: provided => ({
       ...provided,
       fontSize: '14px',
       minHeight: '24px',
