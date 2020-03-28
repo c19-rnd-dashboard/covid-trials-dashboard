@@ -29,12 +29,12 @@ const Details = () => {
     },
   ]
   return (
-    <div className="detailsWrapper">
+    <div className='detailsWrapper'>
       {vaccineData.map((vaccine, i) => {
         return (
-          <div className="detailsContainer" key={i}>
+          <div className='detailsContainer' key={i}>
             <div>{vaccine.category}</div>
-            <div className="detailsData">{vaccine.data}</div>
+            <div className='detailsData'>{vaccine.data}</div>
           </div>
         )
       })}

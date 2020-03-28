@@ -1,40 +1,40 @@
 .headerBanner {
-	padding: 20px;
-	color: white;
-	font-weight: bold;
-	background-color: #3f51b5;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: #3f51b5;
 }
 
 .content {
-	padding: 5px;
-	background-color: black;
-	display: flex;
+  padding: 5px;
+  background-color: black;
+  display: flex;
 }
 
 .trialContainer {
-	display: flex;
-	padding: 10px;
-	justify-content: center;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 }
 
 .trialCountry {
-	color: white;
-	padding-left: 10px;
+  color: white;
+  padding-left: 10px;
 }
 
 .sortTitle {
-	margin-right: 5px;
-	color: white;
-	font-size: 14px;
+  margin-right: 5px;
+  color: white;
+  font-size: 14px;
 }
 
 .actionItems {
-	float: right;
-	display: flex;
-	align-items: center;
+  float: right;
+  display: flex;
+  align-items: center;
 }
 
 .rightColumn {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

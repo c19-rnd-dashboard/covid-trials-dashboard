@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.js(x?)\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,scss}\"",
+    "lintfix": "eslint src --ext .js --ext .jsx --fix",
     "precommit-msg": "echo 'RUNNING PRE-COMMIT CHECKS...' && exit 0"
   },
   "eslintConfig": {
@@ -45,14 +46,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run precommit-msg && npm run format && npm run lintfix",
+      "pre-push": "npm test"
     }
-  },
-  "lint-staged": {
-    "*.js(x?)": [
-      "npm run precommit-msg",
-      "npm run format",
-      "npm run lint"
-    ]
   }
 }

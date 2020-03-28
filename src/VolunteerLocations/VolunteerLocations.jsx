@@ -1,29 +1,29 @@
-import React from 'react';
-import './VolunteerLocations.css';
+import React from 'react'
+import './VolunteerLocations.css'
 
 const VolunteerLocations = () => {
   const volunteerData = [
     {
       country: 'Brasil',
       state: 'Rio',
-      city: 'Janeiro'
+      city: 'Janeiro',
     },
     {
       country: 'Country',
       state: 'State',
-      city: 'City'
+      city: 'City',
     },
     {
       country: 'nestor',
       state: 'State',
-      city: 'City'
+      city: 'City',
     },
     {
       country: 'Country',
       state: 'State',
-      city: 'City'
-    }
-  ];
+      city: 'City',
+    },
+  ]
   return (
     <div className='volunteersWrapper'>
       {volunteerData.map((volunteer, i) => {
@@ -35,12 +35,12 @@ const VolunteerLocations = () => {
             <div className='volunteersDivider'>-</div>
             <div>{volunteer.city}</div>
           </div>
-        );
+        )
       })}
       {/* replace with global button component */}
       <button className='learnMoreButton'>LEARN MORE</button>
     </div>
-  );
-};
+  )
+}
 
-export default VolunteerLocations;
+export default VolunteerLocations
