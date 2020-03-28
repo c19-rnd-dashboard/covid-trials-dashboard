@@ -7,44 +7,68 @@ import {
   VictoryBar,
 } from 'victory'
 
+const sadBlue = '#403FFF'
+const magenta = '#FF3FFF'
+const yellow = '#FEFF3F'
+const tourquese = '#00FEFF'
+const green = '#00FF00'
+
+
+
+const mockData = () => [
+  [// discovery
+    { x: 'Vax 1', y: Math.random() }, // "y" would be days that the milestone last (y = endDate - startDate)
+    { x: 'Vax 2', y: Math.random() },
+    { x: 'Vax 3', y: Math.random() },
+  ], [// clinical batch
+    { x: 'Vax 1', y: Math.random() },
+    { x: 'Vax 2', y: Math.random() },
+    { x: 'Vax 3', y: Math.random() },
+  ], [// phase 1
+    { x: 'Vax 1', y: Math.random() },
+    { x: 'Vax 2', y: Math.random() },
+    { x: 'Vax 3', y: Math.random() },
+  ], [// phase 2
+    { x: 'Vax 1', y: Math.random() },
+    { x: 'Vax 2', y: Math.random() },
+    { x: 'Vax 3', y: Math.random() },
+  ]
+]
+
+
+const vaccinesData = [
+  mockData(), // best case
+  mockData(), // worst case
+  mockData(), // actual case
+]
+
 const Graph = () => {
-  const getBarData = () => {
-    return [1, 2, 3, 4, 5].map(() => {
-      return [
-        { x: 'Vax 1', y: Math.random() },
-        { x: 'Vax 2', y: Math.random() },
-        { x: 'Vax 3', y: Math.random() },
-      ]
-    })
-  }
   return (
     <div>
       <VictoryChart
         domainPadding={{ x: 50 }}
-        width={400}
-        height={400}
+        width={500}
+        height={500}
         theme={VictoryTheme.material}
       >
-        <VictoryGroup horizontal offset={20} style={{ data: { width: 15 } }}>
-          <VictoryStack colorScale={'red'}>
-            {getBarData().map((data, index) => {
-              return <VictoryBar key={index} data={data} />
-            })}
-          </VictoryStack>
-          <VictoryStack colorScale={'green'}>
-            {getBarData().map((data, index) => {
-              return <VictoryBar key={index} data={data} />
-            })}
-          </VictoryStack>
-          <VictoryStack colorScale={'blue'}>
-            {getBarData().map((data, index) => {
-              return <VictoryBar key={index} data={data} />
-            })}
-          </VictoryStack>
+        <VictoryGroup
+          horizontal
+          offset={20}
+          style={{ data: { width: 15 } }}
+          colorScale={[sadBlue, magenta, yellow, tourquese, green]} >
+          {/* Need to bing the label data to the VictoryLabel for each bar */}
+          {vaccinesData.map((mockData, i) =>
+            <VictoryStack key={i} >
+              {mockData.map((data, index) => {
+                return <VictoryBar
+                  key={index}
+                  data={data} />
+              })}
+            </VictoryStack>
+          )}
         </VictoryGroup>
       </VictoryChart>
-    </div>
+    </div >
   )
 }
-
 export default Graph
