@@ -1,33 +1,34 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Select from 'react-select'
 import './SortDropdown.css'
 
-const SortDropdown = (props) => {
+const SortDropdown = props => {
   const { onChange } = props
   const options = [
     { value: 'best', label: 'Best' },
     { value: 'worst', label: 'Worst' },
-    { value: 'actual', label: 'Actual' }
+    { value: 'actual', label: 'Actual' },
   ]
 
   const customStyles = {
-    option: (provided, state) => ({
+    option: provided => ({
       ...provided,
       color: 'black',
       padding: '2px',
       fontSize: '14px',
-      cursor: 'pointer'
+      cursor: 'pointer',
     }),
-    control: (provided, state) => ({
+    control: provided => ({
       ...provided,
       fontSize: '14px',
       minHeight: '24px',
       width: '90px',
-      cursor: 'pointer'
+      cursor: 'pointer',
     }),
     indicatorSeparator: () => ({
-      display: 'none'
-    })
+      display: 'none',
+    }),
   }
   return (
     <Select
@@ -39,6 +40,10 @@ const SortDropdown = (props) => {
       classNamePrefix='sort'
     />
   )
+}
+
+SortDropdown.propTypes = {
+  onChange: PropTypes.func,
 }
 
 export default SortDropdown

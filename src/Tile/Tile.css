@@ -1,0 +1,16 @@
+.tile {
+  padding: 10px;
+  background-color: #212224;
+  color: white;
+  text-align: center;
+  margin: 2px;
+}
+
+.tileHeader {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.tileContent {
+  color: #72f34a;
+}
