@@ -1,0 +1,22 @@
+:root {
+  --border-color: #464546;
+  --color: #c1c4c7;
+}
+
+.text-input {
+  position: relative;
+}
+
+.text-input input {
+  color: var(--color);
+  border: solid 0.2em;
+  border-color: var(--border-color);
+  color: var(--color);
+  background-color: var(--tile-bg);
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+
+.text-input input:placeholder {
+  color: var(--color);
+}
