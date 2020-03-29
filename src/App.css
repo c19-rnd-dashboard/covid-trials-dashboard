@@ -2,12 +2,12 @@
   padding: 20px;
   color: white;
   font-weight: bold;
-  background-color: #3f51b5;
+  background-color: var(--header-bg);
 }
 
 .content {
   padding: 5px;
-  background-color: black;
+  background-color: var(--bg);
   display: flex;
 }
 
