@@ -1,7 +1,7 @@
 export default [
   {
     name: 'Vax 1',
-    // 
+    //
     milestones: [
       {
         name: 'discovery',
@@ -11,40 +11,45 @@ export default [
             name: 'actual',
             label: 'Actual Progress',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }, {
+            end: new Date().toISOString(),
+          },
+          {
             name: 'best',
             label: 'Optimistic Case',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }, {
+            end: new Date().toISOString(),
+          },
+          {
             name: 'worst',
             label: 'Pessimistic Case',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }
-        ]
-      }, {
+            end: new Date().toISOString(),
+          },
+        ],
+      },
+      {
         name: 'clinicalBatch',
         dates: [
           {
             name: 'actual',
             label: 'Actual Progress',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }, {
+            end: new Date().toISOString(),
+          },
+          {
             name: 'best',
             label: 'Optimistic Case',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }, {
+            end: new Date().toISOString(),
+          },
+          {
             name: 'worst',
             label: 'Pessimistic Case',
             start: new Date().toISOString(),
-            end: new Date().toISOString()
-          }
-        ]
-      }
-    ]
-  }
+            end: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+  },
 ]

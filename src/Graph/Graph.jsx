@@ -13,28 +13,32 @@ const yellow = '#FEFF3F'
 const tourquese = '#00FEFF'
 const green = '#00FF00'
 
-
-
 const mockData = () => [
-  [// discovery
+  [
+    // discovery
     { x: 'Vax 1', y: Math.random() }, // "y" would be days that the milestone last (y = endDate - startDate)
     { x: 'Vax 2', y: Math.random() },
     { x: 'Vax 3', y: Math.random() },
-  ], [// clinical batch
+  ],
+  [
+    // clinical batch
     { x: 'Vax 1', y: Math.random() },
     { x: 'Vax 2', y: Math.random() },
     { x: 'Vax 3', y: Math.random() },
-  ], [// phase 1
+  ],
+  [
+    // phase 1
     { x: 'Vax 1', y: Math.random() },
     { x: 'Vax 2', y: Math.random() },
     { x: 'Vax 3', y: Math.random() },
-  ], [// phase 2
+  ],
+  [
+    // phase 2
     { x: 'Vax 1', y: Math.random() },
     { x: 'Vax 2', y: Math.random() },
     { x: 'Vax 3', y: Math.random() },
-  ]
+  ],
 ]
-
 
 const vaccinesData = [
   mockData(), // best case
@@ -55,20 +59,19 @@ const Graph = () => {
           horizontal
           offset={20}
           style={{ data: { width: 15 } }}
-          colorScale={[sadBlue, magenta, yellow, tourquese, green]} >
+          colorScale={[sadBlue, magenta, yellow, tourquese, green]}
+        >
           {/* Need to bing the label data to the VictoryLabel for each bar */}
-          {vaccinesData.map((mockData, i) =>
-            <VictoryStack key={i} >
+          {vaccinesData.map((mockData, i) => (
+            <VictoryStack key={i}>
               {mockData.map((data, index) => {
-                return <VictoryBar
-                  key={index}
-                  data={data} />
+                return <VictoryBar key={index} data={data} />
               })}
             </VictoryStack>
-          )}
+          ))}
         </VictoryGroup>
       </VictoryChart>
-    </div >
+    </div>
   )
 }
 export default Graph
