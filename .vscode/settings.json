@@ -4,5 +4,12 @@
   "eslint.lintTask.enable": true,
   "eslint.packageManager": "yarn",
   "editor.detectIndentation": false,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#5dc9e2",
+    "statusBarItem.hoverBackground": "#32bbda",
+    "statusBar.foreground": "#15202b",
+    "tab.activeBorder": "#88d7ea"
+  },
+  "peacock.color": "#5dc9e2"
 }
