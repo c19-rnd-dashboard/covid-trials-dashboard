@@ -1,85 +1,54 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link, Route, Switch } from 'react-router-dom'
+import { css } from 'emotion'
+
 import './App.css'
-import Tile from './Tile/Tile'
-import Graph from './Graph/Graph'
-import Details from './Details/Details'
-import SortDropdown from './SortDropdown/SortDropdown'
-import VolunteerLocations from './VolunteerLocations/VolunteerLocations'
+
+import Vaccines from './routes/vaccines/Vaccines'
+import Treatments from './routes/treatments/Treatments'
 
 function App() {
-  const getTrialData = () => [
-    {
-      country: 'Italy',
-      number: Math.random(),
-    },
-    {
-      country: 'France',
-      number: Math.random(),
-    },
-    {
-      country: 'Romania',
-      number: Math.random(),
-    },
-  ]
-  const [trialData, setTrialData] = useState(getTrialData())
-  const updatedDate = () => {
-    const date = new Date()
-    return (
-      'Last updated at (' +
-      date.getMonth() +
-      '/' +
-      1 +
-      date.getDay() +
-      '/' +
-      date.getFullYear() +
-      ')'
-    )
-  }
   return (
     <div className='App'>
-      <div className='headerBanner'>
-        Coronavirus (COVID-19) Research and Development Dashboard
-      </div>
-      <div className='content'>
-        <div style={{ flex: '1' }}>
-          <Tile header='Total Vaccine Products'>23</Tile>
-          <Tile header='Vaccine Trials by Country'>
-            {trialData.map((trial, i) => {
-              return (
-                <div className='trialContainer' key={i}>
-                  <div>{trial.number}</div>
-                  <div className='trialCountry'>{trial.country}</div>
-                </div>
-              )
-            })}
-          </Tile>
-          <Tile header={updatedDate()} />
-        </div>
-        <Tile header='Vaccine Progress'>
-          <div className='actionItems'>
-            <span className='sortTitle'>Sort: </span>
-            <SortDropdown
-              onChange={selection => {
-                // TODO: hook this up to real data when we have it
-                // For now, this just regenerates the data whenever the sort is changed
-                console.log('Selected to sort by: ' + selection.label)
-                setTrialData(getTrialData())
-              }}
-            />
-          </div>
-          <Graph />
-        </Tile>
-        <div className='rightColumn'>
-          <Tile header='Vaccine Details'>
-            <Details />
-          </Tile>
-          <Tile header='Vaccine Volunteer Locations'>
-            <VolunteerLocations />
-          </Tile>
-        </div>
-      </div>
+      <Header />
+      <Navbar />
+      <Switch>
+        <Route path='/vaccines' component={Vaccines} />
+        <Route path='/treatments' component={Treatments} />
+      </Switch>
     </div>
   )
 }
 
 export default App
+
+// TODO (daniel): Move the next two compoents elsewhere
+function Header() {
+  return (
+    <div className='headerBanner'>
+      Coronavirus (COVID-19) Research and Development Dashboard
+    </div>
+  )
+}
+
+const navbar = css`
+  padding: 1.5em 1em;
+  background-color: rgba(255, 255, 255, 0.1);
+  & a {
+    color: #ddd;
+    margin: 0 10px 0;
+    text-decoration: none;
+    &:active {
+      color: #fff;
+    }
+  }
+`
+
+function Navbar() {
+  return (
+    <div className={navbar}>
+      <Link to='/treatments'>Treatments</Link>
+      <Link to='/vaccines'>Vaccines</Link>
+    </div>
+  )
+}
