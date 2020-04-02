@@ -1,0 +1,9 @@
+.milestones.tooltip {
+  color: var(--color);
+  background-color: var(--bg);
+  position: absolute;
+  bottom: 3em;
+  padding: 0.5em;
+  border: 0.02em solid var(--color);
+  width: 9em;
+}

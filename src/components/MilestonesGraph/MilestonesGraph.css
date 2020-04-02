@@ -1,0 +1,13 @@
+.milestones-graph .container {
+  display: flex;
+  color: var(--color);
+  margin: 2em 1em;
+}
+.milestones-graph .label {
+  padding-right: 1em;
+  width: 7em;
+  border-right: 0.05em solid white;
+}
+.milestones-graph .container .bar {
+  width: 100%;
+}

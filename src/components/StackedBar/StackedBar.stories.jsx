@@ -1,5 +1,6 @@
 import React from 'react'
 import { StackedBar } from './StackedBar'
+import { MilestonesTooltip } from '../MilestonesTooltip'
 
 export default {
   title: 'StackedBar',
@@ -38,10 +39,14 @@ export const stacked = () => (
 )
 
 export const withTooltip = () => (
-  <StackedBar
-    // eslint-disable-next-line react/prop-types
-    tooltip={props => <span className='tooltip'>{props.value}</span>}
-    items={items}
-    colorBgStyles={colorBgStyles}
-  />
+  <div style={{ height: '10em', display: 'flex', alignItems: 'flex-end' }}>
+    <StackedBar
+      // eslint-disable-next-line react/prop-types
+      tooltip={() => (
+        <MilestonesTooltip startDate={'2020/02/20'} endDate={'2020/03/15'} />
+      )}
+      items={items}
+      colorBgStyles={colorBgStyles}
+    />
+  </div>
 )

@@ -5,3 +5,7 @@
   animation-name: slidein;
   animation-duration: 1s;
 }
+
+.stacked-bar .segment {
+  position: relative;
+}
