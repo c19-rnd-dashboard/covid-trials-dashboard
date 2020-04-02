@@ -1,0 +1,7 @@
+.stacked-bar {
+  display: flex;
+  height: 2em;
+  width: 100%;
+  animation-name: slidein;
+  animation-duration: 1s;
+}
