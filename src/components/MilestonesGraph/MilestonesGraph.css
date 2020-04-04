@@ -1,13 +1,44 @@
-.milestones-graph .container {
+.milestones-graph {
+  margin-top: 3em;
+  padding-right: 1rem;
   display: flex;
+  flex-direction: row;
+  position: relative;
+  --bar-height: 2rem;
   color: var(--color);
-  margin: 2em 1em;
 }
+
+.milestones-graph .labels {
+  padding: 0 1rem;
+  min-width: var(--labels-width);
+  max-width: var(--labels-width);
+  width: var(--labels-width);
+  text-align: right;
+}
+.milestones-graph .bar,
 .milestones-graph .label {
-  padding-right: 1em;
-  width: 7em;
-  border-right: 0.05em solid white;
+  height: var(--bar-height);
+  margin-top: 1rem;
 }
-.milestones-graph .container .bar {
+
+.milestones-graph .bars {
   width: 100%;
+}
+
+.milestones-graph .x-axis {
+  border-top: 0.4rem solid var(--color);
+  display: flex;
+  justify-content: space-between;
+  color: var(--color);
+}
+
+.milestones-graph .label {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.milestones-graph .x-axis .dates {
+  text-align: center;
+  padding: 0.5rem;
 }

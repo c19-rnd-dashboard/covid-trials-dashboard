@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import './MilestonesTooltip.css'
 
 const propTypes = {
@@ -12,12 +13,15 @@ const defaultProps = {
   className: '',
 }
 
+const dateFormat = 'MMM Do, YY'
+
 export const MilestonesTooltip = ({ className, startDate, endDate }) => {
-  const _startDate = new Date(startDate)
-  const _endDate = new Date(endDate)
+  const _startDate = moment(startDate)
+  const _endDate = moment(endDate)
   return (
     <div className={`tooltip milestones ${className}`}>
-      {`${_startDate.toLocaleDateString()} - ${_endDate.toLocaleDateString()}`}
+      <span className='pointer'></span>
+      {`${_startDate.format(dateFormat)} - ${_endDate.format(dateFormat)}`}
     </div>
   )
 }
