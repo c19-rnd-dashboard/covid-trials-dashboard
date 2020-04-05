@@ -18,6 +18,7 @@ const propTypes = {
   longitude: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   thickness: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
+  indicator: PropTypes.func,
 }
 
 const defaultProps = {
@@ -25,6 +26,7 @@ const defaultProps = {
   colorBgStyles: [],
   tooltip: () => {},
   className: '',
+  indicator: () => {},
 }
 
 export const StackedBar = ({
@@ -35,6 +37,7 @@ export const StackedBar = ({
   longitude,
   thickness,
   className = '',
+  indicator,
 }) => (
   <div
     className={`stacked-bar ${className}`}
@@ -56,6 +59,7 @@ export const StackedBar = ({
         {tooltip({ index: i, ...item })}
       </div>
     ))}
+    {indicator()}
   </div>
 )
 

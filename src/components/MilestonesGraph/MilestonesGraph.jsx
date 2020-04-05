@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StackedBar } from '../StackedBar/StackedBar'
-import './MilestonesGraph.css'
 import { MilestonesTooltip } from '../MilestonesTooltip'
+import { BarIndicator } from '../BarIndicator'
 import moment from 'moment'
+import './MilestonesGraph.css'
 
 const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
 
@@ -51,12 +52,22 @@ export const getLatestDate = dates => {
   return latest
 }
 
+export const getTotalMilestoneDurationInDays = ({ values }) => {
+  const start = getEarliestDate(values.map(({ start }) => start))
+  const end = getLatestDate(values.map(({ end }) => end))
+  const duration = moment.duration(moment(end).diff(moment(start))).as('days')
+  return Math.floor(Math.abs(duration))
+}
+
 export const MilestonesGraph = ({ milestones }) => {
   const dates = getAllDatesFromMilestones(milestones)
 
   const earliestDate = getEarliestDate(dates.map(({ start }) => start))
   const latestDate = getLatestDate(dates.map(({ end }) => end))
-
+  const [actualMilestone = []] = milestones.filter(
+    ({ name }) => name.toLowerCase() === 'actual'
+  )
+  const elapsedDays = getTotalMilestoneDurationInDays(actualMilestone)
   return (
     <div className='milestones-graph'>
       <div className='labels'>
@@ -67,7 +78,7 @@ export const MilestonesGraph = ({ milestones }) => {
         ))}
       </div>
       <div className='bars'>
-        {milestones.map(({ name, values }) => (
+        {milestones.map(({ name, values }, i, self) => (
           <div key={name} data-test-id='bar' className='bar'>
             <StackedBar
               items={values}
@@ -75,6 +86,16 @@ export const MilestonesGraph = ({ milestones }) => {
                 <MilestonesTooltip startDate={start} endDate={end} />
               )}
               colorBgStyles={colorBgStyles}
+              indicator={
+                i === self.length - 1
+                  ? () => (
+                    <BarIndicator>
+                      <div>Elapsed Time</div>
+                      <div>{elapsedDays} days</div>
+                    </BarIndicator>
+                  )
+                  : () => {}
+              }
             />
           </div>
         ))}

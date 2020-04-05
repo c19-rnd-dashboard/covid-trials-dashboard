@@ -5,6 +5,7 @@ import {
   getAllDatesFromMilestones,
   getEarliestDate,
   getLatestDate,
+  getTotalMilestoneDurationInDays,
 } from './MilestonesGraph'
 import { milestones } from './mocks/milestones'
 
@@ -92,4 +93,9 @@ it('should return the earliest date', () => {
 it('should return the latest date', () => {
   const dates = expectedDates.map(({ end }) => end)
   expect(getLatestDate(dates)).toEqual(new Date('2020/06/30'))
+})
+
+it('should return the duration of the milestone in days', () => {
+  const milestone = milestones[0]
+  expect(getTotalMilestoneDurationInDays(milestone)).toEqual(85)
 })

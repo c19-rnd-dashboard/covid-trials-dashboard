@@ -8,4 +8,5 @@
 }
 .tooltip-wrapper:hover > .tooltip {
   display: block;
+  z-index: 10;
 }

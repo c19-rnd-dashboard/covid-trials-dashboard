@@ -4,6 +4,7 @@
   width: 100%;
   animation-name: slidein;
   animation-duration: 1s;
+  align-items: flex-end;
 }
 
 .stacked-bar .segment {
