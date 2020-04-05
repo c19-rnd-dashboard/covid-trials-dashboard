@@ -1,0 +1,12 @@
+.tooltip-wrapper {
+  width: inherit;
+  height: inherit;
+}
+
+.tooltip-wrapper > .tooltip {
+  display: none;
+}
+.tooltip-wrapper:hover > .tooltip {
+  display: block;
+  z-index: 10;
+}
