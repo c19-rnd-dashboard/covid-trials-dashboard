@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './App.css'
+import * as S from './styles'
 import Tile from './Tile/Tile'
 import Graph from './Graph/Graph'
 import Details from './Details/Details'
@@ -39,27 +39,27 @@ function App() {
   }
   return (
     <div className='App'>
-      <div className='headerBanner'>
+      <S.HeaderBanner>
         Coronavirus (COVID-19) Research and Development Dashboard
-      </div>
-      <div className='content'>
+      </S.HeaderBanner>
+      <S.Content>
         <div style={{ flex: '1' }}>
           <Tile header='Total Vaccine Products'>23</Tile>
           <Tile header='Vaccine Trials by Country'>
             {trialData.map((trial, i) => {
               return (
-                <div className='trialContainer' key={i}>
+                <S.TrialContainer key={i}>
                   <div>{trial.number}</div>
-                  <div className='trialCountry'>{trial.country}</div>
-                </div>
+                  <S.TrialCountry>{trial.country}</S.TrialCountry>
+                </S.TrialContainer>
               )
             })}
           </Tile>
           <Tile header={updatedDate()} />
         </div>
         <Tile header='Vaccine Progress'>
-          <div className='actionItems'>
-            <span className='sortTitle'>Sort: </span>
+          <S.ActionItems>
+            <S.SortTitle>Sort: </S.SortTitle>
             <SortDropdown
               onChange={selection => {
                 // TODO: hook this up to real data when we have it
@@ -68,7 +68,7 @@ function App() {
                 setTrialData(getTrialData())
               }}
             />
-          </div>
+          </S.ActionItems>
           <Graph />
           <Legend
             items={[
@@ -80,15 +80,15 @@ function App() {
             ]}
           />
         </Tile>
-        <div className='rightColumn'>
+        <S.RightColumn>
           <Tile header='Vaccine Details'>
             <Details />
           </Tile>
           <Tile header='Vaccine Volunteer Locations'>
             <VolunteerLocations />
           </Tile>
-        </div>
-      </div>
+        </S.RightColumn>
+      </S.Content>
     </div>
   )
 }
