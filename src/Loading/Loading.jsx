@@ -1,13 +1,11 @@
-import React from 'react';
-import './Loading.css';
-import { useDebugValue } from 'react';
-import { components } from 'react-select';
+import React from 'react'
+import './Loading.css'
 
 const Loading = () => {
-	return <div className="loadingWrapper">Loading...</div>;
-};
+  return <div className='loadingWrapper'>Loading...</div>
+}
 
-export default Loading;
+export default Loading
 
 // Example usage:
 

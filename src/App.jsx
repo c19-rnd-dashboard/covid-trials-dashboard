@@ -70,13 +70,15 @@ function App() {
             />
           </div>
           <Graph />
-          <Legend items={[
-            { label: 'Stage 1', color: sadBlue },
-            { label: 'Stage 2', color: magenta },
-            { label: 'Stage 3', color: yellow },
-            { label: 'Stage 4', color: tourquese },
-            { label: 'Stage 5', color: green },
-          ]} />
+          <Legend
+            items={[
+              { label: 'Stage 1', color: sadBlue },
+              { label: 'Stage 2', color: magenta },
+              { label: 'Stage 3', color: yellow },
+              { label: 'Stage 4', color: tourquese },
+              { label: 'Stage 5', color: green },
+            ]}
+          />
         </Tile>
         <div className='rightColumn'>
           <Tile header='Vaccine Details'>

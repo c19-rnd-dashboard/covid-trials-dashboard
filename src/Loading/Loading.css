@@ -1,7 +1,7 @@
 .loadingWrapper {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	color: white;
-	justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  color: white;
+  justify-content: center;
 }
