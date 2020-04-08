@@ -19,7 +19,6 @@ const tabs = [
 
 it('should render 1st tab selected, with first one selected', () => {
   const wrapper = shallow(<Tabs tabs={tabs} />)
-  console.log(wrapper.debug())
   expect(
     wrapper
       .find('[data-test-id="selected"]')
