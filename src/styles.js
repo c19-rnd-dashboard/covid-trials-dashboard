@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const HeaderBanner = styled.div`
-  padding: 20px;
-  color: white;
-  font-weight: bold;
-  background-color: var(--header-bg);
-`
+// export const HeaderBanner = styled.div`
+//   padding: 20px;
+//   color: white;
+//   font-weight: bold;
+//   background-color: var(--header-bg);
+// `
 
 export const Content = styled.div`
   padding: 5px;

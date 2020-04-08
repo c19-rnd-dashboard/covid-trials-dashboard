@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as S from './styles'
+import Navbar from './components/Navbar/Navbar'
 import Tile from './Tile/Tile'
 import Graph from './Graph/Graph'
 import Details from './Details/Details'
@@ -39,9 +40,7 @@ function App() {
   }
   return (
     <div className='App'>
-      <S.HeaderBanner>
-        Coronavirus (COVID-19) Research and Development Dashboard
-      </S.HeaderBanner>
+      <Navbar />
       <S.Content>
         <div style={{ flex: '1' }}>
           <Tile header='Total Vaccine Products'>23</Tile>
