@@ -1,0 +1,1 @@
+export { BarIndicator } from './BarIndicator'

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Details.css'
+import * as S from './styles'
 
 const Details = () => {
   const vaccineData = [
@@ -29,16 +29,16 @@ const Details = () => {
     },
   ]
   return (
-    <div className='detailsWrapper'>
+    <S.Wrapper>
       {vaccineData.map((vaccine, i) => {
         return (
-          <div className='detailsContainer' key={i}>
+          <S.Container key={i}>
             <div>{vaccine.category}</div>
-            <div className='detailsData'>{vaccine.data}</div>
-          </div>
+            <S.Data>{vaccine.data}</S.Data>
+          </S.Container>
         )
       })}
-    </div>
+    </S.Wrapper>
   )
 }
 

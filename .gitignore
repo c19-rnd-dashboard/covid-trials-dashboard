@@ -26,3 +26,4 @@ yarn-error.log*
 storybook-static.env
 .vscode
 .env
+storybook-static

@@ -1,0 +1,26 @@
+.bar-indicator {
+  z-index: 1;
+  position: relative;
+  width: 0.2rem;
+  background-color: var(--color);
+  height: 9.5rem;
+}
+
+.bar-indicator .label {
+  position: absolute;
+  bottom: -3rem;
+  left: -5rem;
+  flex-direction: column;
+  width: 10rem;
+}
+
+.bar-indicator .dot {
+  --dot-diameter: 12px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: var(--dot-diameter);
+  height: var(--dot-diameter);
+  border-radius: 50%;
+  background-color: var(--color);
+}

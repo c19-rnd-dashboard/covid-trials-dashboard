@@ -6,12 +6,7 @@ import {
   VictoryStack,
   VictoryBar,
 } from 'victory'
-
-const sadBlue = '#403FFF'
-const magenta = '#FF3FFF'
-const yellow = '#FEFF3F'
-const tourquese = '#00FEFF'
-const green = '#00FF00'
+import { sadBlue, magenta, yellow, tourquese, green } from '../constants.js'
 
 const mockData = () => [
   [
