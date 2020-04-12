@@ -85,7 +85,7 @@ function App() {
             <div className='filtersContainer'>
               <div
                 className='filterTitle'
-                onClick={event => setShowFilters(!showFilters, event)}
+                onClick={() => setShowFilters(!showFilters)}
               >
                 <FilterList /> Filters
               </div>
