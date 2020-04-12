@@ -23,15 +23,30 @@
 }
 
 .sortTitle {
-  margin-right: 5px;
-  color: white;
+  padding-right: 5px;
   font-size: 14px;
+}
+
+.filtersContainer {
+  position: relative;
+}
+
+.filterTitle {
+  display: flex;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.filterTitle svg {
+  font-size: 18px;
+  padding-right: 4px;
 }
 
 .actionItems {
   float: right;
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .rightColumn {

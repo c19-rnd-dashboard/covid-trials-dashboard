@@ -1,0 +1,41 @@
+.filter {
+  color: white;
+  padding: 5px;
+  float: left;
+  background-color: var(--light-grey);
+  position: absolute;
+  top: 30px;
+  z-index: 10;
+}
+
+.heading {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.label {
+  padding-right: 10px;
+  flex: 1;
+}
+
+.box {
+  display: inline-block;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border: 1px solid black;
+  background-color: white;
+  margin-right: 4px;
+}
+
+.box.selected {
+  background-color: blue;
+}
