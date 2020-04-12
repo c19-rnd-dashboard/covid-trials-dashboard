@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Tile.css'
+import * as S from './styles'
 
 const Tile = props => {
   const { header, children } = props
   return (
-    <div className='tile'>
-      <div className='tileHeader'>{header}</div>
-      <div className='tileContent'>{children}</div>
-    </div>
+    <S.Title>
+      <S.Header>{header}</S.Header>
+      <S.Content>{children}</S.Content>
+    </S.Title>
   )
 }
 

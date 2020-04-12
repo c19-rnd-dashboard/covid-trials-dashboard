@@ -1,21 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Legend.css'
+import * as S from './styles'
 
 const Legend = props => {
   const { items } = props
   return (
-    <div className='legend'>
-      {items.map(item => (
-        <div key={item.label}>
-          <span
-            className='square'
-            style={{ backgroundColor: item.color }}
-          ></span>
-          <span className='legendLabel'>{item.label}</span>
+    <S.Wrapper>
+      {items.map((item, i) => (
+        <div key={i}>
+          <S.Square style={{ backgroundColor: item.color }} />
+          <S.Label>{item.label}</S.Label>
         </div>
       ))}
-    </div>
+    </S.Wrapper>
   )
 }
 
