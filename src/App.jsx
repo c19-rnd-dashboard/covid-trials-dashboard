@@ -81,13 +81,10 @@ function App() {
         </div>
         <Tile header='Vaccine Progress'>
           <S.ActionItems>
-            <div className='filtersContainer'>
-              <div
-                className='filterTitle'
-                onClick={() => setShowFilters(!showFilters)}
-              >
+            <S.FilterContainer>
+              <S.FilterTitle onClick={() => setShowFilters(!showFilters)}>
                 <FilterList /> Filters
-              </div>
+              </S.FilterTitle>
               {showFilters && (
                 <Filter
                   items={filterItems}
@@ -95,7 +92,7 @@ function App() {
                   onFilterClick={toggleFilter}
                 />
               )}
-            </div>
+            </S.FilterContainer>
             <S.SortTitle>Sort: </S.SortTitle>
             <SortDropdown
               onChange={selection => {
