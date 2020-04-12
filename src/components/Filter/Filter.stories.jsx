@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from '../../Filter'
+import Filter from './Filter'
 import { sadBlue, magenta, yellow, tourquese, green } from '../../constants.js'
 
 export default {
@@ -14,4 +14,8 @@ const stages = [
   { label: 'Stage 5', color: green },
 ]
 
-export const main = () => <Filter items={stages} heading='Stages' />
+export const main = () => (
+  <div style={{ position: 'relative', left: '30px' }}>
+    <Filter items={stages} heading='Stages' />
+  </div>
+)
