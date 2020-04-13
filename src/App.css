@@ -1,0 +1,55 @@
+.headerBanner {
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: var(--header-bg);
+}
+
+.content {
+  padding: 5px;
+  background-color: var(--bg);
+  display: flex;
+}
+
+.trialContainer {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+.trialCountry {
+  color: white;
+  padding-left: 10px;
+}
+
+.sortTitle {
+  padding-right: 5px;
+  font-size: 14px;
+}
+
+.filtersContainer {
+  position: relative;
+}
+
+.filterTitle {
+  display: flex;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.filterTitle svg {
+  font-size: 18px;
+  padding-right: 4px;
+}
+
+.actionItems {
+  float: right;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
