@@ -28,6 +28,18 @@ export const ActionItems = styled.div`
   float: right;
   display: flex;
   align-items: center;
+  color: white;
+`
+
+export const FilterContainer = styled.div`
+  position: relative;
+`
+
+export const FilterTitle = styled.div`
+  display: flex;
+  cursor: pointer;
+  padding-right: 20px;
+  align-items: center;
 `
 
 export const SortTitle = styled.span`
