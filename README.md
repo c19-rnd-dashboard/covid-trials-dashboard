@@ -4,6 +4,10 @@ This is a dashboard UI that will compare the status of all the current vaccines,
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Env Variables
+
+To add the api key for Mapbox, please generate a key from https://www.mapbox.com/ and add to your .env (or .env.local) as `REACT_APP_MAPBOX_ACCESS_TOKEN=<Key>`
+
 ## Storybook
 
 [https://frosty-kepler-919a14.netlify.com/](https://frosty-kepler-919a14.netlify.com/)
