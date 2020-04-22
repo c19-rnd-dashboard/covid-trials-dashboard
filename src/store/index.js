@@ -24,7 +24,7 @@ const { Provider } = store
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-    // TabVieing is just for an example.
+    // TabViewing is just for an example.
     case 'tabViewing':
       return { ...state, tabViewing: action.data }
     default:
