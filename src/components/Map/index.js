@@ -30,9 +30,7 @@ const Map = ({ pins }) => {
       height='100%'
     >
       <Pins data={pins} onClick={setPopUp} />
-      {popUp && (
-        <PopUpDisplay popupInfo={popUp} onClose={() => setPopUp(null)} />
-      )}
+      <PopUpDisplay popupInfo={popUp} onClose={() => setPopUp(null)} />
       <FullscreenControlDiv>
         <FullscreenControl />
       </FullscreenControlDiv>
