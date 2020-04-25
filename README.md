@@ -18,7 +18,11 @@ This is an example spreadsheet data with many products populated, here we can se
 
 ## Env Variables
 
-To add the api key for Mapbox, please generate a key from https://www.mapbox.com/ and add to your .env (or .env.local) as `REACT_APP_MAPBOX_ACCESS_TOKEN=<Key>`
+To add the api key for Mapbox, please generate a key from https://www.mapbox.com/ and add to your .env (or .env.local).
+
+```.env
+REACT_APP_MAPBOX_ACCESS_TOKEN=<Key>
+```
 
 ## Storybook
 
@@ -31,6 +35,46 @@ You can create stories co-located with the files (this is recomended) and also i
 [mocks/vaccines.js](https://github.com/c19-rnd-dashboard/c19-rnd-dashboard-ui/blob/master/src/mocks/vaccines.js)
 
 This mock file would be for the main endpoint which will have the base data needed to fill the dashboard, please update as necesary.
+
+Datastructure we have so far, for an asset (vaccine or treatment):
+
+Primary Key: `product_id`
+
+```json
+{
+  "brandName": "",
+  "chemicalName": "mrna-1273",
+  "conditionOrDisease": "covid-19",
+  "countries": "united states",
+  "countryCodes": "usa",
+  "currentStatus": "phase 1",
+  "indication": "covid-19",
+  "interventionType": "vaccine - prophylactic",
+  "moleculeType": "nucleic acid based therapies/vaccines",
+  "notes": "mrna-based vaccine",
+  "numSites": "2",
+  "otherPartners": "cepi",
+  "phase": "1",
+  "preferredName": "mrna-1273",
+  "productId": 1,
+  "productType": "",
+  "repurposed": "new",
+  "sponsors": "moderna,national institute of allergy and infectious diseases",
+  "status": "ongoing",
+  "therapeuticApproach": "unknown",
+  "trialId": "nct04283461",
+  "siteLocations": [
+    {
+      "name": "Hospital Pkwy",
+      "city": "San Jose",
+      "state": "California",
+      "country": "USA",
+      "lat": 37.239746,
+      "lon": -121.802344
+    }
+  ]
+}
+```
 
 ## Code Structure
 
