@@ -17,7 +17,7 @@ export const DefaultMap = () => (
 )
 
 export const ApiKeyExample = () => (
-  <div>
+  <div style={{ color: 'white' }}>
     <div>Map Key: {mapboxApiKey.substring(0, 10)}</div>
     <div>App name: {appName}</div>
     <div>Environment: {environment}</div>
