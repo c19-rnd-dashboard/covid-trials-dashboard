@@ -7,9 +7,8 @@ import ReactMapGL, {
   FullscreenControl,
   ScaleControl,
 } from 'react-map-gl'
+import { mapboxApiKey } from '../../constants/config'
 import { FullscreenControlDiv, NavDiv, ScaleControlDiv } from './styles'
-
-const mapboxApiAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = ({ pins }) => {
   const [popUp, setPopUp] = useState(null)
@@ -25,7 +24,7 @@ const Map = ({ pins }) => {
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
       mapStyle='mapbox://styles/mapbox/dark-v10?optimize=true'
-      mapboxApiAccessToken={mapboxApiAccessToken}
+      mapboxApiAccessToken={mapboxApiKey}
       width='100%'
       height='100%'
     >

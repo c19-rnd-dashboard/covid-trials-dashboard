@@ -18,10 +18,24 @@ This is an example spreadsheet data with many products populated, here we can se
 
 ## Env Variables
 
+All ENV variables should be set on `src/constants/config` for better visibility, and one time setup.
+
+Storybook ENV variables will only show up if they are prefixed with STORYBOOK, and react variables will only show up if they are prefixed with REACT_APP. So if a variable needs to be picked up by both environments then we need to load it like this...
+
+```js
+// src/constants/config.js
+export const myAwesomeVar =
+  process.env.REACT_APP_MY_AWESOME_VAR ||
+  process.env.STORYBOOK_MY_AWESOME_VAR ||
+  'optional default value'
+```
+
 To add the api key for Mapbox, please generate a key from https://www.mapbox.com/ and add to your .env (or .env.local).
 
 ```.env
 REACT_APP_MAPBOX_ACCESS_TOKEN=<Key>
+STORYBOOK_MAPBOX_ACCESS_TOKEN=<key>
+# only one of those needed at a time.
 ```
 
 ## Storybook
