@@ -9,8 +9,13 @@ import FilterList from '@material-ui/icons/FilterList'
 import SortDropdown from './SortDropdown/SortDropdown'
 import VolunteerLocations from './VolunteerLocations/VolunteerLocations'
 import Legend from './Legend/Legend'
-import { sadBlue, magenta, yellow, tourquese, green } from './constants.js'
-import { appName, mapboxApiKey, environment } from './constants/config'
+import {
+  sadBlue,
+  magenta,
+  yellow,
+  tourquese,
+  green,
+} from './constants/colors.js'
 import { StateProvider } from './store'
 
 const stages = [
@@ -69,10 +74,6 @@ function App() {
         <Navbar />
         <S.Content>
           <div style={{ flex: '1' }}>
-            <Tile header={appName}>
-              Mapbox Key: {mapboxApiKey.substring(0, 10)}
-              Env: {environment}
-            </Tile>
             <Tile header='Total Vaccine Products'>23</Tile>
             <Tile header='Vaccine Trials by Country'>
               {trialData.map((trial, i) => {
