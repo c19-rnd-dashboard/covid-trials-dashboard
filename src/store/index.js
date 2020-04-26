@@ -17,16 +17,26 @@ return(
 
 /* We may want to consider using 'immer' and 'useImmer' */
 
-const initialState = { color: 'green', tabViewing: 'hello' }
-const store = createContext(initialState)
+const initialState = {
+  color: 'green',
+  tabViewing: 'hello',
+  loading: false,
+  data: [],
+}
+const store = createContext()
 const { Provider } = store
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-    // TabViewing is just for an example.
     case 'tabViewing':
       return { ...state, tabViewing: action.data }
+    case 'fetchData':
+      return { ...state, loading: true }
+    case 'fetchDataSuccess':
+      return { ...state, data: action.payload }
+    case 'fetchDataFailure':
+      return { ...state, error: action.payload }
     default:
       throw new Error()
     }
