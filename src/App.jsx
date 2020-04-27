@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as S from './styles'
 import Navbar from './components/Navbar/Navbar'
+import SubNavbar from './components/SubNavbar/SubNavbar'
 import Tile from './Tile/Tile'
 import Graph from './Graph/Graph'
 import Details from './Details/Details'
@@ -64,6 +65,7 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
+      <SubNavbar />
       <S.Content>
         <div style={{ flex: '1' }}>
           <Tile header='Total Vaccine Products'>23</Tile>
