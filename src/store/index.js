@@ -1,6 +1,7 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
+import { get } from 'axios'
+import { apiUrl } from '../constants/config'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -34,13 +35,27 @@ const StateProvider = ({ children }) => {
     case 'fetchData':
       return { ...state, loading: true }
     case 'fetchDataSuccess':
-      return { ...state, data: action.payload }
+      return { ...state, data: action.payload, loading: false }
     case 'fetchDataFailure':
-      return { ...state, error: action.payload }
+      return { ...state, error: action.payload, loading: false }
     default:
       throw new Error()
     }
   }, initialState)
+
+  useEffect(() => {
+    console.log('calling')
+    dispatch({
+      type: 'fetchData',
+    })
+    get(`${apiUrl}/assets`)
+      .then(({ data }) => dispatch({ type: 'fetchDataSuccess', payload: data }))
+      .catch(e => {
+        console.error(e)
+        //TODO: handle errors
+        dispatch({ type: 'fetchDataFailure', payload: e })
+      })
+  }, [dispatch])
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }

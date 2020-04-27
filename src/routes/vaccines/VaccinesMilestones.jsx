@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-
-import Tile from 'Tile/Tile'
-import Graph from 'Graph/Graph'
-import Details from 'Details/Details'
-import SortDropdown from 'SortDropdown/SortDropdown'
-import VolunteerLocations from 'VolunteerLocations/VolunteerLocations'
+import Tile from 'components/Tile/Tile'
+import Graph from 'components/Graph/Graph'
+import Details from 'sections/Details/Details'
+import SortDropdown from 'components/SortDropdown/SortDropdown'
+import VolunteerLocations from 'sections/VolunteerLocations/VolunteerLocations'
 
 function VaccinesMilestones() {
   const getTrialData = () => [
