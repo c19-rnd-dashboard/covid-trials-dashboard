@@ -1,6 +1,12 @@
 import React from 'react'
 import Filter from './Filter'
-import { sadBlue, magenta, yellow, tourquese, green } from '../../constants.js'
+import {
+  sadBlue,
+  magenta,
+  yellow,
+  tourquese,
+  green,
+} from '../../constants/colors'
 
 export default {
   title: 'Filters',
