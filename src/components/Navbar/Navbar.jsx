@@ -8,7 +8,10 @@ const Navbar = () => {
         <S.Title>Coronavirus Task Force</S.Title>
         <S.Divider>|</S.Divider>
         <S.Subtitle>
-          Full Dataset located here : <a>https://link.domain</a>
+          Full Dataset located here :{' '}
+          <a href='https://link.domain' style={{ color: '#fff' }}>
+            https://link.domain
+          </a>
         </S.Subtitle>
       </S.TitleContainer>
       <S.Navbar>
