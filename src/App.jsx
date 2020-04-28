@@ -9,6 +9,7 @@ import FilterList from '@material-ui/icons/FilterList'
 import SortDropdown from './SortDropdown/SortDropdown'
 import VolunteerLocations from './VolunteerLocations/VolunteerLocations'
 import Legend from './Legend/Legend'
+import FilterDropdown from './components/FilterDropdown/FilterDropdown'
 import { sadBlue, magenta, yellow, tourquese, green } from './constants/colors'
 import { HydrateDataWrapper } from './components/wrappers/HydrateDataWrapper'
 import { StateProvider } from './store'
@@ -82,6 +83,9 @@ function App() {
                 })}
               </Tile>
               <Tile header={updatedDate()} />
+              <Tile>
+                <FilterDropdown label='Sponsor' />
+              </Tile>
             </div>
             <Tile header='Vaccine Progress'>
               <S.ActionItems>
