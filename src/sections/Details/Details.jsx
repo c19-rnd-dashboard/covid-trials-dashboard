@@ -1,5 +1,6 @@
 import React from 'react'
 import * as S from './styles'
+import Tile from '../../components/Tile/Tile'
 
 const Details = () => {
   const vaccineData = [
@@ -29,16 +30,18 @@ const Details = () => {
     },
   ]
   return (
-    <S.Wrapper>
-      {vaccineData.map((vaccine, i) => {
-        return (
-          <S.Container key={i}>
-            <div>{vaccine.category}</div>
-            <S.Data>{vaccine.data}</S.Data>
-          </S.Container>
-        )
-      })}
-    </S.Wrapper>
+    <Tile header='Vaccine Details'>
+      <S.Wrapper>
+        {vaccineData.map((vaccine, i) => {
+          return (
+            <S.Container key={i}>
+              <div>{vaccine.category}</div>
+              <S.Data>{vaccine.data}</S.Data>
+            </S.Container>
+          )
+        })}
+      </S.Wrapper>
+    </Tile>
   )
 }
 

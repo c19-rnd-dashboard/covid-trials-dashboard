@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import * as S from './styles'
 
 const Tile = props => {
+  console.log(props, 'props')
   const { header, children } = props
   return (
     <S.Title>

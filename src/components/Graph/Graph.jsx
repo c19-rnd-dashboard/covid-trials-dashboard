@@ -12,7 +12,7 @@ import {
   yellow,
   tourquese,
   green,
-} from '../constants/colors.js'
+} from '../../constants/colors.js'
 
 const mockData = () => [
   [

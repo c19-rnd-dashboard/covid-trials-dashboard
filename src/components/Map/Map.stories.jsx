@@ -1,6 +1,6 @@
 import React from 'react'
 import Map from './index'
-import Tile from '../../Tile/Tile'
+import Tile from '../Tile/Tile'
 import mocks from '../../mocks/assets'
 
 export default {
