@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Tile from '../../components/Tile/Tile'
 import Details from '../../sections/Details/Details'
 import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
@@ -30,6 +32,14 @@ const Treatments = ({ treatments }) => {
       </S.RightColumn>
     </>
   )
+}
+
+Treatments.propTypes = {
+  treatments: PropTypes.arrayOf(PropTypes.shape({})),
+}
+
+Treatments.defaultProps = {
+  treatments: [],
 }
 
 export default Treatments

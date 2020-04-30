@@ -36,7 +36,7 @@ const MapAndMilestones = ({ vaccines, treatments }) => {
 
 MapAndMilestones.propTypes = {
   vaccines: PropTypes.arrayOf(PropTypes.shape({})),
-  treatments: PropTypes.arrayOf(PropTypes.shape({}))
+  treatments: PropTypes.arrayOf(PropTypes.shape({})),
 }
 
 MapAndMilestones.defaultProps = {
