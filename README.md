@@ -40,7 +40,7 @@ STORYBOOK_MAPBOX_ACCESS_TOKEN=<key>
 
 ## Storybook
 
-[https://frosty-kepler-919a14.netlify.com/](https://frosty-kepler-919a14.netlify.com/)
+[https://storybook-covid-19-treatment-dashboard.netlify.app/](https://storybook-covid-19-treatment-dashboard.netlify.app/)
 
 You can create stories co-located with the files (this is recomended) and also inside the `stories` folder. This storybook will be deployed for the master branch and for each PR to the `frosty-kepler` endpoint on netlify.
 
