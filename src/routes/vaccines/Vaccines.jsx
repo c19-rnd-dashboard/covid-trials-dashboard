@@ -10,14 +10,17 @@ import styled from 'styled-components'
 const TabbedSection = styled.div`
   min-width: 40%;
 `
+const Flex1 = styled.div`
+  flex: 1;
+`
 
 const Vaccines = ({ vaccines }) => {
   return (
     <>
-      <div style={{ flex: '1' }}>
+      <Flex1>
         <Tile header='Total Vaccine Products'>23</Tile>
         <TrialByCountry />
-      </div>
+      </Flex1>
       <TabbedSection>
         <MapAndMilestones vaccines={vaccines} />
       </TabbedSection>

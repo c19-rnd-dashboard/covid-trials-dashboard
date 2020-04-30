@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Tabs from '../../components/Tabs'
 import Map from '../../components/Map'
 import Tile from '../../components/Tile/Tile'
@@ -11,14 +12,15 @@ const MapDiv = styled.div`
   height: 65vh;
 `
 
-const MapAndMilestones = ({ vaccines }) => {
+const MapAndMilestones = ({ vaccines, treatments }) => {
+  const title = vaccines ? 'Vaccine Map' : 'Treatment Map'
   const tabs = [
     {
-      title: 'Vaccine Map',
+      title,
       content: (
         <Tile>
           <MapDiv>
-            <Map pins={vaccines} />
+            <Map pins={vaccines || treatments} />
           </MapDiv>
         </Tile>
       ),
@@ -30,6 +32,16 @@ const MapAndMilestones = ({ vaccines }) => {
   ]
 
   return <Tabs tabs={tabs} />
+}
+
+MapAndMilestones.propTypes = {
+  vaccines: PropTypes.arrayOf(PropTypes.shape({})),
+  treatments: PropTypes.arrayOf(PropTypes.shape({}))
+}
+
+MapAndMilestones.defaultProps = {
+  vaccines: [],
+  treatments: [],
 }
 
 export default MapAndMilestones
