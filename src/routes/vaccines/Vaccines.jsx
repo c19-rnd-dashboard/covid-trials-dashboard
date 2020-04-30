@@ -5,6 +5,11 @@ import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocat
 import MapAndMilestones from '../../sections/MapAndMilestones'
 import TrialByCountry from '../../sections/VaccinesByCountry'
 import * as S from '../../styles'
+import styled from 'styled-components'
+
+const TabbedSection = styled.div`
+  min-width: 40%;
+`
 
 const Vaccines = ({ vaccines }) => {
   return (
@@ -13,9 +18,9 @@ const Vaccines = ({ vaccines }) => {
         <Tile header='Total Vaccine Products'>23</Tile>
         <TrialByCountry />
       </div>
-      <div style={{ minWidth: '40%' }}>
+      <TabbedSection>
         <MapAndMilestones vaccines={vaccines} />
-      </div>
+      </TabbedSection>
       <S.RightColumn>
         <Details />
         <VolunteerLocations />
