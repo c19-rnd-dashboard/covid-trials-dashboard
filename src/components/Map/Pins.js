@@ -12,7 +12,6 @@ const SIZE = 20
 
 // Important for perf: the markers never change, avoid rerender when the map viewport changes
 export default ({ data, onClick }) => {
-  console.log(data, 'data')
   if (data) {
     return data.map(product =>
       product.siteLocations.map((location, index) => (
