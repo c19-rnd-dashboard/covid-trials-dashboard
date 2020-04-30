@@ -1,16 +1,27 @@
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import Tile from '../../components/Tile/Tile'
+import Details from '../../sections/Details/Details'
+import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
+import MapAndMilestones from '../../sections/MapAndMilestones'
+import TrialByCountry from '../../sections/VaccinesByCountry'
+import * as S from '../../styles'
 
-import VaccinesMap from './VaccinesMap'
-import VaccinesMilestones from './VaccinesMilestones'
-
-function Vaccines() {
-  const match = useRouteMatch()
+const Vaccines = ({ vaccines }) => {
+  console.log(vaccines, 'vaccines')
   return (
-    <Switch>
-      <Route path={`${match.url}/map`} component={VaccinesMap} />
-      <Route path={`${match.url}/milestones`} component={VaccinesMilestones} />
-    </Switch>
+    <>
+      <div style={{ flex: '1' }}>
+        <Tile header='Total Vaccine Products'>23</Tile>
+        <TrialByCountry />
+      </div>
+      <div style={{minWidth: '40%'}}>
+        <MapAndMilestones vaccines={vaccines} />
+      </div>
+      <S.RightColumn>
+        <Details />
+        <VolunteerLocations />
+      </S.RightColumn>
+    </>
   )
 }
 

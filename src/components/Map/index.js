@@ -28,6 +28,7 @@ const Map = ({ pins }) => {
       width='100%'
       height='100%'
     >
+      {console.log('mapIndex in map', pins)}
       <Pins data={pins} onClick={setPopUp} />
       <PopUpDisplay popupInfo={popUp} onClose={() => setPopUp(null)} />
       <FullscreenControlDiv>
