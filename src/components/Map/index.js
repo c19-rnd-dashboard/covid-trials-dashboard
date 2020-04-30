@@ -15,7 +15,7 @@ const Map = ({ pins }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.67,
     longitude: -73.94,
-    zoom: 2,
+    zoom: 0.3,
     bearing: 0,
     pitch: 0,
   })

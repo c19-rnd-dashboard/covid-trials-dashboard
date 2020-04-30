@@ -1,20 +1,45 @@
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import TreatmentsMap from './TreatmentsMap'
-import TreatmentsMilestones from './TreatmentsMilestones'
+import Tile from '../../components/Tile/Tile'
+import Details from '../../sections/Details/Details'
+import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
+import MapAndMilestones from '../../sections/MapAndMilestones'
+import TrialByCountry from '../../sections/VaccinesByCountry'
+import * as S from '../../styles'
+import styled from 'styled-components'
 
-function Treatments() {
-  const match = useRouteMatch()
+const TabbedSection = styled.div`
+  min-width: 40%;
+`
+const Flex1 = styled.div`
+  flex: 1;
+`
+
+const Treatments = ({ treatments }) => {
   return (
-    <Switch>
-      <Route path={`${match.url}/map`} component={TreatmentsMap} />
-      <Route
-        path={`${match.url}/milestones`}
-        component={TreatmentsMilestones}
-      />
-    </Switch>
+    <>
+      <Flex1>
+        <Tile header='Total Vaccine Products'>23</Tile>
+        <TrialByCountry />
+      </Flex1>
+      <TabbedSection>
+        <MapAndMilestones treatments={treatments} />
+      </TabbedSection>
+      <S.RightColumn>
+        <Details />
+        <VolunteerLocations />
+      </S.RightColumn>
+    </>
   )
+}
+
+Treatments.propTypes = {
+  treatments: PropTypes.arrayOf(PropTypes.shape({})),
+}
+
+Treatments.defaultProps = {
+  treatments: [],
 }
 
 export default Treatments

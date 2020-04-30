@@ -19,8 +19,6 @@ return(
 /* We may want to consider using 'immer' and 'useImmer' */
 
 const initialState = {
-  color: 'green',
-  tabViewing: 'hello',
   loading: false,
   data: [],
 }
@@ -30,8 +28,6 @@ const { Provider } = store
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-    case 'tabViewing':
-      return { ...state, tabViewing: action.data }
     case 'fetchData':
       return { ...state, loading: true }
     case 'fetchDataSuccess':
@@ -56,7 +52,6 @@ const StateProvider = ({ children }) => {
         dispatch({ type: 'fetchDataFailure', payload: e })
       })
   }, [dispatch])
-
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
 
