@@ -7,7 +7,6 @@ import TrialByCountry from '../../sections/VaccinesByCountry'
 import * as S from '../../styles'
 
 const Vaccines = ({ vaccines }) => {
-  console.log(vaccines, 'vaccines')
   return (
     <>
       <div style={{ flex: '1' }}>

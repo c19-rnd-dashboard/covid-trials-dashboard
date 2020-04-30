@@ -14,7 +14,6 @@ const propTypes = {
 const Tabs = ({ tabs }) => {
   const [openTabIndex, setOpenTabIndex] = useState(0)
   const componentShowing = tabs[openTabIndex] && tabs[openTabIndex].content
-  console.log(componentShowing)
   return (
     <S.TabArea>
       <S.TabTitleSection>
