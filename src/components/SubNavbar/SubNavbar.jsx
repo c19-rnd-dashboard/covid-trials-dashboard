@@ -18,21 +18,25 @@ export const TabTitleSection = styled.div`
 `
 
 const TabName = styled.div`
-  padding-right: ${props => props.selected ? '4px' : '6px'};
-  cursor: ${props => props.selected ? 'none' : 'pointer'};
-  border-bottom: ${props => props.selected ? '2px solid #119c91;' : 'none'};
-  border-right: ${props => props.selected ? '2px solid #119c91;' : 'none'};
+  padding-right: ${props => (props.selected ? '4px' : '6px')};
+  cursor: ${props => (props.selected ? 'none' : 'pointer')};
+  border-bottom: ${props => (props.selected ? '2px solid #119c91;' : 'none')};
+  border-right: ${props => (props.selected ? '2px solid #119c91;' : 'none')};
   margin-right: 16px;
   color: white !important;
 `
 
 export const SubNavbar = () => {
-  const location = useLocation();
+  const location = useLocation()
   return (
     <Subnavbar>
       <TabTitleSection>
-        <TabName selected={location.pathname.startsWith('/vaccine')}><Link to='/vaccines'>Vaccines</Link></TabName>
-        <TabName selected={location.pathname.startsWith('/treatments')}><Link to='/treatments'>Treatments</Link></TabName>
+        <TabName selected={location.pathname.startsWith('/vaccine')}>
+          <Link to='/vaccines'>Vaccines</Link>
+        </TabName>
+        <TabName selected={location.pathname.startsWith('/treatments')}>
+          <Link to='/treatments'>Treatments</Link>
+        </TabName>
       </TabTitleSection>
     </Subnavbar>
   )

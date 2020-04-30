@@ -5,7 +5,6 @@ import SubNavbar from './components/SubNavbar/SubNavbar'
 import { StateProvider } from './store'
 import Router from './routes'
 
-
 function App() {
   return (
     <StateProvider>

@@ -21,12 +21,15 @@ const MapAndMilestones = ({ vaccines }) => {
             <Map pins={vaccines} />
           </MapDiv>
         </Tile>
-      )
+      ),
     },
-    {title: 'Milestones', content: <MilestonesGraph milestones={milestones} />},
+    {
+      title: 'Milestones',
+      content: <MilestonesGraph milestones={milestones} />,
+    },
   ]
 
   return <Tabs tabs={tabs} />
 }
 
-export default MapAndMilestones;
+export default MapAndMilestones

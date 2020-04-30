@@ -14,7 +14,7 @@ const Vaccines = ({ vaccines }) => {
         <Tile header='Total Vaccine Products'>23</Tile>
         <TrialByCountry />
       </div>
-      <div style={{minWidth: '40%'}}>
+      <div style={{ minWidth: '40%' }}>
         <MapAndMilestones vaccines={vaccines} />
       </div>
       <S.RightColumn>
