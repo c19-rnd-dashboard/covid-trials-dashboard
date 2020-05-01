@@ -55,7 +55,7 @@ PopUpDisplay.propTypes = {
   popupInfo: PropTypes.shape({
     chemicalName: PropTypes.string,
     currentStatus: PropTypes.string,
-    sponsors: PropTypes.string,
+    sponsors: PropTypes.arrayOf(PropTypes.shape({})),
     trialId: PropTypes.string,
     status: PropTypes.string,
     brandName: PropTypes.string,
