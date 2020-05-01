@@ -13,7 +13,6 @@ const Routes = () => {
   // const [filters, setFilters] = useState([])
 
   const globalState = useContext(store)
-  console.log(globalState)
   const { treatments, vaccines } = globalState && globalState.state
   // console.log(data, 'state')
   // const applyFiltersFromPath = () => {
