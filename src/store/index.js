@@ -57,7 +57,6 @@ const StateProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log('calling')
     dispatch({
       type: 'fetchData',
     })

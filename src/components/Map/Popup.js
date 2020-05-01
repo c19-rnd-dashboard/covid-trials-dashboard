@@ -11,7 +11,6 @@ const StyledPopupInfo = styled.div`
 `
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
-  console.log(popupInfo, 'info')
   if (popupInfo) {
     const {
       chemicalName,
