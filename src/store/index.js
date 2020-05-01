@@ -20,7 +20,8 @@ return(
 
 const initialState = {
   loading: false,
-  data: [],
+  treatments: [],
+  vaccines: [],
 }
 const store = createContext()
 const { Provider } = store
@@ -31,7 +32,13 @@ const StateProvider = ({ children }) => {
     case 'fetchData':
       return { ...state, loading: true }
     case 'fetchDataSuccess':
-      return { ...state, data: action.payload, loading: false }
+      console.log(action.payload, 'payload')
+      return {
+        ...state,
+        treatments: action.payload.treatments,
+        vaccines: action.payload.vaccines,
+        loading: false,
+      }
     case 'fetchDataFailure':
       return { ...state, error: action.payload, loading: false }
     default:
@@ -39,13 +46,26 @@ const StateProvider = ({ children }) => {
     }
   }, initialState)
 
+  const splitVaccinesAndTreatments = data => {
+    const vaccines = data.filter(product =>
+      product.interventionType.includes('vaccine')
+    )
+    const treatments = data.filter(
+      product => !product.interventionType.includes('vaccine')
+    )
+    return { treatments, vaccines }
+  }
+
   useEffect(() => {
     console.log('calling')
     dispatch({
       type: 'fetchData',
     })
     get(`${apiUrl}/assets`)
-      .then(({ data }) => dispatch({ type: 'fetchDataSuccess', payload: data }))
+      .then(({ data }) => {
+        const splitData = splitVaccinesAndTreatments(data)
+        dispatch({ type: 'fetchDataSuccess', payload: splitData })
+      })
       .catch(e => {
         console.error(e)
         //TODO: handle errors

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Vaccines from './vaccines/Vaccines'
 import Treatments from './treatments/Treatments'
-// import { store } from '../store'
-import { ProdData } from '../mocks/assets'
+import { store } from '../store'
+// import { ProdData } from '../mocks/assets'
 
 const Routes = () => {
-  const [vaccines, setVaccines] = useState([])
-  const [treatments, setTreatments] = useState([])
+  const [vaccinesFiltered, setVaccinesFiltered] = useState([])
+  const [treatmentsFiltered, setTreatmentsFiltered] = useState([])
 
   // const match = useRouteMatch()
   // const [filters, setFilters] = useState([])
 
-  // const globalState = useContext(store);
-  // const { data } = globalState && globalState.state
+  const globalState = useContext(store)
+  console.log(globalState)
+  const { treatments, vaccines } = globalState && globalState.state
   // console.log(data, 'state')
   // const applyFiltersFromPath = () => {
   //   // TODO: set filter based on match.params
@@ -37,38 +38,41 @@ const Routes = () => {
   }
 
   useEffect(() => {
-    const copiedData = [...ProdData]
-    ProdData.length > 0 &&
-      copiedData.forEach(product => {
-        product.siteLocations = [generateRandomLocation()]
-      })
-    const vaccineData =
-      ProdData.length > 0 &&
-      copiedData.filter(product => product.interventionType.includes('vaccine'))
-    const treatmentData =
-      ProdData.length > 0 &&
-      copiedData.filter(
-        product => !product.interventionType.includes('vaccine')
-      )
-    if (treatmentData && treatments.length !== treatmentData.length) {
-      setTreatments(treatmentData)
-    }
-    if (vaccineData && vaccines.length !== vaccineData.length) {
-      setVaccines(vaccineData)
-    }
-  }, [ProdData, treatments.length, vaccines.length])
+    const copiedTreatments = [...treatments]
+    const copiedVaccines = [...vaccines]
+    copiedTreatments.forEach(product => {
+      product.siteLocations = [generateRandomLocation()]
+    })
+    copiedVaccines.forEach(product => {
+      product.siteLocations = [generateRandomLocation()]
+    })
+
+    setTreatmentsFiltered(copiedTreatments)
+    setVaccinesFiltered(copiedVaccines)
+
+    // if (treatmentData && treatments.length !== treatmentData.length) {
+    //   setTreatments(treatmentData)
+    // }
+    // if (vaccineData && vaccines.length !== vaccineData.length) {
+    //   setVaccines(vaccineData)
+    // }
+  }, [vaccines, treatments])
 
   return (
+    // <div>hi</div>
     <Switch>
       <Route
         path={'/vaccines'}
-        render={() => <Vaccines vaccines={vaccines} />}
+        render={() => <Vaccines vaccines={vaccinesFiltered} />}
       />
       <Route
         path={'/treatments'}
-        render={() => <Treatments treatments={treatments} />}
+        render={() => <Treatments treatments={treatmentsFiltered} />}
       />
-      <Route path={'/'} render={() => <Vaccines vaccines={vaccines} />} />
+      <Route
+        path={'/'}
+        render={() => <Vaccines vaccines={vaccinesFiltered} />}
+      />
     </Switch>
   )
 }

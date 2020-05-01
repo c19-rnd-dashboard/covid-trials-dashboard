@@ -11,6 +11,7 @@ const StyledPopupInfo = styled.div`
 `
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
+  console.log(popupInfo, 'info')
   if (popupInfo) {
     const {
       chemicalName,
@@ -34,7 +35,12 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
           {/* TODO: This is pretty unstyled.  Waiting to see what we want to populate this with */}
           <div>{chemicalName}</div>
           <div>Status: {currentStatus}</div>
-          <div>{sponsors}</div>
+          <div>
+            Sponsors:{' '}
+            {sponsors.map(sponsor => (
+              <div key={sponsor.sponsorId}>{sponsor.sponsorName}</div>
+            ))}
+          </div>
           <div>{status}</div>
           <div>{trialId}</div>
           <div>{brandName}</div>
