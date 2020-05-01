@@ -34,7 +34,12 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
           {/* TODO: This is pretty unstyled.  Waiting to see what we want to populate this with */}
           <div>{chemicalName}</div>
           <div>Status: {currentStatus}</div>
-          <div>{sponsors}</div>
+          <div>
+            Sponsors:{' '}
+            {sponsors.map(sponsor => (
+              <div key={sponsor.sponsorId}>{sponsor.sponsorName}</div>
+            ))}
+          </div>
           <div>{status}</div>
           <div>{trialId}</div>
           <div>{brandName}</div>
@@ -49,7 +54,7 @@ PopUpDisplay.propTypes = {
   popupInfo: PropTypes.shape({
     chemicalName: PropTypes.string,
     currentStatus: PropTypes.string,
-    sponsors: PropTypes.string,
+    sponsors: PropTypes.arrayOf(PropTypes.shape({})),
     trialId: PropTypes.string,
     status: PropTypes.string,
     brandName: PropTypes.string,
