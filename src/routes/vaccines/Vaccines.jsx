@@ -5,6 +5,7 @@ import Details from '../../sections/Details/Details'
 import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
 import MapAndMilestones from '../../sections/MapAndMilestones'
 import TrialByCountry from '../../sections/VaccinesByCountry'
+import FilterSection from '../../sections/FilterSection'
 import * as S from '../../styles'
 import styled from 'styled-components'
 
@@ -21,6 +22,7 @@ const Vaccines = ({ vaccines }) => {
       <Flex1>
         <Tile header='Total Vaccine Products'>23</Tile>
         <TrialByCountry />
+        <FilterSection />
       </Flex1>
       <TabbedSection>
         <MapAndMilestones vaccines={vaccines} />
