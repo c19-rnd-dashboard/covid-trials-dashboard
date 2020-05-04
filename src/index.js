@@ -1,15 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { QueryParamProvider } from 'use-query-params'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <Router>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <QueryParamProvider ReactRouterRoute={Route}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </QueryParamProvider>
   </Router>,
   document.getElementById('root')
 )
