@@ -58,7 +58,6 @@ const Routes = () => {
   }, [vaccines, treatments])
 
   return (
-    // <div>hi</div>
     <Switch>
       <Route
         path={'/vaccines'}

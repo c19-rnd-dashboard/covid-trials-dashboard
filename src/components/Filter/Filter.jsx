@@ -9,7 +9,11 @@ const Filter = props => {
       <S.Heading>{heading}</S.Heading>
       {items.map(item => (
         <S.Item onClick={() => onFilterClick(item.label)} key={item.label}>
-          <S.Box style={item.selected ? { backgroundColor: 'blue' } : {}} />
+          <S.Box
+            style={
+              item.selected ? { backgroundColor: item.color || 'blue' } : {}
+            }
+          />
           <S.Label>{item.label}</S.Label>
           <S.Square style={{ backgroundColor: item.color }}></S.Square>
         </S.Item>
