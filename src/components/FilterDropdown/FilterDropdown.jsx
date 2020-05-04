@@ -1,36 +1,31 @@
 import React, { useState } from 'react'
 import * as S from './styles'
-import { string, func } from 'prop-types'
+import { string, func, arrayOf } from 'prop-types'
 import ArrowIcon from './assets/white-arrow.png'
 import Checkbox from 'rc-checkbox'
 
-const FilterDropdown = ({ label, handleChange }) => {
+const FilterDropdown = ({
+  label,
+  handleChange,
+  filters,
+  handleSelected,
+  selected,
+}) => {
   const [showOptions, setShowOptions] = useState(false)
   // eslint-disable-next-line no-unused-vars
   const [inputValue, setInputValue] = useState()
   const handleToggle = () => {
     setShowOptions(!showOptions)
   }
-  const filters = [
-    {
-      title: 'Sponsor 1',
-      count: 12,
-    },
-    {
-      title: 'Sponsor 2',
-      count: 4,
-    },
-    {
-      title: 'Sponsor 3',
-      count: 48,
-    },
-  ]
 
   const renderedFilters = filters.map((filter, i) => (
     <S.Filters key={i}>
-      <Checkbox />
-      <div>{filter.title}</div>
-      <div>({filter.count})</div>
+      <Checkbox
+        onChange={handleSelected}
+        name={filter}
+        checked={selected.includes(filter)}
+      />
+      <div>{filter}</div>
     </S.Filters>
   ))
   return (
@@ -63,6 +58,9 @@ const FilterDropdown = ({ label, handleChange }) => {
 FilterDropdown.propTypes = {
   label: string,
   handleChange: func,
+  filters: arrayOf(string),
+  handleSelected: func,
+  selected: arrayOf(string),
 }
 
 FilterDropdown.defaultProps = {
