@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import * as S from './styles'
-import { string } from 'prop-types'
+import { string, func, array } from 'prop-types'
 import ArrowIcon from './assets/white-arrow.png'
+import Checkbox from 'rc-checkbox'
 
-const FilterDropdown = ({ label }) => {
+const FilterDropdown = ({ label, handleChange, filters }) => {
   const [showOptions, setShowOptions] = useState(false)
+  // eslint-disable-next-line no-unused-vars
+  const [inputValue, setInputValue] = useState()
   const handleToggle = () => {
     setShowOptions(!showOptions)
   }
+
+  const renderedFilters = filters.map((filter, i) => (
+    <S.Filters key={i}>
+      <Checkbox />
+      <div>{filter.title}</div>
+      <div>({filter.count})</div>
+    </S.Filters>
+  ))
   return (
     <S.Wrapper>
       <S.LabelContainer onClick={handleToggle}>
@@ -19,7 +30,15 @@ const FilterDropdown = ({ label }) => {
         )}
       </S.LabelContainer>
       {showOptions === true ? (
-        <S.OptionsContainer>List of options</S.OptionsContainer>
+        <S.OptionsContainer>
+          <S.Input
+            type='text'
+            value={inputValue}
+            onChange={handleChange}
+            placeholder='Type to search here'
+          />
+          <div>{renderedFilters}</div>
+        </S.OptionsContainer>
       ) : (
         ''
       )}
@@ -29,6 +48,8 @@ const FilterDropdown = ({ label }) => {
 
 FilterDropdown.propTypes = {
   label: string.isRequired,
+  handleChange: func.isRequired,
+  filters: array.isRequired,
 }
 
 export default FilterDropdown

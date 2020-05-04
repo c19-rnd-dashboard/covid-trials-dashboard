@@ -1,6 +1,6 @@
 import React from 'react'
 import Tabs from './Tabs'
-import Tile from '../../Tile/Tile'
+import Tile from '../Tile/Tile'
 
 export default {
   title: 'Tabs',

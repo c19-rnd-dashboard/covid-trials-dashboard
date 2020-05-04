@@ -12,19 +12,19 @@ const propTypes = {
 }
 
 const Tabs = ({ tabs }) => {
-  const [openTab, setOpenTab] = useState(tabs[0] || null)
-  const componentShowing = openTab && openTab.content
+  const [openTabIndex, setOpenTabIndex] = useState(0)
+  const componentShowing = tabs[openTabIndex] && tabs[openTabIndex].content
   return (
     <S.TabArea>
       <S.TabTitleSection>
-        {tabs.map(tab => {
+        {tabs.map((tab, tabIndex) => {
           const { title } = tab
           return (
             <div key={title}>
-              {title === openTab.title ? (
+              {tabIndex === openTabIndex ? (
                 <S.SelectedTab
                   data-test-id='selected'
-                  onClick={() => setOpenTab(tab)}
+                  onClick={() => setOpenTabIndex(tabIndex)}
                 >
                   <S.SelectedTabName>{title}</S.SelectedTabName>
                 </S.SelectedTab>
@@ -32,7 +32,7 @@ const Tabs = ({ tabs }) => {
                 <S.TabName
                   data-test-id='not-selected'
                   key={title}
-                  onClick={() => setOpenTab(tab)}
+                  onClick={() => setOpenTabIndex(tabIndex)}
                 >
                   {title}
                 </S.TabName>

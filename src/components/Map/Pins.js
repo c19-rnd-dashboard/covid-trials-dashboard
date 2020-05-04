@@ -14,9 +14,9 @@ const SIZE = 20
 export default ({ data, onClick }) => {
   if (data) {
     return data.map(product =>
-      product.siteLocations.map(location => (
+      product.siteLocations.map((location, index) => (
         <Marker
-          key={`marker-${product.productId}`}
+          key={`marker-${product.productId}-${index}`}
           longitude={location.lon}
           latitude={location.lat}
         >
