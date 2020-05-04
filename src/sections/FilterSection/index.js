@@ -48,7 +48,6 @@ const FilterSection = () => {
     } else {
       newStageParamFilter.push(clickedFilter.filterBy)
     }
-    console.log(newStageParamFilter, 'new')
     setStageParam({ stages: newStageParamFilter })
   }
 

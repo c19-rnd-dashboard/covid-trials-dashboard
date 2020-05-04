@@ -9,7 +9,7 @@ import * as S from '../../styles'
 import styled from 'styled-components'
 import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
-import { ProdData } from '../../mocks/assets'
+// import { ProdData } from '../../mocks/assets'
 
 const TabbedSection = styled.div`
   min-width: 40%;
@@ -37,9 +37,9 @@ const Vaccines = ({ vaccines }) => {
 
   const uniqueSponsors = [
     ...new Set(
-      ProdData.map(vac =>
-        vac.sponsors.map(sponsor => sponsor.sponsorName)
-      ).flat(1)
+      vaccines
+        .map(vac => vac.sponsors.map(sponsor => sponsor.sponsorName))
+        .flat(1)
     ),
   ]
   const handleSelectedSponsor = e => {
