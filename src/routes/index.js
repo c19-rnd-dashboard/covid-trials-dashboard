@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Vaccines from './vaccines/Vaccines'
+import Vaccines from './vaccines/VaccinesFiltered'
 import Treatments from './treatments/Treatments'
 import { store } from '../store'
 // import { ProdData } from '../mocks/assets'
