@@ -32,7 +32,6 @@ const StateProvider = ({ children }) => {
     case 'fetchData':
       return { ...state, loading: true }
     case 'fetchDataSuccess':
-      console.log(action.payload, 'payload')
       return {
         ...state,
         treatments: action.payload.treatments,

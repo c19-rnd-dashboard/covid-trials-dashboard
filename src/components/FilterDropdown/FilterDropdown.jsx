@@ -25,7 +25,7 @@ const FilterDropdown = ({
         name={filter}
         checked={selected.includes(filter)}
       />
-      <div>{filter.length > 25 ? filter.substr(0, 24) + '...' : filter}</div>
+      <div>{filter.length > 35 ? filter.substr(0, 34) + '...' : filter}</div>
     </S.Filters>
   ))
   return (

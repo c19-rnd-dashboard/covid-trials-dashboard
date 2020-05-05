@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+
 import Tile from '../../components/Tile/Tile'
 import Details from '../../sections/Details/Details'
 import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
@@ -7,9 +8,8 @@ import MapAndMilestones from '../../sections/MapAndMilestones'
 import TrialByCountry from '../../sections/VaccinesByCountry'
 import * as S from '../../styles'
 import styled from 'styled-components'
-import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
-// import { ProdData } from '../../mocks/assets'
+import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
 
 const TabbedSection = styled.div`
   min-width: 40%;
@@ -18,40 +18,40 @@ const Flex1 = styled.div`
   flex: 1;
 `
 
-const Vaccines = ({ vaccines }) => {
-  const [filteredVacs, setFilteredVacs] = useState([])
+const Treatments = ({ treatments }) => {
+  const [filteredTms, setFilteredTms] = useState([])
   const [sponsorsSelected, setSponsorsSelected] = useQueryParams({
     s: withDefault(ArrayParam, []),
     n: withDefault(ArrayParam, []),
   })
   useEffect(() => {
-    let filteredResults = [...vaccines]
+    let filteredResults = [...treatments]
     if (sponsorsSelected.s.length > 0) {
-      filteredResults = vaccines.filter(vac =>
-        vac.sponsors.some(
+      filteredResults = treatments.filter(tm =>
+        tm.sponsors.some(
           sponsor => sponsorsSelected.s.indexOf(sponsor.sponsorName) > -1
         )
       )
     }
     if (sponsorsSelected.n.length > 0) {
       filteredResults = filteredResults.filter(
-        vac => sponsorsSelected.n.indexOf(vac.preferredName) > -1
+        tm => sponsorsSelected.n.indexOf(tm.preferredName) > -1
       )
     }
-    if (filteredResults.length !== filteredVacs.length) {
-      setFilteredVacs(filteredResults)
+    if (filteredResults.length !== filteredTms.length) {
+      setFilteredTms(filteredResults)
     }
-  }, [vaccines, sponsorsSelected.s, sponsorsSelected.n, filteredVacs.length])
+  }, [treatments, sponsorsSelected.s, sponsorsSelected.n, filteredTms.length])
 
   const uniqueSponsors = [
     ...new Set(
-      vaccines
-        .map(vac => vac.sponsors.map(sponsor => sponsor.sponsorName))
+      treatments
+        .map(tm => tm.sponsors.map(sponsor => sponsor.sponsorName))
         .flat(1)
     ),
   ]
   const uniqueNames = [
-    ...new Set(vaccines.map(vac => vac.preferredName).flat(1)),
+    ...new Set(treatments.map(tm => tm.preferredName).flat(1)),
   ]
   const handleSelectedSponsor = e => {
     const { name, checked } = e.target
@@ -76,11 +76,12 @@ const Vaccines = ({ vaccines }) => {
     }
     setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
   }
-
   return (
     <>
       <Flex1>
-        <Tile header='Total Vaccine Products'>{vaccines.length || '...'}</Tile>
+        <Tile header='Total Treatment Products'>
+          {treatments.length || '...'}
+        </Tile>
         <TrialByCountry />
         <Tile>
           <FilterDropdown
@@ -97,7 +98,7 @@ const Vaccines = ({ vaccines }) => {
         </Tile>
       </Flex1>
       <TabbedSection>
-        <MapAndMilestones pins={filteredVacs} type='vaccine' />
+        <MapAndMilestones pins={filteredTms} type='treatment' />
       </TabbedSection>
       <S.RightColumn>
         <Details />
@@ -107,12 +108,12 @@ const Vaccines = ({ vaccines }) => {
   )
 }
 
-Vaccines.propTypes = {
-  vaccines: PropTypes.arrayOf(PropTypes.shape({})),
+Treatments.propTypes = {
+  treatments: PropTypes.arrayOf(PropTypes.shape({})),
 }
 
-Vaccines.defaultProps = {
-  vaccines: [],
+Treatments.defaultProps = {
+  treatments: [],
 }
 
-export default Vaccines
+export default Treatments
