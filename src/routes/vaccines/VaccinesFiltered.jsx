@@ -21,19 +21,27 @@ const Flex1 = styled.div`
 const Vaccines = ({ vaccines }) => {
   const [filteredVacs, setFilteredVacs] = useState([])
   const [sponsorsSelected, setSponsorsSelected] = useQueryParams({
-    sp: withDefault(ArrayParam, []),
+    s: withDefault(ArrayParam, []),
+    n: withDefault(ArrayParam, []),
   })
   useEffect(() => {
-    let filteredResults = vaccines
-    if (sponsorsSelected.sp.length > 0) {
+    let filteredResults = [...vaccines]
+    if (sponsorsSelected.s.length > 0) {
       filteredResults = vaccines.filter(vac =>
         vac.sponsors.some(
-          sponsor => sponsorsSelected.sp.indexOf(sponsor.sponsorName) > -1
+          sponsor => sponsorsSelected.s.indexOf(sponsor.sponsorName) > -1
         )
       )
     }
-    setFilteredVacs(filteredResults)
-  }, [vaccines, sponsorsSelected.sp])
+    if (sponsorsSelected.n.length > 0) {
+      filteredResults = filteredResults.filter(
+        vac => sponsorsSelected.n.indexOf(vac.preferredName) > -1
+      )
+    }
+    if (filteredResults.length !== filteredVacs.length) {
+      setFilteredVacs(filteredResults)
+    }
+  }, [vaccines, sponsorsSelected.s, sponsorsSelected.n])
 
   const uniqueSponsors = [
     ...new Set(
@@ -42,16 +50,31 @@ const Vaccines = ({ vaccines }) => {
         .flat(1)
     ),
   ]
+  const uniqueNames = [
+    ...new Set(vaccines.map(vac => vac.preferredName).flat(1)),
+  ]
   const handleSelectedSponsor = e => {
     const { name, checked } = e.target
-    const sponsorsCopy = [...sponsorsSelected.sp]
+    const sponsorsCopy = [...sponsorsSelected.s]
     if (checked === true) {
       sponsorsCopy.push(name)
     } else {
-      const index = sponsorsSelected.sp.indexOf(name)
+      const index = sponsorsSelected.s.indexOf(name)
       sponsorsCopy.splice(index, 1)
     }
-    setSponsorsSelected({ sp: sponsorsCopy })
+    setSponsorsSelected({ ...sponsorsSelected, s: sponsorsCopy })
+  }
+
+  const handleSelectedName = e => {
+    const { name, checked } = e.target
+    const namesCopy = [...sponsorsSelected.n]
+    if (checked === true) {
+      namesCopy.push(name)
+    } else {
+      const index = sponsorsSelected.n.indexOf(name)
+      namesCopy.splice(index, 1)
+    }
+    setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
   }
 
   return (
@@ -61,8 +84,14 @@ const Vaccines = ({ vaccines }) => {
         <TrialByCountry />
         <FilterDropdown
           filters={uniqueSponsors}
-          selected={sponsorsSelected.sp}
+          selected={sponsorsSelected.s}
           handleSelected={handleSelectedSponsor}
+        />
+        <FilterDropdown
+          label='name'
+          filters={uniqueNames}
+          selected={sponsorsSelected.n}
+          handleSelected={handleSelectedName}
         />
       </Flex1>
       <TabbedSection>
