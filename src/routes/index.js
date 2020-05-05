@@ -6,15 +6,14 @@ import { store } from '../store'
 // import { ProdData } from '../mocks/assets'
 
 const Routes = () => {
-  const [vaccinesFiltered, setVaccinesFiltered] = useState([])
-  const [treatmentsFiltered, setTreatmentsFiltered] = useState([])
+  const [justVaccines, setVaccinesFiltered] = useState([])
+  const [justTreatments, setTreatmentsFiltered] = useState([])
 
   // const match = useRouteMatch()
   // const [filters, setFilters] = useState([])
 
   const globalState = useContext(store)
   const { treatments, vaccines } = globalState && globalState.state
-  // console.log(data, 'state')
   // const applyFiltersFromPath = () => {
   //   // TODO: set filter based on match.params
   //   setFilters('')
@@ -61,16 +60,13 @@ const Routes = () => {
     <Switch>
       <Route
         path={'/vaccines'}
-        render={() => <Vaccines vaccines={vaccinesFiltered} />}
+        render={() => <Vaccines vaccines={justVaccines} />}
       />
       <Route
         path={'/treatments'}
-        render={() => <TreatmentsFiltered treatments={treatmentsFiltered} />}
+        render={() => <TreatmentsFiltered treatments={justTreatments} />}
       />
-      <Route
-        path={'/'}
-        render={() => <Vaccines vaccines={vaccinesFiltered} />}
-      />
+      <Route path={'/'} render={() => <Vaccines vaccines={justVaccines} />} />
     </Switch>
   )
 }

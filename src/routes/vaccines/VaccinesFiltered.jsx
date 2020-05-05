@@ -41,7 +41,7 @@ const Vaccines = ({ vaccines }) => {
     if (filteredResults.length !== filteredVacs.length) {
       setFilteredVacs(filteredResults)
     }
-  }, [vaccines, sponsorsSelected.s, sponsorsSelected.n])
+  }, [vaccines, sponsorsSelected.s, sponsorsSelected.n, filteredVacs.length])
 
   const uniqueSponsors = [
     ...new Set(
