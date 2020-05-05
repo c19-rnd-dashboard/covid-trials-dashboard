@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Vaccines from './vaccines/VaccinesFiltered'
-import Treatments from './treatments/Treatments'
+import TreatmentsFiltered from './treatments/TreatmentsFiltered'
 import { store } from '../store'
 // import { ProdData } from '../mocks/assets'
 
@@ -65,7 +65,7 @@ const Routes = () => {
       />
       <Route
         path={'/treatments'}
-        render={() => <Treatments treatments={treatmentsFiltered} />}
+        render={() => <TreatmentsFiltered treatments={treatmentsFiltered} />}
       />
       <Route
         path={'/'}
