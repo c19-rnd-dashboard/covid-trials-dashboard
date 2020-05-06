@@ -91,7 +91,6 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
 
 FilterDropdown.propTypes = {
   label: string,
-  handleChange: func,
   filters: arrayOf(string),
   handleSelected: func,
   selected: arrayOf(string),
@@ -99,7 +98,6 @@ FilterDropdown.propTypes = {
 
 FilterDropdown.defaultProps = {
   label: 'sponsors',
-  handleChange: () => {},
 }
 
 export default FilterDropdown
