@@ -4,7 +4,6 @@ import Tile from '../../components/Tile/Tile'
 import Details from '../../sections/Details/Details'
 import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
 import MapAndMilestones from '../../sections/MapAndMilestones'
-import TrialByCountry from '../../sections/VaccinesByCountry'
 import * as S from '../../styles'
 import styled from 'styled-components'
 import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
@@ -81,7 +80,6 @@ const Vaccines = ({ vaccines }) => {
     <>
       <Flex1>
         <Tile header='Total Vaccine Products'>{vaccines.length || '...'}</Tile>
-        <TrialByCountry />
         <Tile>
           <FilterDropdown
             filters={uniqueSponsors}
