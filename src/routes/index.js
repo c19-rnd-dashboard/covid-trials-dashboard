@@ -9,15 +9,8 @@ const Routes = () => {
   const [justVaccines, setVaccinesFiltered] = useState([])
   const [justTreatments, setTreatmentsFiltered] = useState([])
 
-  // const match = useRouteMatch()
-  // const [filters, setFilters] = useState([])
-
   const globalState = useContext(store)
   const { treatments, vaccines } = globalState && globalState.state
-  // const applyFiltersFromPath = () => {
-  //   // TODO: set filter based on match.params
-  //   setFilters('')
-  // }
 
   // Temp solution to unblock waiting for API to add lat and long
   const generateRandomLocation = () => {
@@ -47,13 +40,6 @@ const Routes = () => {
 
     setTreatmentsFiltered(copiedTreatments)
     setVaccinesFiltered(copiedVaccines)
-
-    // if (treatmentData && treatments.length !== treatmentData.length) {
-    //   setTreatments(treatmentData)
-    // }
-    // if (vaccineData && vaccines.length !== vaccineData.length) {
-    //   setVaccines(vaccineData)
-    // }
   }, [vaccines, treatments])
 
   return (
