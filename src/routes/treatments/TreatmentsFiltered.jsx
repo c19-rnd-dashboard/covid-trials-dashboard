@@ -5,7 +5,6 @@ import Tile from '../../components/Tile/Tile'
 import Details from '../../sections/Details/Details'
 import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
 import MapAndMilestones from '../../sections/MapAndMilestones'
-import TrialByCountry from '../../sections/VaccinesByCountry'
 import * as S from '../../styles'
 import styled from 'styled-components'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
@@ -82,7 +81,6 @@ const Treatments = ({ treatments }) => {
         <Tile header='Total Treatment Products'>
           {treatments.length || '...'}
         </Tile>
-        <TrialByCountry />
         <Tile>
           <FilterDropdown
             filters={uniqueSponsors}
