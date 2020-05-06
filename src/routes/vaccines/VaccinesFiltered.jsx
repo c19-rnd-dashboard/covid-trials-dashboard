@@ -53,7 +53,6 @@ const Vaccines = ({ vaccines }) => {
     ...new Set(vaccines.map(vac => vac.preferredName).flat(1)),
   ]
   const handleSelectedSponsor = e => {
-    console.log(e, 'E')
     if (e === 'clear') {
       setSponsorsSelected({ ...sponsorsSelected, s: [] })
     } else {

@@ -53,28 +53,37 @@ const Treatments = ({ treatments }) => {
     ...new Set(treatments.map(tm => tm.preferredName).flat(1)),
   ]
   const handleSelectedSponsor = e => {
-    const { name, checked } = e.target
-    const sponsorsCopy = [...sponsorsSelected.s]
-    if (checked === true) {
-      sponsorsCopy.push(name)
+    if (e === 'clear') {
+      setSponsorsSelected({ ...sponsorsSelected, s: [] })
     } else {
-      const index = sponsorsSelected.s.indexOf(name)
-      sponsorsCopy.splice(index, 1)
+      const { name, checked } = e.target
+      const sponsorsCopy = [...sponsorsSelected.s]
+      if (checked === true) {
+        sponsorsCopy.push(name)
+      } else {
+        const index = sponsorsSelected.s.indexOf(name)
+        sponsorsCopy.splice(index, 1)
+      }
+      setSponsorsSelected({ ...sponsorsSelected, s: sponsorsCopy })
     }
-    setSponsorsSelected({ ...sponsorsSelected, s: sponsorsCopy })
   }
 
   const handleSelectedName = e => {
-    const { name, checked } = e.target
-    const namesCopy = [...sponsorsSelected.n]
-    if (checked === true) {
-      namesCopy.push(name)
+    if (e === 'clear') {
+      setSponsorsSelected({ ...sponsorsSelected, n: [] })
     } else {
-      const index = sponsorsSelected.n.indexOf(name)
-      namesCopy.splice(index, 1)
+      const { name, checked } = e.target
+      const namesCopy = [...sponsorsSelected.n]
+      if (checked === true) {
+        namesCopy.push(name)
+      } else {
+        const index = sponsorsSelected.n.indexOf(name)
+        namesCopy.splice(index, 1)
+      }
+      setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
     }
-    setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
   }
+
   return (
     <>
       <Flex1>
