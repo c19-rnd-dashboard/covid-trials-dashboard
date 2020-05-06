@@ -5,6 +5,21 @@ import ArrowIcon from './assets/white-arrow.png'
 import Checkbox from 'rc-checkbox'
 import Autosuggest from 'react-autosuggest'
 import theme from './theme'
+import styled from 'styled-components'
+
+// TODO: make a global button style
+const StyledButton = styled.button`
+  background-color: rgb(68, 68, 68);
+  color: white;
+  padding: 11px;
+  border: none;
+  font-size: 14px;
+  width: 95%;
+  cursor: pointer;
+  /* outline: none; */
+  margin: 4px;
+  border-radius: 2px;
+`
 
 const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
   const [suggestionValue, setSuggestionValue] = useState('')
@@ -13,6 +28,9 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
   const handleToggle = () => {
     setShowOptions(!showOptions)
   }
+
+  const shortenName = name =>
+    name.length > 35 ? name.substr(0, 34) + '...' : name
 
   const getSuggestions = e => {
     const inputValue = e.value.trim().toLowerCase()
@@ -33,9 +51,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
         name={suggestion}
         checked={selected.includes(suggestion)}
       />
-      <div>
-        {suggestion.length > 35 ? suggestion.substr(0, 34) + '...' : suggestion}
-      </div>
+      <div>{shortenName(suggestion)}</div>
     </S.Filters>
   )
 
@@ -46,7 +62,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
         name={filter}
         checked={selected.includes(filter)}
       />
-      <div>{filter.length > 35 ? filter.substr(0, 34) + '...' : filter}</div>
+      {shortenName(filter)}
     </S.Filters>
   ))
 
@@ -82,7 +98,20 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
             theme={theme}
             alwaysRenderSuggestions
           />
-          {suggestionValue.length === 0 && <div>{renderedFilters}</div>}
+          {suggestionValue.length === 0 && (
+            <>
+              {selected.length > 0 && (
+                <StyledButton
+                  onClick={() => {
+                    handleSelected('clear')
+                  }}
+                >
+                  Clear Selection (display all)
+                </StyledButton>
+              )}
+              <div>{renderedFilters}</div>
+            </>
+          )}
         </S.OptionsContainer>
       ) : null}
     </S.Wrapper>
