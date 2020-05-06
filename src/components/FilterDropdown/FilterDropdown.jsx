@@ -9,8 +9,8 @@ import styled from 'styled-components'
 
 // TODO: make a global button style
 const StyledButton = styled.button`
-  background-color: rgb(68, 68, 68);
-  color: white;
+  background-color: ${props => (props.disabled ? '#444444' : '#355287')};
+  color: ${props => (props.disabled ? '#b0aeae' : 'white')};
   padding: 11px;
   border: none;
   font-size: 14px;
@@ -18,6 +18,10 @@ const StyledButton = styled.button`
   cursor: pointer;
   margin: 4px;
   border-radius: 2px;
+`
+
+const FilterContainer = styled.div`
+  padding-top: 4px;
 `
 
 const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
@@ -87,6 +91,14 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
       </S.LabelContainer>
       {showOptions === true ? (
         <S.OptionsContainer>
+          <StyledButton
+            onClick={() => {
+              handleSelected('clear')
+            }}
+            disabled={selected.length === 0}
+          >
+            Clear Selection (display all)
+          </StyledButton>
           <Autosuggest
             suggestions={suggestions}
             onSuggestionsFetchRequested={e => getSuggestions(e)}
@@ -98,18 +110,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
             alwaysRenderSuggestions
           />
           {suggestionValue.length === 0 && (
-            <>
-              {selected.length > 0 && (
-                <StyledButton
-                  onClick={() => {
-                    handleSelected('clear')
-                  }}
-                >
-                  Clear Selection (display all)
-                </StyledButton>
-              )}
-              <div>{renderedFilters}</div>
-            </>
+            <FilterContainer>{renderedFilters}</FilterContainer>
           )}
         </S.OptionsContainer>
       ) : null}
