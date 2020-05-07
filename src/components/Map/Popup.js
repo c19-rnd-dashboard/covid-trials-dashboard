@@ -25,7 +25,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       <Popup
         tipSize={5}
         anchor='top'
-        longitude={clickedLocation.lon}
+        longitude={clickedLocation.lng}
         latitude={clickedLocation.lat}
         closeOnClick={false}
         onClose={onClose}
@@ -59,7 +59,7 @@ PopUpDisplay.propTypes = {
     status: PropTypes.string,
     brandName: PropTypes.string,
     clickedLocation: PropTypes.shape({
-      lon: PropTypes.number,
+      lng: PropTypes.number,
       lat: PropTypes.number,
     }),
   }),
