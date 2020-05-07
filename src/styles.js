@@ -53,3 +53,10 @@ export const RightColumn = styled.div`
   flex-direction: column;
   width: 31%;
 `
+
+export const TabbedSection = styled.div`
+  min-width: 40%;
+`
+export const Flex1 = styled.div`
+  flex: 1;
+`
