@@ -1,36 +1,71 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import * as S from './styles'
 import Tile from '../../components/Tile/Tile'
 
-const Details = () => {
+const Details = ({ selectedAsset }) => {
+  const asset = selectedAsset || {
+    brandName: '...',
+    chemicalName: '...',
+    conditionOrDisease: '...',
+    countries: '...',
+    countryCodes: '...',
+    currentStatus: '...',
+    indication: '...',
+    interventionType: '...',
+    moleculeType: '...',
+    notes: '...',
+    numSites: '...',
+    otherPartners: '...',
+    phase: '...',
+    preferredName: 'Selected Product Details',
+    productId: '...',
+    productType: '...',
+    repurposed: '...',
+    sources: ['...'],
+    sponsors: [{ sponsorId: '...', sponsorName: '...' }],
+    status: '...',
+    therapeuticApproach: '...',
+    trialId: '...',
+  }
+  const {
+    preferredName,
+    sponsors,
+    otherPartners,
+    countries,
+    interventionType,
+    chemicalName,
+    moleculeType,
+  } = asset
   const vaccineData = [
     {
-      category: 'Asset Name',
-      data: 'Covidlitin',
+      category: 'Chemical Name',
+      data: chemicalName,
     },
     {
       category: 'Sponsor',
-      data: 'Gov',
+      data: sponsors.map(sponsor => sponsor.sponsorName).join(', '),
     },
     {
       category: 'Partners',
-      data: 'WHO',
+      data: otherPartners,
     },
     {
       category: 'Country',
-      data: 'UK',
+      data: countries,
     },
     {
       category: 'Drug Type',
-      data: 'A-B',
+      data: interventionType,
     },
     {
       category: 'Molecule Type',
-      data: 'A-B',
+      data: moleculeType,
     },
   ]
+  console.log(selectedAsset, 'ASSERT')
   return (
-    <Tile header='Vaccine Details'>
+    <Tile header={preferredName}>
       <S.Wrapper>
         {vaccineData.map((vaccine, i) => {
           return (
@@ -43,6 +78,10 @@ const Details = () => {
       </S.Wrapper>
     </Tile>
   )
+}
+
+Details.propTypes = {
+  selectedAsset: PropTypes.shape({}),
 }
 
 export default Details

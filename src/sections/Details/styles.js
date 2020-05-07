@@ -17,6 +17,6 @@ export const Container = styled.div`
 
 export const Data = styled.div`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   padding: 15px;
 `

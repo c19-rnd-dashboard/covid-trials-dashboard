@@ -51,4 +51,5 @@ export const SortTitle = styled.span`
 export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 31%;
 `
