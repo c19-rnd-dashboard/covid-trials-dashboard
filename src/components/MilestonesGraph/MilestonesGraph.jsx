@@ -6,7 +6,7 @@ import { BarIndicator } from '../BarIndicator'
 import moment from 'moment'
 import './MilestonesGraph.css'
 
-const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
+// const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
 
 const propTypes = {
   milestones: PropTypes.arrayOf(
@@ -20,12 +20,12 @@ const propTypes = {
             PropTypes.instanceOf(Date),
             PropTypes.instanceOf(moment),
             PropTypes.string,
-          ]).isRequired,
+          ]),
           end: PropTypes.oneOfType([
             PropTypes.instanceOf(Date),
             PropTypes.instanceOf(moment),
             PropTypes.string,
-          ]).isRequired,
+          ]),
         })
       ).isRequired,
     })
@@ -62,8 +62,12 @@ export const getTotalMilestoneDurationInDays = ({ values }) => {
 export const MilestonesGraph = ({ milestones }) => {
   const dates = getAllDatesFromMilestones(milestones)
 
-  const earliestDate = getEarliestDate(dates.map(({ start }) => start))
-  const latestDate = getLatestDate(dates.map(({ end }) => end))
+  const earliestDate = getEarliestDate(
+    dates.map(({ start, end }) => start || end).filter(a => a)
+  )
+  const latestDate = getLatestDate(
+    dates.map(({ start, end }) => end || start).filter(a => a)
+  )
   const [actualMilestone = []] = milestones.filter(
     ({ name }) => name.toLowerCase() === 'actual'
   )
@@ -85,9 +89,8 @@ export const MilestonesGraph = ({ milestones }) => {
               tooltip={({ start, end }) => (
                 <MilestonesTooltip startDate={start} endDate={end} />
               )}
-              colorBgStyles={colorBgStyles}
               indicator={
-                i === self.length - 1
+                i === self.length - 1 && elapsedDays > 0
                   ? () => (
                     <BarIndicator>
                       <div>Elapsed Time</div>
@@ -100,24 +103,28 @@ export const MilestonesGraph = ({ milestones }) => {
           </div>
         ))}
         <div data-test-id='x-axis' className='x-axis'>
-          <div className='dates'>
-            <div
-              data-test-id='start-date'
-              data-test-value={earliestDate.toISOString()}
-            >
-              {moment(earliestDate).format('LL')}
+          {earliestDate && (
+            <div className='dates'>
+              <div
+                data-test-id='start-date'
+                data-test-value={earliestDate.toISOString()}
+              >
+                {moment(earliestDate).format('LL')}
+              </div>
+              <div>Start Date</div>
             </div>
-            <div>Start Date</div>
-          </div>
-          <div className='dates'>
-            <div
-              data-test-id='end-date'
-              data-test-value={latestDate.toISOString()}
-            >
-              {moment(latestDate).format('LL')}
+          )}
+          {latestDate && (
+            <div className='dates'>
+              <div
+                data-test-id='end-date'
+                data-test-value={latestDate.toISOString()}
+              >
+                {moment(latestDate).format('LL')}
+              </div>
+              <div>End Date</div>
             </div>
-            <div>End Date</div>
-          </div>
+          )}
         </div>
       </div>
     </div>

@@ -42,3 +42,15 @@
   text-align: center;
   padding: 0.5rem;
 }
+
+.milestones-graph .clinical_batch {
+  background-color: pink;
+}
+
+.milestones-graph .phase_1 {
+  background-color: yellow;
+}
+
+.milestones-graph .lead_selection {
+  background-color: red;
+}

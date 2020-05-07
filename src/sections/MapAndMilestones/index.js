@@ -15,6 +15,10 @@ const MapDiv = styled.div`
 const MapAndMilestones = ({ pins, title, handleSelectedId }) => {
   const tabs = [
     {
+      title: 'Milestones',
+      content: <MilestonesGraph milestones={milestones} />,
+    },
+    {
       title,
       content: (
         <Tile>
@@ -23,10 +27,6 @@ const MapAndMilestones = ({ pins, title, handleSelectedId }) => {
           </MapDiv>
         </Tile>
       ),
-    },
-    {
-      title: 'Milestones',
-      content: <MilestonesGraph milestones={milestones} />,
     },
   ]
 
