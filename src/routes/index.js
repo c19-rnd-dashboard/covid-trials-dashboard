@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Vaccines from './vaccines/VaccinesFiltered'
 import TreatmentsFiltered from './treatments/TreatmentsFiltered'
@@ -6,53 +6,20 @@ import { store } from '../store'
 // import { ProdData } from '../mocks/assets'
 
 const Routes = () => {
-  const [justVaccines, setVaccinesFiltered] = useState([])
-  const [justTreatments, setTreatmentsFiltered] = useState([])
-
   const globalState = useContext(store)
   const { treatments, vaccines } = globalState && globalState.state
-
-  // Temp solution to unblock waiting for API to add lat and long
-  const generateRandomLocation = () => {
-    const maxLon = 180
-    const minLon = -180
-    const maxLat = 90
-    const minLat = -90
-    return {
-      name: 'Test',
-      city: 'Test',
-      state: 'Test',
-      country: 'Test',
-      lat: Math.floor(Math.random() * (maxLat - minLat)) + minLat + 0.239746,
-      lon: Math.floor(Math.random() * (maxLon - minLon)) + minLon + 0.239746,
-    }
-  }
-
-  useEffect(() => {
-    const copiedTreatments = [...treatments]
-    const copiedVaccines = [...vaccines]
-    copiedTreatments.forEach(product => {
-      product.siteLocations = [generateRandomLocation()]
-    })
-    copiedVaccines.forEach(product => {
-      product.siteLocations = [generateRandomLocation()]
-    })
-
-    setTreatmentsFiltered(copiedTreatments)
-    setVaccinesFiltered(copiedVaccines)
-  }, [vaccines, treatments])
 
   return (
     <Switch>
       <Route
         path={'/vaccines'}
-        render={() => <Vaccines vaccines={justVaccines} />}
+        render={() => <Vaccines vaccines={vaccines} />}
       />
       <Route
         path={'/treatments'}
-        render={() => <TreatmentsFiltered treatments={justTreatments} />}
+        render={() => <TreatmentsFiltered treatments={treatments} />}
       />
-      <Route path={'/'} render={() => <Vaccines vaccines={justVaccines} />} />
+      <Route path={'/'} render={() => <Vaccines vaccines={vaccines} />} />
     </Switch>
   )
 }
