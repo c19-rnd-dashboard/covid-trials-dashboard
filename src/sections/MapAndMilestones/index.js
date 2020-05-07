@@ -12,7 +12,7 @@ const MapDiv = styled.div`
   height: 65vh;
 `
 
-const MapAndMilestones = ({ pins, type }) => {
+const MapAndMilestones = ({ pins, type, handleSelectedId }) => {
   const title = type === 'vaccine' ? 'Vaccine Map' : 'Treatment Map'
   const tabs = [
     {
@@ -20,7 +20,7 @@ const MapAndMilestones = ({ pins, type }) => {
       content: (
         <Tile>
           <MapDiv>
-            <Map pins={pins} />
+            <Map pins={pins} handleSelectedId={handleSelectedId} />
           </MapDiv>
         </Tile>
       ),
@@ -37,6 +37,7 @@ const MapAndMilestones = ({ pins, type }) => {
 MapAndMilestones.propTypes = {
   pins: PropTypes.arrayOf(PropTypes.shape({})),
   type: PropTypes.string,
+  handleSelectedId: PropTypes.func,
 }
 
 MapAndMilestones.defaultProps = {

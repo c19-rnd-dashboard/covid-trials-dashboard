@@ -6,7 +6,12 @@ import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocat
 import MapAndMilestones from '../../sections/MapAndMilestones'
 import * as S from '../../styles'
 import styled from 'styled-components'
-import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
+import {
+  useQueryParams,
+  ArrayParam,
+  withDefault,
+  StringParam,
+} from 'use-query-params'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
 // import { ProdData } from '../../mocks/assets'
 
@@ -19,28 +24,45 @@ const Flex1 = styled.div`
 
 const Vaccines = ({ vaccines }) => {
   const [filteredVacs, setFilteredVacs] = useState([])
-  const [sponsorsSelected, setSponsorsSelected] = useQueryParams({
-    s: withDefault(ArrayParam, []),
-    n: withDefault(ArrayParam, []),
+  const [selectedAsset, setSelectedAsset] = useState()
+  const [filtersSelected, setFiltersSelected] = useQueryParams({
+    s: withDefault(ArrayParam, []), // s denotes sponsor
+    n: withDefault(ArrayParam, []), // n denotes name
+    i: StringParam, // i denotes individual asset id
   })
   useEffect(() => {
     let filteredResults = [...vaccines]
-    if (sponsorsSelected.s.length > 0) {
-      filteredResults = vaccines.filter(vac =>
+    if (filtersSelected.s.length > 0) {
+      filteredResults = filteredResults.filter(vac =>
         vac.sponsors.some(
-          sponsor => sponsorsSelected.s.indexOf(sponsor.sponsorName) > -1
+          sponsor => filtersSelected.s.indexOf(sponsor.sponsorName) > -1
         )
       )
     }
-    if (sponsorsSelected.n.length > 0) {
+    if (filtersSelected.n.length > 0) {
       filteredResults = filteredResults.filter(
-        vac => sponsorsSelected.n.indexOf(vac.preferredName) > -1
+        vac => filtersSelected.n.indexOf(vac.preferredName) > -1
       )
+    }
+    if (filtersSelected.i !== undefined) {
+      const asset = filteredResults.filter(
+        vac => filtersSelected.i == vac.productId
+      )
+      setSelectedAsset(asset[0]) // we should assume only one asset per productId
+    }
+    if (filtersSelected.i === undefined && selectedAsset) {
+      setSelectedAsset(null)
     }
     if (filteredResults.length !== filteredVacs.length) {
       setFilteredVacs(filteredResults)
     }
-  }, [vaccines, sponsorsSelected.s, sponsorsSelected.n, filteredVacs.length])
+  }, [
+    vaccines,
+    filtersSelected.s,
+    filtersSelected.n,
+    filteredVacs.length,
+    selectedAsset,
+  ])
 
   const uniqueSponsors = [
     ...new Set(
@@ -54,33 +76,41 @@ const Vaccines = ({ vaccines }) => {
   ]
   const handleSelectedSponsor = e => {
     if (e === 'clear') {
-      setSponsorsSelected({ ...sponsorsSelected, s: [] })
+      setFiltersSelected({ ...filtersSelected, s: [] })
     } else {
       const { name, checked } = e.target
-      const sponsorsCopy = [...sponsorsSelected.s]
+      const sponsorsCopy = [...filtersSelected.s]
       if (checked === true) {
         sponsorsCopy.push(name)
       } else {
-        const index = sponsorsSelected.s.indexOf(name)
+        const index = filtersSelected.s.indexOf(name)
         sponsorsCopy.splice(index, 1)
       }
-      setSponsorsSelected({ ...sponsorsSelected, s: sponsorsCopy })
+      setFiltersSelected({ ...filtersSelected, s: sponsorsCopy })
     }
   }
 
   const handleSelectedName = e => {
     if (e === 'clear') {
-      setSponsorsSelected({ ...sponsorsSelected, n: [] })
+      setFiltersSelected({ ...filtersSelected, n: [] })
     } else {
       const { name, checked } = e.target
-      const namesCopy = [...sponsorsSelected.n]
+      const namesCopy = [...filtersSelected.n]
       if (checked === true) {
         namesCopy.push(name)
       } else {
-        const index = sponsorsSelected.n.indexOf(name)
+        const index = filtersSelected.n.indexOf(name)
         namesCopy.splice(index, 1)
       }
-      setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
+      setFiltersSelected({ ...filtersSelected, n: namesCopy })
+    }
+  }
+
+  const handleSelectedId = assetId => {
+    if (assetId === 'clear') {
+      setFiltersSelected({ ...filtersSelected, i: undefined })
+    } else {
+      setFiltersSelected({ ...filtersSelected, i: assetId })
     }
   }
 
@@ -91,22 +121,26 @@ const Vaccines = ({ vaccines }) => {
         <Tile>
           <FilterDropdown
             filters={uniqueSponsors}
-            selected={sponsorsSelected.s}
+            selected={filtersSelected.s}
             handleSelected={handleSelectedSponsor}
           />
           <FilterDropdown
             label='name'
             filters={uniqueNames}
-            selected={sponsorsSelected.n}
+            selected={filtersSelected.n}
             handleSelected={handleSelectedName}
           />
         </Tile>
       </Flex1>
       <TabbedSection>
-        <MapAndMilestones pins={filteredVacs} type='vaccine' />
+        <MapAndMilestones
+          pins={filteredVacs}
+          type='vaccine'
+          handleSelectedId={handleSelectedId}
+        />
       </TabbedSection>
       <S.RightColumn>
-        <Details />
+        <Details selectedAsset={selectedAsset} />
         <VolunteerLocations />
       </S.RightColumn>
     </>

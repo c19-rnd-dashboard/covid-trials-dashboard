@@ -8,7 +8,12 @@ import MapAndMilestones from '../../sections/MapAndMilestones'
 import * as S from '../../styles'
 import styled from 'styled-components'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
-import { useQueryParams, ArrayParam, withDefault } from 'use-query-params'
+import {
+  useQueryParams,
+  ArrayParam,
+  withDefault,
+  StringParam,
+} from 'use-query-params'
 
 const TabbedSection = styled.div`
   min-width: 40%;
@@ -19,28 +24,46 @@ const Flex1 = styled.div`
 
 const Treatments = ({ treatments }) => {
   const [filteredTms, setFilteredTms] = useState([])
-  const [sponsorsSelected, setSponsorsSelected] = useQueryParams({
-    s: withDefault(ArrayParam, []),
-    n: withDefault(ArrayParam, []),
+  const [selectedAsset, setSelectedAsset] = useState()
+  const [filtersSelected, setFiltersSelected] = useQueryParams({
+    s: withDefault(ArrayParam, []), // s denotes sponsor
+    n: withDefault(ArrayParam, []), // n denotes name
+    i: StringParam, // i denotes individual asset id
   })
   useEffect(() => {
     let filteredResults = [...treatments]
-    if (sponsorsSelected.s.length > 0) {
+    if (filtersSelected.s.length > 0) {
       filteredResults = treatments.filter(tm =>
         tm.sponsors.some(
-          sponsor => sponsorsSelected.s.indexOf(sponsor.sponsorName) > -1
+          sponsor => filtersSelected.s.indexOf(sponsor.sponsorName) > -1
         )
       )
     }
-    if (sponsorsSelected.n.length > 0) {
+    if (filtersSelected.n.length > 0) {
       filteredResults = filteredResults.filter(
-        tm => sponsorsSelected.n.indexOf(tm.preferredName) > -1
+        tm => filtersSelected.n.indexOf(tm.preferredName) > -1
       )
+    }
+    if (filtersSelected.i !== undefined) {
+      const asset = filteredResults.filter(
+        vac => filtersSelected.i == vac.productId
+      )
+      setSelectedAsset(asset[0]) // we should assume only one asset per productId
+    }
+    if (filtersSelected.i === undefined && selectedAsset) {
+      setSelectedAsset(null)
     }
     if (filteredResults.length !== filteredTms.length) {
       setFilteredTms(filteredResults)
     }
-  }, [treatments, sponsorsSelected.s, sponsorsSelected.n, filteredTms.length])
+  }, [
+    treatments,
+    filtersSelected.s,
+    filtersSelected.n,
+    filtersSelected.i,
+    filteredTms.length,
+    selectedAsset,
+  ])
 
   const uniqueSponsors = [
     ...new Set(
@@ -54,33 +77,41 @@ const Treatments = ({ treatments }) => {
   ]
   const handleSelectedSponsor = e => {
     if (e === 'clear') {
-      setSponsorsSelected({ ...sponsorsSelected, s: [] })
+      setFiltersSelected({ ...filtersSelected, s: [] })
     } else {
       const { name, checked } = e.target
-      const sponsorsCopy = [...sponsorsSelected.s]
+      const sponsorsCopy = [...filtersSelected.s]
       if (checked === true) {
         sponsorsCopy.push(name)
       } else {
-        const index = sponsorsSelected.s.indexOf(name)
+        const index = filtersSelected.s.indexOf(name)
         sponsorsCopy.splice(index, 1)
       }
-      setSponsorsSelected({ ...sponsorsSelected, s: sponsorsCopy })
+      setFiltersSelected({ ...filtersSelected, s: sponsorsCopy })
     }
   }
 
   const handleSelectedName = e => {
     if (e === 'clear') {
-      setSponsorsSelected({ ...sponsorsSelected, n: [] })
+      setFiltersSelected({ ...filtersSelected, n: [] })
     } else {
       const { name, checked } = e.target
-      const namesCopy = [...sponsorsSelected.n]
+      const namesCopy = [...filtersSelected.n]
       if (checked === true) {
         namesCopy.push(name)
       } else {
-        const index = sponsorsSelected.n.indexOf(name)
+        const index = filtersSelected.n.indexOf(name)
         namesCopy.splice(index, 1)
       }
-      setSponsorsSelected({ ...sponsorsSelected, n: namesCopy })
+      setFiltersSelected({ ...filtersSelected, n: namesCopy })
+    }
+  }
+
+  const handleSelectedId = assetId => {
+    if (assetId === 'clear') {
+      setFiltersSelected({ ...filtersSelected, i: undefined })
+    } else {
+      setFiltersSelected({ ...filtersSelected, i: assetId })
     }
   }
 
@@ -93,22 +124,26 @@ const Treatments = ({ treatments }) => {
         <Tile>
           <FilterDropdown
             filters={uniqueSponsors}
-            selected={sponsorsSelected.s}
+            selected={filtersSelected.s}
             handleSelected={handleSelectedSponsor}
           />
           <FilterDropdown
             label='name'
             filters={uniqueNames}
-            selected={sponsorsSelected.n}
+            selected={filtersSelected.n}
             handleSelected={handleSelectedName}
           />
         </Tile>
       </Flex1>
       <TabbedSection>
-        <MapAndMilestones pins={filteredTms} type='treatment' />
+        <MapAndMilestones
+          pins={filteredTms}
+          type='treatment'
+          handleSelectedId={handleSelectedId}
+        />
       </TabbedSection>
       <S.RightColumn>
-        <Details />
+        <Details selectedAsset={selectedAsset} />
         <VolunteerLocations />
       </S.RightColumn>
     </>

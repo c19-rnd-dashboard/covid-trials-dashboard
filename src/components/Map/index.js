@@ -10,7 +10,7 @@ import ReactMapGL, {
 import { mapboxApiKey } from '../../constants/config'
 import { FullscreenControlDiv, NavDiv, ScaleControlDiv } from './styles'
 
-const Map = ({ pins }) => {
+const Map = ({ pins, handleSelectedId }) => {
   const [popUp, setPopUp] = useState(null)
   const [viewport, setViewport] = useState({
     latitude: 40.67,
@@ -19,6 +19,17 @@ const Map = ({ pins }) => {
     bearing: 0,
     pitch: 0,
   })
+
+  const onClose = () => {
+    setPopUp(null)
+    handleSelectedId('clear')
+  }
+
+  const onClick = popupInfo => {
+    setPopUp(popupInfo)
+    handleSelectedId(popupInfo.productId)
+  }
+
   return (
     <ReactMapGL
       {...viewport}
@@ -28,8 +39,8 @@ const Map = ({ pins }) => {
       width='100%'
       height='100%'
     >
-      <Pins data={pins} onClick={setPopUp} />
-      <PopUpDisplay popupInfo={popUp} onClose={() => setPopUp(null)} />
+      <Pins data={pins} onClick={onClick} handleSelectedId={handleSelectedId} />
+      <PopUpDisplay popupInfo={popUp} onClose={onClose} />
       <FullscreenControlDiv>
         <FullscreenControl />
       </FullscreenControlDiv>
@@ -50,10 +61,12 @@ Map.propTypes = {
       longitude: PropTypes.number,
     })
   ),
+  handleSelectedId: PropTypes.func,
 }
 
 Map.defaultProps = {
   pins: null,
+  handleSelectedId: () => {},
 }
 
 export default Map
