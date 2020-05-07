@@ -17,7 +17,7 @@ export default ({ data, onClick }) => {
       product.siteLocations.map((location, index) => (
         <Marker
           key={`marker-${product.productId}-${index}`}
-          longitude={location.lon}
+          longitude={location.lng}
           latitude={location.lat}
         >
           <svg
