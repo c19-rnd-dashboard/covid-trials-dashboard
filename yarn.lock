@@ -13981,6 +13981,70 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
+sanctuary-def@0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/sanctuary-def/-/sanctuary-def-0.21.1.tgz#40088fb7278ba6e344d46b74820f4b187d822dd2"
+  integrity sha512-TmsAahZZiNzPMzyL2FXdZsygFlpz5uqzLbhBqJZFOTNTTZa99aJUa4pxSnA5tK3jvMOK2le1qsBd2q2Ra4K+cw==
+  dependencies:
+    sanctuary-either "2.1.0"
+    sanctuary-show "2.0.0"
+    sanctuary-type-classes "12.1.0"
+    sanctuary-type-identifiers "3.0.0"
+
+sanctuary-either@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-either/-/sanctuary-either-2.1.0.tgz#ccbea2ff8243902e99d6e00b3f7e3055bc954e3a"
+  integrity sha512-AsQCma2yGAVS7Dlxme/09NZWQfcXBNylVmkuvarp8uOe9otSwClOgQyyePN2OxO4hTf3Au1Ck4ggm+97Je06kA==
+  dependencies:
+    sanctuary-show "2.0.0"
+    sanctuary-type-classes "12.1.0"
+
+sanctuary-maybe@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-maybe/-/sanctuary-maybe-2.1.0.tgz#3ae6e35b5c5c72cc75fe0626b67a74abc4e68d91"
+  integrity sha512-xCmvaEkYaIz5klWUrsgvgORKTL3bVYxATp7HyGBY0ZCu9tHJtSYDTpwnqMkRknHFIU986Kr2M/dJdiFvuc6UCQ==
+  dependencies:
+    sanctuary-show "2.0.0"
+    sanctuary-type-classes "12.1.0"
+
+sanctuary-pair@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-pair/-/sanctuary-pair-2.1.0.tgz#fe788dc95d164709c846e865049585cdd2fc8277"
+  integrity sha512-yY1JzzIJ/Ex7rjN8NmQLB7yv6GVzNeaMvxoYSW8w1ReLQI0n2sGOVCnAVipZuCv7wmfd+BavSXp59rklJeYytw==
+  dependencies:
+    sanctuary-show "2.0.0"
+    sanctuary-type-classes "12.1.0"
+
+sanctuary-show@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-show/-/sanctuary-show-2.0.0.tgz#2326b4744f4b0f993f18ca56a29f68a50f514637"
+  integrity sha512-REj4ZiioUXnDLj6EpJ9HcYDIEGaEexmB9Fg5o6InZR9f0x5PfnnC21QeU9SZ9E7G8zXSZPNjy8VRUK4safbesw==
+
+sanctuary-type-classes@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-12.1.0.tgz#2d1457f678cb621bcda64fe537f5d07da5556c3a"
+  integrity sha512-oWP071Q88dEgJwxHLZp8tc7DoS+mWmYhYOuhP85zznPpIxV1ZjJfyRvcR59YCazyFxyFeBif7bJx1giLhDZW0Q==
+  dependencies:
+    sanctuary-type-identifiers "3.0.0"
+
+sanctuary-type-identifiers@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-identifiers/-/sanctuary-type-identifiers-3.0.0.tgz#51cb488d2ed9f194946a64ffe2b41dd49a348c0b"
+  integrity sha512-YFXYcG0Ura1dSPd/1xLYtE2XAWUEsBHhMTZvYBOvwT8MeFQwdUOCMm2DC+r94z6H93FVq0qxDac8/D7QpJj6Mg==
+
+sanctuary@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary/-/sanctuary-3.0.0.tgz#7ef7ae42cf682af524c0e2bd0a2e0723e0988692"
+  integrity sha512-SUenKFdibPWHXT398gIGoBTY2RHcSf8lHwU8TuDDUtE+U8wXMhrRCLqQDbBLGf0mi//zS52e6LGfNVR1z3Zb7w==
+  dependencies:
+    sanctuary-def "0.21.1"
+    sanctuary-either "2.1.0"
+    sanctuary-maybe "2.1.0"
+    sanctuary-pair "2.1.0"
+    sanctuary-show "2.0.0"
+    sanctuary-type-classes "12.1.0"
+    sanctuary-type-identifiers "3.0.0"
+
 sane@^4.0.3:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/sane/-/sane-4.1.0.tgz#ed881fd922733a6c461bc189dc2b6c006f3ffded"

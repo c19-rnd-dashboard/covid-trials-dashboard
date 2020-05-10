@@ -1,3 +1,4 @@
-export const isNull = a => (a ? true : false)
-
-export const isNotNull = a => !isNull(a)
+export const log = tag => value => {
+  console.log({ tag, value })
+  return value
+}

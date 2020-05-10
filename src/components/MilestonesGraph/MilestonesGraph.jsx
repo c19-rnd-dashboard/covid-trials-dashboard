@@ -5,6 +5,7 @@ import { MilestonesTooltip } from '../MilestonesTooltip'
 import { BarIndicator } from '../BarIndicator'
 import moment from 'moment'
 import './MilestonesGraph.css'
+import { getEarliestDate, getLatestDate } from 'utils/dates'
 
 // const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
 
@@ -37,41 +38,33 @@ export const getAllDatesFromMilestones = milestones =>
     .map(({ values }) => values.map(({ start, end }) => ({ start, end })))
     .flat()
 
-export const getEarliestDate = dates => {
-  const [earliest] = dates
-    .slice()
-    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
-  return earliest
-}
-
-export const getLatestDate = dates => {
-  const [latest] = dates
-    .slice()
-    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
-    .reverse()
-  return latest
-}
-
 export const getTotalMilestoneDurationInDays = ({ values }) => {
-  const start = getEarliestDate(values.map(({ start }) => start))
-  const end = getLatestDate(values.map(({ end }) => end))
+  const start = getEarliestDate(values.map(({ start }) => start).filter(a => a))
+  const end =
+    getLatestDate(values.map(({ end }) => end).filter(a => a)) || moment()
   const duration = moment.duration(moment(end).diff(moment(start))).as('days')
   return Math.floor(Math.abs(duration))
 }
 
 export const MilestonesGraph = ({ milestones }) => {
-  const dates = getAllDatesFromMilestones(milestones)
+  // const dates = getAllDatesFromMilestones(milestones)
 
-  const earliestDate = getEarliestDate(
-    dates.map(({ start, end }) => start || end).filter(a => a)
-  )
-  const latestDate = getLatestDate(
-    dates.map(({ start, end }) => end || start).filter(a => a)
-  )
+  // const earliestDate = getEarliestDate(
+  //   dates.map(({ start, end }) => start || end).filter(a => a)
+  // )
+  // const latestDate = getLatestDate(
+  //   dates.map(({ start, end }) => end || start).filter(a => a)
+  // )
   const [actualMilestone = []] = milestones.filter(
     ({ name }) => name.toLowerCase() === 'actual'
   )
   const elapsedDays = getTotalMilestoneDurationInDays(actualMilestone)
+  const getTooltip = name =>
+    name.toLowerCase() === 'actual'
+      ? ({ start, end }) => (
+        <MilestonesTooltip startDate={start} endDate={end} />
+      )
+      : () => {}
   return (
     <div className='milestones-graph'>
       <div className='labels'>
@@ -86,9 +79,7 @@ export const MilestonesGraph = ({ milestones }) => {
           <div key={name} data-test-id='bar' className='bar'>
             <StackedBar
               items={values}
-              tooltip={({ start, end }) => (
-                <MilestonesTooltip startDate={start} endDate={end} />
-              )}
+              tooltip={getTooltip(name)}
               indicator={
                 i === self.length - 1 && elapsedDays > 0
                   ? () => (
@@ -103,11 +94,11 @@ export const MilestonesGraph = ({ milestones }) => {
           </div>
         ))}
         <div data-test-id='x-axis' className='x-axis'>
-          {earliestDate && (
+          {/* {earliestDate && (
             <div className='dates'>
               <div
                 data-test-id='start-date'
-                data-test-value={earliestDate.toISOString()}
+                data-test-value={moment(earliestDate).toISOString()}
               >
                 {moment(earliestDate).format('LL')}
               </div>
@@ -118,13 +109,13 @@ export const MilestonesGraph = ({ milestones }) => {
             <div className='dates'>
               <div
                 data-test-id='end-date'
-                data-test-value={latestDate.toISOString()}
+                data-test-value={moment(latestDate).toISOString()}
               >
                 {moment(latestDate).format('LL')}
               </div>
               <div>End Date</div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

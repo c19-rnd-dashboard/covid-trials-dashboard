@@ -1,0 +1,108 @@
+{
+  "brandName": "",
+  "chemicalName": "mrna-1273",
+  "conditionOrDisease": "covid-19",
+  "countries": "united states",
+  "countryCodes": "usa",
+  "currentStatus": "phase 1",
+  "indication": "covid-19",
+  "interventionType": "vaccine - prophylactic",
+  "milestones": [
+    {
+      "category": "pre-clinical",
+      "date": null,
+      "milestoneId": 12,
+      "name": "pre_clinical_studies",
+      "status": "SKIPPED"
+    },
+    {
+      "category": "pre-clinical",
+      "date": "Mon, 13 Jan 2020 00:00:00 GMT",
+      "milestoneId": 13,
+      "name": "lead_selection",
+      "status": "COMPLETED"
+    },
+    {
+      "category": "manufacturing",
+      "date": "Fri, 07 Feb 2020 00:00:00 GMT",
+      "milestoneId": 21,
+      "name": "clinical_batch",
+      "status": "COMPLETED"
+    },
+    {
+      "category": "regulatory",
+      "date": "Wed, 04 Mar 2020 00:00:00 GMT",
+      "milestoneId": 31,
+      "name": "ind",
+      "status": "COMPLETED"
+    },
+    {
+      "category": "clinical_development",
+      "date": "Mon, 16 Mar 2020 00:00:00 GMT",
+      "milestoneId": 41,
+      "name": "phase_1",
+      "status": "COMPLETED"
+    },
+    {
+      "category": "pre-clinical",
+      "date": "Sat, 11 Jan 2020 00:00:00 GMT",
+      "milestoneId": 11,
+      "name": "discovery",
+      "status": "COMPLETED"
+    }
+  ],
+  "moleculeType": "nucleic acid based therapies/vaccines",
+  "notes": "mrna-based vaccine",
+  "numSites": "2",
+  "otherPartners": "cepi",
+  "phase": "1",
+  "preferredName": "mrna-1273",
+  "productId": 1,
+  "productType": "",
+  "repurposed": "new",
+  "siteLocations": [
+    {
+      "city": "Seattle",
+      "country": "US",
+      "lat": 47.6169397,
+      "lng": -122.329572,
+      "locationId": "a6018262eeb2425434539c72bd2bc1cf527bca54",
+      "name": "1730 Minor Ave, Seattle, WA 98101, USA",
+      "state": "WA"
+    },
+    {
+      "city": "Atlanta",
+      "country": "US",
+      "lat": 33.7934917,
+      "lng": -84.3195325,
+      "locationId": "a20a7fbfc641e0fed17496f7f38d14ea4ba6c6a3",
+      "name": "1405 E Clifton Rd NE, Atlanta, GA 30322, USA",
+      "state": "GA"
+    }
+  ],
+  "sources": [
+    "https://www.nih.gov/news-events/news-releases/nih-clinical-trial-investigational-vaccine-covid-19-begins",
+    "https://www.modernatx.com/modernas-work-potential-vaccine-against-covid-19",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=2",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=1",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=3",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=4",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=5",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=6",
+    "https://clinicaltrials.gov/ct2/show/nct04283461?term=coronavirus+vaccine&draw=7",
+    "https://corona.kpwashingtonresearch.org/"
+  ],
+  "sponsors": [
+    {
+      "sponsorId": "375ad6c4b12a03acefcf5e9b052423279351910a",
+      "sponsorName": "Moderna"
+    },
+    {
+      "sponsorId": "69301ed353817a1eb80b77b32f82e5809965a871",
+      "sponsorName": "National Institute of Allergy and Infectious Diseases"
+    }
+  ],
+  "status": "ongoing",
+  "therapeuticApproach": "unknown",
+  "trialId": "nct04283461"
+}

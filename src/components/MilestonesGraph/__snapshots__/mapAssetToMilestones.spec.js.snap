@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return the expected result 1`] = `
+Array [
+  Object {
+    "name": "Optimistic",
+    "values": Array [
+      Object {
+        "className": "discovery",
+        "end": "2020-01-13T00:00:00.000Z",
+        "start": "2020-01-11T00:00:00.000Z",
+        "value": "0.41%",
+      },
+      Object {
+        "className": "lead_selection",
+        "end": "2020-02-07T00:00:00.000Z",
+        "start": "2020-01-13T00:00:00.000Z",
+        "value": "0.41%",
+      },
+      Object {
+        "className": "clinical_batch",
+        "end": "2020-03-04T00:00:00.000Z",
+        "start": "2020-02-07T00:00:00.000Z",
+        "value": "2.12%",
+      },
+      Object {
+        "className": "ind",
+        "end": "2020-03-16T00:00:00.000Z",
+        "start": "2020-03-04T00:00:00.000Z",
+        "value": "1.14%",
+      },
+      Object {
+        "className": "phase_1",
+        "end": "2020-05-10T00:46:36.457Z",
+        "start": "2020-03-16T00:00:00.000Z",
+        "value": "6.12%",
+      },
+      Object {
+        "className": "phase_2",
+        "end": "2020-05-10T00:46:36.457Z",
+        "start": "2020-05-10T00:46:36.457Z",
+        "value": "12.24%",
+      },
+      Object {
+        "className": "phase_3",
+        "end": "2020-05-10T00:46:36.457Z",
+        "start": "2020-05-10T00:46:36.457Z",
+        "value": "19.59%",
+      },
+      Object {
+        "className": "nda",
+        "end": "2020-05-10T00:46:36.458Z",
+        "start": "2020-05-10T00:46:36.458Z",
+        "value": "1.71%",
+      },
+      Object {
+        "className": "on_market",
+        "end": "2020-05-09T20:47:50.756Z",
+        "start": "2020-05-10T00:46:36.458Z",
+        "value": "2.45%",
+      },
+    ],
+  },
+  Object {
+    "name": "Pesimistic",
+    "values": Array [
+      Object {
+        "className": "discovery",
+        "end": "2020-01-13T00:00:00.000Z",
+        "start": "2020-01-11T00:00:00.000Z",
+        "value": "3.27%",
+      },
+      Object {
+        "className": "lead_selection",
+        "end": "2020-02-07T00:00:00.000Z",
+        "start": "2020-01-13T00:00:00.000Z",
+        "value": "2.04%",
+      },
+      Object {
+        "className": "clinical_batch",
+        "end": "2020-03-04T00:00:00.000Z",
+        "start": "2020-02-07T00:00:00.000Z",
+        "value": "4.9%",
+      },
+      Object {
+        "className": "ind",
+        "end": "2020-03-16T00:00:00.000Z",
+        "start": "2020-03-04T00:00:00.000Z",
+        "value": "3.67%",
+      },
+      Object {
+        "className": "phase_1",
+        "end": "2020-05-10T00:46:36.461Z",
+        "start": "2020-03-16T00:00:00.000Z",
+        "value": "14.69%",
+      },
+      Object {
+        "className": "phase_2",
+        "end": "2020-05-10T00:46:36.461Z",
+        "start": "2020-05-10T00:46:36.461Z",
+        "value": "22.04%",
+      },
+      Object {
+        "className": "phase_3",
+        "end": "2020-05-10T00:46:36.461Z",
+        "start": "2020-05-10T00:46:36.461Z",
+        "value": "29.8%",
+      },
+      Object {
+        "className": "nda",
+        "end": "2020-05-10T00:46:36.461Z",
+        "start": "2020-05-10T00:46:36.461Z",
+        "value": "4.9%",
+      },
+      Object {
+        "className": "on_market",
+        "end": "2020-05-09T20:47:50.756Z",
+        "start": "2020-05-10T00:46:36.461Z",
+        "value": "14.69%",
+      },
+    ],
+  },
+  Object {
+    "name": "Actual",
+    "values": Array [
+      Object {
+        "className": "discovery",
+        "end": "2020-01-13T00:00:00.000Z",
+        "start": "2020-01-11T00:00:00.000Z",
+        "value": "0.16%",
+      },
+      Object {
+        "className": "lead_selection",
+        "end": "2020-02-07T00:00:00.000Z",
+        "start": "2020-01-13T00:00:00.000Z",
+        "value": "2.04%",
+      },
+      Object {
+        "className": "clinical_batch",
+        "end": "2020-03-04T00:00:00.000Z",
+        "start": "2020-02-07T00:00:00.000Z",
+        "value": "2.12%",
+      },
+      Object {
+        "className": "ind",
+        "end": "2020-03-16T00:00:00.000Z",
+        "start": "2020-03-04T00:00:00.000Z",
+        "value": "0.98%",
+      },
+      Object {
+        "className": "phase_1",
+        "end": "2020-05-09T20:47:50.756Z",
+        "start": "2020-03-16T00:00:00.000Z",
+        "value": "4.41%",
+      },
+    ],
+  },
+]
+`;
