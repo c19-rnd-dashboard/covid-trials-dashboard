@@ -46,6 +46,7 @@ const Vaccines = ({ vaccines }) => {
                 pins={filteredVacs}
                 title='Vaccine Map'
                 handleSelectedId={handleSelectedId}
+                selectedAsset={selectedAsset}
               />
             </S.TabbedSection>
             <S.RightColumn>
