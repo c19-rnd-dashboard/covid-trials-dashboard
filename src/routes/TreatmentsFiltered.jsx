@@ -1,26 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tile from '../../components/Tile/Tile'
-import Details from '../../sections/Details/Details'
-import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
-import MapAndMilestones from '../../sections/MapAndMilestones'
-import * as S from '../../styles'
-import styled from 'styled-components'
+import Tile from '../components/Tile/Tile'
+import Details from '../sections/Details/Details'
+import VolunteerLocations from '../sections/VolunteerLocations/VolunteerLocations'
+import MapAndMilestones from '../sections/MapAndMilestones'
+import * as S from '../styles'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
-import FilterSelector from '../FilterSelector'
-// import { ProdData } from '../../mocks/assets'
+import FilterSelector from './FilterSelector'
 
-const TabbedSection = styled.div`
-  min-width: 40%;
-`
-const Flex1 = styled.div`
-  flex: 1;
-`
-
-const Vaccines = ({ vaccines }) => {
+const Treatments = ({ treatments }) => {
   return (
     <FilterSelector
-      assets={vaccines}
+      assets={treatments}
       render={({
         uniqueNames,
         uniqueSponsors,
@@ -32,9 +23,9 @@ const Vaccines = ({ vaccines }) => {
         selectedAsset,
       }) => (
         <>
-          <Flex1>
-            <Tile header='Total Vaccine Products'>
-              {vaccines.length || '...'}
+          <S.Flex1>
+            <Tile header='Total Treatment Products'>
+              {treatments.length || '...'}
             </Tile>
             <Tile>
               <FilterDropdown
@@ -49,14 +40,14 @@ const Vaccines = ({ vaccines }) => {
                 handleSelected={handleSelectedName}
               />
             </Tile>
-          </Flex1>
-          <TabbedSection>
+          </S.Flex1>
+          <S.TabbedSection>
             <MapAndMilestones
               pins={filteredVacs}
-              type='vaccine'
+              title='Treatment Map'
               handleSelectedId={handleSelectedId}
             />
-          </TabbedSection>
+          </S.TabbedSection>
           <S.RightColumn>
             <Details selectedAsset={selectedAsset} />
             <VolunteerLocations />
@@ -67,12 +58,12 @@ const Vaccines = ({ vaccines }) => {
   )
 }
 
-Vaccines.propTypes = {
-  vaccines: PropTypes.arrayOf(PropTypes.shape({})),
+Treatments.propTypes = {
+  treatments: PropTypes.arrayOf(PropTypes.shape({})),
 }
 
-Vaccines.defaultProps = {
-  vaccines: [],
+Treatments.defaultProps = {
+  treatments: [],
 }
 
-export default Vaccines
+export default Treatments

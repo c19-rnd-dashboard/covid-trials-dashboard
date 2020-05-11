@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tile from '../../components/Tile/Tile'
-import Details from '../../sections/Details/Details'
-import VolunteerLocations from '../../sections/VolunteerLocations/VolunteerLocations'
-import MapAndMilestones from '../../sections/MapAndMilestones'
-import * as S from '../../styles'
+import Tile from '../components/Tile/Tile'
+import Details from '../sections/Details/Details'
+import VolunteerLocations from '../sections/VolunteerLocations/VolunteerLocations'
+import MapAndMilestones from '../sections/MapAndMilestones'
+import * as S from '../styles'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
-import FilterSelector from '../FilterSelector'
+import FilterSelector from './FilterSelector'
 
-const Treatments = ({ treatments }) => {
+const Treatments = ({ tAndV }) => {
   return (
     <FilterSelector
-      assets={treatments}
+      assets={tAndV}
       render={({
         uniqueNames,
         uniqueSponsors,
@@ -24,8 +24,8 @@ const Treatments = ({ treatments }) => {
       }) => (
         <>
           <S.Flex1>
-            <Tile header='Total Treatment Products'>
-              {treatments.length || '...'}
+            <Tile header='Total Vaccine and Treatment Products'>
+              {tAndV.length || '...'}
             </Tile>
             <Tile>
               <FilterDropdown
@@ -44,7 +44,7 @@ const Treatments = ({ treatments }) => {
           <S.TabbedSection>
             <MapAndMilestones
               pins={filteredVacs}
-              type='treatment'
+              title='Vaccine and Treatment Map'
               handleSelectedId={handleSelectedId}
             />
           </S.TabbedSection>
@@ -59,11 +59,11 @@ const Treatments = ({ treatments }) => {
 }
 
 Treatments.propTypes = {
-  treatments: PropTypes.arrayOf(PropTypes.shape({})),
+  tAndV: PropTypes.arrayOf(PropTypes.shape({})),
 }
 
 Treatments.defaultProps = {
-  treatments: [],
+  tAndV: [],
 }
 
 export default Treatments
