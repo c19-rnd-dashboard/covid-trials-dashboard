@@ -8,7 +8,6 @@ import { store } from '../store'
 const Routes = () => {
   const globalState = useContext(store)
   const { treatments, vaccines } = globalState && globalState.state
-
   return (
     <Switch>
       <Route

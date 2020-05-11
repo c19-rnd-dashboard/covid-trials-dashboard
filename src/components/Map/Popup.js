@@ -14,11 +14,9 @@ const StyledPopup = styled(Popup)`
     color: white;
     font-size: 20px;
   }
-  min-width: 330px;
 `
 
 const StyledPopupInfo = styled.div`
-  /* color: blue; */
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -30,25 +28,28 @@ const TopContainer = styled.div`
   width: -webkit-fill-available;
   text-align: left;
   padding: 20px;
+  word-wrap: break-word;
+  max-width: 363px;
 `
 
 const DetailsContainer = styled.div`
   background-color: #222224;
   width: -webkit-fill-available;
   text-align: left;
-  padding: 20px;
+  padding: 10px;
+  width: 383px;
 `
 
 const Key = styled.div`
   color: #8b8c8d;
-  min-width: 50%;
+  min-width: 40%;
   padding-right: 4px;
   text-align: right;
 `
 
 const Value = styled.div`
   color: #fff;
-  min-width: 50%;
+  min-width: 60%;
   max-width: 280px;
   padding-left: 4px;
 `
@@ -77,7 +78,19 @@ const StyledButton = styled.button`
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
   if (popupInfo) {
-    const { clickedLocation, sponsors, phase, preferredName } = popupInfo
+    const {
+      clickedLocation,
+      phase,
+      preferredName,
+      brandName,
+      indication,
+      therapeuticApproach,
+      repurposed,
+      studyStart,
+      studyEnd,
+      heathyVolunteer,
+      learnMore,
+    } = popupInfo
     return (
       <StyledPopup
         tipSize={5}
@@ -89,40 +102,56 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       >
         <StyledPopupInfo>
           <TopContainer>
-            <div style={{ fontSize: '20px' }}>{preferredName}</div>
+            <div style={{ fontSize: '20px' }}>
+              <b>{preferredName}</b>
+            </div>
             <div style={{ paddingTop: '10px' }}>{clickedLocation.name}</div>
-            {/* <div>Address 2
-            </div> */}
           </TopContainer>
           <DetailsContainer>
+            {brandName && (
+              <Row>
+                <Key>Brand Name</Key>
+                <Value>{brandName}</Value>
+              </Row>
+            )}
+            {indication && (
+              <Row>
+                <Key>Indication</Key>
+                <Value>{indication}</Value>
+              </Row>
+            )}
+            {therapeuticApproach && therapeuticApproach !== 'unknown' && (
+              <Row>
+                <Key>Therapeutic Approach</Key>
+                <Value>{therapeuticApproach}</Value>
+              </Row>
+            )}
+            {repurposed && (
+              <Row>
+                <Key>Repurposed or New</Key>
+                <Value>{repurposed}</Value>
+              </Row>
+            )}
             <Row>
               <Key>Phase</Key>
               <Value>{phase}</Value>
             </Row>
             <Row>
-              <Key>Condition</Key>
-              <Value>The Value</Value>
-            </Row>
-            <Row>
-              <Key>Sponsor(s)</Key>
-              <Value>
-                {sponsors.map(sponsor => sponsor.sponsorName).join(', ')}
-              </Value>
-            </Row>
-            <Row>
               <Key>Study Start</Key>
-              <Value>The Value</Value>
+              <Value>{studyStart}</Value>
             </Row>
             <Row>
               <Key>Study End</Key>
-              <Value>The Value</Value>
+              <Value>{studyEnd}</Value>
             </Row>
             <Row>
               <Key>Healthy Volunteer</Key>
-              <Value>The Value</Value>
+              <Value>{heathyVolunteer}</Value>
             </Row>
             <Row>
-              <StyledButton>LEARN MORE</StyledButton>
+              <a href={learnMore} target='_blank' rel='noopener noreferrer'>
+                <StyledButton>LEARN MORE</StyledButton>
+              </a>
             </Row>
           </DetailsContainer>
         </StyledPopupInfo>
@@ -147,6 +176,13 @@ PopUpDisplay.propTypes = {
     }),
     phase: PropTypes.string,
     preferredName: PropTypes.string,
+    indication: PropTypes.string,
+    therapeuticApproach: PropTypes.string,
+    repurposed: PropTypes.string,
+    studyStart: PropTypes.string, // AWAITING FROM API
+    studyEnd: PropTypes.string, // AWAITING FROM API
+    heathyVolunteer: PropTypes.bool, // AWAITING FROM API
+    learnMore: PropTypes.string, // AWAITING FROM API
   }),
   onClose: PropTypes.func,
 }
