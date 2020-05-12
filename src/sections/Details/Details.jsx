@@ -23,6 +23,7 @@ const Details = ({ selectedAsset }) => {
     productType: '...',
     repurposed: '...',
     sources: ['...'],
+    siteLocations: [{ country: '...' }],
     sponsors: [{ sponsorId: '...', sponsorName: '...' }],
     status: '...',
     therapeuticApproach: '...',
@@ -32,11 +33,14 @@ const Details = ({ selectedAsset }) => {
     preferredName,
     sponsors,
     otherPartners,
-    countries,
     interventionType,
     moleculeType,
     currentStatus,
+    siteLocations,
   } = asset
+  const countrySet = [
+    ...new Set(siteLocations.map(location => location.country).flat(1)),
+  ]
   const vaccineData = [
     {
       category: 'Current Status',
@@ -51,8 +55,8 @@ const Details = ({ selectedAsset }) => {
       data: otherPartners,
     },
     {
-      category: 'Country',
-      data: countries,
+      category: 'Country(s)',
+      data: countrySet.join(', '),
     },
     {
       category: 'Drug Type',
