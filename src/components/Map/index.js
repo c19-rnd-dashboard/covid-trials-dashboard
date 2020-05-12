@@ -11,7 +11,7 @@ import { mapboxApiKey } from '../../constants/config'
 import { FullscreenControlDiv, NavDiv, ScaleControlDiv } from './styles'
 
 const Map = ({ pins, handleSelectedId }) => {
-  const [popUp, setPopUp] = useState(null)
+  const [popUp, setPopUp] = useState()
   const [viewport, setViewport] = useState({
     latitude: 40.67,
     longitude: -73.94,

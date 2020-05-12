@@ -32,8 +32,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
     setShowOptions(!showOptions)
   }
 
-  const shortenName = name =>
-    name.length > 35 ? name.substr(0, 34) + '...' : name
+  const shortenName = name => name.replace(/_/g, ' ')
 
   const getSuggestions = e => {
     const inputValue = e.value.trim().toLowerCase()
@@ -53,6 +52,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
         onChange={handleSelected}
         name={suggestion}
         checked={selected.includes(suggestion)}
+        style={{ paddingRight: '5px' }}
       />
       <div>{shortenName(suggestion)}</div>
     </S.Filters>
@@ -64,6 +64,7 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
         onChange={handleSelected}
         name={filter}
         checked={selected.includes(filter)}
+        style={{ paddingRight: '5px' }}
       />
       {shortenName(filter)}
     </S.Filters>

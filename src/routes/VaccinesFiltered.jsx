@@ -11,7 +11,7 @@ import FilterSelector from './FilterSelector'
 // import { ProdData } from '../../mocks/assets'
 
 const TabbedSection = styled.div`
-  min-width: 40%;
+  min-width: 45%;
 `
 const Flex1 = styled.div`
   flex: 1;

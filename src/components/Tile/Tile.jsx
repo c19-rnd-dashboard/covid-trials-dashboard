@@ -13,7 +13,7 @@ const Tile = props => {
 }
 
 Tile.propTypes = {
-  header: PropTypes.string,
+  header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   children: PropTypes.node,
 }
 

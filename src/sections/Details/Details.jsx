@@ -34,13 +34,13 @@ const Details = ({ selectedAsset }) => {
     otherPartners,
     countries,
     interventionType,
-    chemicalName,
     moleculeType,
+    currentStatus,
   } = asset
   const vaccineData = [
     {
-      category: 'Chemical Name',
-      data: chemicalName,
+      category: 'Current Status',
+      data: currentStatus,
     },
     {
       category: 'Sponsor',
@@ -63,9 +63,8 @@ const Details = ({ selectedAsset }) => {
       data: moleculeType,
     },
   ]
-  console.log(selectedAsset, 'ASSERT')
   return (
-    <Tile header={preferredName}>
+    <Tile header={<b>{preferredName}</b>}>
       <S.Wrapper>
         {vaccineData.map((vaccine, i) => {
           return (
