@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Tile from '../components/Tile/Tile'
 import Details from '../sections/Details/Details'
-import VolunteerLocations from '../sections/VolunteerLocations/VolunteerLocations'
 import MapAndMilestones from '../sections/MapAndMilestones'
 import * as S from '../styles'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
@@ -50,7 +49,6 @@ const Treatments = ({ treatments }) => {
           </S.TabbedSection>
           <S.RightColumn>
             <Details selectedAsset={selectedAsset} />
-            <VolunteerLocations />
           </S.RightColumn>
         </>
       )}
