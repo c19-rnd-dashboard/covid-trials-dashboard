@@ -55,7 +55,7 @@ export const RightColumn = styled.div`
 `
 
 export const TabbedSection = styled.div`
-  min-width: 40%;
+  min-width: 45%;
 `
 export const Flex1 = styled.div`
   flex: 1;
