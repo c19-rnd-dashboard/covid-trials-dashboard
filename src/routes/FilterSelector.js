@@ -14,19 +14,26 @@ const FilterSelector = ({ assets, render }) => {
     s: withDefault(ArrayParam, []), // s denotes sponsor
     n: withDefault(ArrayParam, []), // n denotes name
     i: StringParam, // i denotes individual asset id
+    c: withDefault(ArrayParam, []), // c denotes country
   })
   useEffect(() => {
     let filteredResults = [...assets]
     if (filtersSelected.s.length > 0) {
       filteredResults = filteredResults.filter(asset =>
         asset.sponsors.some(
-          sponsor => filtersSelected.s.indexOf(sponsor.sponsorName) > -1
+          sponsor =>
+            filtersSelected.s.indexOf(sponsor.sponsorName.toLowerCase()) > -1
         )
       )
     }
     if (filtersSelected.n.length > 0) {
       filteredResults = filteredResults.filter(
         asset => filtersSelected.n.indexOf(asset.preferredName) > -1
+      )
+    }
+    if (filtersSelected.c.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.c.indexOf(asset.countryCodes) > -1
       )
     }
     if (filtersSelected.i !== undefined) {
@@ -59,16 +66,26 @@ const FilterSelector = ({ assets, render }) => {
   const uniqueNames = [
     ...new Set(assets.map(asset => asset.preferredName).flat(1)),
   ]
+  const uniqueCountries = [
+    ...new Set(
+      assets
+        .map(asset => asset.countryCodes.toUpperCase())
+        .filter(c => c !== '')
+        .flat(1)
+    ),
+  ]
+
   const handleSelectedSponsor = e => {
     if (e === 'clear') {
       setFiltersSelected({ ...filtersSelected, s: [] })
     } else {
       const { name, checked } = e.target
+      const nameLowercase = name.toLowerCase()
       const sponsorsCopy = [...filtersSelected.s]
       if (checked === true) {
-        sponsorsCopy.push(name)
+        sponsorsCopy.push(nameLowercase)
       } else {
-        const index = filtersSelected.s.indexOf(name)
+        const index = filtersSelected.s.indexOf(nameLowercase)
         sponsorsCopy.splice(index, 1)
       }
       setFiltersSelected({ ...filtersSelected, s: sponsorsCopy })
@@ -91,6 +108,23 @@ const FilterSelector = ({ assets, render }) => {
     }
   }
 
+  const handleSelectedCountry = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, c: [] })
+    } else {
+      const { name, checked } = e.target
+      const nameLowercase = name.toLowerCase()
+      const countriesCopy = [...filtersSelected.c]
+      if (checked === true) {
+        countriesCopy.push(nameLowercase)
+      } else {
+        const index = filtersSelected.c.indexOf(nameLowercase)
+        countriesCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, c: countriesCopy })
+    }
+  }
+
   const handleSelectedId = assetId => {
     if (assetId === 'clear') {
       setFiltersSelected({ ...filtersSelected, i: undefined })
@@ -104,9 +138,11 @@ const FilterSelector = ({ assets, render }) => {
       {render({
         uniqueNames,
         uniqueSponsors,
+        uniqueCountries,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
+        handleSelectedCountry,
         filteredVacs,
         filtersSelected,
         selectedAsset,
