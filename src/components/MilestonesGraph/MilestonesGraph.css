@@ -43,44 +43,48 @@
   padding: 0.5rem;
 }
 
+.milestones-graph .x-axis .start-date {
+  margin-left: -7em;
+}
+
 .milestones-graph .discovery {
-  background-color: #488f31;
+  background-color: #fff;
 }
 
 .milestones-graph .pre_clinical_studies {
-  background-color: #6aa055;
+  background-color: #797979;
 }
 
 .milestones-graph .lead_selection {
-  background-color: #89b077;
+  background-color: #f09838;
 }
 
 .milestones-graph .clinical_batch {
-  background-color: #a7c19a;
+  background-color: #22528f;
 }
 
 .milestones-graph .ind {
-  background-color: #c5d2be;
+  background-color: #3f8c27;
 }
 
 .milestones-graph .phase_1 {
-  background-color: #e2e2e2;
+  background-color: #8b551b;
 }
 
 .milestones-graph .phase_1 {
-  background-color: #e6c4c3;
+  background-color: #872110;
 }
 
 .milestones-graph .phase_2 {
-  background-color: #e5a5a5;
+  background-color: #eb51f7;
 }
 
 .milestones-graph .phase_3 {
-  background-color: #e28588;
+  background-color: #1431f5;
 }
 .milestones-graph .nda {
-  background-color: #dc646c;
+  background-color: #74f9fd;
 }
-.milestones-graph .onMarket {
-  background-color: #de425b;
+.milestones-graph .on_market {
+  background-color: #a8f74d;
 }

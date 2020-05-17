@@ -17,7 +17,7 @@ const defaultProps = {
   status: 'COMPLETED',
 }
 
-const dateFormat = 'MMM Do'
+const dateFormat = 'MMM Do, Y'
 
 export const MilestonesTooltip = ({
   className,

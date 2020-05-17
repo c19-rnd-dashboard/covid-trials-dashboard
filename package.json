@@ -5,6 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
+    "@nivo/bar": "^0.61.1",
+    "@nivo/generators": "^0.61.0",
+    "@nivo/line": "^0.61.1",
     "@rebass/forms": "^4.0.6",
     "@rebass/preset": "^4.0.5",
     "@testing-library/jest-dom": "^4.2.4",
