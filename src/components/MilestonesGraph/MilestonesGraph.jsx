@@ -5,7 +5,6 @@ import { MilestonesTooltip } from '../MilestonesTooltip'
 import { BarIndicator } from '../BarIndicator'
 import moment from 'moment'
 import './MilestonesGraph.css'
-import { getEarliestDate, getLatestDate } from 'utils/dates'
 
 // const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
 
@@ -37,6 +36,21 @@ export const getAllDatesFromMilestones = milestones =>
   milestones
     .map(({ values }) => values.map(({ start, end }) => ({ start, end })))
     .flat()
+
+export const getEarliestDate = dates => {
+  const [earliest] = dates
+    .slice()
+    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+  return earliest
+}
+
+export const getLatestDate = dates => {
+  const [latest] = dates
+    .slice()
+    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+    .reverse()
+  return latest
+}
 
 export const getTotalMilestoneDurationInDays = ({ values }) => {
   const start = getEarliestDate(values.map(({ start }) => start).filter(a => a))
