@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { get } from 'axios'
-import { apiUrl } from '../constants/config'
+// import { get } from 'axios'
+// import { apiUrl } from '../constants/config'
 import assets from '../mocks/assets.json'
 /*
 Example usage:
@@ -60,21 +60,8 @@ const StateProvider = ({ children }) => {
     dispatch({
       type: 'fetchData',
     })
-    if (process.env.NODE_ENV !== 'production') {
-      const splitData = splitVaccinesAndTreatments(assets)
-      dispatch({ type: 'fetchDataSuccess', payload: splitData })
-    } else {
-      get(`${apiUrl}/assets`)
-        .then(({ data }) => {
-          const splitData = splitVaccinesAndTreatments(data)
-          dispatch({ type: 'fetchDataSuccess', payload: splitData })
-        })
-        .catch(e => {
-          console.error(e)
-          //TODO: handle errors
-          dispatch({ type: 'fetchDataFailure', payload: e })
-        })
-    }
+    const splitData = splitVaccinesAndTreatments(assets)
+    dispatch({ type: 'fetchDataSuccess', payload: splitData })
   }, [dispatch])
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
