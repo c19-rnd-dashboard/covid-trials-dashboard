@@ -74,12 +74,6 @@ const estimateFutureDates = (ms, delta) => {
   }, ms)
 }
 
-// const getLatestsKnownDate = (ms) => {
-//   const [lastButOne, last] = ms.slice(-2)
-//   const {date, start, end} = last
-
-// }
-
 const transformWithDurations = ({ now, delta }) =>
   pipe([filterAndSortMilestones, addDurationToMilestones({ now, delta })])
 
@@ -109,11 +103,15 @@ export const mapAssetToMilestones = now => ({ milestones }) => {
   const result = [
     {
       name: 'Optimistic',
-      values: actualMilestonesWithDuration.concat(optimisticEstimations),
+      values: actualMilestonesWithDuration
+        .slice(0, -1)
+        .concat(optimisticEstimations),
     },
     {
       name: 'Pesimistic',
-      values: actualMilestonesWithDuration.concat(pesimisticEstimations),
+      values: actualMilestonesWithDuration
+        .slice(0, -1)
+        .concat(pesimisticEstimations),
     },
     {
       name: 'Actual',
