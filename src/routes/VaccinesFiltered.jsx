@@ -22,39 +22,39 @@ const Vaccines = ({ vaccines }) => {
         filtersSelected,
         selectedAsset,
       }) => (
-        <>
-          <S.Flex1>
-            <Tile header='Total Vaccine Products'>
-              {vaccines.length || '...'}
-            </Tile>
-            <Tile>
-              <FilterDropdown
-                label='Sponsor'
-                filters={uniqueSponsors}
-                selected={filtersSelected.s}
-                handleSelected={handleSelectedSponsor}
+          <>
+            <S.Flex1>
+              <Tile header='Total Vaccine Products'>
+                {vaccines.length || '...'}
+              </Tile>
+              <Tile>
+                <FilterDropdown
+                  label='Sponsor'
+                  filters={uniqueSponsors}
+                  selected={filtersSelected.s}
+                  handleSelected={handleSelectedSponsor}
+                />
+                <FilterDropdown
+                  label='Product Name'
+                  filters={uniqueNames}
+                  selected={filtersSelected.n}
+                  handleSelected={handleSelectedName}
+                />
+              </Tile>
+            </S.Flex1>
+            <S.TabbedSection>
+              <MapAndMilestones
+                pins={filteredVacs}
+                title='Vaccine Map'
+                handleSelectedId={handleSelectedId}
+                selectedAsset={selectedAsset}
               />
-              <FilterDropdown
-                label='Product Name'
-                filters={uniqueNames}
-                selected={filtersSelected.n}
-                handleSelected={handleSelectedName}
-              />
-            </Tile>
-          </S.Flex1>
-          <S.TabbedSection>
-            <MapAndMilestones
-              pins={filteredVacs}
-              title='Vaccine Map'
-              handleSelectedId={handleSelectedId}
-              selectedAsset={selectedAsset}
-            />
-          </S.TabbedSection>
-          <S.RightColumn>
-            <Details selectedAsset={selectedAsset} />
-          </S.RightColumn>
-        </>
-      )}
+            </S.TabbedSection>
+            <S.RightColumn>
+              <Details selectedAsset={selectedAsset} />
+            </S.RightColumn>
+          </>
+        )}
     />
   )
 }
