@@ -7,12 +7,15 @@ import {
   getLatestDate,
   getTotalMilestoneDurationInDays,
 } from './MilestonesGraph'
-import { milestones } from './mocks/milestones'
+import milestones from './mocks/milestones.json'
 
-it('should render 3 set of bars ', () => {
+it('should render all milestones ', () => {
+  const numberOfMilestones = milestones.length
   const wrapper = shallow(<MilestonesGraph milestones={milestones} />)
-  expect(wrapper.find('[data-test-id="bar"]')).toHaveLength(3)
-  expect(wrapper.find('[data-test-id="label"]')).toHaveLength(3)
+  expect(wrapper.find('[data-test-id="bar"]')).toHaveLength(numberOfMilestones)
+  expect(wrapper.find('[data-test-id="label"]')).toHaveLength(
+    numberOfMilestones
+  )
 })
 
 it('should render start and end dates', () => {
@@ -20,10 +23,10 @@ it('should render start and end dates', () => {
   const xAxis = wrapper.find('[data-test-id="x-axis"]')
   expect(
     xAxis.find('[data-test-id="start-date"]').prop('data-test-value')
-  ).toEqual(new Date('2020/02/10').toISOString())
+  ).toEqual('2020-01-11T00:00:00.000Z')
   expect(
     xAxis.find('[data-test-id="end-date"]').prop('data-test-value')
-  ).toEqual(new Date('2020/06/30').toISOString())
+  ).toEqual('2020-05-09T20:47:50.756Z')
 })
 
 const expectedDates = [
@@ -82,7 +85,7 @@ const expectedDates = [
 ]
 
 it('should get all the dates from the milestones', () => {
-  expect(getAllDatesFromMilestones(milestones)).toEqual(expectedDates)
+  expect(getAllDatesFromMilestones(milestones)).toMatchSnapshot()
 })
 
 it('should return the earliest date', () => {

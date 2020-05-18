@@ -12,7 +12,7 @@ export default {
   title: 'Filters',
 }
 
-export const main = () => {
+export const Main = () => {
   const [stages, setStageClicked] = useState([
     { label: 'Stage 1', color: sadBlue, filterBy: 'stage1' },
     { label: 'Stage 2', color: magenta, filterBy: 'stage2' },

@@ -8,7 +8,7 @@ import { store } from '../store'
 
 const Routes = () => {
   const globalState = useContext(store)
-  const { treatments, vaccines } = globalState && globalState.state
+  const { treatments = [], vaccines = [] } = globalState && globalState.state
   const tAndV = [...treatments, ...vaccines]
   return (
     <Switch>
