@@ -1,7 +1,10 @@
 import React from 'react'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
+import { status } from './constants'
 import { WrapperDiv, Title } from './MilestonesGraphContainer.styles'
+
+const { skipped } = status
 
 export const MilestonesGraphContainer = ({
   pins = [],
@@ -9,7 +12,10 @@ export const MilestonesGraphContainer = ({
   selectedAsset = {},
 }) => {
   const milestones = pins
-    .filter(({ milestones = [] }) => milestones.length > 0)
+    .filter(
+      ({ milestones = [] }) =>
+        milestones.filter(({ status }) => status !== skipped).length > 0
+    )
     .map(asset => ({
       ...asset,
       milestones: mapAssetToMilestones(new Date().toISOString())(asset),
