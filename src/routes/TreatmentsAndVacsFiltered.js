@@ -28,12 +28,13 @@ const Treatments = ({ tAndV }) => {
             </Tile>
             <Tile>
               <FilterDropdown
+                label='Sponsor'
                 filters={uniqueSponsors}
                 selected={filtersSelected.s}
                 handleSelected={handleSelectedSponsor}
               />
               <FilterDropdown
-                label='name'
+                label='Product Name'
                 filters={uniqueNames}
                 selected={filtersSelected.n}
                 handleSelected={handleSelectedName}
