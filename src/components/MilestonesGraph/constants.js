@@ -40,6 +40,19 @@ export const phasesInOrder = [
   onMarket,
 ]
 
+export const phaseColor = {
+  [discovery]: '#fff',
+  [preClinicalStudies]: '#797979',
+  [leadSelection]: '#941751',
+  [clinicalBatch]: '#22528f',
+  [ind]: '#3f8c27',
+  [phase1]: '#8b551b',
+  [phase2]: '#872110',
+  [phase3]: '#eb51f7',
+  [nda]: '#1431f5',
+  [onMarket]: '#f09838',
+}
+
 export const timelinesEstimates = (() => {
   const partial = {
     optimistic: {
