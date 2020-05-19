@@ -35,6 +35,7 @@ export const Link = styled.a`
   padding: 0 25px;
   cursor: pointer;
   font-size: 20px;
+  color: white;
   &: hover {
     opacity: 0.8;
   }

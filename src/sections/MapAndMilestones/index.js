@@ -10,12 +10,10 @@ const MapDiv = styled.div`
   height: 65vh;
 `
 
-const MapAndMilestones = ({ pins, type, handleSelectedId, selectedAsset }) => {
-  const title = type === 'vaccine' ? 'Vaccine Map' : 'Treatment Map'
-
+const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
   const tabs = [
     {
-      title: 'Milestones',
+      title: 'Timeline',
       content: (
         <MilestonesGraphContainer
           selectedAsset={selectedAsset}
@@ -25,7 +23,7 @@ const MapAndMilestones = ({ pins, type, handleSelectedId, selectedAsset }) => {
       ),
     },
     {
-      title,
+      title: 'Volunteer Locations',
       content: (
         <Tile>
           <MapDiv>
@@ -44,12 +42,10 @@ MapAndMilestones.propTypes = {
   title: PropTypes.string,
   handleSelectedId: PropTypes.func,
   selectedAsset: PropTypes.shape({}),
-  type: PropTypes.string,
 }
 
 MapAndMilestones.defaultProps = {
   pins: [],
-  type: 'vaccine',
   selectedAsset: null,
 }
 
