@@ -33,7 +33,6 @@ const FilterSelector = ({ assets, render }) => {
       const asset = filteredResults.filter(
         asset => Number(filtersSelected.i) === asset.productId
       )
-      console.log(asset, 'ASSET')
       setSelectedAsset(asset[0]) // we should assume only one asset per productId
     }
     if (filtersSelected.i === undefined && selectedAsset) {
