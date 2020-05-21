@@ -9,7 +9,7 @@
 .bar-indicator .label {
   position: absolute;
   bottom: -3rem;
-  left: -5rem;
+  left: -1.8rem;
   flex-direction: column;
   width: 10rem;
 }

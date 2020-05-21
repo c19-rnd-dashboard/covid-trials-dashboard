@@ -3,5 +3,4 @@ package-lock.json
 webpack.*
 gulpfile.*
 eslintrc.*
-*.json
 puppeteer.*

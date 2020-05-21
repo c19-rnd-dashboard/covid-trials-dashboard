@@ -1,5 +1,5 @@
 .milestones-graph {
-  margin-top: 3em;
+  margin-top: 1em;
   padding-right: 1rem;
   display: flex;
   flex-direction: row;
@@ -41,4 +41,8 @@
 .milestones-graph .x-axis .dates {
   text-align: center;
   padding: 0.5rem;
+}
+
+.milestones-graph .x-axis .start-date {
+  margin-left: -7em;
 }

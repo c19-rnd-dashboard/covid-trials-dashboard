@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import StackedBarStyles, { Segment } from './styles'
 import '../../animations.css'
-import './StackedBar.css'
 import '../../tooltip.css'
 
 const propTypes = {
@@ -13,7 +13,6 @@ const propTypes = {
     })
   ).isRequired,
   colorClasses: PropTypes.arrayOf(PropTypes.string),
-  colorBgStyles: PropTypes.arrayOf(PropTypes.string),
   tooltip: PropTypes.func,
   longitude: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   thickness: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -23,7 +22,6 @@ const propTypes = {
 
 const defaultProps = {
   colorClasses: [],
-  colorBgStyles: [],
   tooltip: () => {},
   className: '',
   indicator: () => {},
@@ -32,35 +30,31 @@ const defaultProps = {
 export const StackedBar = ({
   items = [],
   colorClasses = [],
-  colorBgStyles = [],
   tooltip,
   longitude,
   thickness,
   className = '',
   indicator,
 }) => (
-  <div
+  <StackedBarStyles
     className={`stacked-bar ${className}`}
     style={{ width: longitude, height: thickness }}
   >
     {items.map((item, i) => (
-      <div
+      <Segment
         key={`${item}-${i}`}
         data-test-id='segment'
-        style={{
-          width: item.value,
-          height: '100%',
-          backgroundColor: colorBgStyles[i],
-        }}
-        className={`${
-          item.className ? item.className : ''
-        } tooltip-wrapper segment ${colorClasses[i] ? colorClasses[i] : ''}`}
+        name={item.className}
+        value={item.value}
+        className={`tooltip-wrapper segment ${
+          colorClasses[i] ? colorClasses[i] : ''
+        }`}
       >
         {tooltip({ index: i, ...item })}
-      </div>
+      </Segment>
     ))}
     {indicator()}
-  </div>
+  </StackedBarStyles>
 )
 
 StackedBar.propTypes = propTypes
