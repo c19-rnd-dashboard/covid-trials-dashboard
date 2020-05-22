@@ -23,7 +23,9 @@ export const MilestonesGraphContainer = ({
   const { productId: selectedProductId } = selectedAsset || {}
   return milestones.map(({ milestones = [], preferredName, productId }) => (
     <WrapperDiv key={productId} onClick={() => handleSelectedId(productId)}>
-      <Title active={selectedProductId === productId}>{preferredName}</Title>
+      <Title active={selectedProductId === productId}>
+        {preferredName.replace(/_/g, ' ')}
+      </Title>
       <MilestonesGraph milestones={milestones} />
     </WrapperDiv>
   ))
