@@ -1,9 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as S from './styles'
+import { phasesInOrder, phaseColor } from 'components/MilestonesGraph/constants'
+
+const legendProps = phasesInOrder.map(phase => ({
+  color: phaseColor[phase],
+  label: phase,
+}))
 
 const Legend = props => {
-  const { items } = props
+  const { items = legendProps } = props
   return (
     <S.Wrapper>
       {items.map((item, i) => (
