@@ -66,6 +66,7 @@ const StateProvider = ({ children }) => {
     } else {
       get(`${apiUrl}/assets`)
         .then(({ data }) => {
+          console.log(data, 'data')
           const splitData = splitVaccinesAndTreatments(data)
           dispatch({ type: 'fetchDataSuccess', payload: splitData })
         })

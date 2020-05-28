@@ -18,9 +18,11 @@ const Vaccines = ({ vaccines }) => {
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
+        handleSelectedCountry,
         filteredVacs,
         filtersSelected,
         selectedAsset,
+        uniqueCountries,
       }) => (
         <>
           <S.Flex1>
@@ -39,6 +41,12 @@ const Vaccines = ({ vaccines }) => {
                 filters={uniqueNames}
                 selected={filtersSelected.n}
                 handleSelected={handleSelectedName}
+              />
+              <FilterDropdown
+                label='country'
+                filters={uniqueCountries}
+                selected={filtersSelected.c}
+                handleSelected={handleSelectedCountry}
               />
             </Tile>
           </S.Flex1>

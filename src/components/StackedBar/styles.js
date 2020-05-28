@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { phaseColor } from 'components/MilestonesGraph/constants'
 
 export default styled.div`
@@ -16,8 +16,6 @@ export const Segment = styled.div`
   &:hover {
     border: solid white 1px;
   }
-  ${({ name, value }) => css`
-    background-color: ${phaseColor[name]};
-    width: ${value};
-  `}
+  background-color: ${({ name }) => phaseColor[name]};
+  width: ${({ value }) => value};
 `
