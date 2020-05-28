@@ -33,9 +33,9 @@ const FilterSelector = ({ assets, render }) => {
     }
     if (filtersSelected.c.length > 0) {
       filteredResults = filteredResults.filter(asset =>
-        asset.siteLocations.some(
-          location =>
-            filtersSelected.c.indexOf(location.country.toLowerCase()) > -1
+        asset.countryCodes.some(
+          countryCode =>
+            filtersSelected.c.indexOf(countryCode.toLowerCase()) > -1
         )
       )
     }
@@ -56,6 +56,7 @@ const FilterSelector = ({ assets, render }) => {
     filtersSelected.s,
     filtersSelected.n,
     filtersSelected.i,
+    filtersSelected.c,
     filteredVacs.length,
     selectedAsset,
   ])
@@ -73,9 +74,11 @@ const FilterSelector = ({ assets, render }) => {
   const uniqueCountries = [
     ...new Set(
       assets
-        .map(asset => asset.siteLocations.map(location => location.country))
-        // .filter(c => c !== '')
+        .map(asset =>
+          asset.countryCodes.map(country => country.length > 1 && country)
+        )
         .flat(1)
+        .filter(c => !!c)
     ),
   ]
 
