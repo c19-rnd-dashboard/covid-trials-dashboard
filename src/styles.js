@@ -51,12 +51,13 @@ export const SortTitle = styled.span`
 export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 31%;
+  width: 25%;
 `
 
 export const TabbedSection = styled.div`
-  min-width: 45%;
+  width: 50%;
 `
 export const Flex1 = styled.div`
   flex: 1;
+  width: 25%;
 `
