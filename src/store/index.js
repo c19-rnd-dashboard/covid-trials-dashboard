@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { get } from 'axios'
 import { apiUrl } from '../constants/config'
-// import assets from '../mocks/assets.json'
+import assets from '../mocks/assets.json'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -60,22 +60,22 @@ const StateProvider = ({ children }) => {
     dispatch({
       type: 'fetchData',
     })
-    // if (process.env.NODE_ENV !== 'production') {
-    //   const splitData = splitVaccinesAndTreatments(assets)
-    //   dispatch({ type: 'fetchDataSuccess', payload: splitData })
-    // } else {
-    get(`${apiUrl}/assets`)
-      .then(({ data }) => {
-        console.log(data, 'data')
-        const splitData = splitVaccinesAndTreatments(data)
-        dispatch({ type: 'fetchDataSuccess', payload: splitData })
-      })
-      .catch(e => {
-        console.error(e)
-        //TODO: handle errors
-        dispatch({ type: 'fetchDataFailure', payload: e })
-      })
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+      const splitData = splitVaccinesAndTreatments(assets)
+      dispatch({ type: 'fetchDataSuccess', payload: splitData })
+    } else {
+      get(`${apiUrl}/assets`)
+        .then(({ data }) => {
+          console.log(data, 'data')
+          const splitData = splitVaccinesAndTreatments(data)
+          dispatch({ type: 'fetchDataSuccess', payload: splitData })
+        })
+        .catch(e => {
+          console.error(e)
+          //TODO: handle errors
+          dispatch({ type: 'fetchDataFailure', payload: e })
+        })
+    }
   }, [dispatch])
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
