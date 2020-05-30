@@ -27,10 +27,10 @@ const Legend = props => {
     <S.Wrapper>
       {items.map(item => (
         <BigFontTooltip key={item.label} title={item.info}>
-          <div>
+          <S.Item>
             <S.Square style={{ backgroundColor: item.color }} />
             <S.Label>{item.label}</S.Label>
-          </div>
+          </S.Item>
         </BigFontTooltip>
       ))}
     </S.Wrapper>
