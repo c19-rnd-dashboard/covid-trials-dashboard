@@ -29,6 +29,14 @@ it('should render start and end dates', () => {
   ).toEqual('2020-05-09T20:47:50.756Z')
 })
 
+it('should not render end date if there is only one milestone', () => {
+  const wrapper = shallow(
+    <MilestonesGraph milestones={milestones.slice(0, 1)} />
+  )
+  const xAxis = wrapper.find('[data-test-id="x-axis"]')
+  expect(xAxis.find('[data-test-id="end-date"]').exists()).toEqual(false)
+})
+
 const expectedDates = [
   {
     start: new Date('2020/02/10'),
