@@ -15,6 +15,11 @@ const FilterSelector = ({ assets, render }) => {
     n: withDefault(ArrayParam, []), // n denotes name
     i: StringParam, // i denotes individual asset id
     c: withDefault(ArrayParam, []), // c denotes country
+    in: withDefault(ArrayParam, []), // in denotes indication
+    m: withDefault(ArrayParam, []), // m denotes molecule type
+    t: withDefault(ArrayParam, []), // t denotes therapeuticApproach
+    r: withDefault(ArrayParam, []), // r denotes repurposed
+    st: withDefault(ArrayParam, []), // st denotes status
   })
   useEffect(() => {
     let filteredResults = [...assets]
@@ -29,6 +34,31 @@ const FilterSelector = ({ assets, render }) => {
     if (filtersSelected.n.length > 0) {
       filteredResults = filteredResults.filter(
         asset => filtersSelected.n.indexOf(asset.preferredName) > -1
+      )
+    }
+    if (filtersSelected.in.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.in.indexOf(asset.indication) > -1
+      )
+    }
+    if (filtersSelected.m.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.m.indexOf(asset.moleculeType) > -1
+      )
+    }
+    if (filtersSelected.t.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.t.indexOf(asset.therapeuticApproach) > -1
+      )
+    }
+    if (filtersSelected.r.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.r.indexOf(asset.repurposed) > -1
+      )
+    }
+    if (filtersSelected.st.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.st.indexOf(asset.status) > -1
       )
     }
     if (filtersSelected.c.length > 0) {
@@ -57,6 +87,11 @@ const FilterSelector = ({ assets, render }) => {
     filtersSelected.n,
     filtersSelected.i,
     filtersSelected.c,
+    filtersSelected.in,
+    filtersSelected.m,
+    filtersSelected.t,
+    filtersSelected.r,
+    filtersSelected.st,
     filteredVacs.length,
     selectedAsset,
   ])
@@ -71,6 +106,14 @@ const FilterSelector = ({ assets, render }) => {
   const uniqueNames = [
     ...new Set(assets.map(asset => asset.preferredName).flat(1)),
   ]
+  const uniqueIndications = [
+    ...new Set(
+      assets
+        .map(asset => asset.indication)
+        .flat(1)
+        .filter(i => !!i)
+    ),
+  ]
   const uniqueCountries = [
     ...new Set(
       assets
@@ -79,6 +122,38 @@ const FilterSelector = ({ assets, render }) => {
         )
         .flat(1)
         .filter(c => !!c)
+    ),
+  ]
+  const uniqueMoleculeTypes = [
+    ...new Set(
+      assets
+        .map(asset => asset.moleculeType)
+        .flat(1)
+        .filter(m => !!m)
+    ),
+  ]
+  const uniqueTherapeuticApproach = [
+    ...new Set(
+      assets
+        .map(asset => asset.therapeuticApproach)
+        .flat(1)
+        .filter(t => !!t)
+    ),
+  ]
+  const uniqueRepurposed = [
+    ...new Set(
+      assets
+        .map(asset => asset.repurposed)
+        .flat(1)
+        .filter(r => !!r)
+    ),
+  ]
+  const uniqueStatus = [
+    ...new Set(
+      assets
+        .map(asset => asset.status)
+        .flat(1)
+        .filter(r => !!r)
     ),
   ]
 
@@ -115,6 +190,84 @@ const FilterSelector = ({ assets, render }) => {
     }
   }
 
+  const handleSelectedIndication = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, in: [] })
+    } else {
+      const { name, checked } = e.target
+      const indicationsCopy = [...filtersSelected.in]
+      if (checked === true) {
+        indicationsCopy.push(name)
+      } else {
+        const index = filtersSelected.in.indexOf(name)
+        indicationsCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, in: indicationsCopy })
+    }
+  }
+
+  const handleSelectedMolecule = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, m: [] })
+    } else {
+      const { name, checked } = e.target
+      const moleculesCopy = [...filtersSelected.m]
+      if (checked === true) {
+        moleculesCopy.push(name)
+      } else {
+        const index = filtersSelected.m.indexOf(name)
+        moleculesCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, m: moleculesCopy })
+    }
+  }
+
+  const handleTherapeuticApproach = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, t: [] })
+    } else {
+      const { name, checked } = e.target
+      const therapeuticCopy = [...filtersSelected.t]
+      if (checked === true) {
+        therapeuticCopy.push(name)
+      } else {
+        const index = filtersSelected.t.indexOf(name)
+        therapeuticCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, t: therapeuticCopy })
+    }
+  }
+  const handleRepurposed = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, r: [] })
+    } else {
+      const { name, checked } = e.target
+      const repurposedCopy = [...filtersSelected.r]
+      if (checked === true) {
+        repurposedCopy.push(name)
+      } else {
+        const index = filtersSelected.r.indexOf(name)
+        repurposedCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, r: repurposedCopy })
+    }
+  }
+  const handleSelectedStatus = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, st: [] })
+    } else {
+      const { name, checked } = e.target
+      const statusCopy = [...filtersSelected.st]
+      if (checked === true) {
+        statusCopy.push(name)
+      } else {
+        const index = filtersSelected.r.indexOf(name)
+        statusCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, st: statusCopy })
+    }
+  }
+
   const handleSelectedCountry = e => {
     if (e === 'clear') {
       setFiltersSelected({ ...filtersSelected, c: [] })
@@ -146,10 +299,20 @@ const FilterSelector = ({ assets, render }) => {
         uniqueNames,
         uniqueSponsors,
         uniqueCountries,
+        uniqueIndications,
+        uniqueMoleculeTypes,
+        uniqueTherapeuticApproach,
+        uniqueRepurposed,
+        uniqueStatus,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
         handleSelectedCountry,
+        handleSelectedIndication,
+        handleSelectedMolecule,
+        handleTherapeuticApproach,
+        handleSelectedStatus,
+        handleRepurposed,
         filteredVacs,
         filtersSelected,
         selectedAsset,
