@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fddbe516-12c1-4535-943a-9fa7968d3396/deploy-status)](https://app.netlify.com/sites/covid-19-treatment-dashboard/deploys)
+
 ## COVID-19 Vaccines Research and Development Dashboard UI
 
 This is a dashboard UI that will compare the status of all the current vaccines, its state of development and possible dates for each milestone.
