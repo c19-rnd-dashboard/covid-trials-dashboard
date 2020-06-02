@@ -93,7 +93,7 @@ export const MilestonesGraph = ({ milestones }) => {
               indicator={
                 i === self.length - 1 && elapsedDays > 0
                   ? () => (
-                    <BarIndicator>
+                    <BarIndicator length={milestones.length}>
                       <div>Elapsed Time</div>
                       <div>{elapsedDays} days</div>
                     </BarIndicator>
@@ -115,7 +115,7 @@ export const MilestonesGraph = ({ milestones }) => {
               <div>Start Date</div>
             </div>
           )}
-          {latestDate && (
+          {milestones.length > 1 && latestDate && (
             <div className='dates'>
               <div
                 data-test-id='end-date'

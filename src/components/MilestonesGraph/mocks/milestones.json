@@ -33,5 +33,39 @@
         "value": "45.77%"
       }
     ]
+  },{
+    "name": "Optimistic",
+    "values": [
+      {
+        "className": "discovery",
+        "end": "2020-01-13T00:00:00.000Z",
+        "start": "2020-01-11T00:00:00.000Z",
+        "value": "1%"
+      },
+      {
+        "className": "lead_selection",
+        "end": "2020-02-07T00:00:00.000Z",
+        "start": "2020-01-13T00:00:00.000Z",
+        "value": "20.86%"
+      },
+      {
+        "className": "clinical_batch",
+        "end": "2020-03-04T00:00:00.000Z",
+        "start": "2020-02-07T00:00:00.000Z",
+        "value": "21.69%"
+      },
+      {
+        "className": "ind",
+        "end": "2020-03-16T00:00:00.000Z",
+        "start": "2020-03-04T00:00:00.000Z",
+        "value": "10.01%"
+      },
+      {
+        "className": "phase_1",
+        "end": "2020-05-09T20:47:50.756Z",
+        "start": "2020-03-16T00:00:00.000Z",
+        "value": "45.77%"
+      }
+    ]
   }
 ]

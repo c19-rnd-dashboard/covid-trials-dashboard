@@ -79,10 +79,14 @@ const transformWithDurations = ({ now, delta }) =>
 
 const t2 = pipe([addPercentageToMilestones, mapResultToMilestoneStructure])
 
-export const mapAssetToMilestones = now => ({ milestones }) => {
+export const mapAssetToMilestones = now => ({
+  milestones,
+  interventionType,
+}) => {
   if (!milestones) {
     return []
   }
+  const type = interventionType.includes('vaccine') ? 'vaccine' : 'treatment'
 
   const actualMilestonesWithDuration = transformWithDurations({
     now,
@@ -102,21 +106,27 @@ export const mapAssetToMilestones = now => ({ milestones }) => {
   )
   const result = [
     {
-      name: 'Optimistic',
-      values: actualMilestonesWithDuration
-        .slice(0, -1)
-        .concat(optimisticEstimations),
-    },
-    {
-      name: 'Pesimistic',
-      values: actualMilestonesWithDuration
-        .slice(0, -1)
-        .concat(pesimisticEstimations),
-    },
-    {
       name: 'Actual',
       values: actualMilestonesWithDuration,
     },
   ]
-  return t2(result)
+  return t2(
+    type === 'vaccine'
+      ? [
+        {
+          name: 'Optimistic',
+          values: actualMilestonesWithDuration
+            .slice(0, -1)
+            .concat(optimisticEstimations),
+        },
+        {
+          name: 'Pesimistic',
+          values: actualMilestonesWithDuration
+            .slice(0, -1)
+            .concat(pesimisticEstimations),
+        },
+        ...result,
+      ]
+      : result
+  )
 }
