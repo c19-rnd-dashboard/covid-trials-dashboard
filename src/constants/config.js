@@ -12,3 +12,6 @@ export const faqUrl =
   'https://docs.google.com/document/d/1Mw-CfAzezFh6sFKRKlERU2HxX_e5Lu5bXSUcjVD5gso'
 
 export const howYouCanHelpUrl = process.env.REACT_APP_HOW_YOU_CAN_HELP || '#'
+
+export const spreadsheetDataSource =
+  process.env.REACT_APP_SPREADSHEET_DATASOURCE || '#'

@@ -20,10 +20,8 @@ export const Title = styled.div`
   font-weight: bold;
 `
 export const Divider = styled.div`
-  padding: 0 32px;
-  fo
+  padding: 0 1rem;
 `
-export const Subtitle = styled.div``
 
 export const Navbar = styled.div`
   display: flex;
@@ -32,11 +30,11 @@ export const Navbar = styled.div`
 `
 export const Link = styled.a`
   text-decoration: none;
-  padding: 0 25px;
   cursor: pointer;
   font-size: 20px;
-  color: white;
+  color: #afafaf;
   &: hover {
-    opacity: 0.8;
+    color: white;
+    text-decoration: underline;
   }
 `
