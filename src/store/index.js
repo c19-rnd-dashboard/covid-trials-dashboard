@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { get } from 'axios'
 import { apiUrl } from '../constants/config'
 import assets from '../mocks/assets.json'
+import { isVaccine } from 'utils/utils'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -47,12 +48,8 @@ const StateProvider = ({ children }) => {
   }, initialState)
 
   const splitVaccinesAndTreatments = data => {
-    const vaccines = data.filter(product =>
-      product.interventionType.includes('vaccine')
-    )
-    const treatments = data.filter(
-      product => !product.interventionType.includes('vaccine')
-    )
+    const vaccines = data.filter(isVaccine)
+    const treatments = data.filter(a => !isVaccine(a))
     return { treatments, vaccines }
   }
 
@@ -66,7 +63,6 @@ const StateProvider = ({ children }) => {
     } else {
       get(`${apiUrl}/assets`)
         .then(({ data }) => {
-          console.log(data, 'data')
           const splitData = splitVaccinesAndTreatments(data)
           dispatch({ type: 'fetchDataSuccess', payload: splitData })
         })
