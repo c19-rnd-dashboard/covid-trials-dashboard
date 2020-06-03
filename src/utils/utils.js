@@ -11,3 +11,6 @@ export const mapTwoAtTime = (fn, xs) => {
   const [first, second] = fn(head, subHead)
   return [first, ...mapTwoAtTime(fn, [second, ...rest])]
 }
+
+export const isVaccine = ({ interventionType = '' }) =>
+  interventionType.toLowerCase().includes('vaccine')

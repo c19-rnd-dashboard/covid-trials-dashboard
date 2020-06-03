@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { pipe } from 'sanctuary'
 import { status, phasesInOrder, timelinesEstimates } from './constants'
-import { mapTwoAtTime } from 'utils/utils'
+import { mapTwoAtTime, isVaccine } from 'utils/utils'
 
 const { skipped } = status
 
@@ -86,7 +86,7 @@ export const mapAssetToMilestones = now => ({
   if (!milestones) {
     return []
   }
-  const type = interventionType.includes('vaccine') ? 'vaccine' : 'treatment'
+  const type = isVaccine({ interventionType }) ? 'vaccine' : 'treatment'
 
   const actualMilestonesWithDuration = transformWithDurations({
     now,
