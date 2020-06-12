@@ -8,11 +8,13 @@ import Router from './routes'
 function App() {
   return (
     <StateProvider>
-      <Navbar />
-      <SubNavbar />
-      <S.Content>
-        <Router />
-      </S.Content>
+      <S.MainWrapper>
+        <Navbar />
+        <SubNavbar />
+        <S.Content>
+          <Router />
+        </S.Content>
+      </S.MainWrapper>
     </StateProvider>
   )
 }

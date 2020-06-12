@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { smallBreakpoint } from 'constants/breakpoints'
 
 // export const HeaderBanner = styled.div`
 //   padding: 20px;
@@ -7,10 +8,20 @@ import styled from 'styled-components'
 //   background-color: var(--header-bg);
 // `
 
+export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
 export const Content = styled.div`
   padding: 5px;
   background-color: var(--bg);
   display: flex;
+
+  @media (${smallBreakpoint}) {
+    flex-direction: column;
+  }
 `
 
 export const TrialContainer = styled.div`
@@ -51,13 +62,29 @@ export const SortTitle = styled.span`
 export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  flex-basis: 20%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  @media (${smallBreakpoint}) {
+    order: 2;
+    width: 100vw;
+  }
 `
 
 export const TabbedSection = styled.div`
-  width: 50%;
+  flex-basis: 60%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  @media (${smallBreakpoint}) {
+    width: 100vw;
+  }
 `
 export const Flex1 = styled.div`
-  flex: 1;
-  width: 25%;
+  flex-basis: 20%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  @media (${smallBreakpoint}) {
+    order: 1;
+    width: 100vw;
+  }
 `
