@@ -34,7 +34,7 @@ const Treatments = ({ tAndV }) => {
         selectedAsset,
       }) => (
         <>
-          <S.Flex1>
+          <S.Filter>
             <Tile header='Total Vaccine and Treatment Products'>
               {tAndV.length || '...'}
             </Tile>
@@ -88,7 +88,7 @@ const Treatments = ({ tAndV }) => {
                 handleSelected={handleSelectedStatus}
               />
             </Tile>
-          </S.Flex1>
+          </S.Filter>
           <S.TabbedSection>
             <MapAndMilestones
               pins={filteredVacs}
