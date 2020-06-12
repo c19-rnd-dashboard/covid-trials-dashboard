@@ -13,16 +13,6 @@ const MapDiv = styled.div`
 const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
   const tabs = [
     {
-      title: 'Timeline',
-      content: (
-        <MilestonesGraphContainer
-          selectedAsset={selectedAsset}
-          pins={pins}
-          handleSelectedId={handleSelectedId}
-        />
-      ),
-    },
-    {
       title: 'Volunteer Locations',
       content: (
         <Tile>
@@ -30,6 +20,16 @@ const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
             <Map pins={pins} handleSelectedId={handleSelectedId} />
           </MapDiv>
         </Tile>
+      ),
+    },
+    {
+      title: 'Timeline',
+      content: (
+        <MilestonesGraphContainer
+          selectedAsset={selectedAsset}
+          pins={pins}
+          handleSelectedId={handleSelectedId}
+        />
       ),
     },
   ]
