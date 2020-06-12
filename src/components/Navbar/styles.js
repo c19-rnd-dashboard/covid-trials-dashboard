@@ -27,13 +27,16 @@ export const Navbar = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+  @media (max-width: 1140px) {
+    display: none;
+  }
 `
 export const Link = styled.a`
   text-decoration: none;
   cursor: pointer;
   font-size: 20px;
   color: #afafaf;
-  &: hover {
+  & hover {
     color: white;
     text-decoration: underline;
   }

@@ -43,7 +43,7 @@ export const SubNavbar = () => {
           <Link to='/treatments'>Treatments</Link>
         </TabName>
         <TabName selected={location.pathname.startsWith('/vt')}>
-          <Link to='/vt'>Vaccines + Treatments</Link>
+          <Link to='/vt'>Vaccines+Treatments</Link>
         </TabName>
       </TabTitleSection>
     </Subnavbar>

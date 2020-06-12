@@ -11,6 +11,7 @@ export const Content = styled.div`
   padding: 5px;
   background-color: var(--bg);
   display: flex;
+  flex-wrap: wrap;
 `
 
 export const TrialContainer = styled.div`
@@ -49,15 +50,23 @@ export const SortTitle = styled.span`
 `
 
 export const RightColumn = styled.div`
-  display: flex;
   flex-direction: column;
   width: 25%;
+  @media (max-width: 1140px) {
+    width: 100%;
+  }
 `
 
 export const TabbedSection = styled.div`
   width: 50%;
+  @media (max-width: 1140px) {
+    width: 100%;
+  }
 `
-export const Flex1 = styled.div`
-  flex: 1;
+export const Filter = styled.div`
   width: 25%;
+  @media (max-width: 1140px) {
+    width: 100%;
+    order: 1;
+  }
 `
