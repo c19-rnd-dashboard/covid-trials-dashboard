@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { pipe } from 'sanctuary'
 import { status, phasesInOrder, timelinesEstimates } from './constants'
-import { mapTwoAtTime, isVaccine } from 'utils/utils'
+import { mapTwoAtTime, isVaccine, addToDate } from 'utils/utils'
 
 const { skipped } = status
 
@@ -67,7 +67,7 @@ const getAdditionalPhases = phase => {
 const estimateFutureDates = (ms, delta) => {
   return mapTwoAtTime((first, second) => {
     const duration = delta[first.name]
-    const newEnd = moment(first.start).add(duration, 'days').toISOString()
+    const newEnd = addToDate(first.start, duration, 'days')
     const newFirst = { ...first, end: newEnd, duration }
     const newSecond = { ...second, start: newEnd }
     return second ? [newFirst, newSecond] : [newFirst]
@@ -78,6 +78,13 @@ const transformWithDurations = ({ now, delta }) =>
   pipe([filterAndSortMilestones, addDurationToMilestones({ now, delta })])
 
 const t2 = pipe([addPercentageToMilestones, mapResultToMilestoneStructure])
+
+const getEstimationCheckingItIsNotGtActual = (delta, actual) => {
+  const duration = delta[actual.name]
+  const newEnd = addToDate(actual.start, duration, 'days')
+  const isLessThanActual = new Date(newEnd) < new Date(actual.end)
+  return isLessThanActual ? { ...delta, [actual.name]: actual.duration } : delta
+}
 
 export const mapAssetToMilestones = now => ({
   milestones,
@@ -92,17 +99,23 @@ export const mapAssetToMilestones = now => ({
     now,
     delta: timelinesEstimates.actual,
   })(milestones)
-  const [latestKnownDate] = actualMilestonesWithDuration.slice(-1)
+  const [latestKnownMilestone] = actualMilestonesWithDuration.slice(-1)
   const estimationPhases = getAdditionalPhases(
-    latestKnownDate.name
+    latestKnownMilestone.name
   ).map(phase => ({ name: phase }))
   const optimisticEstimations = estimateFutureDates(
-    [latestKnownDate].concat(estimationPhases),
-    timelinesEstimates.optimistic
+    [latestKnownMilestone].concat(estimationPhases),
+    getEstimationCheckingItIsNotGtActual(
+      timelinesEstimates.optimistic,
+      latestKnownMilestone
+    )
   )
   const pesimisticEstimations = estimateFutureDates(
-    [latestKnownDate].concat(estimationPhases),
-    timelinesEstimates.pesimistic
+    [latestKnownMilestone].concat(estimationPhases),
+    getEstimationCheckingItIsNotGtActual(
+      timelinesEstimates.pesimistic,
+      latestKnownMilestone
+    )
   )
   const result = [
     {
