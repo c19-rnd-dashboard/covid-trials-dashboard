@@ -66,6 +66,10 @@ const Navbar = () => {
         <S.Link target='_blank' href={howYouCanHelpUrl}>
           How you can help
         </S.Link>
+        <S.Divider>|</S.Divider>
+        <S.Link target='_blank' href={contactUsUrl}>
+          Contact Us
+        </S.Link>
       </S.Navbar>
     </S.Wrapper>
   )
