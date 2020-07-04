@@ -31,6 +31,17 @@ export const Navbar = styled.div`
     display: none;
   }
 `
+
+export const MobileNavbar = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+  @media (min-width: 1140px) {
+    display: none;
+  }
+`
+
 export const Link = styled.a`
   text-decoration: none;
   cursor: pointer;
