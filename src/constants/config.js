@@ -15,3 +15,6 @@ export const howYouCanHelpUrl = process.env.REACT_APP_HOW_YOU_CAN_HELP || '#'
 
 export const spreadsheetDataSource =
   process.env.REACT_APP_SPREADSHEET_DATASOURCE || '#'
+
+export const contactUsUrl =
+  process.env.REACT_APP_CONTACT_US_URL || 'mailto:info@coviddash.org'
