@@ -5,6 +5,7 @@ import {
   ArrayParam,
   withDefault,
   StringParam,
+  BooleanParam,
 } from 'use-query-params'
 
 const FilterSelector = ({ assets, render }) => {
@@ -20,6 +21,7 @@ const FilterSelector = ({ assets, render }) => {
     t: withDefault(ArrayParam, []), // t denotes therapeuticApproach
     r: withDefault(ArrayParam, []), // r denotes repurposed
     st: withDefault(ArrayParam, []), // st denotes status
+    h: BooleanParam, // h denoted healthy volunteers
   })
   useEffect(() => {
     let filteredResults = [...assets]
@@ -75,6 +77,16 @@ const FilterSelector = ({ assets, render }) => {
       )
       setSelectedAsset(asset[0]) // we should assume only one asset per productId
     }
+    if (filtersSelected.h === true) {
+      filteredResults = filteredResults.filter(
+        asset => asset.acceptsHealthySubjects === 'Yes'
+      )
+    }
+    if (filtersSelected.h === false) {
+      filteredResults = filteredResults.filter(
+        asset => asset.acceptsHealthySubjects !== 'Yes'
+      )
+    }
     if (filtersSelected.i === undefined && selectedAsset) {
       setSelectedAsset(null)
     }
@@ -92,6 +104,7 @@ const FilterSelector = ({ assets, render }) => {
     filtersSelected.t,
     filtersSelected.r,
     filtersSelected.st,
+    filtersSelected.h,
     filteredVacs.length,
     selectedAsset,
   ])
@@ -157,6 +170,8 @@ const FilterSelector = ({ assets, render }) => {
     ),
   ]
 
+  const uniqueHealthyVolunteers = ['Yes', 'No']
+
   const handleSelectedSponsor = e => {
     if (e === 'clear') {
       setFiltersSelected({ ...filtersSelected, s: [] })
@@ -187,6 +202,19 @@ const FilterSelector = ({ assets, render }) => {
         namesCopy.splice(index, 1)
       }
       setFiltersSelected({ ...filtersSelected, n: namesCopy })
+    }
+  }
+
+  const handleSelectedHealthy = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, h: undefined })
+    } else {
+      const { name, checked } = e.target
+      if (name === 'Yes') {
+        setFiltersSelected({ ...filtersSelected, h: checked ? 1 : undefined })
+      } else if (name === 'No') {
+        setFiltersSelected({ ...filtersSelected, h: checked ? 0 : undefined })
+      }
     }
   }
 
@@ -303,10 +331,12 @@ const FilterSelector = ({ assets, render }) => {
         uniqueMoleculeTypes,
         uniqueTherapeuticApproach,
         uniqueRepurposed,
+        uniqueHealthyVolunteers,
         uniqueStatus,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
+        handleSelectedHealthy,
         handleSelectedCountry,
         handleSelectedIndication,
         handleSelectedMolecule,

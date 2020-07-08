@@ -19,10 +19,12 @@ const Treatments = ({ tAndV }) => {
         uniqueMoleculeTypes,
         uniqueTherapeuticApproach,
         uniqueRepurposed,
+        uniqueHealthyVolunteers,
         uniqueStatus,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
+        handleSelectedHealthy,
         handleSelectedCountry,
         handleSelectedIndication,
         handleSelectedMolecule,
@@ -39,6 +41,18 @@ const Treatments = ({ tAndV }) => {
               {tAndV.length || '...'}
             </Tile>
             <Tile>
+              <FilterDropdown
+                label='Accepting Healthy Volunteers'
+                filters={uniqueHealthyVolunteers}
+                selected={
+                  filtersSelected.h === true
+                    ? ['yes']
+                    : filtersSelected.h === undefined
+                      ? []
+                      : ['no']
+                }
+                handleSelected={handleSelectedHealthy}
+              />
               <FilterDropdown
                 label='Sponsor'
                 filters={uniqueSponsors}
