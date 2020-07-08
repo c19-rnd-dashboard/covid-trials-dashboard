@@ -20,10 +20,12 @@ const Vaccines = ({ vaccines }) => {
         uniqueMoleculeTypes,
         uniqueTherapeuticApproach,
         uniqueRepurposed,
+        uniqueHealthyVolunteers,
         uniqueStatus,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
+        handleSelectedHealthy,
         handleSelectedCountry,
         handleSelectedIndication,
         handleSelectedMolecule,
@@ -40,6 +42,18 @@ const Vaccines = ({ vaccines }) => {
               {vaccines.length || '...'}
             </Tile>
             <Tile>
+              <FilterDropdown
+                label='Accepting Healthy Volunteers'
+                filters={uniqueHealthyVolunteers}
+                selected={
+                  filtersSelected.h === true
+                    ? ['yes']
+                    : filtersSelected.h === undefined
+                      ? []
+                      : ['no']
+                }
+                handleSelected={handleSelectedHealthy}
+              />
               <FilterDropdown
                 label='Sponsor'
                 filters={uniqueSponsors}
