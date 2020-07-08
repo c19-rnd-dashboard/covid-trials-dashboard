@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Popup } from 'react-map-gl'
 import styled from 'styled-components'
@@ -77,20 +77,22 @@ const StyledButton = styled.button`
 `
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
+  const [learnMoreOpen, setLearnMoreOpen] = useState(false)
+  const handleClick = () => {
+    setLearnMoreOpen(!learnMoreOpen)
+  }
   if (popupInfo) {
     const {
       clickedLocation,
       phase,
       preferredName,
       brandName,
-      indication,
-      therapeuticApproach,
-      repurposed,
-      studyStart,
-      studyEnd,
-      heathyVolunteer,
-      learnMore,
+      trialRegistryLink,
+      acceptsHealthySubjects,
+      participation = {},
+      sponsors,
     } = popupInfo
+    const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
     return (
       <StyledPopup
         tipSize={5}
@@ -101,59 +103,95 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
         onClose={onClose}
       >
         <StyledPopupInfo>
-          <TopContainer>
-            <div style={{ fontSize: '20px' }}>
-              <b>{preferredName}</b>
-            </div>
-            <div style={{ paddingTop: '10px' }}>{clickedLocation.name}</div>
-          </TopContainer>
-          <DetailsContainer>
-            {brandName && (
-              <Row>
-                <Key>Brand Name</Key>
-                <Value>{brandName}</Value>
-              </Row>
-            )}
-            {indication && (
-              <Row>
-                <Key>Indication</Key>
-                <Value>{indication}</Value>
-              </Row>
-            )}
-            {therapeuticApproach && therapeuticApproach !== 'unknown' && (
-              <Row>
-                <Key>Therapeutic Approach</Key>
-                <Value>{therapeuticApproach}</Value>
-              </Row>
-            )}
-            {repurposed && (
-              <Row>
-                <Key>Repurposed or New</Key>
-                <Value>{repurposed}</Value>
-              </Row>
-            )}
-            <Row>
-              <Key>Phase</Key>
-              <Value>{phase}</Value>
-            </Row>
-            <Row>
-              <Key>Study Start</Key>
-              <Value>{studyStart}</Value>
-            </Row>
-            <Row>
-              <Key>Study End</Key>
-              <Value>{studyEnd}</Value>
-            </Row>
-            <Row>
-              <Key>Healthy Volunteer</Key>
-              <Value>{heathyVolunteer}</Value>
-            </Row>
-            <Row>
-              <a href={learnMore} target='_blank' rel='noopener noreferrer'>
-                <StyledButton>LEARN MORE</StyledButton>
-              </a>
-            </Row>
-          </DetailsContainer>
+          {learnMoreOpen ? (
+            <>
+              <TopContainer>
+                {participation.name && (
+                  <div style={{ fontSize: '20px' }}>
+                    <b>{participation.name}</b>
+                  </div>
+                )}
+                {participation.email && (
+                  <div style={{ paddingTop: '10px' }}>
+                    <a href={`mailto:${participation.email}`}>
+                      {participation.email}
+                    </a>
+                  </div>
+                )}
+              </TopContainer>
+              <DetailsContainer>
+                {participation.website && (
+                  <Row>
+                    <Key>Website</Key>
+                    <Value>
+                      <a
+                        href={participation.website}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {participation.website}
+                      </a>
+                    </Value>
+                  </Row>
+                )}
+                {participation.notes && (
+                  <Row>
+                    <Key>Notes</Key>
+                    <Value>{participation.notes}</Value>
+                  </Row>
+                )}
+                <Row>
+                  <StyledButton onClick={handleClick}>
+                    Back to Details
+                  </StyledButton>
+                </Row>
+              </DetailsContainer>
+            </>
+          ) : (
+            <>
+              <TopContainer>
+                <div style={{ fontSize: '20px' }}>
+                  <b>{sponsorNames}</b>
+                </div>
+                <div style={{ paddingTop: '10px' }}>{preferredName}</div>
+              </TopContainer>
+              <DetailsContainer>
+                {brandName && (
+                  <Row>
+                    <Key>Brand Name</Key>
+                    <Value>{brandName}</Value>
+                  </Row>
+                )}
+                <Row>
+                  <Key>Phase</Key>
+                  <Value>{phase}</Value>
+                </Row>
+                <Row>
+                  <Key>Accepts Healthy Volunteers?</Key>
+                  <Value>
+                    {acceptsHealthySubjects === 'Yes' ? 'Yes' : 'No'}
+                  </Value>
+                </Row>
+                {trialRegistryLink && (
+                  <Row>
+                    <Key>Trial Registry Link</Key>
+                    <Value>
+                      <a
+                        href={trialRegistryLink}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        Link
+                      </a>
+                    </Value>
+                  </Row>
+                )}
+                <Row>
+                  <StyledButton onClick={handleClick}>LEARN MORE</StyledButton>
+                </Row>
+              </DetailsContainer>
+            </>
+          )}
         </StyledPopupInfo>
       </StyledPopup>
     )
@@ -179,10 +217,9 @@ PopUpDisplay.propTypes = {
     indication: PropTypes.string,
     therapeuticApproach: PropTypes.string,
     repurposed: PropTypes.string,
-    studyStart: PropTypes.string, // AWAITING FROM API
-    studyEnd: PropTypes.string, // AWAITING FROM API
-    heathyVolunteer: PropTypes.bool, // AWAITING FROM API
-    learnMore: PropTypes.string, // AWAITING FROM API
+    acceptsHealthySubjects: PropTypes.string,
+    trialRegistryLink: PropTypes.string,
+    participation: PropTypes.shape({}),
   }),
   onClose: PropTypes.func,
 }
