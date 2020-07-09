@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Popup } from 'react-map-gl'
 import styled from 'styled-components'
@@ -81,12 +81,14 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
   const handleClick = () => {
     setLearnMoreOpen(!learnMoreOpen)
   }
+  useEffect(() => {
+    setLearnMoreOpen(false)
+  }, [popupInfo && popupInfo.clickedLocation.lng])
   if (popupInfo) {
     const {
       clickedLocation,
       phase,
       preferredName,
-      brandName,
       trialRegistryLink,
       acceptsHealthySubjects,
       participation = {},
@@ -121,10 +123,10 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 )}
               </TopContainer>
               <DetailsContainer>
-                {participation.website && (
-                  <Row>
-                    <Key>Website</Key>
-                    <Value>
+                <Row>
+                  <Key>Website</Key>
+                  <Value>
+                    {participation.website ? (
                       <a
                         href={participation.website}
                         target='_blank'
@@ -132,15 +134,18 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                       >
                         {participation.website}
                       </a>
-                    </Value>
-                  </Row>
-                )}
-                {participation.notes && (
-                  <Row>
-                    <Key>Notes</Key>
-                    <Value>{participation.notes}</Value>
-                  </Row>
-                )}
+                    ) : (
+                      '__'
+                    )}
+                  </Value>
+                </Row>
+                <Row>
+                  <Key>Notes</Key>
+                  <Value>
+                    {participation.notes ? participation.notes : '__'}
+                  </Value>
+                </Row>
+
                 <Row>
                   <StyledButton onClick={handleClick}>
                     BACK TO DETAILS
@@ -152,21 +157,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
             <>
               <TopContainer>
                 <div style={{ fontSize: '20px' }}>
-                  <b>
-                    Trial {sponsorPlural}: {sponsorNames}
-                  </b>
+                  Trial {sponsorPlural}: <b>{sponsorNames}</b>
                 </div>
                 <div style={{ paddingTop: '10px' }}>
-                  Product: {preferredName}
+                  Product: <b>{preferredName}</b>
                 </div>
               </TopContainer>
               <DetailsContainer>
-                {brandName && (
-                  <Row>
-                    <Key>Brand Name</Key>
-                    <Value>{brandName}</Value>
-                  </Row>
-                )}
                 <Row>
                   <Key>Phase</Key>
                   <Value>{phase}</Value>
@@ -177,10 +174,11 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                     {acceptsHealthySubjects === 'Yes' ? 'Yes' : 'No'}
                   </Value>
                 </Row>
-                {trialRegistryLink && (
-                  <Row>
-                    <Key>Trial Registry Link</Key>
-                    <Value>
+
+                <Row>
+                  <Key>Trial Registry Link</Key>
+                  <Value>
+                    {trialRegistryLink ? (
                       <a
                         href={trialRegistryLink}
                         target='_blank'
@@ -188,11 +186,16 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                       >
                         Link
                       </a>
-                    </Value>
-                  </Row>
-                )}
+                    ) : (
+                      '__'
+                    )}
+                  </Value>
+                </Row>
+
                 <Row>
-                  <StyledButton onClick={handleClick}>LEARN MORE</StyledButton>
+                  <StyledButton onClick={handleClick}>
+                    HOW TO VOLUNTEER
+                  </StyledButton>
                 </Row>
               </DetailsContainer>
             </>
