@@ -93,6 +93,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       sponsors,
     } = popupInfo
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
+    const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
     return (
       <StyledPopup
         tipSize={5}
@@ -142,7 +143,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 )}
                 <Row>
                   <StyledButton onClick={handleClick}>
-                    Back to Details
+                    BACK TO DETAILS
                   </StyledButton>
                 </Row>
               </DetailsContainer>
@@ -151,7 +152,9 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
             <>
               <TopContainer>
                 <div style={{ fontSize: '20px' }}>
-                  <b>{sponsorNames}</b>
+                  <b>
+                    Trial {sponsorPlural}: {sponsorNames}
+                  </b>
                 </div>
                 <div style={{ paddingTop: '10px' }}>{preferredName}</div>
               </TopContainer>
