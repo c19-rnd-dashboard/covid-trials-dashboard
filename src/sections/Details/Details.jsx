@@ -12,7 +12,7 @@ const getCurrentMilestoneStage = milestones => {
 
 const Details = ({ selectedAsset }) => {
   const asset = selectedAsset || {
-    preferredName: 'Selected Product Details',
+    sponsors: [{ sponsorName: '...' }],
     chemicalName: '...',
     brandName: '...',
     indication: '...',
@@ -26,7 +26,6 @@ const Details = ({ selectedAsset }) => {
     milestones: [],
   }
   const {
-    preferredName,
     chemicalName,
     brandName,
     indication,
@@ -37,6 +36,7 @@ const Details = ({ selectedAsset }) => {
     countries,
     status,
     milestones,
+    sponsors,
   } = asset
   const vaccineData = [
     {
@@ -80,8 +80,16 @@ const Details = ({ selectedAsset }) => {
       data: getCurrentMilestoneStage(milestones),
     },
   ]
+  const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
+  const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
   return (
-    <Tile header={<b>{preferredName}</b>}>
+    <Tile
+      header={
+        <b>
+          Trial {sponsorPlural}: {sponsorNames}
+        </b>
+      }
+    >
       <S.Wrapper>
         {vaccineData.map(({ category, data }, i) => {
           return (
