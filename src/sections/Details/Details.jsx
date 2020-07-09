@@ -86,7 +86,7 @@ const Details = ({ selectedAsset }) => {
     <Tile
       header={
         <b>
-          Trial {sponsorPlural}: {sponsorNames}
+          {sponsorPlural}: {sponsorNames}
         </b>
       }
     >
