@@ -156,7 +156,9 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                     Trial {sponsorPlural}: {sponsorNames}
                   </b>
                 </div>
-                <div style={{ paddingTop: '10px' }}>{preferredName}</div>
+                <div style={{ paddingTop: '10px' }}>
+                  Product: {preferredName}
+                </div>
               </TopContainer>
               <DetailsContainer>
                 {brandName && (
