@@ -12,7 +12,7 @@ const getCurrentMilestoneStage = milestones => {
 
 const Details = ({ selectedAsset }) => {
   const asset = selectedAsset || {
-    sponsors: [{ sponsorName: '...' }],
+    sponsors: [{ sponsorName: '' }],
     chemicalName: '...',
     brandName: '...',
     indication: '...',
