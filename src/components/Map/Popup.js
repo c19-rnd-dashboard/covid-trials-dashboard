@@ -78,12 +78,13 @@ const StyledButton = styled.button`
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
   const [learnMoreOpen, setLearnMoreOpen] = useState(false)
+  const isPopupAndClicked = popupInfo && popupInfo.clickedLocation.lng
   const handleClick = () => {
     setLearnMoreOpen(!learnMoreOpen)
   }
   useEffect(() => {
     setLearnMoreOpen(false)
-  }, [popupInfo && popupInfo.clickedLocation.lng])
+  }, [isPopupAndClicked])
   if (popupInfo) {
     const {
       clickedLocation,
