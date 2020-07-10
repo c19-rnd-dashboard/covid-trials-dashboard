@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Popup } from 'react-map-gl'
 import styled from 'styled-components'
+import ReactGA from 'react-ga'
 
 const StyledPopup = styled(Popup)`
   .mapboxgl-popup-tip {
@@ -78,12 +79,18 @@ const StyledButton = styled.button`
 
 const PopUpDisplay = ({ popupInfo, onClose }) => {
   const [learnMoreOpen, setLearnMoreOpen] = useState(false)
+  const isPopupAndClicked = popupInfo && popupInfo.clickedLocation.lng
   const handleClick = () => {
+    ReactGA.event({
+      category: 'volunteer',
+      action: 'How to volunteer clicked',
+      label: 'Popup button, how to volunteer',
+    })
     setLearnMoreOpen(!learnMoreOpen)
   }
   useEffect(() => {
     setLearnMoreOpen(false)
-  }, [popupInfo && popupInfo.clickedLocation.lng])
+  }, [isPopupAndClicked])
   if (popupInfo) {
     const {
       clickedLocation,

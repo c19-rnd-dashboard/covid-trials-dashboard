@@ -18,3 +18,6 @@ export const spreadsheetDataSource =
 
 export const contactUsUrl =
   process.env.REACT_APP_CONTACT_US_URL || 'mailto:info@coviddash.org'
+
+export const GOOGLE_ANALYTICS_TRACKING_ID =
+  process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID
