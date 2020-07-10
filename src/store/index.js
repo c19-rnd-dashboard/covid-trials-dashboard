@@ -4,6 +4,7 @@ import { get } from 'axios'
 import { apiUrl } from '../constants/config'
 import assets from '../mocks/assets.json'
 import { isVaccine } from 'utils/utils'
+import ReactGA from 'react-ga'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -30,6 +31,10 @@ const { Provider } = store
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
+    ReactGA.event({
+      category: 'reducer',
+      action: action.type,
+    })
     switch (action.type) {
     case 'fetchData':
       return { ...state, loading: true }
