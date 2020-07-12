@@ -12,7 +12,7 @@ const propTypes = {
 }
 
 const Tabs = ({ tabs }) => {
-  const [openTabIndex, setOpenTabIndex] = useState(0)
+  const [openTabIndex, setOpenTabIndex] = useState(2)
   const componentShowing = tabs[openTabIndex] && tabs[openTabIndex].content
   return (
     <S.TabArea>
