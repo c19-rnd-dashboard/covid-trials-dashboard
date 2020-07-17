@@ -9,9 +9,11 @@ export const apiUrl =
 
 export const faqUrl =
   process.env.REACT_APP_FAQ_URL ||
-  'https://docs.google.com/document/d/1Mw-CfAzezFh6sFKRKlERU2HxX_e5Lu5bXSUcjVD5gso'
+  'https://docs.google.com/document/d/e/2PACX-1vT4eoCyo4UOfGcBn5Cn1BP8lHiSE86Gz8vcfoeV6T_Bg1B97V3zZ8eMm-w7HpMdTAcuKsaR_ONtPGX-/pub'
 
-export const howYouCanHelpUrl = process.env.REACT_APP_HOW_YOU_CAN_HELP || '#'
+export const howYouCanHelpUrl =
+  process.env.REACT_APP_HOW_YOU_CAN_HELP ||
+  'https://docs.google.com/document/d/e/2PACX-1vTdTsgT3UinsENFQM_AKYRV9Ls-D_pPdzCsJppgwlzwq2PSFHVFgVw89dGFG2zhgYfNNqSGyf5PAkxm/pub'
 
 export const spreadsheetDataSource =
   process.env.REACT_APP_SPREADSHEET_DATASOURCE || '#'
