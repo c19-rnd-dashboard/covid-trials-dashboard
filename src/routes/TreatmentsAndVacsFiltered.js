@@ -31,14 +31,14 @@ const Treatments = ({ tAndV }) => {
         handleTherapeuticApproach,
         handleSelectedStatus,
         handleRepurposed,
-        filteredVacs,
+        filteredAssets,
         filtersSelected,
         selectedAsset,
       }) => (
         <>
           <S.Filter>
             <Tile header='Total Vaccine and Treatment Products'>
-              {tAndV.length || '...'}
+              {filteredAssets.length || '...'}
             </Tile>
             <Tile>
               <FilterDropdown
@@ -105,7 +105,7 @@ const Treatments = ({ tAndV }) => {
           </S.Filter>
           <S.TabbedSection>
             <MapAndMilestones
-              pins={filteredVacs}
+              pins={filteredAssets}
               title='Vaccine and Treatment Map'
               handleSelectedId={handleSelectedId}
             />

@@ -96,11 +96,12 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       clickedLocation,
       phase,
       preferredName,
-      trialRegistryLink,
+      registryLink,
       acceptsHealthySubjects,
-      participation = {},
+      contact = [{}],
       sponsors,
     } = popupInfo
+    const participation = contact[0]
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
     const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
     return (
@@ -123,7 +124,11 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 )}
                 {participation.email && (
                   <div style={{ paddingTop: '10px' }}>
-                    <a href={`mailto:${participation.email}`}>
+                    Email:{' '}
+                    <a
+                      href={`mailto:${participation.email}`}
+                      style={{ color: 'white' }}
+                    >
                       {participation.email}
                     </a>
                   </div>
@@ -138,6 +143,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                         href={participation.website}
                         target='_blank'
                         rel='noopener noreferrer'
+                        style={{ color: 'white' }}
                       >
                         {participation.website}
                       </a>
@@ -147,12 +153,17 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                   </Value>
                 </Row>
                 <Row>
+                  <Key>Phone Number</Key>
+                  <Value>
+                    {participation.phone ? participation.phone : '__'}
+                  </Value>
+                </Row>
+                <Row>
                   <Key>Notes</Key>
                   <Value>
                     {participation.notes ? participation.notes : '__'}
                   </Value>
                 </Row>
-
                 <Row>
                   <StyledButton onClick={handleClick}>
                     BACK TO DETAILS
@@ -185,13 +196,14 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 <Row>
                   <Key>Trial Registry Link</Key>
                   <Value>
-                    {trialRegistryLink ? (
+                    {registryLink ? (
                       <a
-                        href={trialRegistryLink}
+                        href={registryLink}
                         target='_blank'
                         rel='noopener noreferrer'
+                        style={{ color: 'white' }}
                       >
-                        Link
+                        Click Here
                       </a>
                     ) : (
                       '__'
@@ -233,8 +245,8 @@ PopUpDisplay.propTypes = {
     therapeuticApproach: PropTypes.string,
     repurposed: PropTypes.string,
     acceptsHealthySubjects: PropTypes.string,
-    trialRegistryLink: PropTypes.string,
-    participation: PropTypes.shape({}),
+    registryLink: PropTypes.string,
+    contact: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   onClose: PropTypes.func,
 }

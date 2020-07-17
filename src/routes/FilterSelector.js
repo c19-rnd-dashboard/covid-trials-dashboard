@@ -9,7 +9,7 @@ import {
 } from 'use-query-params'
 
 const FilterSelector = ({ assets, render }) => {
-  const [filteredVacs, setFilteredVacs] = useState([])
+  const [filteredAssets, setFilteredAssets] = useState([])
   const [selectedAsset, setSelectedAsset] = useState()
   const [filtersSelected, setFiltersSelected] = useQueryParams({
     s: withDefault(ArrayParam, []), // s denotes sponsor
@@ -90,8 +90,8 @@ const FilterSelector = ({ assets, render }) => {
     if (filtersSelected.i === undefined && selectedAsset) {
       setSelectedAsset(null)
     }
-    if (filteredResults.length !== filteredVacs.length) {
-      setFilteredVacs(filteredResults)
+    if (filteredResults.length !== filteredAssets.length) {
+      setFilteredAssets(filteredResults)
     }
   }, [
     assets,
@@ -105,7 +105,7 @@ const FilterSelector = ({ assets, render }) => {
     filtersSelected.r,
     filtersSelected.st,
     filtersSelected.h,
-    filteredVacs.length,
+    filteredAssets.length,
     selectedAsset,
   ])
 
@@ -343,7 +343,7 @@ const FilterSelector = ({ assets, render }) => {
         handleTherapeuticApproach,
         handleSelectedStatus,
         handleRepurposed,
-        filteredVacs,
+        filteredAssets,
         filtersSelected,
         selectedAsset,
       })}

@@ -38,6 +38,7 @@ const Details = ({ selectedAsset }) => {
     milestones,
     sponsors,
   } = asset
+  const formattedPartners = otherPartners.split(',').join(', ')
   const vaccineData = [
     {
       category: 'Chemical Name',
@@ -65,7 +66,7 @@ const Details = ({ selectedAsset }) => {
     },
     {
       category: 'Partners',
-      data: otherPartners,
+      data: formattedPartners,
     },
     {
       category: 'Country(s)',

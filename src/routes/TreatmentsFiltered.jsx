@@ -31,7 +31,7 @@ const Treatments = ({ treatments }) => {
         handleTherapeuticApproach,
         handleSelectedStatus,
         handleRepurposed,
-        filteredVacs,
+        filteredAssets,
         filtersSelected,
         selectedAsset,
       }) => (
@@ -105,7 +105,7 @@ const Treatments = ({ treatments }) => {
           </S.Filter>
           <S.TabbedSection>
             <MapAndMilestones
-              pins={filteredVacs}
+              pins={filteredAssets}
               title='Treatment Map'
               handleSelectedId={handleSelectedId}
             />
