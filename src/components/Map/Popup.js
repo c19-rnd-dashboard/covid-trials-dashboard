@@ -77,6 +77,24 @@ const StyledButton = styled.button`
   border-radius: 2px;
 `
 
+const DontBreakOutLink = styled.a`
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+`
+
 const PopUpDisplay = ({ popupInfo, onClose }) => {
   const [learnMoreOpen, setLearnMoreOpen] = useState(false)
   const isPopupAndClicked = popupInfo && popupInfo.clickedLocation.lng
@@ -122,31 +140,30 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                     <b>{participation.name}</b>
                   </div>
                 )}
-                {participation.email && (
+                {participation.website && (
                   <div style={{ paddingTop: '10px' }}>
-                    Email:{' '}
-                    <a
-                      href={`mailto:${participation.email}`}
+                    <DontBreakOutLink
+                      href={participation.website}
+                      target='_blank'
+                      rel='noopener noreferrer'
                       style={{ color: 'white' }}
                     >
-                      {participation.email}
-                    </a>
+                      {participation.website}
+                    </DontBreakOutLink>
                   </div>
                 )}
               </TopContainer>
               <DetailsContainer>
                 <Row>
-                  <Key>Website</Key>
+                  <Key>Email</Key>
                   <Value>
-                    {participation.website ? (
-                      <a
-                        href={participation.website}
-                        target='_blank'
-                        rel='noopener noreferrer'
+                    {participation.email ? (
+                      <DontBreakOutLink
+                        href={`mailto:${participation.email}`}
                         style={{ color: 'white' }}
                       >
-                        {participation.website}
-                      </a>
+                        {participation.email}
+                      </DontBreakOutLink>
                     ) : (
                       '__'
                     )}

@@ -38,6 +38,8 @@ const Details = ({ selectedAsset }) => {
     milestones,
     sponsors,
   } = asset
+  console.log(brandName, 'brand')
+  const formattedBrands = brandName.split(',').join(', ')
   const formattedPartners = otherPartners.split(',').join(', ')
   const vaccineData = [
     {
@@ -46,7 +48,7 @@ const Details = ({ selectedAsset }) => {
     },
     {
       category: 'Brand Name',
-      data: brandName,
+      data: formattedBrands,
     },
     {
       category: 'Indication',
