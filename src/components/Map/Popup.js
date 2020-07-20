@@ -10,6 +10,8 @@ const StyledPopup = styled(Popup)`
   }
   .mapboxgl-popup-content {
     padding: 0px;
+    user-select: text;
+    cursor: text;
   }
   .mapboxgl-popup-close-button {
     color: white;
@@ -136,12 +138,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
             <>
               <TopContainer>
                 {participation.name && (
-                  <div style={{ fontSize: '20px' }}>
+                  <div style={{ fontSize: '20px', paddingBottom: '10px' }}>
                     <b>{participation.name}</b>
                   </div>
                 )}
                 {participation.website && (
-                  <div style={{ paddingTop: '10px' }}>
+                  <div>
+                    <div style={{ fontWeight: 'bold' }}>Website: </div>
                     <DontBreakOutLink
                       href={participation.website}
                       target='_blank'
