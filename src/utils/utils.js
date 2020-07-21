@@ -19,3 +19,5 @@ export const isVaccine = ({ interventionType = '' }) =>
 
 export const addToDate = (date, duration, timeUnit = 'days') =>
   moment(date).add(duration, timeUnit).toISOString()
+
+export const isValidDate = date => moment(date).isValid()

@@ -21,7 +21,7 @@ const commonProps = {
       onMarket: 20,
     },
     {
-      case: 'pesimistic',
+      case: 'pessimistic',
       discovery: 50,
       medicalBatch: 40,
       onMarket: 60,

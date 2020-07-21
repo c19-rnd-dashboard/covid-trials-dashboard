@@ -110,10 +110,10 @@ export const mapAssetToMilestones = now => ({
       latestKnownMilestone
     )
   )
-  const pesimisticEstimations = estimateFutureDates(
+  const pessimisticEstimations = estimateFutureDates(
     [latestKnownMilestone].concat(estimationPhases),
     getEstimationCheckingItIsNotGtActual(
-      timelinesEstimates.pesimistic,
+      timelinesEstimates.pessimistic,
       latestKnownMilestone
     )
   )
@@ -133,10 +133,10 @@ export const mapAssetToMilestones = now => ({
             .concat(optimisticEstimations),
         },
         {
-          name: 'Pesimistic',
+          name: 'Pessimistic',
           values: actualMilestonesWithDuration
             .slice(0, -1)
-            .concat(pesimisticEstimations),
+            .concat(pessimisticEstimations),
         },
         ...result,
       ]

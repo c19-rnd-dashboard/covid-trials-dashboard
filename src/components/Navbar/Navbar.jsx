@@ -5,6 +5,7 @@ import {
   howYouCanHelpUrl,
   spreadsheetDataSource,
   contactUsUrl,
+  vaccineStatusSummaryUrl,
 } from 'constants/config'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -56,6 +57,11 @@ const Navbar = () => {
               Contact Us
             </S.Link>
           </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
+              Vaccine R&D Status
+            </S.Link>
+          </MenuItem>
         </Menu>
       </S.MobileNavbar>
       <S.Navbar>
@@ -69,6 +75,10 @@ const Navbar = () => {
         <S.Divider>|</S.Divider>
         <S.Link target='_blank' href={contactUsUrl}>
           Contact Us
+        </S.Link>
+        <S.Divider>|</S.Divider>
+        <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
+          Vaccine R&D Status
         </S.Link>
       </S.Navbar>
     </S.Wrapper>
