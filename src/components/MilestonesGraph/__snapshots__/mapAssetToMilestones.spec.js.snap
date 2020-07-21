@@ -62,7 +62,7 @@ Array [
     ],
   },
   Object {
-    "name": "Pesimistic",
+    "name": "Pessimistic",
     "values": Array [
       Object {
         "className": "discovery",

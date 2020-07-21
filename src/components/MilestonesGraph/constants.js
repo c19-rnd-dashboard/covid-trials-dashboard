@@ -119,7 +119,7 @@ export const timelinesEstimates = (() => {
       [nda]: 21,
       [onMarket]: 30,
     },
-    pesimistic: {
+    pessimistic: {
       [discovery]: 40,
       [preClinicalStudies]: 120,
       [leadSelection]: 25,
@@ -135,7 +135,7 @@ export const timelinesEstimates = (() => {
   const actual = Object.keys(partial.optimistic).reduce((acc, key) => {
     return {
       ...acc,
-      [key]: (partial.optimistic[key] + partial.pesimistic[key]) / 2,
+      [key]: (partial.optimistic[key] + partial.pessimistic[key]) / 2,
     }
   }, {})
 
