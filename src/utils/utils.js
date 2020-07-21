@@ -33,3 +33,12 @@ export const count = ls =>
   )
 
 export const countBy = fn => pipe([map(fn), count])
+
+export const converCountIntoChartData = pipe([
+  Object.entries,
+  map(([key, value]) => ({
+    id: key,
+    label: key,
+    value,
+  })),
+])
