@@ -10,6 +10,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { Charts } from 'sections/Charts'
+import { howYouCanHelpUrl } from 'constants/config'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -17,12 +18,12 @@ const MapDiv = styled.div`
 `
 const StyledAccordion = styled(AccordionSummary)`
   background-color: #25272a !important;
-  color: white !important;
+  color: var(--font-color) !important;
 `
 
 const StyledAccordionDetails = styled(AccordionDetails)`
   background-color: #25272a !important;
-  color: white !important;
+  color: var(--font-color) !important;
 `
 
 const HowYouCanHelp = () => (
@@ -32,15 +33,57 @@ const HowYouCanHelp = () => (
       aria-controls='panel1a-content'
       id='panel1a-header'
     >
-      <div>Are you interested in helping accelerate COVID-19 Research?</div>
+      <div>
+        Are you interested in potentially volunteering for a COVID-19 trial?
+      </div>
     </StyledAccordion>
     <StyledAccordionDetails>
       <div style={{ textAlign: 'left' }}>
-        In the map below, click on a pin near you to find a hospital or clinic
-        running a clinical trial on COVID-19. If you are healthy, look under
-        “Accepts Healthy Volunteers?” and check that it says Yes. Click the “How
-        to Volunteer” button to find out how to potentially participate in the
-        study. For more detailed instructions go to our How You Can Help page.
+        <ol>
+          <li>
+            In the map below, click on a pin near you to find a hospital or
+            clinic running a clinical trial on COVID-19.{' '}
+          </li>
+          <li>
+            If you are healthy, look under{' '}
+            <span style={{ fontWeight: 'bold' }}>
+              “Accepts Healthy Volunteers?”
+            </span>{' '}
+            and check that it says{' '}
+            <span style={{ fontWeight: 'bold' }}>Yes</span>{' '}
+          </li>
+          <li>
+            Click the{' '}
+            <span style={{ fontWeight: 'bold' }}>“How to Volunteer”</span>{' '}
+            button to find out how to potentially participate in the study.{' '}
+          </li>
+        </ol>
+        <p>
+          For more detailed instructions go to our{' '}
+          <a href={howYouCanHelpUrl} rel='noopener noreferrer' target='_blank'>
+            How You Can Help page
+          </a>
+        </p>
+        <p>
+          If you are in the US make sure to complete this{' '}
+          <a
+            href='https://www.coronaviruspreventionnetwork.org/clinical-study-volunteer/'
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            NIH form
+          </a>
+        </p>
+        <p>
+          If you are in the UK, complete this{' '}
+          <a
+            href='https://www.nhs.uk/conditions/coronavirus-covid-19/research/coronavirus-vaccine-research/'
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            NHS form
+          </a>
+        </p>
       </div>
     </StyledAccordionDetails>
   </Accordion>

@@ -91,6 +91,7 @@ const Details = ({ selectedAsset }) => {
           {sponsorPlural}: {sponsorNames}
         </b>
       }
+      style={{ position: 'sticky', top: 0 }}
     >
       <S.Wrapper>
         {vaccineData.map(({ category, data }, i) => {

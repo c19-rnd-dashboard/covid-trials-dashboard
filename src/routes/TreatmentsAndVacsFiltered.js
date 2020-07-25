@@ -40,7 +40,7 @@ const Treatments = ({ tAndV }) => {
             <Tile header='Total Vaccine and Treatment Products'>
               {filteredAssets.length || '...'}
             </Tile>
-            <Tile>
+            <Tile header='Filter By'>
               <FilterDropdown
                 label='Accepting Healthy Volunteers'
                 filters={uniqueHealthyVolunteers}
