@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Title = styled.div`
   padding: 10px;
-  background-color: #212224;
-  color: white;
+  background-color: var(--tile-bg);
+  color: var(--text-color);
   text-align: center;
   margin: 2px;
 `
@@ -14,5 +14,5 @@ export const Header = styled.div`
 `
 
 export const Content = styled.div`
-  color: #72f34a;
+  color: var(--text-color);
 `

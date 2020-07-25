@@ -4,16 +4,16 @@ import styled from 'styled-components'
 
 const Subnavbar = styled.div`
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--tile-bg);
   a {
-    color: #ccc;
+    color: var(--text-color);
     text-decoration: none;
   }
 `
 
 export const TabTitleSection = styled.div`
   display: flex;
-  color: white;
+  color: var(--text-color);
   margin: 2px;
 `
 
@@ -23,7 +23,7 @@ const TabName = styled.div`
   border-bottom: ${props => (props.selected ? '2px solid #119c91;' : 'none')};
   border-right: ${props => (props.selected ? '2px solid #119c91;' : 'none')};
   margin-right: 16px;
-  color: white !important;
+  color: var(--text-color);
 `
 
 export const SubNavbar = () => {

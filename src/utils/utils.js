@@ -38,7 +38,6 @@ export const converCountIntoChartData = pipe([
   Object.entries,
   map(([key, value]) => ({
     id: key,
-    label: key,
-    value,
+    value: value,
   })),
 ])

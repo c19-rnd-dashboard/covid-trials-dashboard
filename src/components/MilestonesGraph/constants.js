@@ -5,18 +5,21 @@ export const status = {
 
 const discovery = 'discovery',
   preClinicalStudies = 'pre_clinical_studies',
+  preClinicalTesting = 'pre_clinical_testing',
   leadSelection = 'lead_selection',
   clinicalBatch = 'clinical_batch',
   ind = 'ind',
   phase1 = 'phase_1',
   phase2 = 'phase_2',
   phase3 = 'phase_3',
+  phase4 = 'phase_4',
   nda = 'nda',
   onMarket = 'on_market'
 
 export const phases = {
   discovery,
   preClinicalStudies,
+  [preClinicalTesting]: preClinicalStudies,
   leadSelection,
   clinicalBatch,
   ind,
@@ -25,6 +28,7 @@ export const phases = {
   phase3,
   nda,
   onMarket,
+  [phase4]: onMarket,
 }
 
 export const phaseDisplayName = {
@@ -93,16 +97,17 @@ export const phasesInOrder = [
 ]
 
 export const phaseColor = {
-  [discovery]: '#fff',
-  [preClinicalStudies]: '#797979',
-  [leadSelection]: '#941751',
-  [clinicalBatch]: '#22528f',
-  [ind]: '#3f8c27',
-  [phase1]: '#8b551b',
-  [phase2]: '#872110',
-  [phase3]: '#eb51f7',
-  [nda]: '#1431f5',
-  [onMarket]: '#f09838',
+  [discovery]: '#ff1744',
+  [preClinicalStudies]: '#d500f9',
+  [preClinicalTesting]: '#d500f9',
+  [leadSelection]: '#3d5afe',
+  [clinicalBatch]: '#00e5ff',
+  [ind]: '#00e676',
+  [phase1]: '#651fff',
+  [phase2]: '#ffea00',
+  [phase3]: '#ff9100',
+  [nda]: '#607d8b',
+  [onMarket]: '#9e9e9e',
 }
 
 export const timelinesEstimates = (() => {
