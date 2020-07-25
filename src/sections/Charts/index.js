@@ -10,8 +10,9 @@ import {
   phasesInOrder,
   phases,
 } from 'components/MilestonesGraph/constants'
-import { snake } from 'case'
+import { snake, sentence } from 'case'
 import { filterAndSortMilestones } from 'components/MilestonesGraph/mapAssetToMilestones'
+import { fontColor } from 'constants/colors'
 
 const getChartData = mapper => pipe([countBy(mapper), converCountIntoChartData])
 
@@ -24,7 +25,6 @@ const chartList = [
       ).slice(-1)
       const result =
         phases[snake(currentStage)] || latestKnownMilestone.name || 'unknown'
-      console.log(result)
       return result
     },
     mapEntireData: data => {
@@ -44,25 +44,47 @@ const chartList = [
         const color = phaseColor[id] || 'white'
         return color
       },
+      tooltip: ({ data: { id } = {}, value }) => `${sentence(id)}: ${value}`,
     },
   },
   {
-    title: 'by Molecule Type',
+    title: 'Molecule Type',
     mapper: prop('moleculeType'),
   },
   {
-    title: 'by Therapeutic Approach',
+    title: 'Therapeutic Approach',
     mapper: prop('therapeuticApproach'),
   },
   {
-    title: 'by Indication',
+    title: 'Indication',
     mapper: ({ indication }) => indication || 'Unknown',
   },
   {
-    title: 'by New/Repurposed',
+    title: 'New/Repurposed',
     mapper: ({ repurposed }) => repurposed || 'Unknown',
   },
 ]
+
+const BarConfig = props => ({
+  margin: { top: 0, right: 100, bottom: 160, left: 60 },
+  enableGridY: false,
+  borderColor: fontColor,
+  axisBottom: {
+    tickSize: 5,
+    tickPadding: 5,
+    tickRotation: 30,
+    legend: props.title,
+    legendPosition: 'middle',
+    legendOffset: 100,
+  },
+})
+
+const PieConfig = () => ({
+  innerRadius: 0.5,
+  padAngle: 1,
+  cornerRadius: 4,
+  radialLabelsTextColor: fontColor,
+})
 
 export const Charts = ({ pins: assets }) =>
   chartList.map(
@@ -78,16 +100,38 @@ export const Charts = ({ pins: assets }) =>
         map(mapChartData),
         mapEntireData,
       ])(assets)
-      console.log(data)
       const ChartComponent = data.length > 4 ? ResponsiveBar : ResponsivePie
+      const config =
+        ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
       return (
-        <ChartWrapper key={title} title={title}>
+        <ChartWrapper key={title} title={`by ${title}`}>
           <ChartComponent
             data={data}
+            theme={{
+              axis: {
+                ticks: {
+                  line: {
+                    stroke: fontColor,
+                  },
+                  text: {
+                    fill: fontColor,
+                  },
+                },
+                legend: {
+                  text: {
+                    fill: fontColor,
+                  },
+                },
+              },
+              label: {
+                text: {
+                  fill: fontColor,
+                },
+              },
+            }}
+            colorBy='index'
+            {...config}
             {...chartAttribites}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
           />
         </ChartWrapper>
       )
