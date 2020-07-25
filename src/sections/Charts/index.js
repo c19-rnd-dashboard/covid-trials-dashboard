@@ -84,6 +84,7 @@ const PieConfig = () => ({
   padAngle: 1,
   cornerRadius: 4,
   radialLabelsTextColor: fontColor,
+  margin: { top: 30, bottom: 30 },
 })
 
 export const Charts = ({ pins: assets }) =>
