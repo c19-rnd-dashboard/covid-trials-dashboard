@@ -5,7 +5,7 @@
   flex-direction: row;
   position: relative;
   --bar-height: 2rem;
-  color: var(--color);
+  color: var(--font-color);
 }
 
 .milestones-graph .labels {

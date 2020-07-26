@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  background: #002e6e;
+  background: var(--header-bg);
   height: 56px;
   position: static;
   color: white;

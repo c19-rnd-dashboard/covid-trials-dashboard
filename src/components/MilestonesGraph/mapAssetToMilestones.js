@@ -5,8 +5,8 @@ import { mapTwoAtTime, isVaccine, addToDate } from 'utils/utils'
 
 const { skipped } = status
 
-const filterAndSortMilestones = milestones =>
-  milestones
+export const filterAndSortMilestones = milestones =>
+  [...milestones]
     .filter(({ status }) => status !== skipped)
     .sort(
       ({ name: nameA }, { name: nameB }) =>
