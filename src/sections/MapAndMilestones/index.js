@@ -1,44 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Tabs from '../../components/Tabs'
 import Map from '../../components/Map'
 import Tile from '../../components/Tile/Tile'
 import styled from 'styled-components'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { Charts } from 'sections/Charts'
 import { howYouCanHelpUrl } from 'constants/config'
+import { Button, Dialog, DialogTitle } from '@material-ui/core'
+import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 
 const MapDiv = styled.div`
   width: 100%;
   height: 65vh;
 `
-const StyledAccordion = styled(AccordionSummary)`
+const StyledInstructions = styled.div`
   background-color: #25272a !important;
   color: var(--font-color) !important;
+  padding: 0.3em 1em;
+  margin-bottom: 0.5em;
 `
 
-const StyledAccordionDetails = styled(AccordionDetails)`
-  background-color: #25272a !important;
-  color: var(--font-color) !important;
+const StyledImg = styled.img`
+  height: 100%;
+  width: 100%;
 `
 
-const HowYouCanHelp = () => (
-  <Accordion>
-    <StyledAccordion
-      expandIcon={<ExpandMoreIcon color='primary' />}
-      aria-controls='panel1a-content'
-      id='panel1a-header'
-    >
-      <div>
-        Are you interested in potentially volunteering for a COVID-19 trial?
-      </div>
-    </StyledAccordion>
-    <StyledAccordionDetails>
+const HowYouCanHelp = () => {
+  const [exampleOpen, setExampleOpen] = useState(false)
+  return (
+    <StyledInstructions>
       <div style={{ textAlign: 'left' }}>
+        <p>
+          Are you interested in potentially volunteering for a COVID-19 trial?
+        </p>
         <ol>
           <li>
             In the map below, click on a pin near you to find a hospital or
@@ -63,8 +58,7 @@ const HowYouCanHelp = () => (
           <a href={howYouCanHelpUrl} rel='noopener noreferrer' target='_blank'>
             How You Can Help page
           </a>
-        </p>
-        <p>
+          <br />
           If you are in the US make sure to complete this{' '}
           <a
             href='https://www.coronaviruspreventionnetwork.org/clinical-study-volunteer/'
@@ -73,8 +67,7 @@ const HowYouCanHelp = () => (
           >
             NIH form
           </a>
-        </p>
-        <p>
+          <br />
           If you are in the UK, complete this{' '}
           <a
             href='https://www.nhs.uk/conditions/coronavirus-covid-19/research/coronavirus-vaccine-research/'
@@ -84,10 +77,28 @@ const HowYouCanHelp = () => (
             NHS form
           </a>
         </p>
+        <Button
+          onClick={() => setExampleOpen(true)}
+          variant='contained'
+          color='primary'
+        >
+          See an Example
+        </Button>
+        <Dialog
+          maxWidth='lg'
+          onClose={() => setExampleOpen(false)}
+          open={exampleOpen}
+        >
+          <DialogTitle>How to Volunteer</DialogTitle>
+          <StyledImg
+            src={howToVolunteerExampleGif}
+            alt='How to volunteer example gif'
+          />
+        </Dialog>
       </div>
-    </StyledAccordionDetails>
-  </Accordion>
-)
+    </StyledInstructions>
+  )
+}
 
 const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
   const tabs = [
