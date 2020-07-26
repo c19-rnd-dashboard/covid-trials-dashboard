@@ -43,13 +43,19 @@ const Navbar = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
+            <S.Link target='_blank' href={howYouCanHelpUrl}>
+              Why and How to Volunteer
+            </S.Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
             <S.Link target='_blank' href={faqUrl}>
               FAQ
             </S.Link>
           </MenuItem>
+
           <MenuItem onClick={handleClose}>
-            <S.Link target='_blank' href={howYouCanHelpUrl}>
-              How you can help
+            <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
+              Vaccine Trials Summary
             </S.Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
@@ -57,28 +63,23 @@ const Navbar = () => {
               Contact Us
             </S.Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
-              Vaccine R&D Status
-            </S.Link>
-          </MenuItem>
         </Menu>
       </S.MobileNavbar>
       <S.Navbar>
+        <S.Link target='_blank' href={howYouCanHelpUrl}>
+          Why and How to Volunteer
+        </S.Link>
+        <S.Divider>|</S.Divider>
         <S.Link target='_blank' href={faqUrl}>
           FAQ
         </S.Link>
         <S.Divider>|</S.Divider>
-        <S.Link target='_blank' href={howYouCanHelpUrl}>
-          How you can help
+        <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
+          Vaccine Trials Summary
         </S.Link>
         <S.Divider>|</S.Divider>
         <S.Link target='_blank' href={contactUsUrl}>
           Contact Us
-        </S.Link>
-        <S.Divider>|</S.Divider>
-        <S.Link target='_blank' href={vaccineStatusSummaryUrl}>
-          Vaccine R&D Status
         </S.Link>
       </S.Navbar>
     </S.Wrapper>
