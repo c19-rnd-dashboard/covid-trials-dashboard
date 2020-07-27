@@ -40,7 +40,7 @@ const Treatments = ({ treatments }) => {
             <Tile header='Total Treatment Products'>
               {treatments.length || '...'}
             </Tile>
-            <Tile>
+            <Tile header='Filter By'>
               <FilterDropdown
                 label='Accepting Healthy Volunteers'
                 filters={uniqueHealthyVolunteers}

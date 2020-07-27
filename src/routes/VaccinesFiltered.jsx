@@ -41,7 +41,7 @@ const Vaccines = ({ vaccines }) => {
             <Tile header='Total Vaccine Products'>
               {filteredAssets.length || '...'}
             </Tile>
-            <Tile>
+            <Tile header='Filter By'>
               <FilterDropdown
                 label='Accepting Healthy Volunteers'
                 filters={uniqueHealthyVolunteers}
