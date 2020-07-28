@@ -20,8 +20,8 @@ export const mapTwoAtTime = (fn, xs) => {
   for (let i = 0; i < xs.length - 1; i++) {
     const head = xs[i]
     const subHead = xs[i + 1]
-    const [first] = fn(head, subHead)
-    buffer = [...buffer, first]
+    const [first, second] = fn(head, subHead)
+    buffer = [...buffer.slice(0, -1), first, second]
   }
   return buffer
 }

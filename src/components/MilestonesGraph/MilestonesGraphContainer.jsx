@@ -10,7 +10,6 @@ import {
   Nothing,
   Just,
 } from 'sanctuary'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
 import { status } from './constants'
