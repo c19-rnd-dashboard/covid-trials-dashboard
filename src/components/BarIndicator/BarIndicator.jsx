@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Indicator, Dot, Label } from './styles'
 
 const propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   length: PropTypes.number,
 }
 

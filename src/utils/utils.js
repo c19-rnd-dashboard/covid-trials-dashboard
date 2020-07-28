@@ -6,13 +6,24 @@ export const log = tag => value => {
   return value
 }
 
+// export const mapTwoAtTime = (fn, xs) => {
+//   const [head, subHead, ...rest] = xs
+//   if (!head) {
+//     return []
+//   }
+//   const [first, second] = fn(head, subHead)
+//   return [first, ...mapTwoAtTime(fn, [second, ...rest])]
+// }
+
 export const mapTwoAtTime = (fn, xs) => {
-  const [head, subHead, ...rest] = xs
-  if (!head) {
-    return []
+  let buffer = []
+  for (let i = 0; i < xs.length - 1; i++) {
+    const head = xs[i]
+    const subHead = xs[i + 1]
+    const [first] = fn(head, subHead)
+    buffer = [...buffer, first]
   }
-  const [first, second] = fn(head, subHead)
-  return [first, ...mapTwoAtTime(fn, [second, ...rest])]
+  return buffer
 }
 
 export const isVaccine = ({ interventionType = '' }) =>
