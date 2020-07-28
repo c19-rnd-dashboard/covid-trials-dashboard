@@ -27,3 +27,6 @@ export const GOOGLE_ANALYTICS_TRACKING_ID =
 export const vaccineStatusSummaryUrl =
   process.env.REACT_APP_VACCINE_STATUS_SUMMARY_URL ||
   'https://docs.google.com/document/d/e/2PACX-1vRhqY4CdpHGn5wS8L3-P6f3nXPQ4PAk2iIGz8Pa9y7r9PH2n6tZIsipy6-3weYM1PiFs5i9p-ivNwL-/pub'
+
+export const useHardcodeData =
+  process.env.REACT_APP_USE_HARDCODE_DATA === 'true'

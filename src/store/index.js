@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { get } from 'axios'
-import { apiUrl } from '../constants/config'
+import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
 import { isVaccine } from 'utils/utils'
 import ReactGA from 'react-ga'
@@ -62,7 +62,7 @@ const StateProvider = ({ children }) => {
     dispatch({
       type: 'fetchData',
     })
-    if (process.env.NODE_ENV !== 'production-patch') {
+    if (process.env.NODE_ENV !== 'development' || useHardcodeData) {
       const splitData = splitVaccinesAndTreatments(assets)
       dispatch({ type: 'fetchDataSuccess', payload: splitData })
     } else {
