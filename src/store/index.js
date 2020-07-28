@@ -62,7 +62,7 @@ const StateProvider = ({ children }) => {
     dispatch({
       type: 'fetchData',
     })
-    if (process.env.NODE_ENV !== 'development' || useHardcodeData) {
+    if (process.env.NODE_ENV !== 'production' || useHardcodeData) {
       const splitData = splitVaccinesAndTreatments(assets)
       dispatch({ type: 'fetchDataSuccess', payload: splitData })
     } else {
