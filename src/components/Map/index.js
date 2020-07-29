@@ -28,7 +28,7 @@ const Map = ({ pins, handleSelectedId }) => {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             altitude: location.coords.altitude,
-            zoom: 4,
+            zoom: 11,
           })
         },
         error => {
