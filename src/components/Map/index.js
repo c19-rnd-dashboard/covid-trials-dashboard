@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Pins from './Pins'
 import PopUpDisplay from './Popup'
@@ -11,14 +11,33 @@ import { mapboxApiKey } from '../../constants/config'
 import { FullscreenControlDiv, NavDiv, ScaleControlDiv } from './styles'
 
 const Map = ({ pins, handleSelectedId }) => {
+  const mapRef = useRef(null)
   const [popUp, setPopUp] = useState()
   const [viewport, setViewport] = useState({
     latitude: 40.67,
     longitude: -73.94,
-    zoom: 0.3,
+    zoom: 0.8,
     bearing: 0,
     pitch: 0,
   })
+
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && 'geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        location => {
+          setViewport({
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            altitude: location.coords.altitude,
+            zoom: 4,
+          })
+        },
+        error => {
+          console.log('User did not allow location', error)
+        }
+      )
+    }
+  }, [])
 
   const onClose = () => {
     setPopUp(null)
@@ -33,6 +52,7 @@ const Map = ({ pins, handleSelectedId }) => {
   return (
     <ReactMapGL
       {...viewport}
+      ref={mapRef}
       onViewportChange={nextViewport => setViewport(nextViewport)}
       mapStyle='mapbox://styles/mapbox/dark-v10?optimize=true'
       mapboxApiAccessToken={mapboxApiKey}
