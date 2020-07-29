@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 export const InfiniteScrollWithData = ({
   data,
   component,
-  initialLength = 3,
-  step = 2,
+  initialLength,
+  step,
 }) => {
   const Component = component
   const [viewable, setViewable] = useState(data.slice(0, initialLength))
@@ -27,4 +28,16 @@ export const InfiniteScrollWithData = ({
       {viewable.map(Component)}
     </InfiniteScroll>
   )
+}
+
+InfiniteScrollWithData.propTypes = {
+  data: PropTypes.array.isRequired,
+  component: PropTypes.node.isRequired,
+  initialLength: PropTypes.number,
+  step: PropTypes.number,
+}
+
+InfiniteScrollWithData.defaultProps = {
+  initialLength: 10,
+  step: 10,
 }

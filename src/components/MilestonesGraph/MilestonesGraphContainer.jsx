@@ -1,15 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  pipe,
-  find,
-  chain,
-  map,
-  fromMaybe,
-  last,
-  Nothing,
-  Just,
-} from 'sanctuary'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
 import { status } from './constants'
@@ -19,14 +9,15 @@ import { isValidDate } from 'utils/utils'
 import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
 
-const getMarketDate = pipe([
-  ({ milestones }) => milestones,
-  find(({ name } = {}) => name === 'Optimistic'),
-  map(({ values }) => values),
-  chain(last),
-  chain(({ start }) => (isValidDate(start) ? Just(start) : Nothing)),
-  fromMaybe(''),
-])
+export const getMarketDate = ({ milestones } = {}) => {
+  const { values } =
+    milestones.find(({ name } = {}) => name === 'Optimistic') || {}
+  if (!values) {
+    return ''
+  }
+  const { start } = values[values.length - 1]
+  return isValidDate(start) ? start : ''
+}
 
 const { skipped } = status
 
@@ -52,9 +43,11 @@ export const MilestonesGraphContainer = ({
       })
   }, [pins])
   const { productId: selectedProductId } = selectedAsset || {}
+  // eslint-disable-next-line react/prop-types
   const GraphWrapper = ({ milestones = [], preferredName, productId }) => (
     <WrapperDiv key={productId} onClick={() => handleSelectedId(productId)}>
       <Title active={selectedProductId === productId}>
+        {/* eslint-disable-next-line react/prop-types */}
         {preferredName.replace(/_/g, ' ')}
       </Title>
       <MilestonesGraph milestones={milestones} />
@@ -63,7 +56,12 @@ export const MilestonesGraphContainer = ({
   return (
     <>
       <Legend />
-      <InfiniteScrollWithData component={GraphWrapper} data={milestones} />
+      <InfiniteScrollWithData
+        component={GraphWrapper}
+        data={milestones}
+        initialLength={10}
+        step={10}
+      />
     </>
   )
 }

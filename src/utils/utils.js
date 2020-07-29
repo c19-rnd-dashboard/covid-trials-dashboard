@@ -6,24 +6,13 @@ export const log = tag => value => {
   return value
 }
 
-// export const mapTwoAtTime = (fn, xs) => {
-//   const [head, subHead, ...rest] = xs
-//   if (!head) {
-//     return []
-//   }
-//   const [first, second] = fn(head, subHead)
-//   return [first, ...mapTwoAtTime(fn, [second, ...rest])]
-// }
-
 export const mapTwoAtTime = (fn, xs) => {
-  let buffer = []
-  for (let i = 0; i < xs.length - 1; i++) {
-    const head = xs[i]
-    const subHead = xs[i + 1]
-    const [first, second] = fn(head, subHead)
-    buffer = [...buffer.slice(0, -1), first, second]
+  const [head, subHead, ...rest] = xs
+  if (!head) {
+    return []
   }
-  return buffer
+  const [first, second] = fn(head, subHead)
+  return [first, ...mapTwoAtTime(fn, [second, ...rest])]
 }
 
 export const isVaccine = ({ interventionType = '' }) =>
@@ -52,3 +41,15 @@ export const converCountIntoChartData = pipe([
     value: value,
   })),
 ])
+
+export const profileTime = fn => {
+  const start = new Date()
+  const result = fn()
+  const end = new Date()
+  return {
+    result,
+    start,
+    end,
+    duration: end.getTime() - start.getTime(),
+  }
+}
