@@ -10,12 +10,15 @@ export default styled.div`
   align-items: flex-end;
 `
 
-export const Segment = styled.div`
+export const Segment = styled.div.attrs(props => ({
+  style: {
+    backgroundColor: phaseColor[props.name],
+    width: props.value,
+  },
+}))`
   position: relative;
   height: 100%;
   &:hover {
     border: solid white 1px;
   }
-  background-color: ${({ name }) => phaseColor[name]};
-  width: ${({ value }) => value};
 `

@@ -41,3 +41,15 @@ export const converCountIntoChartData = pipe([
     value: value,
   })),
 ])
+
+export const profileTime = fn => {
+  const start = new Date()
+  const result = fn()
+  const end = new Date()
+  return {
+    result,
+    start,
+    end,
+    duration: end.getTime() - start.getTime(),
+  }
+}
