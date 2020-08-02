@@ -51,7 +51,10 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
       <Checkbox
         onChange={handleSelected}
         name={suggestion}
-        checked={selected.includes(suggestion)}
+        checked={
+          selected.includes(suggestion) ||
+          selected.includes(suggestion.toLowerCase())
+        }
         style={{ paddingRight: '5px' }}
       />
       <div>{shortenName(suggestion)}</div>
