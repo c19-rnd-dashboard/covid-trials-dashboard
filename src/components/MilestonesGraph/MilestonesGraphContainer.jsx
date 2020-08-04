@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
-import { status } from './constants'
+import { status, phasesInOrder } from './constants'
 import { WrapperDiv, Title } from './MilestonesGraphContainer.styles'
 import Legend from '../Legend/Legend'
 import { isValidDate } from 'utils/utils'
@@ -10,13 +10,12 @@ import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
 
 export const getMarketDate = ({ milestones } = {}) => {
-  const { values } =
-    milestones.find(({ name } = {}) => name === 'Optimistic') || {}
+  const { values } = milestones.find(({ name } = {}) => name === 'Actual') || {}
   if (!values) {
     return ''
   }
-  const { start } = values[values.length - 1]
-  return isValidDate(start) ? start : ''
+  const { start, name } = values[values.length - 1] || {}
+  return { start, name }
 }
 
 const { skipped } = status
@@ -39,7 +38,20 @@ export const MilestonesGraphContainer = ({
       .sort((a, b) => {
         const fst = getMarketDate(a)
         const snd = getMarketDate(b)
-        return new Date(fst).getTime() - new Date(snd).getTime()
+        const fstOrder = phasesInOrder.indexOf(fst.name)
+        const sndOrder = phasesInOrder.indexOf(snd.name)
+        if (fstOrder > sndOrder) {
+          return -1
+        } else if (fstOrder < sndOrder) {
+          return 1
+        } else {
+          if (!isValidDate(fst.start)) {
+            return 1
+          } else if (!isValidDate(snd.start)) {
+            return -1
+          }
+          return new Date(fst.start).getTime() - new Date(snd.start).getTime()
+        }
       })
   }, [pins])
   const { productId: selectedProductId } = selectedAsset || {}
