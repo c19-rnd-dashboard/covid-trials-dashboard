@@ -27,6 +27,7 @@ export const MilestonesGraphContainer = ({
 }) => {
   const milestones = useMemo(() => {
     return pins
+      .filter(({ preferredName }) => !RegExp('BCG').test(preferredName)) // quick fix to hide a specific product
       .filter(
         ({ milestones = [] }) =>
           milestones.filter(({ status }) => status !== skipped).length > 0
