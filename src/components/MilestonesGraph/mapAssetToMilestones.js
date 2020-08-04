@@ -50,6 +50,7 @@ const mapResultToMilestoneStructure = ms =>
     ...m,
     values: m.values.map(({ name, percentage, start, end }) => ({
       className: name,
+      name,
       value: `${percentage}%`,
       start: moment(start).toISOString(),
       end: moment(end).toISOString(),
