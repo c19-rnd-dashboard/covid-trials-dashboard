@@ -1,3 +1,4 @@
+import LogRocket from 'logrocket'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -5,6 +6,9 @@ import { QueryParamProvider } from 'use-query-params'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+if (process.env.NODE_ENV === 'production') {
+  LogRocket.init(process.env.REACT_APP_LOG_ROCKET_KEY)
+}
 
 ReactDOM.render(
   <Router>
