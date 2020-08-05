@@ -40,7 +40,7 @@ const chartList = [
       })
     },
     chartAttribites: {
-      colors: ({ data: { id } }) => {
+      colors: ({ data: { id } = {} } = {}) => {
         const color = phaseColor[id] || 'white'
         return color
       },
