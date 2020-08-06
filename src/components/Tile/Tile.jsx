@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as S from './styles'
+import { CardStyled } from './styles'
+import { Typography, CardContent } from '@material-ui/core'
 
 const Tile = props => {
   const { header, children, ...rest } = props
   return (
-    <S.Title {...rest}>
-      <S.Header>{header}</S.Header>
-      <S.Content>{children}</S.Content>
-    </S.Title>
+    <CardStyled {...rest}>
+      <CardContent>
+        <Typography>{header}</Typography>
+        <div>{children}</div>
+      </CardContent>
+    </CardStyled>
   )
 }
 
