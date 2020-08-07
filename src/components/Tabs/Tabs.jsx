@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import * as S from './styles'
+import { Tab } from '@material-ui/core'
+import { TabsStyles } from './styles'
 
 const propTypes = {
   tabs: PropTypes.arrayOf(
@@ -11,41 +12,26 @@ const propTypes = {
   ).isRequired,
 }
 
-const Tabs = ({ tabs }) => {
+const TabsComponent = ({ tabs = [] }) => {
   const [openTabIndex, setOpenTabIndex] = useState(0)
   const componentShowing = tabs[openTabIndex] && tabs[openTabIndex].content
+  const handleChange = (event, newValue) => setOpenTabIndex(newValue)
   return (
-    <S.TabArea>
-      <S.TabTitleSection>
-        {tabs.map((tab, tabIndex) => {
-          const { title } = tab
-          return (
-            <div key={title}>
-              {tabIndex === openTabIndex ? (
-                <S.SelectedTab
-                  data-test-id='selected'
-                  onClick={() => setOpenTabIndex(tabIndex)}
-                >
-                  <S.SelectedTabName>{title}</S.SelectedTabName>
-                </S.SelectedTab>
-              ) : (
-                <S.TabName
-                  data-test-id='not-selected'
-                  key={title}
-                  onClick={() => setOpenTabIndex(tabIndex)}
-                >
-                  {title}
-                </S.TabName>
-              )}
-            </div>
-          )
-        })}
-      </S.TabTitleSection>
-      <div data-test-id='component-showing'>{componentShowing}</div>
-    </S.TabArea>
+    <>
+      <TabsStyles
+        value={openTabIndex}
+        onChange={handleChange}
+        aria-label='Visualization selector'
+      >
+        {tabs.map(({ title }) => (
+          <Tab key={title} label={title} />
+        ))}
+      </TabsStyles>
+      {componentShowing}
+    </>
   )
 }
 
-Tabs.propTypes = propTypes
+TabsComponent.propTypes = propTypes
 
-export default Tabs
+export default TabsComponent

@@ -1,26 +1,6 @@
 import styled from 'styled-components'
+import { Tabs } from '@material-ui/core'
 
-export const TabArea = styled.div`
-  padding: 10px;
-  margin: 2px;
-`
-export const TabTitleSection = styled.div`
-  display: flex;
-  padding: 10px;
-  margin: 2px;
-`
-export const TabName = styled.div`
-  padding-right: 20px;
-  cursor: pointer;
-`
-
-export const SelectedTab = styled.div`
-  padding-right: 14px;
-`
-
-export const SelectedTabName = styled.div`
-  padding-bottom: 3px;
-  padding-right: 4px;
-  border-bottom: 2px solid #119c91;
-  border-right: 2px solid #119c91;
+export const TabsStyles = styled(Tabs)`
+  margin: 0.5rem;
 `
