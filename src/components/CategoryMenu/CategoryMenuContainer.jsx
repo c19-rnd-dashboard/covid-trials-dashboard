@@ -19,9 +19,9 @@ const categoryOptions = [
 ]
 
 export const Container = ({ location, history }) => {
-  const selectedCategory = categoryOptions.find(
-    ({ route }) => route === location.pathname
-  )
+  const selectedCategory =
+    categoryOptions.find(({ route }) => route === location.pathname) ||
+    categoryOptions[0]
   const handleChange = optionLabel => {
     const selectedRoute = categoryOptions.find(
       ({ label }) => label === optionLabel

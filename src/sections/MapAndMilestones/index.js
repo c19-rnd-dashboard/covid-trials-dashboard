@@ -15,8 +15,6 @@ const MapDiv = styled.div`
   height: 65vh;
 `
 const StyledInstructions = styled.div`
-  background-color: #25272a !important;
-  color: var(--font-color) !important;
   padding: 0.3em 1em;
   margin-bottom: 0.5em;
 `

@@ -2,15 +2,11 @@ import styled from 'styled-components'
 
 export const TabArea = styled.div`
   padding: 10px;
-  background-color: var(--tile-bg);
-  color: var(--text-color);
   margin: 2px;
 `
 export const TabTitleSection = styled.div`
   display: flex;
   padding: 10px;
-  background-color: var(--tile-bg);
-  color: var(--text-color);
   margin: 2px;
 `
 export const TabName = styled.div`
