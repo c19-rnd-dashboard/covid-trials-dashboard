@@ -3,7 +3,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Navbar from './components/Navbar/Navbar'
-import SubNavbar from './components/SubNavbar/SubNavbar'
 import { StateProvider } from './store'
 import Router from './routes'
 import ReactGA from 'react-ga'
@@ -30,7 +29,6 @@ function App() {
       <CssBaseline />
       <StateProvider>
         <Navbar />
-        <SubNavbar />
         <Content>
           <Router />
         </Content>
