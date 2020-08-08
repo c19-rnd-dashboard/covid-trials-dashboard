@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Pins from './Pins'
 import PopUpDisplay from './Popup'
@@ -9,8 +9,12 @@ import ReactMapGL, {
 } from 'react-map-gl'
 import { mapboxApiKey } from '../../constants/config'
 import { FullscreenControlDiv, NavDiv, ScaleControlDiv } from './styles'
+import { store } from '../../store'
 
 const Map = ({ pins, handleSelectedId }) => {
+  const {
+    state: { prefersDarkMode },
+  } = useContext(store) || { state: { prefersDarkMode: false } }
   const [popUp, setPopUp] = useState()
   const [viewport, setViewport] = useState({
     latitude: 40.67,
@@ -52,7 +56,9 @@ const Map = ({ pins, handleSelectedId }) => {
     <ReactMapGL
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapStyle='mapbox://styles/mapbox/dark-v10?optimize=true'
+      mapStyle={`mapbox://styles/mapbox/${
+        prefersDarkMode ? 'dark' : 'light'
+      }-v10?optimize=true`}
       mapboxApiAccessToken={mapboxApiKey}
       width='100%'
       height='100%'
