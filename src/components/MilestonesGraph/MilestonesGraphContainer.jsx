@@ -29,7 +29,7 @@ export const MilestonesGraphContainer = ({
 }) => {
   const [phase, setPhase] = useState(null)
   const handlePhaseSelector = selectedPhase => {
-    if (phase && phase.id === selectedPhase) {
+    if (phase && phase.id === selectedPhase.id) {
       return setPhase(null)
     } else {
       setPhase(selectedPhase)
