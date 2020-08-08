@@ -8,8 +8,25 @@ import {
   ListItemText,
   ListItemIcon,
 } from '@material-ui/core'
+import Brightness5Icon from '@material-ui/icons/Brightness5'
+import Brightness2Icon from '@material-ui/icons/Brightness2'
 import MenuIcon from '@material-ui/icons/Menu'
 import { drawerLinks } from './DrawerLinks'
+import { ThemeModeSelectorConsumerPropTypes } from 'components/ThemeModeSelector/ThemeModeSelector'
+import { ThemeModeSelector } from 'components/ThemeModeSelector/ThemeModeSelector'
+
+const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => (
+  <ListItem button onClick={onChange}>
+    <ListItemIcon>
+      {prefersDarkMode ? <Brightness2Icon /> : <Brightness5Icon />}
+    </ListItemIcon>
+    <ListItemText primary={`${prefersDarkMode ? 'Dark' : 'Light'} theme`} />
+  </ListItem>
+)
+
+ThemeToogleConsumerListItem.propTypes = ThemeModeSelectorConsumerPropTypes
+
+const ThemeToogleListItem = ThemeModeSelector(ThemeToogleConsumerListItem)
 
 export const CustomDrawer = () => {
   const [open, setOpen] = useState(false)
@@ -38,6 +55,7 @@ export const CustomDrawer = () => {
       >
         <div>
           <List>
+            <ThemeToogleListItem />
             {drawerLinks.map(({ name, url, Icon }) => (
               <ListItem
                 button

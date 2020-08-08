@@ -5,6 +5,7 @@ import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
 import { isVaccine } from 'utils/utils'
 import ReactGA from 'react-ga'
+import { useMediaQuery } from '@material-ui/core'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -25,6 +26,7 @@ const initialState = {
   loading: false,
   treatments: [],
   vaccines: [],
+  prefersDarkMode: true,
 }
 const store = createContext()
 const { Provider } = store
@@ -47,6 +49,8 @@ const StateProvider = ({ children }) => {
       }
     case 'fetchDataFailure':
       return { ...state, error: action.payload, loading: false }
+    case 'tooglePrefersDarkMode':
+      return { ...state, prefersDarkMode: !state.prefersDarkMode }
     default:
       throw new Error()
     }
@@ -58,7 +62,12 @@ const StateProvider = ({ children }) => {
     return { treatments, vaccines }
   }
 
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+
   useEffect(() => {
+    if (prefersDarkMode !== initialState.prefersDarkMode) {
+      dispatch({ type: 'tooglePrefersDarkMode' })
+    }
     dispatch({
       type: 'fetchData',
     })
@@ -77,7 +86,7 @@ const StateProvider = ({ children }) => {
           dispatch({ type: 'fetchDataFailure', payload: e })
         })
     }
-  }, [dispatch])
+  }, [dispatch, prefersDarkMode])
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
 
