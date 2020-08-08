@@ -8,6 +8,8 @@ import Legend from '../Legend/Legend'
 import { isValidDate } from 'utils/utils'
 import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
+import Tile from 'components/Tile/Tile'
+import { useState } from 'react'
 
 export const getMarketDate = ({ milestones } = {}) => {
   const { values } = milestones.find(({ name } = {}) => name === 'Actual') || {}
@@ -25,6 +27,14 @@ export const MilestonesGraphContainer = ({
   handleSelectedId,
   selectedAsset = {},
 }) => {
+  const [phase, setPhase] = useState(null)
+  const handlePhaseSelector = selectedPhase => {
+    if (phase && phase.id === selectedPhase) {
+      return setPhase(null)
+    } else {
+      setPhase(selectedPhase)
+    }
+  }
   const milestones = useMemo(() => {
     return pins
       .filter(({ preferredName }) => !RegExp('BCG').test(preferredName)) // quick fix to hide a specific product
@@ -67,15 +77,15 @@ export const MilestonesGraphContainer = ({
     </WrapperDiv>
   )
   return (
-    <>
-      <Legend />
+    <Tile>
+      <Legend onChange={handlePhaseSelector} selected={phase} />
       <InfiniteScrollWithData
         component={GraphWrapper}
         data={milestones}
         initialLength={10}
         step={10}
       />
-    </>
+    </Tile>
   )
 }
 

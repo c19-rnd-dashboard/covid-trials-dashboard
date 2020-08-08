@@ -13,7 +13,7 @@ const propTypes = {
 }
 
 const TabsComponent = ({ tabs = [] }) => {
-  const [openTabIndex, setOpenTabIndex] = useState(0)
+  const [openTabIndex, setOpenTabIndex] = useState(1)
   const componentShowing = tabs[openTabIndex] && tabs[openTabIndex].content
   const handleChange = (event, newValue) => setOpenTabIndex(newValue)
   return (
