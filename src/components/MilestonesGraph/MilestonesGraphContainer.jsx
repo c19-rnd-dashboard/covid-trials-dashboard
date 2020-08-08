@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
 import { status, phasesInOrder } from './constants'
-import { WrapperDiv, Title } from './MilestonesGraphContainer.styles'
+import {
+  WrapperDiv,
+  Title,
+  StickyPaper,
+} from './MilestonesGraphContainer.styles'
 import Legend from '../Legend/Legend'
 import { isValidDate } from 'utils/utils'
 import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
-import Tile from 'components/Tile/Tile'
 import { useState } from 'react'
+import { Paper } from '@material-ui/core'
 
 export const getMarketDate = ({ milestones } = {}) => {
   const { values } = milestones.find(({ name } = {}) => name === 'Actual') || {}
@@ -77,15 +81,17 @@ export const MilestonesGraphContainer = ({
     </WrapperDiv>
   )
   return (
-    <Tile>
-      <Legend onChange={handlePhaseSelector} selected={phase} />
+    <Paper>
+      <StickyPaper>
+        <Legend onChange={handlePhaseSelector} selected={phase} />
+      </StickyPaper>
       <InfiniteScrollWithData
         component={GraphWrapper}
         data={milestones}
         initialLength={10}
         step={10}
       />
-    </Tile>
+    </Paper>
   )
 }
 

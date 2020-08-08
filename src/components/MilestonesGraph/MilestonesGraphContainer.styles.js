@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Paper } from '@material-ui/core'
 
 export const WrapperDiv = styled.div`
   margin-bottom: 4em;
@@ -14,4 +15,9 @@ export const Title = styled.div`
       background: green;
       color: white;
     `}
+`
+export const StickyPaper = styled(Paper)`
+  position: sticky;
+  top: 0.25em;
+  z-index: 12;
 `
