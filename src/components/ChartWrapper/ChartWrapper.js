@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ChartCard, Title } from './CharWrapper.styles'
+import { CardContent } from '@material-ui/core'
 
 export const ChartWrapper = ({ title, children }) => (
   <ChartCard>
-    <Title>{title}</Title>
-    {children}
+    <CardContent style={{ height: '100%' }}>
+      <Title color='textSecondary'>{title}</Title>
+      {children}
+    </CardContent>
   </ChartCard>
 )
 
