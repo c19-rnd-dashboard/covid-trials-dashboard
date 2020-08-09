@@ -7,9 +7,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  title: {
+  leftSide: {
     flexGrow: 1,
-    marginLeft: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  space: {
+    marginLeft: theme.spacing(1),
+  },
+  logo: {
+    height: '2rem',
   },
 }))
 
@@ -19,10 +27,18 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar>
-          <CustomDrawer />
-          <Typography className={classes.title} variant='h6'>
-            COVID-19 R&D Dash
-          </Typography>
+          <div className={classes.leftSide}>
+            <CustomDrawer />
+            <Typography className={classes.space} variant='h6'>
+              COVID DASH{' '}
+            </Typography>
+            <img
+              className={`${classes.space} ${classes.logo}`}
+              src='logos/covidDash-FinalLogos_Mark-White.png'
+              alt='Covid Dash Logo White'
+            />
+          </div>
+
           <CategoryMenu />
         </Toolbar>
       </AppBar>
