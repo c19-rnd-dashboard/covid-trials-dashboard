@@ -50,7 +50,8 @@ const StateProvider = ({ children }) => {
     case 'fetchDataFailure':
       return { ...state, error: action.payload, loading: false }
     case 'tooglePrefersDarkMode':
-      return { ...state, prefersDarkMode: !state.prefersDarkMode }
+      return state // disabled until light theme is ready
+      // return { ...state, prefersDarkMode: !state.prefersDarkMode }
     default:
       throw new Error()
     }
