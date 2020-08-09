@@ -9,6 +9,7 @@ export const ChartCard = styled(Card)`
   padding-bottom: 1rem;
   padding-top: 1rem;
   padding-left: 1rem;
+  color: black; /* TODO: figure out a way to make this color themeable */
 `
 export const Title = styled(Typography)`
   margin-bottom: 1rem;
