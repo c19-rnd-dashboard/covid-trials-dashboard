@@ -6,7 +6,6 @@ import MapAndMilestones from '../sections/MapAndMilestones'
 import * as S from '../styles'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
 import FilterSelector from './FilterSelector'
-// import { ProdData } from '../../mocks/assets'
 
 const Vaccines = ({ vaccines }) => {
   return (

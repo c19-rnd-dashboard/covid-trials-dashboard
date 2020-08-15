@@ -140,6 +140,7 @@ const FilterSelector = ({ assets, render }) => {
         .map(asset => asset.currentStage)
         .flat(1)
         .filter(cs => !!cs)
+        .sort()
     ),
   ]
   const uniqueCountries = [
