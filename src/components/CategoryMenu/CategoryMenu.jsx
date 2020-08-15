@@ -1,7 +1,38 @@
 import React from 'react'
-import { Button, Menu, MenuItem } from '@material-ui/core'
-import PropTypes from 'prop-types'
+import { Button, makeStyles, MenuItem, Menu } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import PropTypes from 'prop-types'
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    marginRight: theme.spacing(1),
+  },
+}))
+
+export const SpreadCategoryButtons = ({ options, selected, onChange }) => {
+  const classes = useStyles()
+  const selectedProps = {
+    variant: 'contained',
+    color: 'secondary',
+  }
+  const handleClick = option => () => onChange(option)
+  const getSelectedProps = option => (selected === option ? selectedProps : {})
+  return (
+    <div>
+      {options.map(option => (
+        <Button
+          disableElevation
+          className={classes.button}
+          onClick={handleClick(option)}
+          key={option}
+          {...getSelectedProps(option)}
+        >
+          {option}
+        </Button>
+      ))}
+    </div>
+  )
+}
 
 export const CategoryMenu = ({ options, selected, onChange }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -47,15 +78,21 @@ export const CategoryMenu = ({ options, selected, onChange }) => {
   )
 }
 
-CategoryMenu.propTypes = {
+const propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.string,
   onChange: PropTypes.func,
 }
 
-CategoryMenu.defaultProps = {
+const defaultProps = {
   selected: null,
   onChange: option => {
     console.log('Option selected: ', option)
   },
 }
+
+CategoryMenu.propTypes = propTypes
+CategoryMenu.defaultProps = defaultProps
+
+SpreadCategoryButtons.propTypes = propTypes
+SpreadCategoryButtons.defaultProps = defaultProps
