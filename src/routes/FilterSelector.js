@@ -20,7 +20,8 @@ const FilterSelector = ({ assets, render }) => {
     m: withDefault(ArrayParam, []), // m denotes molecule type
     t: withDefault(ArrayParam, []), // t denotes therapeuticApproach
     r: withDefault(ArrayParam, []), // r denotes repurposed
-    st: withDefault(ArrayParam, []), // st denotes status
+    st: withDefault(ArrayParam, []), //st denotes status
+    cs: withDefault(ArrayParam, []), // cs denotes currentStage
     h: BooleanParam, // h denoted healthy volunteers
   })
   useEffect(() => {
@@ -48,6 +49,11 @@ const FilterSelector = ({ assets, render }) => {
         asset => filtersSelected.m.indexOf(asset.moleculeType) > -1
       )
     }
+    if (filtersSelected.cs.length > 0) {
+      filteredResults = filteredResults.filter(
+        asset => filtersSelected.cs.indexOf(asset.currentStage) > -1
+      )
+    } 
     if (filtersSelected.t.length > 0) {
       filteredResults = filteredResults.filter(
         asset => filtersSelected.t.indexOf(asset.therapeuticApproach) > -1
@@ -105,6 +111,7 @@ const FilterSelector = ({ assets, render }) => {
     filtersSelected.r,
     filtersSelected.st,
     filtersSelected.h,
+    filtersSelected.cs,
     filteredAssets.length,
     selectedAsset,
   ])
@@ -125,6 +132,14 @@ const FilterSelector = ({ assets, render }) => {
         .map(asset => asset.indication)
         .flat(1)
         .filter(i => !!i)
+    ),
+  ]
+  const uniqueCurrentStages = [
+    ...new Set(
+      assets
+        .map(asset => asset.currentStage)
+        .flat(1)
+        .filter(cs => !!cs)
     ),
   ]
   const uniqueCountries = [
@@ -296,6 +311,23 @@ const FilterSelector = ({ assets, render }) => {
     }
   }
 
+  const handleSelectedCurrentStage = e => {
+    if (e === 'clear') {
+      setFiltersSelected({ ...filtersSelected, cs: [] })
+    } else {
+      const { name, checked } = e.target
+      const stageCopy = [...filtersSelected.cs]
+      if (checked === true) {
+        stageCopy.push(name)
+      } else {
+        const index = filtersSelected.r.indexOf(name)
+        stageCopy.splice(index, 1)
+      }
+      setFiltersSelected({ ...filtersSelected, cs: stageCopy })
+    }
+  }
+
+
   const handleSelectedCountry = e => {
     if (e === 'clear') {
       setFiltersSelected({ ...filtersSelected, c: [] })
@@ -333,11 +365,13 @@ const FilterSelector = ({ assets, render }) => {
         uniqueRepurposed,
         uniqueHealthyVolunteers,
         uniqueStatus,
+        uniqueCurrentStages,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
         handleSelectedHealthy,
         handleSelectedCountry,
+        handleSelectedCurrentStage,
         handleSelectedIndication,
         handleSelectedMolecule,
         handleTherapeuticApproach,

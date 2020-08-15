@@ -22,11 +22,13 @@ const Vaccines = ({ vaccines }) => {
         uniqueRepurposed,
         uniqueHealthyVolunteers,
         uniqueStatus,
+        uniqueCurrentStages,
         handleSelectedName,
         handleSelectedId,
         handleSelectedSponsor,
         handleSelectedHealthy,
         handleSelectedCountry,
+        handleSelectedCurrentStage,
         handleSelectedIndication,
         handleSelectedMolecule,
         handleTherapeuticApproach,
@@ -101,6 +103,12 @@ const Vaccines = ({ vaccines }) => {
                 filters={uniqueStatus}
                 selected={filtersSelected.st}
                 handleSelected={handleSelectedStatus}
+              />
+              <FilterDropdown
+                label='Current Stage'
+                filters={uniqueCurrentStages}
+                selected={filtersSelected.cs}
+                handleSelected={handleSelectedCurrentStage}
               />
             </Tile>
           </S.Filter>
