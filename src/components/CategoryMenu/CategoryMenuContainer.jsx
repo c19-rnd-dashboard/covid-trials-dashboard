@@ -12,7 +12,7 @@ const categoryOptions = [
   },
   {
     label: 'Treatment',
-    route: '/treatment',
+    route: '/treatments',
   },
   {
     label: 'Vaccine & Treatment',
