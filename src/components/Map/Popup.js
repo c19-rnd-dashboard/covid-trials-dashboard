@@ -3,83 +3,20 @@ import PropTypes from 'prop-types'
 import { Popup } from 'react-map-gl'
 import styled from 'styled-components'
 import ReactGA from 'react-ga'
+import {
+  useTheme,
+  CardContent,
+  Card,
+  Typography,
+  CardActions,
+  Button,
+  Divider,
+  Link,
+  Box,
+} from '@material-ui/core'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 
-const StyledPopup = styled(Popup)`
-  .mapboxgl-popup-tip {
-    border-bottom-color: #656666 !important;
-  }
-  .mapboxgl-popup-content {
-    padding: 0px;
-    user-select: text;
-    cursor: text;
-  }
-  .mapboxgl-popup-close-button {
-    color: white;
-    font-size: 20px;
-  }
-`
-
-const StyledPopupInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-`
-
-const TopContainer = styled.div`
-  background-color: #656666;
-  color: white;
-  width: -webkit-fill-available;
-  text-align: left;
-  padding: 20px;
-  word-wrap: break-word;
-  max-width: 363px;
-`
-
-const DetailsContainer = styled.div`
-  background-color: #222224;
-  width: -webkit-fill-available;
-  text-align: left;
-  padding: 10px;
-  width: 383px;
-`
-
-const Key = styled.div`
-  color: #8b8c8d;
-  min-width: 40%;
-  padding-right: 4px;
-  text-align: right;
-`
-
-const Value = styled.div`
-  color: #fff;
-  min-width: 60%;
-  max-width: 280px;
-  padding-left: 4px;
-`
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10px;
-`
-
-const StyledButton = styled.button`
-  background-color: #666666;
-  color: #d2d4d5;
-  &:hover {
-    color: #fff;
-  }
-  padding: 10px;
-  border: none;
-  font-size: 14px;
-  width: 220px;
-  cursor: pointer;
-  margin-top: 10px;
-  border-radius: 2px;
-`
-
-const DontBreakOutLink = styled.a`
+const DontBreakOutLink = styled(Link)`
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -97,8 +34,41 @@ const DontBreakOutLink = styled.a`
   hyphens: auto;
 `
 
+const DisplayField = ({ label, content, bold }) => (
+  <>
+    <Typography
+      color='textSecondary'
+      style={{
+        fontSize: '0.8rem',
+      }}
+    >
+      {label}
+    </Typography>
+    <Typography
+      style={{
+        fontSize: '1rem',
+        wordBreak: 'break-word',
+      }}
+      gutterBottom
+    >
+      {bold ? <b>{content}</b> : content}
+    </Typography>
+  </>
+)
+
+DisplayField.propTypes = {
+  label: PropTypes.string,
+  content: PropTypes.node,
+  bold: PropTypes.bool,
+}
+
+const DividerWithMargin = styled(Divider)`
+  margin: 1rem 0;
+`
+
 const PopUpDisplay = ({ popupInfo, onClose }) => {
   const [learnMoreOpen, setLearnMoreOpen] = useState(false)
+  const theme = useTheme()
   const isPopupAndClicked = popupInfo && popupInfo.clickedLocation.lng
   const handleClick = () => {
     ReactGA.event({
@@ -124,6 +94,18 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
     const participation = contact[0]
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
     const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
+
+    const StyledPopup = styled(Popup)`
+      .mapboxgl-popup-content {
+        padding: 0px;
+        user-select: text;
+        cursor: text;
+      }
+      .mapboxgl-popup-close-button {
+        color: ${theme.palette.text.primary};
+        font-size: ${theme.typography.fontSize};
+      }
+    `
     return (
       <StyledPopup
         tipSize={5}
@@ -133,113 +115,108 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
         closeOnClick={false}
         onClose={onClose}
       >
-        <StyledPopupInfo>
+        <Card style={{ maxWidth: '26rem', minWidth: '20rem' }}>
           {learnMoreOpen ? (
             <>
-              <TopContainer>
+              <CardContent>
                 {participation.name && (
-                  <div style={{ fontSize: '20px', paddingBottom: '10px' }}>
-                    <b>{participation.name}</b>
-                  </div>
+                  <DisplayField label='Name' content={participation.name} />
                 )}
                 {participation.website && (
-                  <div>
-                    <div style={{ fontWeight: 'bold' }}>Website: </div>
-                    <DontBreakOutLink
-                      href={participation.website}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{ color: 'white' }}
-                    >
-                      {participation.website}
-                    </DontBreakOutLink>
-                  </div>
+                  <DisplayField
+                    label='Website'
+                    content={
+                      <Link
+                        href={participation.website}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        style={{ color: theme.palette.text.primary }}
+                      >
+                        {participation.website}
+                      </Link>
+                    }
+                  />
                 )}
-              </TopContainer>
-              <DetailsContainer>
-                <Row>
-                  <Key>Email</Key>
-                  <Value>
-                    {participation.email ? (
+                <DividerWithMargin />
+                <DisplayField
+                  label='email'
+                  content={
+                    participation.email ? (
                       <DontBreakOutLink
                         href={`mailto:${participation.email}`}
-                        style={{ color: 'white' }}
+                        style={{ color: theme.palette.text.primary }}
                       >
                         {participation.email}
                       </DontBreakOutLink>
                     ) : (
                       '__'
-                    )}
-                  </Value>
-                </Row>
-                <Row>
-                  <Key>Phone Number</Key>
-                  <Value>
-                    {participation.phone ? participation.phone : '__'}
-                  </Value>
-                </Row>
-                <Row>
-                  <Key>Notes</Key>
-                  <Value>
-                    {participation.notes ? participation.notes : '__'}
-                  </Value>
-                </Row>
-                <Row>
-                  <StyledButton onClick={handleClick}>
-                    BACK TO DETAILS
-                  </StyledButton>
-                </Row>
-              </DetailsContainer>
+                    )
+                  }
+                />
+                <DisplayField
+                  label='Phone Number'
+                  content={participation.phone}
+                />
+                <DisplayField label='Notes' content={participation.notes} />
+              </CardContent>
+              <CardActions>
+                <Button onClick={handleClick}>BACK TO DETAILS</Button>
+              </CardActions>
             </>
           ) : (
-            <>
-              <TopContainer>
-                <div style={{ fontSize: '20px' }}>
-                  Trial {sponsorPlural}: <b>{sponsorNames}</b>
-                </div>
-                <div style={{ paddingTop: '10px' }}>
-                  Product: <b>{preferredName}</b>
-                </div>
-              </TopContainer>
-              <DetailsContainer>
-                <Row>
-                  <Key>Phase</Key>
-                  <Value>{phase}</Value>
-                </Row>
-                <Row>
-                  <Key>Accepts Healthy Volunteers?</Key>
-                  <Value>
-                    {acceptsHealthySubjects === 'Yes' ? 'Yes' : 'No'}
-                  </Value>
-                </Row>
-
-                <Row>
-                  <Key>Trial Registry Link</Key>
-                  <Value>
-                    {registryLink ? (
-                      <a
-                        href={registryLink}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        style={{ color: 'white' }}
-                      >
-                        Click Here
-                      </a>
-                    ) : (
-                      '__'
-                    )}
-                  </Value>
-                </Row>
-
-                <Row>
-                  <StyledButton onClick={handleClick}>
-                    HOW TO VOLUNTEER
-                  </StyledButton>
-                </Row>
-              </DetailsContainer>
-            </>
+            <CardContent>
+              <DisplayField
+                label={`Trial ${sponsorPlural}`}
+                content={sponsorNames}
+              />
+              <DisplayField label='Product' content={preferredName} />
+              <DividerWithMargin />
+              <DisplayField label='Phase' content={phase} />
+              <DisplayField
+                label='Accepts Healthy Volunteers?'
+                content={
+                  acceptsHealthySubjects === 'Yes' ? (
+                    <Box
+                      color='success.main'
+                      style={{ display: 'flex', alignItems: 'center' }}
+                    >
+                      <CheckCircleIcon />
+                      Yes
+                    </Box>
+                  ) : (
+                    'No'
+                  )
+                }
+              />
+              <DisplayField
+                label='Trial Registry Link'
+                content={
+                  registryLink ? (
+                    <Link
+                      href={registryLink}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ color: theme.palette.text.primary }}
+                    >
+                      Click Here
+                    </Link>
+                  ) : (
+                    '__'
+                  )
+                }
+              />
+              <CardActions>
+                <Button
+                  onClick={handleClick}
+                  variant='contained'
+                  color='secondary'
+                >
+                  HOW TO VOLUNTEER
+                </Button>
+              </CardActions>
+            </CardContent>
           )}
-        </StyledPopupInfo>
+        </Card>
       </StyledPopup>
     )
   }

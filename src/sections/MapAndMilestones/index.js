@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
 import { howYouCanHelpUrl } from 'constants/config'
-import { Button, Dialog, DialogTitle } from '@material-ui/core'
+import { Button, Dialog, DialogTitle, Link } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 
 const MapDiv = styled.div`
@@ -15,8 +15,6 @@ const MapDiv = styled.div`
   height: 65vh;
 `
 const StyledInstructions = styled.div`
-  background-color: #25272a !important;
-  color: var(--font-color) !important;
   padding: 0.3em 1em;
   margin-bottom: 0.5em;
 `
@@ -55,27 +53,34 @@ const HowYouCanHelp = () => {
         </ol>
         <p>
           For more detailed instructions go to our{' '}
-          <a href={howYouCanHelpUrl} rel='noopener noreferrer' target='_blank'>
+          <Link
+            href={howYouCanHelpUrl}
+            rel='noopener noreferrer'
+            target='_blank'
+            color='secondary'
+          >
             How You Can Help page
-          </a>
+          </Link>
           <br />
           If you are in the US make sure to complete this{' '}
-          <a
+          <Link
             href='https://www.coronaviruspreventionnetwork.org/clinical-study-volunteer/'
             rel='noopener noreferrer'
             target='_blank'
+            color='secondary'
           >
             NIH form
-          </a>
+          </Link>
           <br />
           If you are in the UK, complete this{' '}
-          <a
+          <Link
             href='https://www.nhs.uk/conditions/coronavirus-covid-19/research/coronavirus-vaccine-research/'
             rel='noopener noreferrer'
             target='_blank'
+            color='secondary'
           >
             NHS form
-          </a>
+          </Link>
         </p>
         <Button
           onClick={() => setExampleOpen(true)}

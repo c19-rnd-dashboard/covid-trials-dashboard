@@ -105,7 +105,7 @@ export const Charts = ({ pins: assets }) =>
       const config =
         ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
       return (
-        <ChartWrapper key={title} title={`by ${title}`}>
+        <ChartWrapper key={title} title={`By ${title}`}>
           <ChartComponent
             data={data}
             theme={{

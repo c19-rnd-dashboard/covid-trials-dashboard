@@ -9,7 +9,6 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
   padding: 5px;
-  background-color: var(--bg);
   display: flex;
   flex-wrap: wrap;
 `

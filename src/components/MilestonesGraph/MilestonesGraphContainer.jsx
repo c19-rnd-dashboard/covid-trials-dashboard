@@ -3,11 +3,17 @@ import PropTypes from 'prop-types'
 import { MilestonesGraph } from './MilestonesGraph'
 import { mapAssetToMilestones } from './mapAssetToMilestones'
 import { status, phasesInOrder } from './constants'
-import { WrapperDiv, Title } from './MilestonesGraphContainer.styles'
+import {
+  WrapperDiv,
+  Title,
+  StickyPaper,
+} from './MilestonesGraphContainer.styles'
 import Legend from '../Legend/Legend'
 import { isValidDate } from 'utils/utils'
 import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
+import { useState } from 'react'
+import { Paper } from '@material-ui/core'
 
 export const getMarketDate = ({ milestones } = {}) => {
   const { values } = milestones.find(({ name } = {}) => name === 'Actual') || {}
@@ -25,6 +31,14 @@ export const MilestonesGraphContainer = ({
   handleSelectedId,
   selectedAsset = {},
 }) => {
+  const [phase, setPhase] = useState(null)
+  const handlePhaseSelector = selectedPhase => {
+    if (phase && phase.id === selectedPhase.id) {
+      return setPhase(null)
+    } else {
+      setPhase(selectedPhase)
+    }
+  }
   const milestones = useMemo(() => {
     return pins
       .filter(({ preferredName }) => !RegExp('BCG').test(preferredName)) // quick fix to hide a specific product
@@ -67,15 +81,17 @@ export const MilestonesGraphContainer = ({
     </WrapperDiv>
   )
   return (
-    <>
-      <Legend />
+    <Paper>
+      <StickyPaper>
+        <Legend onChange={handlePhaseSelector} selected={phase} />
+      </StickyPaper>
       <InfiniteScrollWithData
         component={GraphWrapper}
         data={milestones}
         initialLength={10}
         step={10}
       />
-    </>
+    </Paper>
   )
 }
 
