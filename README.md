@@ -6,11 +6,11 @@ This is a dashboard UI that will compare the status of all the current vaccines,
 
 If you are new to the project please read [this](https://docs.google.com/document/d/1LHECCE-MHXc-oz3uzq4xChw0jrEKeGKIO-92n_c7e4M/edit) and fill the forms.
 
-## Trello board
+## Project board
 
-https://trello.com/b/zaSLLsjn/c19-rd-tech
+https://github.com/c19-rnd-dashboard/c19-rnd-dashboard-ui/projects/1
 
-On the trello board you can find the tickets to contribute, if you find one you want to help with assign it to yourself and move it to the `In Progress` list, so we don't step on each other.
+On the project board you can find the tickets to contribute, if you find one you want to help with assign it to yourself and move it to the `In Progress` list, so we don't step on each other.
 
 ## Source of data
 
