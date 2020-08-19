@@ -53,7 +53,7 @@ const FilterSelector = ({ assets, render }) => {
       filteredResults = filteredResults.filter(
         asset => filtersSelected.cs.indexOf(asset.currentStage) > -1
       )
-    } 
+    }
     if (filtersSelected.t.length > 0) {
       filteredResults = filteredResults.filter(
         asset => filtersSelected.t.indexOf(asset.therapeuticApproach) > -1
@@ -327,7 +327,6 @@ const FilterSelector = ({ assets, render }) => {
       setFiltersSelected({ ...filtersSelected, cs: stageCopy })
     }
   }
-
 
   const handleSelectedCountry = e => {
     if (e === 'clear') {
