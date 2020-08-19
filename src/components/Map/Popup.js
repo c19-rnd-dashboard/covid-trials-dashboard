@@ -34,8 +34,24 @@ const DontBreakOutLink = styled(Link)`
   hyphens: auto;
 `
 
-const DisplayField = ({ label, content, bold }) => (
-  <>
+const MobileOptimizedDisplay = styled.div`
+  @media only screen and (max-width: 600px) {
+    display: ${props =>
+    props.alwaysShow || props.onlyMobile ? 'initial' : 'none'};
+  }
+  @media only screen and (min-width: 601px) {
+    display: ${props => (props.onlyMobile ? 'none' : 'initial')};
+  }
+`
+
+const DisplayField = ({
+  label,
+  content,
+  bold,
+  alwaysShow = false,
+  onlyMobile = false,
+}) => (
+  <MobileOptimizedDisplay alwaysShow={alwaysShow} onlyMobile={onlyMobile}>
     <Typography
       color='textSecondary'
       style={{
@@ -53,13 +69,15 @@ const DisplayField = ({ label, content, bold }) => (
     >
       {bold ? <b>{content}</b> : content}
     </Typography>
-  </>
+  </MobileOptimizedDisplay>
 )
 
 DisplayField.propTypes = {
   label: PropTypes.string,
   content: PropTypes.node,
   bold: PropTypes.bool,
+  alwaysShow: PropTypes.bool,
+  onlyMobile: PropTypes.bool,
 }
 
 const DividerWithMargin = styled(Divider)`
@@ -94,7 +112,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
     const participation = contact[0]
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
     const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
-
+    const firstSponsor = sponsors[0] && sponsors[0].sponsorName
     const StyledPopup = styled(Popup)`
       .mapboxgl-popup-content {
         padding: 0px;
@@ -104,6 +122,17 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       .mapboxgl-popup-close-button {
         color: ${theme.palette.text.primary};
         font-size: ${theme.typography.fontSize};
+      }
+      .MuiPaper-root {
+        min-width: 10rem !important;
+      }
+      @media only screen and (max-width: 601px) {
+        .MuiPaper-root {
+          max-width: 15rem !important;
+        }
+      }
+      .MuiCardContent-root:last-child {
+        padding-bottom: 2px;
       }
     `
     return (
@@ -120,11 +149,16 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
             <>
               <CardContent>
                 {participation.name && (
-                  <DisplayField label='Name' content={participation.name} />
+                  <DisplayField
+                    alwaysShow
+                    label='Name'
+                    content={participation.name}
+                  />
                 )}
                 {participation.website && (
                   <DisplayField
                     label='Website'
+                    alwaysShow
                     content={
                       <Link
                         href={participation.website}
@@ -139,6 +173,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 )}
                 <DividerWithMargin />
                 <DisplayField
+                  alwaysShow
                   label='email'
                   content={
                     participation.email ? (
@@ -155,6 +190,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 />
                 <DisplayField
                   label='Phone Number'
+                  alwaysShow
                   content={participation.phone}
                 />
                 <DisplayField label='Notes' content={participation.notes} />
@@ -169,10 +205,16 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 label={`Trial ${sponsorPlural}`}
                 content={sponsorNames}
               />
+              <DisplayField
+                onlyMobile
+                label='Trial Sponsor'
+                content={firstSponsor}
+              />
               <DisplayField label='Product' content={preferredName} />
               <DividerWithMargin />
-              <DisplayField label='Phase' content={phase} />
+              <DisplayField label='Phase' content={phase} alwaysShow />
               <DisplayField
+                // alwaysShow
                 label='Accepts Healthy Volunteers?'
                 content={
                   acceptsHealthySubjects === 'Yes' ? (
@@ -190,6 +232,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
               />
               <DisplayField
                 label='Trial Registry Link'
+                alwaysShow
                 content={
                   registryLink ? (
                     <Link
@@ -227,7 +270,9 @@ PopUpDisplay.propTypes = {
   popupInfo: PropTypes.shape({
     chemicalName: PropTypes.string,
     currentStatus: PropTypes.string,
-    sponsors: PropTypes.arrayOf(PropTypes.shape({})),
+    sponsors: PropTypes.arrayOf(
+      PropTypes.shape({ sponsorName: PropTypes.string })
+    ),
     trialId: PropTypes.string,
     status: PropTypes.string,
     brandName: PropTypes.string,
