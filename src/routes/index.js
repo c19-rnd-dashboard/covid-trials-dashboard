@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Vaccines from './VaccinesFiltered'
+import AssetsFiltered from './AssetsFiltered'
 import { store } from '../store'
 // import { ProdData } from '../mocks/assets'
 
@@ -11,9 +11,9 @@ const Routes = () => {
     <Switch>
       <Route
         path={'/vaccines'}
-        render={() => <Vaccines vaccines={vaccines} />}
+        render={() => <AssetsFiltered assets={vaccines} title='Vaccines' />}
       />
-      <Route path={'/'} render={() => <Vaccines vaccines={vaccines} />} />
+      <Route path={'/'} render={() => <AssetsFiltered assets={vaccines} />} />
     </Switch>
   )
 }

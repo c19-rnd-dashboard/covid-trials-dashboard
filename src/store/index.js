@@ -6,6 +6,7 @@ import assets from '../mocks/assets.json'
 import { isVaccine } from 'utils/utils'
 import ReactGA from 'react-ga'
 import { useMediaQuery } from '@material-ui/core'
+import { TOGGLE_FILTER, toggleFilter } from './filters'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -51,6 +52,8 @@ const StateProvider = ({ children }) => {
     case 'tooglePrefersDarkMode':
       return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
+    case TOGGLE_FILTER:
+      return toggleFilter(state, action)
     default:
       throw new Error()
     }

@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  ListSubheader,
 } from '@material-ui/core'
 import Brightness5Icon from '@material-ui/icons/Brightness5'
 import Brightness2Icon from '@material-ui/icons/Brightness2'
@@ -14,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { drawerLinks } from './DrawerLinks'
 import { ThemeModeSelectorConsumerPropTypes } from 'components/ThemeModeSelector/ThemeModeSelector'
 import { ThemeModeSelector } from 'components/ThemeModeSelector/ThemeModeSelector'
+import { Filter } from 'components/MaterialFilter'
 
 // Theme button disabled until light theme is ready
 const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => (
@@ -30,7 +32,7 @@ ThemeToogleConsumerListItem.propTypes = ThemeModeSelectorConsumerPropTypes
 const ThemeToogleListItem = ThemeModeSelector(ThemeToogleConsumerListItem)
 
 export const CustomDrawer = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const theme = useTheme()
 
   const handleOpen = () => setOpen(true)
@@ -73,6 +75,14 @@ export const CustomDrawer = () => {
                 <ListItemText primary={name} />
               </ListItem>
             ))}
+            <ListSubheader component='div' id='nested-list-subheader'>
+              Filter by
+            </ListSubheader>
+            <Filter
+              name='Sponsor'
+              selected={['bmw']}
+              options={['bmw', 'audi', 'ferrari']}
+            />
           </List>
         </div>
       </Drawer>

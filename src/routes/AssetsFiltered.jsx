@@ -7,10 +7,10 @@ import * as S from '../styles'
 import FilterDropdown from 'components/FilterDropdown/FilterDropdown'
 import FilterSelector from './FilterSelector'
 
-const Vaccines = ({ vaccines }) => {
+const Assets = ({ assets, title }) => {
   return (
     <FilterSelector
-      assets={vaccines}
+      assets={assets}
       render={({
         uniqueNames,
         uniqueSponsors,
@@ -39,7 +39,7 @@ const Vaccines = ({ vaccines }) => {
       }) => (
         <>
           <S.Filter>
-            <Tile header='Total Vaccines'>
+            <Tile header={`Total ${title} Products`}>
               {filteredAssets.length || '...'}
             </Tile>
             <Tile header='Filter By'>
@@ -50,8 +50,8 @@ const Vaccines = ({ vaccines }) => {
                   filtersSelected.h === true
                     ? ['yes']
                     : filtersSelected.h === undefined
-                      ? []
-                      : ['no']
+                    ? []
+                    : ['no']
                 }
                 handleSelected={handleSelectedHealthy}
               />
@@ -114,7 +114,7 @@ const Vaccines = ({ vaccines }) => {
           <S.TabbedSection>
             <MapAndMilestones
               pins={filteredAssets}
-              title='Vaccine Trials'
+              title={`${title} Map`}
               handleSelectedId={handleSelectedId}
               selectedAsset={selectedAsset}
             />
@@ -122,18 +122,21 @@ const Vaccines = ({ vaccines }) => {
           <S.RightColumn>
             <Details selectedAsset={selectedAsset} />
           </S.RightColumn>
+          z
         </>
       )}
     />
   )
 }
 
-Vaccines.propTypes = {
-  vaccines: PropTypes.arrayOf(PropTypes.shape({})),
+Assets.propTypes = {
+  assets: PropTypes.arrayOf(PropTypes.shape({})),
+  title: PropTypes.string,
 }
 
-Vaccines.defaultProps = {
-  vaccines: [],
+Assets.defaultProps = {
+  assets: [],
+  title: 'Vaccines',
 }
 
-export default Vaccines
+export default Assets
