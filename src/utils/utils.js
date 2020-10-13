@@ -53,3 +53,9 @@ export const profileTime = fn => {
     duration: end.getTime() - start.getTime(),
   }
 }
+
+export const splitVaccinesAndTreatments = data => {
+  const vaccines = data.filter(isVaccine)
+  const treatments = data.filter(a => !isVaccine(a))
+  return { treatments, vaccines }
+}

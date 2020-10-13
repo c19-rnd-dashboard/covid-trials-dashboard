@@ -4,27 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { withWidth } from '@material-ui/core'
 import { SpreadCategoryButtons } from './CategoryMenu'
 import { CategoryMenu } from './CategoryMenu'
-
-const categoryOptions = [
-  // AWAITING MAKING THESE PAGES INTO ROUTES IN THE APP, OR NEED TO REFACTOR TO ACCEPT EXTERNAL LINKS
-  // {
-  //   label: 'Volunteer',
-  //   route: '/vaccine',
-  // },
-  // {
-  //   label: 'How to Volunteer',
-  //   route:
-  //     'https://docs.google.com/document/d/e/2PACX-1vTdTsgT3UinsENFQM_AKYRV9Ls-D_pPdzCsJppgwlzwq2PSFHVFgVw89dGFG2zhgYfNNqSGyf5PAkxm/pub',
-  // },
-  // {
-  //   label: 'Treatment',
-  //   route: '/treatments',
-  // },
-  // {
-  //   label: 'Vaccine & Treatment',
-  //   route: '/vt',
-  // },
-]
+import { categoryOptions } from 'routes'
 
 export const Container = ({ location, history, width }) => {
   if (categoryOptions.length === 0) return null

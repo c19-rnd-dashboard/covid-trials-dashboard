@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { get } from 'axios'
 import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
-import { isVaccine } from 'utils/utils'
 import ReactGA from 'react-ga'
 import { useMediaQuery } from '@material-ui/core'
 import { TOGGLE_FILTER, toggleFilter } from './filters'
@@ -39,30 +38,25 @@ const StateProvider = ({ children }) => {
       action: action.type,
     })
     switch (action.type) {
-    case 'fetchData':
-      return { ...state, loading: true }
-    case 'fetchDataSuccess':
-      return {
-        ...state,
-        vaccines: action.payload.vaccines,
-        loading: false,
-      }
-    case 'fetchDataFailure':
-      return { ...state, error: action.payload, loading: false }
-    case 'tooglePrefersDarkMode':
-      return state // disabled until light theme is ready
+      case 'fetchData':
+        return { ...state, loading: true }
+      case 'fetchDataSuccess':
+        return {
+          ...state,
+          assets: action.payload,
+          loading: false,
+        }
+      case 'fetchDataFailure':
+        return { ...state, error: action.payload, loading: false }
+      case 'tooglePrefersDarkMode':
+        return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
-    case TOGGLE_FILTER:
-      return toggleFilter(state, action)
-    default:
-      throw new Error()
+      case TOGGLE_FILTER:
+        return toggleFilter(state, action)
+      default:
+        throw new Error()
     }
   }, initialState)
-
-  const splitVaccinesAndTreatments = data => {
-    const vaccines = data.filter(isVaccine)
-    return { vaccines }
-  }
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
@@ -74,13 +68,11 @@ const StateProvider = ({ children }) => {
       type: 'fetchData',
     })
     if (process.env.NODE_ENV !== 'production' || useHardcodeData) {
-      const splitData = splitVaccinesAndTreatments(assets)
-      dispatch({ type: 'fetchDataSuccess', payload: splitData })
+      dispatch({ type: 'fetchDataSuccess', payload: assets })
     } else {
       get(`${apiUrl}/assets`)
         .then(({ data }) => {
-          const splitData = splitVaccinesAndTreatments(data)
-          dispatch({ type: 'fetchDataSuccess', payload: splitData })
+          dispatch({ type: 'fetchDataSuccess', payload: data })
         })
         .catch(e => {
           console.error(e)
