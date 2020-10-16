@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Route, Switch, useLocation } from 'react-router-dom'
+import React, { useContext, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import AssetsFiltered from './AssetsFiltered'
 import { store } from '../store'
 import { splitVaccinesAndTreatments } from 'utils/utils'
@@ -7,7 +7,7 @@ import { splitVaccinesAndTreatments } from 'utils/utils'
 export const categoryOptions = [
   {
     label: 'Vaccine',
-    route: '/vaccine',
+    route: '/vaccines',
   },
   {
     label: 'Treatment',
@@ -36,7 +36,9 @@ const Routes = () => {
       '/treatments': treatments,
       '/vaccines': vaccines,
     }[selectedCategory.route] || assets
-  return <AssetsFiltered assets={} title={selectedCategory.label} />
+  return (
+    <AssetsFiltered assets={assetsToRender} title={selectedCategory.label} />
+  )
 }
 
 export default Routes

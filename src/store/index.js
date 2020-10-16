@@ -52,7 +52,10 @@ const StateProvider = ({ children }) => {
         return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
       case TOGGLE_FILTER:
-        return toggleFilter(state, action)
+        return {
+          ...state,
+          filters: toggleFilter(state.filters, action),
+        }
       default:
         throw new Error()
     }
