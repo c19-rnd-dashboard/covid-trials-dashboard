@@ -41,8 +41,8 @@ const FilterDropdown = ({ label, filters, handleSelected, selected }) => {
       inputLength === 0
         ? []
         : filters.filter(
-          item => item.toLowerCase().slice(0, inputLength) === inputValue
-        )
+            item => item.toLowerCase().slice(0, inputLength) === inputValue
+          )
     )
   }
 
