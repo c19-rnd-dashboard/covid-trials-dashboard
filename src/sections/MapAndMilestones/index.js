@@ -30,76 +30,10 @@ const HowYouCanHelp = () => {
     <StyledInstructions>
       <div style={{ textAlign: 'left' }}>
         <p>
-          Are you interested in potentially volunteering for a COVID-19 trial?
+          Help save lives by volunteering for a COVID-19 vaccine or treatment trial near you!
         </p>
-        <ol>
-          <li>
-            In the map below, click on a pin near you to find a hospital or
-            clinic running a clinical trial on COVID-19.{' '}
-          </li>
-          <li>
-            If you are healthy, look under{' '}
-            <span style={{ fontWeight: 'bold' }}>
-              “Accepts Healthy Volunteers?”
-            </span>{' '}
-            and check that it says{' '}
-            <span style={{ fontWeight: 'bold' }}>Yes</span>{' '}
-          </li>
-          <li>
-            Click the{' '}
-            <span style={{ fontWeight: 'bold' }}>“How to Volunteer”</span>{' '}
-            button to find out how to potentially participate in the study.{' '}
-          </li>
-        </ol>
         <p>
-          For more detailed instructions go to our{' '}
-          <Link
-            href={howYouCanHelpUrl}
-            rel='noopener noreferrer'
-            target='_blank'
-            color='secondary'
-          >
-            How You Can Help page
-          </Link>
-          <br />
-          If you are in the US make sure to complete this{' '}
-          <Link
-            href='https://www.coronaviruspreventionnetwork.org/clinical-study-volunteer/'
-            rel='noopener noreferrer'
-            target='_blank'
-            color='secondary'
-          >
-            NIH form
-          </Link>
-          <br />
-          If you are in the UK, complete this{' '}
-          <Link
-            href='https://www.nhs.uk/conditions/coronavirus-covid-19/research/coronavirus-vaccine-research/'
-            rel='noopener noreferrer'
-            target='_blank'
-            color='secondary'
-          >
-            NHS form
-          </Link>
-        </p>
-        <Button
-          onClick={() => setExampleOpen(true)}
-          variant='contained'
-          color='primary'
-        >
-          See an Example
-        </Button>
-        <Dialog
-          maxWidth='lg'
-          onClose={() => setExampleOpen(false)}
-          open={exampleOpen}
-        >
-          <DialogTitle>How to Volunteer</DialogTitle>
-          <StyledImg
-            src={howToVolunteerExampleGif}
-            alt='How to volunteer example gif'
-          />
-        </Dialog>
+          Currently, over 200 vaccine and 500 treatment trials are desparately seeking volunteers to help scientists and doctors save lives by agreeing to receive early vaccinse and treatments. Each volunteer will have their healthcare and travel costs compensated, and may receive an additional stipend for participation — up to $1200! 
       </div>
     </StyledInstructions>
   )
@@ -151,3 +85,57 @@ MapAndMilestones.defaultProps = {
 }
 
 export default MapAndMilestones
+
+<div style={{ textAlign: 'left' }}>
+   <p>
+          For more detailed instructions go to our{' '}
+          <Link
+            href={howYouCanHelpUrl}
+            rel='noopener noreferrer'
+            target='_blank'
+            color='secondary'
+          >
+            How You Can Help page
+          </Link>
+          <br />
+          For a greater chance of being selected, make sure to complete this{' '}
+          <Link
+            href='https://www.coronaviruspreventionnetwork.org/clinical-study-volunteer/'
+            rel='noopener noreferrer'
+
+            target='_blank'
+            color='secondary'
+          >
+            NIH form
+          </Link>
+          if you're in the US, or if you are in the UK, complete this{' '}
+          <Link
+            href='https://www.nhs.uk/conditions/coronavirus-covid-19/research/coronavirus-vaccine-research/'
+            rel='noopener noreferrer'
+            target='_blank'
+            color='secondary'
+          >
+            NHS form
+          </Link>
+        </p>
+        <br/>
+        Not sure how to use this site?
+        <Button
+          onClick={() => setExampleOpen(true)}
+          variant='contained'
+          color='primary'
+        >
+          See an Example 
+        </Button>
+        <Dialog
+          maxWidth='lg'
+          onClose={() => setExampleOpen(false)}
+          open={exampleOpen}
+        >
+          <DialogTitle>How to Volunteer</DialogTitle>
+          <StyledImg
+            src={howToVolunteerExampleGif}
+            alt='How to volunteer example gif'
+          />
+        </Dialog>
+</div>
