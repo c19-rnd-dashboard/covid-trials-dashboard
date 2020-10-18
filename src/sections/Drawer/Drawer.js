@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export const CustomDrawer = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const theme = useTheme()
   const classes = useStyles()
 
