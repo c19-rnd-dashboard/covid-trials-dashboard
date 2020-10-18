@@ -1,4 +1,4 @@
-const { getFilterOptions } = require('./filterObject')
+const { getFilterOptions, filterByOptions } = require('./filterObject')
 import assets from '../mocks/assets.json'
 
 const data = [
@@ -20,7 +20,7 @@ const data = [
   },
 ]
 
-describe('Filter Options', () => {
+describe('getFilterOptions', () => {
   it('should return an object with every unique value', () => {
     const result = getFilterOptions(data)
     expect(result).toEqual({
@@ -140,5 +140,28 @@ describe('Filter Options', () => {
       motor: ['v8', 'v6'],
       battery: ['12KVA', '11KVA'],
     })
+  })
+})
+
+describe('filterByOptions', () => {
+  it('should filter by options', () => {
+    const filterOptions = {
+      brand: ['tesla'],
+    }
+    expect(filterByOptions(filterOptions)(data)).toEqual([
+      {
+        brand: 'tesla',
+        battery: '12KVA',
+      },
+      {
+        brand: 'tesla',
+        battery: '11KVA',
+      },
+    ])
+  })
+
+  it('should not filter if empty', () => {
+    const filterOptions = {}
+    expect(filterByOptions(filterOptions)(data)).toEqual(data)
   })
 })

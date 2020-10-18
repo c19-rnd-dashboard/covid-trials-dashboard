@@ -1,3 +1,5 @@
+import { isEmpty } from 'utils/utils'
+
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
 export const toggleFilter = field => value => ({
@@ -15,11 +17,18 @@ export const toggleFilterReducer = (
   ({
     [TOGGLE_FILTER]: (() => {
       const selectedValues = state[field] || []
-      return {
-        ...state,
-        [field]: selectedValues.includes(data)
-          ? selectedValues.filter(a => a !== data)
-          : selectedValues.concat(data),
+      const newValues = selectedValues.includes(data)
+        ? selectedValues.filter(a => a !== data)
+        : selectedValues.concat(data)
+      if (isEmpty(newValues)) {
+        const newState = { ...state }
+        delete newState[field]
+        return newState
+      } else {
+        return {
+          ...state,
+          [field]: newValues,
+        }
       }
     })(),
   }[type] || state)

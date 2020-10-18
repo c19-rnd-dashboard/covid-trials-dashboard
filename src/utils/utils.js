@@ -61,3 +61,8 @@ export const splitVaccinesAndTreatments = data => {
 }
 
 export const formatDateForHuman = date => new Date(date).toLocaleDateString()
+
+export const isEmpty = x =>
+  [undefined, null, ''].includes(x) ||
+  (Array.isArray(x) && x.length === 0) ||
+  (x.constructor === Object && Object.keys(x).length === 0)

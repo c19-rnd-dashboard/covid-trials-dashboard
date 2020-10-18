@@ -31,7 +31,7 @@ ThemeToogleConsumerListItem.propTypes = ThemeModeSelectorConsumerPropTypes
 const ThemeToogleListItem = ThemeModeSelector(ThemeToogleConsumerListItem)
 
 export const CustomDrawer = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const theme = useTheme()
 
   const handleOpen = () => setOpen(true)

@@ -1,3 +1,5 @@
+import { isEmpty } from './utils'
+
 const appendUnique = x => xs => (xs.includes(x) ? xs : xs.concat(x))
 
 const handleConcat = x => _xs => {
@@ -11,8 +13,6 @@ const handleConcat = x => _xs => {
 const id = a => a
 
 const mapValue = (fn = id) => x => fn(x)
-
-const isEmpty = x => [undefined, null, '', [], {}].includes(x)
 
 export const getFilterOptions = (
   data = [],
@@ -32,3 +32,11 @@ export const getFilterOptions = (
       ),
     {}
   )
+
+const matchesOptions = options => item =>
+  Object.entries(item).find(([key, value]) =>
+    (options[key] || []).includes(value)
+  )
+
+export const filterByOptions = (options = {}) => (data = []) =>
+  isEmpty(options) ? data : data.filter(matchesOptions(options))

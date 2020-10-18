@@ -24,8 +24,6 @@ describe('Filters', () => {
       sponsor: ['bmw'],
     }
 
-    expect(toggleFilterReducer(initialState, action)).toEqual({
-      sponsor: [],
-    })
+    expect(toggleFilterReducer(initialState, action)).toEqual({})
   })
 })
