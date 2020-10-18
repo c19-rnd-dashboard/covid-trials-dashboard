@@ -1,4 +1,4 @@
-import { toggleFilter, TOGGLE_FILTER } from './filters'
+import { toggleFilterReducer, TOGGLE_FILTER } from './filters'
 
 describe('Filters', () => {
   const action = {
@@ -14,7 +14,7 @@ describe('Filters', () => {
       sponsor: [],
     }
 
-    expect(toggleFilter(initialState, action)).toEqual({
+    expect(toggleFilterReducer(initialState, action)).toEqual({
       sponsor: ['bmw'],
     })
   })
@@ -24,7 +24,7 @@ describe('Filters', () => {
       sponsor: ['bmw'],
     }
 
-    expect(toggleFilter(initialState, action)).toEqual({
+    expect(toggleFilterReducer(initialState, action)).toEqual({
       sponsor: [],
     })
   })

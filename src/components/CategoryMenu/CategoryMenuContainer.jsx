@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { withWidth } from '@material-ui/core'
 import { SpreadCategoryButtons } from './CategoryMenu'
 import { CategoryMenu } from './CategoryMenu'
-import { categoryOptions } from 'routes'
+import { categoryOptions } from 'utils/useAssets'
 
 export const Container = ({ location, history, width }) => {
   if (categoryOptions.length === 0) return null

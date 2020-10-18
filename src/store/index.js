@@ -5,7 +5,7 @@ import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
 import ReactGA from 'react-ga'
 import { useMediaQuery } from '@material-ui/core'
-import { TOGGLE_FILTER, toggleFilter } from './filters'
+import { TOGGLE_FILTER, toggleFilterReducer } from './filters'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -24,8 +24,8 @@ return(
 
 const initialState = {
   loading: false,
-  treatments: [],
-  vaccines: [],
+  assets: [],
+  selectedFilters: {},
   prefersDarkMode: true,
 }
 const store = createContext()
@@ -38,26 +38,26 @@ const StateProvider = ({ children }) => {
       action: action.type,
     })
     switch (action.type) {
-      case 'fetchData':
-        return { ...state, loading: true }
-      case 'fetchDataSuccess':
-        return {
-          ...state,
-          assets: action.payload,
-          loading: false,
-        }
-      case 'fetchDataFailure':
-        return { ...state, error: action.payload, loading: false }
-      case 'tooglePrefersDarkMode':
-        return state // disabled until light theme is ready
+    case 'fetchData':
+      return { ...state, loading: true }
+    case 'fetchDataSuccess':
+      return {
+        ...state,
+        assets: action.payload,
+        loading: false,
+      }
+    case 'fetchDataFailure':
+      return { ...state, error: action.payload, loading: false }
+    case 'tooglePrefersDarkMode':
+      return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
-      case TOGGLE_FILTER:
-        return {
-          ...state,
-          filters: toggleFilter(state.filters, action),
-        }
-      default:
-        throw new Error()
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        selectedFilters: toggleFilterReducer(state.selectedFilters, action),
+      }
+    default:
+      throw new Error()
     }
   }, initialState)
 

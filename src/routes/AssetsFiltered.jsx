@@ -50,8 +50,8 @@ const Assets = ({ assets, title }) => {
                   filtersSelected.h === true
                     ? ['yes']
                     : filtersSelected.h === undefined
-                    ? []
-                    : ['no']
+                      ? []
+                      : ['no']
                 }
                 handleSelected={handleSelectedHealthy}
               />

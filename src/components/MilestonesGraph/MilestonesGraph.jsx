@@ -93,11 +93,11 @@ export const MilestonesGraph = ({ milestones }) => {
               indicator={
                 i === self.length - 1 && elapsedDays > 0
                   ? () => (
-                      <BarIndicator length={milestones.length}>
-                        <div>Elapsed Time</div>
-                        <div>{elapsedDays} days</div>
-                      </BarIndicator>
-                    )
+                    <BarIndicator length={milestones.length}>
+                      <div>Elapsed Time</div>
+                      <div>{elapsedDays} days</div>
+                    </BarIndicator>
+                  )
                   : () => {}
               }
             />

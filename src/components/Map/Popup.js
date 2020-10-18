@@ -37,7 +37,7 @@ const DontBreakOutLink = styled(Link)`
 const MobileOptimizedDisplay = styled.div`
   @media only screen and (max-width: 600px) {
     display: ${props =>
-      props.alwaysShow || props.onlyMobile ? 'initial' : 'none'};
+    props.alwaysShow || props.onlyMobile ? 'initial' : 'none'};
   }
   @media only screen and (min-width: 601px) {
     display: ${props => (props.onlyMobile ? 'none' : 'initial')};

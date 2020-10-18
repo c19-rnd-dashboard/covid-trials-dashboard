@@ -59,3 +59,5 @@ export const splitVaccinesAndTreatments = data => {
   const treatments = data.filter(a => !isVaccine(a))
   return { treatments, vaccines }
 }
+
+export const formatDateForHuman = date => new Date(date).toLocaleDateString()

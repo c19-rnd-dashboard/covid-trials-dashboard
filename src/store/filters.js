@@ -1,11 +1,25 @@
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
-export const toggleFilter = (state, { type, payload: { field, data } }) =>
+export const toggleFilter = field => value => ({
+  type: TOGGLE_FILTER,
+  payload: {
+    field,
+    data: value,
+  },
+})
+
+export const toggleFilterReducer = (
+  state = {},
+  { type, payload: { field, data } }
+) =>
   ({
-    [TOGGLE_FILTER]: {
-      ...state,
-      [field]: state[field].includes(data)
-        ? state[field].filter(a => a !== data)
-        : state[field].concat(data),
-    },
+    [TOGGLE_FILTER]: (() => {
+      const selectedValues = state[field] || []
+      return {
+        ...state,
+        [field]: selectedValues.includes(data)
+          ? selectedValues.filter(a => a !== data)
+          : selectedValues.concat(data),
+      }
+    })(),
   }[type] || state)
