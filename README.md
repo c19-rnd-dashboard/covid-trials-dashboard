@@ -1,8 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/fddbe516-12c1-4535-943a-9fa7968d3396/deploy-status)](https://app.netlify.com/sites/covid-19-treatment-dashboard/deploys)
 
-## COVID-19 Vaccines Research and Development Dashboard UI
+## COVID Trial Dash
 
-This is a dashboard UI that will compare the status of all the current vaccines, its state of development and possible dates for each milestone.
+This is an interactive map that will point volunteers to vaccine trials happening in their area. 
 
 If you are new to the project please read [this](https://docs.google.com/document/d/1LHECCE-MHXc-oz3uzq4xChw0jrEKeGKIO-92n_c7e4M/edit) and fill the forms.
 
