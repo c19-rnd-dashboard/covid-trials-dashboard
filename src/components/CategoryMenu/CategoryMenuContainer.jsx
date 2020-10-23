@@ -6,21 +6,28 @@ import { SpreadCategoryButtons } from './CategoryMenu'
 import { CategoryMenu } from './CategoryMenu'
 
 const categoryOptions = [
-  {
-    label: 'Vaccine',
-    route: '/vaccine',
-  },
-  {
-    label: 'Treatment',
-    route: '/treatments',
-  },
-  {
-    label: 'Vaccine & Treatment',
-    route: '/vt',
-  },
+  // AWAITING MAKING THESE PAGES INTO ROUTES IN THE APP, OR NEED TO REFACTOR TO ACCEPT EXTERNAL LINKS
+  // {
+  //   label: 'Volunteer',
+  //   route: '/vaccine',
+  // },
+  // {
+  //   label: 'How to Volunteer',
+  //   route:
+  //     'https://docs.google.com/document/d/e/2PACX-1vTdTsgT3UinsENFQM_AKYRV9Ls-D_pPdzCsJppgwlzwq2PSFHVFgVw89dGFG2zhgYfNNqSGyf5PAkxm/pub',
+  // },
+  // {
+  //   label: 'Treatment',
+  //   route: '/treatments',
+  // },
+  // {
+  //   label: 'Vaccine & Treatment',
+  //   route: '/vt',
+  // },
 ]
 
 export const Container = ({ location, history, width }) => {
+  if (categoryOptions.length === 0) return null
   const selectedCategory =
     categoryOptions.find(({ route }) => route === location.pathname) ||
     categoryOptions[0]

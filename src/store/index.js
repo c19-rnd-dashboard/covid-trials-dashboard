@@ -43,7 +43,6 @@ const StateProvider = ({ children }) => {
     case 'fetchDataSuccess':
       return {
         ...state,
-        treatments: action.payload.treatments,
         vaccines: action.payload.vaccines,
         loading: false,
       }
@@ -59,8 +58,7 @@ const StateProvider = ({ children }) => {
 
   const splitVaccinesAndTreatments = data => {
     const vaccines = data.filter(isVaccine)
-    const treatments = data.filter(a => !isVaccine(a))
-    return { treatments, vaccines }
+    return { vaccines }
   }
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
