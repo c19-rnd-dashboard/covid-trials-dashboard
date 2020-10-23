@@ -39,7 +39,7 @@ const Vaccines = ({ vaccines }) => {
       }) => (
         <>
           <S.Filter>
-            <Tile header='Total Vaccine Products'>
+            <Tile header='Total Vaccines'>
               {filteredAssets.length || '...'}
             </Tile>
             <Tile header='Filter By'>
@@ -114,7 +114,7 @@ const Vaccines = ({ vaccines }) => {
           <S.TabbedSection>
             <MapAndMilestones
               pins={filteredAssets}
-              title='Vaccine Map'
+              title='Vaccine Trials'
               handleSelectedId={handleSelectedId}
               selectedAsset={selectedAsset}
             />

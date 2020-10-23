@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { pipe } from 'sanctuary'
 import { status, phasesInOrder, timelinesEstimates } from './constants'
-import { mapTwoAtTime, isVaccine, addToDate } from 'utils/utils'
+import { mapTwoAtTime, addToDate } from 'utils/utils'
 
 const { skipped } = status
 
@@ -87,15 +87,10 @@ const getEstimationCheckingItIsNotGtActual = (delta, actual) => {
   return isLessThanActual ? { ...delta, [actual.name]: actual.duration } : delta
 }
 
-export const mapAssetToMilestones = now => ({
-  milestones,
-  interventionType,
-}) => {
+export const mapAssetToMilestones = now => ({ milestones }) => {
   if (!milestones) {
     return []
   }
-  const type = isVaccine({ interventionType }) ? 'vaccine' : 'treatment'
-
   const actualMilestonesWithDuration = transformWithDurations({
     now,
     delta: timelinesEstimates.actual,
@@ -124,23 +119,19 @@ export const mapAssetToMilestones = now => ({
       values: actualMilestonesWithDuration,
     },
   ]
-  return t2(
-    type === 'vaccine'
-      ? [
-        {
-          name: 'Optimistic',
-          values: actualMilestonesWithDuration
-            .slice(0, -1)
-            .concat(optimisticEstimations),
-        },
-        {
-          name: 'Pessimistic',
-          values: actualMilestonesWithDuration
-            .slice(0, -1)
-            .concat(pessimisticEstimations),
-        },
-        ...result,
-      ]
-      : result
-  )
+  return t2([
+    {
+      name: 'Optimistic',
+      values: actualMilestonesWithDuration
+        .slice(0, -1)
+        .concat(optimisticEstimations),
+    },
+    {
+      name: 'Pessimistic',
+      values: actualMilestonesWithDuration
+        .slice(0, -1)
+        .concat(pessimisticEstimations),
+    },
+    ...result,
+  ])
 }
