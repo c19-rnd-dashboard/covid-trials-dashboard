@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { CustomDrawer } from 'sections/Drawer/Drawer'
 import withWidth from '@material-ui/core/withWidth'
 import PropTypes from 'prop-types'
+import { CategoryMenu } from 'components/CategoryMenu'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -62,6 +63,7 @@ const Navbar = ({ width }) => {
               )}
             </StyledLink>
           </div>
+          <CategoryMenu />
         </Toolbar>
       </AppBar>
     </div>
