@@ -27,7 +27,7 @@ export const Filter = ({ name, options, selected, onSelect }) => {
         <ListItemText primary={name} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open} timeout='auto' unmountOnExit>
+      <Collapse in={open} timeout={300} unmountOnExit>
         <List component='div' disablePadding>
           {options.map(opt => (
             <ListItem
