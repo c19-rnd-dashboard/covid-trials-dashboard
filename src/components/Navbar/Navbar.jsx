@@ -3,7 +3,6 @@ import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CustomDrawer } from 'sections/Drawer/Drawer'
-import { CategoryMenu } from 'components/CategoryMenu'
 import withWidth from '@material-ui/core/withWidth'
 import PropTypes from 'prop-types'
 
@@ -63,7 +62,6 @@ const Navbar = ({ width }) => {
               )}
             </StyledLink>
           </div>
-          <CategoryMenu />
         </Toolbar>
       </AppBar>
     </div>
