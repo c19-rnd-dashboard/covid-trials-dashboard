@@ -1,15 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MapAndMilestones from '../sections/MapAndMilestones'
+import styled from 'styled-components'
+
+const CenterMain = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const MainWidth = styled.div`
+  display: block;
+  width: 1100px;
+`
 
 const Assets = ({ assets, title }) => {
   return (
-    <MapAndMilestones
-      pins={assets}
-      title={`${title} Map`}
-      // handleSelectedId={handleSelectedId}
-      // selectedAsset={selectedAsset}
-    />
+    <CenterMain>
+      <MainWidth>
+        <MapAndMilestones
+          pins={assets}
+          title={`${title} Map`}
+          // handleSelectedId={handleSelectedId}
+          // selectedAsset={selectedAsset}
+        />
+      </MainWidth>
+    </CenterMain>
   )
 }
 
