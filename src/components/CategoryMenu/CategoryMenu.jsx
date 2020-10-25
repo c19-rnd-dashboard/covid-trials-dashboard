@@ -13,7 +13,7 @@ export const SpreadCategoryButtons = ({ options, selected, onChange }) => {
   const classes = useStyles()
   const selectedProps = {
     variant: 'contained',
-    color: 'secondary',
+    color: 'accent',
   }
   const handleClick = option => () => onChange(option)
   const getSelectedProps = option => (selected === option ? selectedProps : {})

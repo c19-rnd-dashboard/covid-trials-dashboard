@@ -7,10 +7,14 @@ import { CategoryMenu } from './CategoryMenu'
 
 const categoryOptions = [
   // AWAITING MAKING THESE PAGES INTO ROUTES IN THE APP, OR NEED TO REFACTOR TO ACCEPT EXTERNAL LINKS
-  // {
-  //   label: 'Volunteer',
-  //   route: '/vaccine',
-  // },
+  {
+    label: 'Volunteer',
+    route: '/vaccine',
+  },
+  {
+    label: 'Team',
+    route: '/team',
+  },
   // {
   //   label: 'How to Volunteer',
   //   route:
