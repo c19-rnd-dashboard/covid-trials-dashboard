@@ -43,7 +43,7 @@ export default [
     name: 'Nafi Adibi',
     title: 'UX Designer',
     blurb: [''],
-    // link: { title: 'Github', url: 'https://github.com/j10sanders' },
+    link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/nafiadibi' },
     image: Nafi,
   },
 ]
