@@ -46,7 +46,7 @@ const Navbar = () => {
             <CustomDrawer />
             <StyledLink to='/'>
               <Typography className={classes.space} variant='h6'>
-                COVID DASH{' '}
+                COVID Trial Dash{' '}
               </Typography>
               <img
                 className={`${classes.space} ${classes.logo}`}
