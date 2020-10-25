@@ -19,7 +19,6 @@ export const ThemedApp = () => {
           primary: {
             main: '#2D5686',
           },
-          accent: '#5e92f3',
         },
       }),
     [prefersDarkMode]

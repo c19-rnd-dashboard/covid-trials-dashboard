@@ -4,28 +4,35 @@ import { withRouter } from 'react-router-dom'
 import { withWidth } from '@material-ui/core'
 import { SpreadCategoryButtons } from './CategoryMenu'
 import { CategoryMenu } from './CategoryMenu'
-import { categoryOptions } from 'utils/useAssets'
+import { categoryOptions, allCategoryMenuItems } from 'utils/useAssets'
 
 export const Container = ({ location, history, width }) => {
-  if (categoryOptions.length === 0) return null
-  const selectedCategory =
-    categoryOptions.find(({ route }) => route === location.pathname) ||
-    categoryOptions[0]
+  const selectedCategory = categoryOptions.find(option =>
+    option.menu.find(menuItem => menuItem.route === location.pathname)
+  )
+
+  const selectedRoute = allCategoryMenuItems().find(
+    menuItem => menuItem.route === location.pathname
+  )
+
   const handleChange = optionLabel => {
-    const selectedRoute = categoryOptions.find(
-      ({ label }) => label === optionLabel
+    const selectedRoute = allCategoryMenuItems().find(
+      ({ label }) => label === optionLabel.target.textContent
     ).route
     history.push(selectedRoute)
   }
   const CategoryMenuProps = {
-    options: categoryOptions.map(({ label }) => label),
-    selected: selectedCategory.label,
+    selectedRoute: selectedRoute ? selectedRoute.label : 'Vaccine',
     onChange: handleChange,
   }
   return ['xs', 'sm'].includes(width) ? (
-    <CategoryMenu {...CategoryMenuProps} />
+    <CategoryMenu {...CategoryMenuProps} allOptions={allCategoryMenuItems()} />
   ) : (
-    <SpreadCategoryButtons {...CategoryMenuProps} />
+    <SpreadCategoryButtons
+      {...CategoryMenuProps}
+      options={categoryOptions}
+      selectedCategory={selectedCategory ? selectedCategory.label : 'Vaccine'}
+    />
   )
 }
 

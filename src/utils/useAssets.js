@@ -6,13 +6,38 @@ import { splitVaccinesAndTreatments } from './utils'
 export const categoryOptions = [
   {
     label: 'Vaccine',
-    route: '/vaccines',
+    // route: '/vaccines',
+    menu: [
+      { label: 'Overview / Map', route: '/vaccines' },
+      { label: 'Timeline', route: '/timeline' },
+      { label: 'Charts', route: '/charts' },
+      { label: 'Terminology', route: '/termonology' },
+    ],
   },
   {
-    label: 'Team',
-    route: '/team',
+    label: 'About',
+    menu: [
+      { label: 'About Us', route: '/about' },
+      { label: 'Team', route: '/team' },
+      { label: 'FAQ', route: '/charts' },
+      { label: 'Contact Us', route: '/contact' },
+    ],
   },
+  // {
+  //   label: 'Volounteer',
+  //   options: [
+  //     { label: 'About Us', route: '/about' },
+  //     { label: 'Team', route: '/team' },
+  //     { label: 'FAQ', route: '/charts' },
+  //     { label: 'Contact Us', route: '/contact' },
+  //   ],
+  // },
 ]
+
+export const allCategoryMenuItems = () => {
+  const optionArrays = categoryOptions.map(option => option.menu)
+  return [].concat.apply([], optionArrays)
+}
 
 export const useAssets = () => {
   const globalState = useContext(store)
