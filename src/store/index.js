@@ -38,26 +38,26 @@ const StateProvider = ({ children }) => {
       action: action.type,
     })
     switch (action.type) {
-      case 'fetchData':
-        return { ...state, loading: true }
-      case 'fetchDataSuccess':
-        return {
-          ...state,
-          assets: action.payload,
-          loading: false,
-        }
-      case 'fetchDataFailure':
-        return { ...state, error: action.payload, loading: false }
-      case 'tooglePrefersDarkMode':
-        return state // disabled until light theme is ready
+    case 'fetchData':
+      return { ...state, loading: true }
+    case 'fetchDataSuccess':
+      return {
+        ...state,
+        assets: action.payload,
+        loading: false,
+      }
+    case 'fetchDataFailure':
+      return { ...state, error: action.payload, loading: false }
+    case 'tooglePrefersDarkMode':
+      return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
-      case TOGGLE_FILTER:
-        return {
-          ...state,
-          selectedFilters: toggleFilterReducer(state.selectedFilters, action),
-        }
-      default:
-        throw new Error()
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        selectedFilters: toggleFilterReducer(state.selectedFilters, action),
+      }
+    default:
+      throw new Error()
     }
   }, initialState)
 

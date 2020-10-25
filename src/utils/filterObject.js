@@ -25,9 +25,9 @@ export const getFilterOptions = (
           exclude.includes(key) || isEmpty(value)
             ? acc2
             : {
-                ...acc2,
-                [key]: handleConcat(mapValue(mapper[key])(value))(acc[key]),
-              },
+              ...acc2,
+              [key]: handleConcat(mapValue(mapper[key])(value))(acc[key]),
+            },
         acc
       ),
     {}
