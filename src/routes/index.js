@@ -7,6 +7,7 @@ import { useAssets } from 'utils/useAssets'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
 import Iframe from 'components/Iframe'
+import { VaccinesOverview } from 'components/VaccinesOverview'
 
 import {
   // spreadsheetDataSource,
@@ -20,6 +21,7 @@ const Routes = () => {
   const { filteredAssets } = useAssets()
   return (
     <Switch>
+      <Route path={'/vaccines/overview'} component={VaccinesOverview} />
       <Route
         path={'/coronavirus-volunteer-map'}
         render={() => <Vaccines assets={filteredAssets} />}

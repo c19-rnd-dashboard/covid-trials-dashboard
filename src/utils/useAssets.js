@@ -29,6 +29,10 @@ export const categoryOptions = [
       { label: 'Contact Us', route: '/contact' },
     ],
   },
+  {
+    label: 'Overview',
+    route: '/vaccines/overview',
+  },
 ]
 
 export const allCategoryMenuItems = () => {
