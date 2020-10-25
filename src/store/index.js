@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { get } from 'axios'
 import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
-import { isVaccine } from 'utils/utils'
 import ReactGA from 'react-ga'
 import { useMediaQuery } from '@material-ui/core'
+import { TOGGLE_FILTER, toggleFilterReducer } from './filters'
 /*
 Example usage:
 import {useContext} from 'react'
@@ -24,8 +24,8 @@ return(
 
 const initialState = {
   loading: false,
-  treatments: [],
-  vaccines: [],
+  assets: [],
+  selectedFilters: {},
   prefersDarkMode: true,
 }
 const store = createContext()
@@ -43,7 +43,7 @@ const StateProvider = ({ children }) => {
     case 'fetchDataSuccess':
       return {
         ...state,
-        vaccines: action.payload.vaccines,
+        assets: action.payload,
         loading: false,
       }
     case 'fetchDataFailure':
@@ -51,15 +51,15 @@ const StateProvider = ({ children }) => {
     case 'tooglePrefersDarkMode':
       return state // disabled until light theme is ready
       // return { ...state, prefersDarkMode: !state.prefersDarkMode }
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        selectedFilters: toggleFilterReducer(state.selectedFilters, action),
+      }
     default:
       throw new Error()
     }
   }, initialState)
-
-  const splitVaccinesAndTreatments = data => {
-    const vaccines = data.filter(isVaccine)
-    return { vaccines }
-  }
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
@@ -71,13 +71,11 @@ const StateProvider = ({ children }) => {
       type: 'fetchData',
     })
     if (process.env.NODE_ENV !== 'production' || useHardcodeData) {
-      const splitData = splitVaccinesAndTreatments(assets)
-      dispatch({ type: 'fetchDataSuccess', payload: splitData })
+      dispatch({ type: 'fetchDataSuccess', payload: assets })
     } else {
       get(`${apiUrl}/assets`)
         .then(({ data }) => {
-          const splitData = splitVaccinesAndTreatments(data)
-          dispatch({ type: 'fetchDataSuccess', payload: splitData })
+          dispatch({ type: 'fetchDataSuccess', payload: data })
         })
         .catch(e => {
           console.error(e)

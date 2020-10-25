@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "case": "^1.6.3",
+    "change-case": "^4.1.1",
     "emotion": "^10.0.27",
     "emotion-theming": "^10.0.27",
     "logrocket": "^1.0.10",
