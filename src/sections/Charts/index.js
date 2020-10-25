@@ -14,6 +14,7 @@ import { snake, sentence } from 'case'
 import { filterAndSortMilestones } from 'components/MilestonesGraph/mapAssetToMilestones'
 import { fontColor } from 'constants/colors'
 import MaxWidth from 'components/MaxWidth'
+import { useTheme } from '@material-ui/core'
 
 const getChartData = mapper => pipe([countBy(mapper), converCountIntoChartData])
 
@@ -69,7 +70,7 @@ const chartList = [
 const BarConfig = props => ({
   margin: { top: 0, right: 100, bottom: 160, left: 60 },
   enableGridY: false,
-  borderColor: fontColor,
+  borderColor: props.fontColor,
   axisBottom: {
     tickSize: 5,
     tickPadding: 5,
@@ -80,11 +81,11 @@ const BarConfig = props => ({
   },
 })
 
-const PieConfig = () => ({
+const PieConfig = props => ({
   innerRadius: 0.5,
   padAngle: 1,
   cornerRadius: 4,
-  radialLabelsTextColor: fontColor,
+  radialLabelsTextColor: props.fontColor,
   margin: { top: 30, bottom: 30 },
 })
 

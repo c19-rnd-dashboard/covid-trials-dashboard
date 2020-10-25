@@ -26,7 +26,7 @@ const initialState = {
   loading: false,
   assets: [],
   selectedFilters: {},
-  prefersDarkMode: true,
+  prefersDarkMode: false,
 }
 const store = createContext()
 const { Provider } = store
