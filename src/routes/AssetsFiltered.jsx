@@ -10,6 +10,7 @@ const CenterMain = styled.div`
 const MainWidth = styled.div`
   display: block;
   width: 1100px;
+  max-width: 98vw;
 `
 
 const Assets = ({ assets, title }) => {
