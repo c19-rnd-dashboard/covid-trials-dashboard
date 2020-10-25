@@ -4,6 +4,7 @@ import Navbar from 'components/Navbar/Navbar'
 import { Content } from 'styles'
 import Router from './routes'
 import { store } from './store'
+import yellow from '@material-ui/core/colors/yellow'
 
 export const ThemedApp = () => {
   const globalState = useContext(store)
@@ -14,6 +15,11 @@ export const ThemedApp = () => {
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
+          secondary: yellow,
+          primary: {
+            main: '#2D5686',
+          },
+          accent: '#5e92f3',
         },
       }),
     [prefersDarkMode]

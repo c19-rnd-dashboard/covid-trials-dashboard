@@ -40,7 +40,7 @@ const Navbar = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <AppBar position='static' style={{ backgroundColor: '#004872' }}>
+      <AppBar position='static' color='primary'>
         <Toolbar>
           <div className={classes.leftSide}>
             <CustomDrawer />

@@ -9,6 +9,10 @@ export const categoryOptions = [
     label: 'Vaccine',
     route: '/vaccines',
   },
+  {
+    label: 'Team',
+    route: '/team',
+  },
 ]
 
 const getAssetsToRender = activeRoute => ({ assets }) =>
