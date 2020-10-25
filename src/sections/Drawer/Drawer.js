@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  makeStyles,
 } from '@material-ui/core'
 import Brightness5Icon from '@material-ui/icons/Brightness5'
 import Brightness2Icon from '@material-ui/icons/Brightness2'
@@ -14,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { drawerLinks } from './DrawerLinks'
 import { ThemeModeSelectorConsumerPropTypes } from 'components/ThemeModeSelector/ThemeModeSelector'
 import { ThemeModeSelector } from 'components/ThemeModeSelector/ThemeModeSelector'
+import { FilterList } from 'components/MaterialFilter/FilterListContainer'
 
 // Theme button disabled until light theme is ready
 const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => (
@@ -29,9 +31,16 @@ ThemeToogleConsumerListItem.propTypes = ThemeModeSelectorConsumerPropTypes
 
 const ThemeToogleListItem = ThemeModeSelector(ThemeToogleConsumerListItem)
 
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    maxWidth: theme.spacing(35),
+  },
+}))
+
 export const CustomDrawer = () => {
   const [open, setOpen] = useState(false)
   const theme = useTheme()
+  const classes = useStyles()
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -54,7 +63,7 @@ export const CustomDrawer = () => {
           keepMounted: true, // Better open performance on mobile.
         }}
       >
-        <div>
+        <div className={classes.drawer}>
           <List>
             <ThemeToogleListItem />
             {drawerLinks.map(({ name, url, Icon }) => (
@@ -74,6 +83,7 @@ export const CustomDrawer = () => {
               </ListItem>
             ))}
           </List>
+          <FilterList />
         </div>
       </Drawer>
     </div>

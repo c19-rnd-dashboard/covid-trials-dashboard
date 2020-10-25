@@ -53,3 +53,16 @@ export const profileTime = fn => {
     duration: end.getTime() - start.getTime(),
   }
 }
+
+export const splitVaccinesAndTreatments = data => {
+  const vaccines = data.filter(isVaccine)
+  const treatments = data.filter(a => !isVaccine(a))
+  return { treatments, vaccines }
+}
+
+export const formatDateForHuman = date => new Date(date).toLocaleDateString()
+
+export const isEmpty = x =>
+  [undefined, null, ''].includes(x) ||
+  (Array.isArray(x) && x.length === 0) ||
+  (x.constructor === Object && Object.keys(x).length === 0)

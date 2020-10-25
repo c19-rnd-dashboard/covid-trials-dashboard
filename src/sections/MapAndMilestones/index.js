@@ -111,11 +111,10 @@ const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
       title: 'Volunteer Locations',
       content: (
         <Tile>
-          <HowYouCanHelp />
-
           <MapDiv>
             <Map pins={pins} handleSelectedId={handleSelectedId} />
           </MapDiv>
+          <HowYouCanHelp />
         </Tile>
       ),
     },
