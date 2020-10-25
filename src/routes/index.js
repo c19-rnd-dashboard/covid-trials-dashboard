@@ -14,10 +14,10 @@ const Routes = () => {
     <Switch>
       <Route
         path={'/vaccines'}
-        render={() => <Vaccines vaccines={filteredAssets} />}
+        render={() => <Vaccines assets={filteredAssets} />}
       />
       <Route path={'/team'} render={() => <Team />} />
-      <Route path={'/'} render={() => <Vaccines vaccines={filteredAssets} />} />
+      <Route path={'/'} render={() => <Vaccines assets={filteredAssets} />} />
     </Switch>
   )
 }
