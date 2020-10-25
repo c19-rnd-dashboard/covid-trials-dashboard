@@ -9,21 +9,11 @@ export const categoryOptions = [
     label: 'Vaccine',
     route: '/vaccines',
   },
-  {
-    label: 'Treatment',
-    route: '/treatments',
-  },
-  {
-    label: 'Vaccine & Treatment',
-    route: '/vt',
-  },
 ]
 
-const getAssetsToRender = activeRoute => ({ assets, treatments, vaccines }) =>
+const getAssetsToRender = activeRoute => ({ assets }) =>
   ({
     '/vt': assets,
-    '/treatments': treatments,
-    '/vaccines': vaccines,
   }[activeRoute] || assets)
 
 export const useAssets = () => {
