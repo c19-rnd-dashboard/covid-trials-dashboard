@@ -122,7 +122,7 @@ export default function Team() {
         {/* End hero unit */}
         <Grid container spacing={3}>
           {team.map(person => (
-            <Grid item key={person} xs={6} sm={6} md={3}>
+            <Grid item key={person.name} xs={6} sm={6} md={3}>
               <Card className={classes.card}>
                 <CardMedia
                   style={{ height: '260px' }}
