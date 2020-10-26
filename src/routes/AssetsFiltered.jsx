@@ -1,30 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MapAndMilestones from '../sections/MapAndMilestones'
-import styled from 'styled-components'
+import { MapContainer } from '../sections/MapAndMilestones'
+import MaxWidth from 'components/MaxWidth'
 
-const CenterMain = styled.div`
-  display: flex;
-  justify-content: center;
-`
-const MainWidth = styled.div`
-  display: block;
-  width: 1100px;
-  max-width: 98vw;
-`
-
-const Assets = ({ assets, title }) => {
+const Assets = ({ assets }) => {
   return (
-    <CenterMain>
-      <MainWidth>
-        <MapAndMilestones
-          pins={assets}
-          title={`${title} Map`}
-          // handleSelectedId={handleSelectedId}
-          // selectedAsset={selectedAsset}
-        />
-      </MainWidth>
-    </CenterMain>
+    <MaxWidth>
+      <MapContainer
+        pins={assets}
+        // title={`${title} Map`}
+        // handleSelectedId={handleSelectedId}
+        // selectedAsset={selectedAsset}
+      />
+    </MaxWidth>
   )
 }
 

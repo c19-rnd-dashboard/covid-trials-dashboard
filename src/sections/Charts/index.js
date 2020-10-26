@@ -13,6 +13,7 @@ import {
 import { snake, sentence } from 'case'
 import { filterAndSortMilestones } from 'components/MilestonesGraph/mapAssetToMilestones'
 import { fontColor } from 'constants/colors'
+import MaxWidth from 'components/MaxWidth'
 
 const getChartData = mapper => pipe([countBy(mapper), converCountIntoChartData])
 
@@ -87,57 +88,60 @@ const PieConfig = () => ({
   margin: { top: 30, bottom: 30 },
 })
 
-export const Charts = ({ pins: assets }) =>
-  chartList.map(
-    ({
-      title,
-      mapper,
-      mapChartData = a => a,
-      mapEntireData = a => a,
-      chartAttribites = {},
-    }) => {
-      const data = pipe([
-        getChartData(mapper),
-        map(mapChartData),
-        mapEntireData,
-      ])(assets)
-      const ChartComponent = data.length > 4 ? ResponsiveBar : ResponsivePie
-      const config =
-        ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
-      return (
-        <ChartWrapper key={title} title={`By ${title}`}>
-          <ChartComponent
-            data={data}
-            theme={{
-              axis: {
-                ticks: {
-                  line: {
-                    stroke: fontColor,
+export const Charts = ({ pins: assets }) => (
+  <MaxWidth>
+    {chartList.map(
+      ({
+        title,
+        mapper,
+        mapChartData = a => a,
+        mapEntireData = a => a,
+        chartAttribites = {},
+      }) => {
+        const data = pipe([
+          getChartData(mapper),
+          map(mapChartData),
+          mapEntireData,
+        ])(assets)
+        const ChartComponent = data.length > 4 ? ResponsiveBar : ResponsivePie
+        const config =
+          ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
+        return (
+          <ChartWrapper key={title} title={`By ${title}`}>
+            <ChartComponent
+              data={data}
+              theme={{
+                axis: {
+                  ticks: {
+                    line: {
+                      stroke: fontColor,
+                    },
+                    text: {
+                      fill: fontColor,
+                    },
                   },
+                  legend: {
+                    text: {
+                      fill: fontColor,
+                    },
+                  },
+                },
+                label: {
                   text: {
                     fill: fontColor,
                   },
                 },
-                legend: {
-                  text: {
-                    fill: fontColor,
-                  },
-                },
-              },
-              label: {
-                text: {
-                  fill: fontColor,
-                },
-              },
-            }}
-            colorBy='index'
-            {...config}
-            {...chartAttribites}
-          />
-        </ChartWrapper>
-      )
-    }
-  )
+              }}
+              colorBy='index'
+              {...config}
+              {...chartAttribites}
+            />
+          </ChartWrapper>
+        )
+      }
+    )}
+  </MaxWidth>
+)
 
 Charts.propTypes = {
   pins: PropTypes.array.isRequired,

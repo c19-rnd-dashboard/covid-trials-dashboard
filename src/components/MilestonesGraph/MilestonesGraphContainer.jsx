@@ -5,7 +5,7 @@ import { mapAssetToMilestones } from './mapAssetToMilestones'
 import { status, phasesInOrder } from './constants'
 import {
   WrapperDiv,
-  Title,
+  // Title,
   StickyPaper,
 } from './MilestonesGraphContainer.styles'
 import Legend from '../Legend/Legend'
@@ -14,6 +14,7 @@ import { InfiniteScrollWithData } from 'components/InfiniteScrollWithData'
 import { useMemo } from 'react'
 import { useState } from 'react'
 import { Paper } from '@material-ui/core'
+import MaxWidth from 'components/MaxWidth'
 
 export const getMarketDate = ({ milestones } = {}) => {
   const { values } = milestones.find(({ name } = {}) => name === 'Actual') || {}
@@ -28,8 +29,8 @@ const { skipped } = status
 
 export const MilestonesGraphContainer = ({
   pins = [],
-  handleSelectedId,
-  selectedAsset = {},
+  // handleSelectedId,
+  // selectedAsset = {},
 }) => {
   const [phase, setPhase] = useState(null)
   const handlePhaseSelector = selectedPhase => {
@@ -69,38 +70,40 @@ export const MilestonesGraphContainer = ({
         }
       })
   }, [pins])
-  const { productId: selectedProductId } = selectedAsset || {}
+  // const { productId: selectedProductId } = selectedAsset || {}
   // eslint-disable-next-line react/prop-types
   const GraphWrapper = ({ milestones = [], preferredName, productId }) => (
-    <WrapperDiv key={productId} onClick={() => handleSelectedId(productId)}>
-      <Title active={selectedProductId === productId}>
-        {/* eslint-disable-next-line react/prop-types */}
-        {preferredName.replace(/_/g, ' ')}
-      </Title>
+    <WrapperDiv key={productId}>
+      {/* <Title active={selectedProductId === productId}> */}
+      {/* eslint-disable-next-line react/prop-types */}
+      {preferredName.replace(/_/g, ' ')}
+      {/* </Title> */}
       <MilestonesGraph milestones={milestones} />
     </WrapperDiv>
   )
   return (
-    <Paper>
-      <StickyPaper>
-        <Legend onChange={handlePhaseSelector} selected={phase} />
-      </StickyPaper>
-      <InfiniteScrollWithData
-        component={GraphWrapper}
-        data={milestones}
-        initialLength={10}
-        step={10}
-      />
-    </Paper>
+    <MaxWidth>
+      <Paper>
+        <StickyPaper>
+          <Legend onChange={handlePhaseSelector} selected={phase} />
+        </StickyPaper>
+        <InfiniteScrollWithData
+          component={GraphWrapper}
+          data={milestones}
+          initialLength={10}
+          step={10}
+        />
+      </Paper>
+    </MaxWidth>
   )
 }
 
 MilestonesGraphContainer.propTypes = {
   pins: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleSelectedId: PropTypes.func.isRequired,
-  selectedAsset: PropTypes.shape({}),
+  // selectedAsset: PropTypes.shape({}),
 }
 
 MilestonesGraphContainer.defaultProps = {
-  selectedAsset: {},
+  // selectedAsset: {},
 }

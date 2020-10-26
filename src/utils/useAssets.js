@@ -6,12 +6,11 @@ import { splitVaccinesAndTreatments } from './utils'
 export const categoryOptions = [
   {
     label: 'Vaccine',
-    // route: '/vaccines',
     menu: [
       { label: 'Overview / Map', route: '/vaccines' },
-      { label: 'Timeline', route: '/timeline' },
+      { label: 'Timelines', route: '/timelines' },
       { label: 'Charts', route: '/charts' },
-      { label: 'Terminology', route: '/termonology' },
+      // { label: 'Terminology', route: '/terminology' },
     ],
   },
   {
@@ -26,10 +25,7 @@ export const categoryOptions = [
   // {
   //   label: 'Volounteer',
   //   options: [
-  //     { label: 'About Us', route: '/about' },
-  //     { label: 'Team', route: '/team' },
-  //     { label: 'FAQ', route: '/charts' },
-  //     { label: 'Contact Us', route: '/contact' },
+  //
   //   ],
   // },
 ]
