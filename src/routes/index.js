@@ -4,6 +4,7 @@ import Vaccines from './AssetsFiltered'
 // import { store } from '../store'
 import Team from './Team'
 import FAQ from './FAQ'
+import ContactUs from './ContactUs'
 import { useAssets } from 'utils/useAssets'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
@@ -27,6 +28,7 @@ const Routes = () => {
       <Route path={'/team'} render={() => <Team />} />{' '}
       <Route path={'/charts'} render={() => <Charts pins={filteredAssets} />} />
       <Route path={'/faq'} render={() => <FAQ />} />
+      <Route path={'/contact'} render={() => <ContactUs />} />
       <Route path={'/'} render={() => <Vaccines assets={filteredAssets} />} />
     </Switch>
   )
