@@ -105,14 +105,23 @@ const HowYouCanHelp = () => {
   )
 }
 
-const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
+export const MapContainer = ({ pins }) => (
+  <Tile>
+    <MapDiv>
+      <Map pins={pins} />
+    </MapDiv>
+    <HowYouCanHelp />
+  </Tile>
+)
+
+const MapAndMilestones = ({ pins }) => {
   const tabs = [
     {
       title: 'Volunteer Locations',
       content: (
         <Tile>
           <MapDiv>
-            <Map pins={pins} handleSelectedId={handleSelectedId} />
+            <Map pins={pins} />
           </MapDiv>
           <HowYouCanHelp />
         </Tile>
@@ -122,9 +131,9 @@ const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
       title: 'Timeline',
       content: (
         <MilestonesGraphContainer
-          selectedAsset={selectedAsset}
+          // selectedAsset={selectedAsset}
           pins={pins}
-          handleSelectedId={handleSelectedId}
+          // handleSelectedId={handleSelectedId}
         />
       ),
     },
@@ -135,6 +144,10 @@ const MapAndMilestones = ({ pins, handleSelectedId, selectedAsset }) => {
   ]
 
   return <Tabs tabs={tabs} />
+}
+
+MapContainer.propTypes = {
+  pins: PropTypes.arrayOf(PropTypes.shape({})),
 }
 
 MapAndMilestones.propTypes = {
