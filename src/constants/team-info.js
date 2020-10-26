@@ -3,6 +3,8 @@ import Mats from '../assets/images/MatsOlsen.jpg'
 import Liam from '../assets/images/liam_headshot.jpg'
 import Nestor from '../assets/images/nestor.png'
 import Nafi from '../assets/images/Nafi.jpg'
+import Sunny from '../assets/images/sunny.png'
+import Vinny from '../assets/images/vinny.jpg'
 
 export default [
   {
@@ -40,10 +42,25 @@ export default [
     image: Liam,
   },
   {
+    name: 'Vincent Brandon',
+    title: 'Data Engineer',
+    blurb: [
+      'PMP certified project manager.  Data scientist for the State of Utah.  Past biochemist and pharmaceutical trials coordinator.',
+    ],
+    image: Vinny,
+  },
+  {
     name: 'Nafi Adibi',
     title: 'UX Designer',
     blurb: [''],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/nafiadibi' },
     image: Nafi,
+  },
+  {
+    name: 'Sunny Su',
+    title: 'UX Designer',
+    blurb: [''],
+    link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/sunnylsu/' },
+    image: Sunny,
   },
 ]
