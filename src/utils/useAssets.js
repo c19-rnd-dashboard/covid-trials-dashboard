@@ -19,7 +19,7 @@ export const categoryOptions = [
       // { label: 'About Us', route: '/about' },
       { label: 'Team', route: '/team' },
       { label: 'FAQ', route: '/faq' },
-      // { label: 'Contact Us', route: '/contact' },
+      { label: 'Contact Us', route: '/contact' },
     ],
   },
   // {
