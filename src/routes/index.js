@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Vaccines from './AssetsFiltered'
 // import { store } from '../store'
 import Team from './Team'
+import FAQ from './FAQ'
 import { useAssets } from 'utils/useAssets'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
@@ -23,7 +24,9 @@ const Routes = () => {
         render={() => <MilestonesGraphContainer pins={filteredAssets} />}
       />
       <Route path={'/charts'} render={() => <Charts pins={filteredAssets} />} />
-      <Route path={'/team'} render={() => <Team />} />
+      <Route path={'/team'} render={() => <Team />} />{' '}
+      <Route path={'/charts'} render={() => <Charts pins={filteredAssets} />} />
+      <Route path={'/faq'} render={() => <FAQ />} />
       <Route path={'/'} render={() => <Vaccines assets={filteredAssets} />} />
     </Switch>
   )

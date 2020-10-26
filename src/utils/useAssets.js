@@ -16,10 +16,10 @@ export const categoryOptions = [
   {
     label: 'About',
     menu: [
-      { label: 'About Us', route: '/about' },
+      // { label: 'About Us', route: '/about' },
       { label: 'Team', route: '/team' },
-      { label: 'FAQ', route: '/charts' },
-      { label: 'Contact Us', route: '/contact' },
+      { label: 'FAQ', route: '/faq' },
+      // { label: 'Contact Us', route: '/contact' },
     ],
   },
   // {
