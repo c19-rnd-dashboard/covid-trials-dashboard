@@ -44,7 +44,7 @@ const Iframe = ({ url, title, width }) => {
       ) : (
         <Container maxWidth='lg'>
           <iframe
-            title='Google Doc Trials Summary'
+            title={`Google Doc: ${title}`}
             style={{ width: '100%', height: '100vh', border: 'none' }}
             src={`${url}?embeded=true`}
           ></iframe>
