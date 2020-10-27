@@ -52,7 +52,7 @@ const Navbar = ({ width }) => {
                 className={classes.space}
                 variant={width !== 'xs' ? 'h6' : 'body1'}
               >
-                Covid Trial Dash{' '}
+                Covid Trials Dash{' '}
               </Typography>
               {width !== 'xs' && (
                 <img
