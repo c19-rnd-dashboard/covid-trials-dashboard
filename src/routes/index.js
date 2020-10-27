@@ -21,26 +21,28 @@ const Routes = () => {
   return (
     <Switch>
       <Route
-        path={'/vaccines'}
+        path={'/coronavirus-volunteer-map'}
         render={() => <Vaccines assets={filteredAssets} />}
       />
       <Route
-        path={'/timelines'}
+        path={'/coronavirus-timeline-tracker'}
         render={() => <MilestonesGraphContainer pins={filteredAssets} />}
       />
-      <Route path={'/charts'} render={() => <Charts pins={filteredAssets} />} />
+      <Route
+        path={'/covid-trial-vaccine-charts'}
+        render={() => <Charts pins={filteredAssets} />}
+      />
       <Route path={'/team'} render={() => <Team />} />{' '}
-      <Route path={'/charts'} render={() => <Charts pins={filteredAssets} />} />
       <Route path={'/faq'} render={() => <Iframe url={faqUrl} title='FAQ' />} />
       <Route path={'/contact'} render={() => <ContactUs />} />
       <Route
-        path={'/volunteer'}
+        path={'/volunteer-covid-trial'}
         render={() => (
           <Iframe url={howYouCanHelpUrl} title='How and Why to Volunteer' />
         )}
       />
       <Route
-        path={'/trialssummary'}
+        path={'/covid-trials-summary'}
         render={() => (
           <Iframe
             url={vaccineStatusSummaryUrl}

@@ -54,7 +54,7 @@ const VaccineProgress = () => {
       <S.ActionItems>
         <S.FilterContainer>
           <S.FilterTitle onClick={() => setShowFilters(!showFilters)}>
-            <FilterList /> Filters
+            <FilterList /> Filter By
           </S.FilterTitle>
           {showFilters && (
             <Filter
