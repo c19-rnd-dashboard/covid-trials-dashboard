@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CustomDrawer } from 'sections/Drawer/Drawer'
 import { CategoryMenu } from 'components/CategoryMenu'
+import withWidth from '@material-ui/core/withWidth'
+import PropTypes from 'prop-types'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -30,13 +32,14 @@ const useStyles = makeStyles(theme => ({
   },
   space: {
     marginLeft: theme.spacing(1),
+    fontWeight: 'bold',
   },
   logo: {
     height: '2rem',
   },
 }))
 
-const Navbar = () => {
+const Navbar = ({ width }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
@@ -45,14 +48,19 @@ const Navbar = () => {
           <div className={classes.leftSide}>
             <CustomDrawer />
             <StyledLink to='/'>
-              <Typography className={classes.space} variant='h6'>
+              <Typography
+                className={classes.space}
+                variant={width !== 'xs' ? 'h6' : 'body1'}
+              >
                 COVID Trial Dash{' '}
               </Typography>
-              <img
-                className={`${classes.space} ${classes.logo}`}
-                src='logos/covidDash-FinalLogos_Mark-White.png'
-                alt='Covid Dash Logo White'
-              />
+              {width !== 'xs' && (
+                <img
+                  className={`${classes.space} ${classes.logo}`}
+                  src='logos/covidDash-FinalLogos_Mark-White.png'
+                  alt='Covid Dash Logo White'
+                />
+              )}
             </StyledLink>
           </div>
           <CategoryMenu />
@@ -62,4 +70,8 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+Navbar.propTypes = {
+  width: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+}
+
+export default withWidth()(Navbar)
