@@ -26,7 +26,11 @@ export const Container = ({ location, history, width }) => {
     onChange: handleChange,
   }
   return ['xs', 'sm'].includes(width) ? (
-    <CategoryMenu {...CategoryMenuProps} allOptions={allCategoryMenuItems()} />
+    <CategoryMenu
+      {...CategoryMenuProps}
+      allOptions={allCategoryMenuItems()}
+      width={width}
+    />
   ) : (
     <SpreadCategoryButtons
       {...CategoryMenuProps}

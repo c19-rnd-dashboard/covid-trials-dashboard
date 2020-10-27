@@ -105,7 +105,9 @@ export const CategoryMenu = ({
   allOptions: options,
   selectedRoute,
   onChange,
+  width,
 }) => {
+  console.log(width, 'WIDRTH')
   const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
@@ -163,6 +165,7 @@ const defaultProps = {
 
 CategoryMenu.propTypes = {
   ...propTypes,
+  width: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   allOptions: PropTypes.arrayOf(PropTypes.shape({})),
 }
 CategoryMenu.defaultProps = defaultProps
