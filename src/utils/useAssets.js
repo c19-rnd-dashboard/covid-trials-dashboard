@@ -10,7 +10,7 @@ export const categoryOptions = [
       { label: 'Overview / Map', route: '/vaccines' },
       { label: 'Timelines', route: '/timelines' },
       { label: 'Charts', route: '/charts' },
-      // { label: 'Terminology', route: '/terminology' },
+      { label: 'Vaccine Trials Summary', route: '/trialssummary' },
     ],
   },
   {
@@ -20,6 +20,7 @@ export const categoryOptions = [
       { label: 'Team', route: '/team' },
       { label: 'FAQ', route: '/faq' },
       { label: 'Contact Us', route: '/contact' },
+      { label: 'Why and How to Volunteer', route: '/volunteer' },
     ],
   },
   // {
