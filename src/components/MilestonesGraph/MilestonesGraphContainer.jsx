@@ -83,6 +83,17 @@ export const MilestonesGraphContainer = ({
   )
   return (
     <MaxWidth>
+      <h1 style={{ fontSize: '36px' }}>
+        {' '}
+        Coronavirus (COVID-19) Vaccination Timeline Phase Tracker{' '}
+      </h1>
+      <h1 style={{ fontSize: '24px', fontWeight: 'normal' }}>
+        {' '}
+        When will there be Coronavirus vaccine? What countries and companies are
+        working on vaccine candidates and what phase are they in? Stay updated
+        with our Coronavirus Vaccine Candidate Timeline Tracker by phase.
+      </h1>
+
       <Paper>
         <StickyPaper>
           <Legend onChange={handlePhaseSelector} selected={phase} />

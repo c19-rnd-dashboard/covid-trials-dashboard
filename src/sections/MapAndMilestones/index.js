@@ -29,28 +29,33 @@ const HowYouCanHelp = () => {
   return (
     <StyledInstructions>
       <div style={{ textAlign: 'left' }}>
-        <p>
-          Are you interested in potentially volunteering for a COVID-19 trial?
-        </p>
+        <h1 style={{ fontSize: '18px' }}>How to Volunteer</h1>
         <ol>
           <li>
-            In the map below, click on a pin near you to find a hospital or
-            clinic running a clinical trial on COVID-19.{' '}
+            Click on a pin near you to find the nearest clinical trial for
+            COVID-19 vaccines.{' '}
           </li>
           <li>
-            If you are healthy, look under{' '}
+            Note: if you have not already had Coronavirus, filter the map by{' '}
             <span style={{ fontWeight: 'bold' }}>
               “Accepts Healthy Volunteers?”
             </span>{' '}
-            and check that it says{' '}
-            <span style={{ fontWeight: 'bold' }}>Yes</span>{' '}
+            and select <span style={{ fontWeight: 'bold' }}>Yes</span>{' '}
           </li>
           <li>
             Click the{' '}
             <span style={{ fontWeight: 'bold' }}>“How to Volunteer”</span>{' '}
-            button to find out how to potentially participate in the study.{' '}
+            button on the selected marker to find out how to potentially
+            participate in the study.{' '}
           </li>
         </ol>
+        <Button
+          onClick={() => setExampleOpen(true)}
+          variant='contained'
+          color='primary'
+        >
+          Watch an Example (15 s)
+        </Button>
         <p>
           For more detailed instructions go to our{' '}
           <Link
@@ -82,13 +87,6 @@ const HowYouCanHelp = () => {
             NHS form
           </Link>
         </p>
-        <Button
-          onClick={() => setExampleOpen(true)}
-          variant='contained'
-          color='primary'
-        >
-          See an Example
-        </Button>
         <Dialog
           maxWidth='lg'
           onClose={() => setExampleOpen(false)}
@@ -107,6 +105,15 @@ const HowYouCanHelp = () => {
 
 export const MapContainer = ({ pins }) => (
   <Tile>
+    <h1 style={{ fontSize: '36px' }}>
+      {' '}
+      Volunteer for COVID-19 Vaccination Trials near you
+    </h1>
+    <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
+      {' '}
+      Interested in supporting the development of vaccines and treatments? You
+      can volunteer to be exposed to the coronavirus.
+    </h2>
     <MapDiv>
       <Map pins={pins} />
     </MapDiv>

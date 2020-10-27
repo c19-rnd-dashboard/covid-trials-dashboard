@@ -36,7 +36,7 @@ export default [
     name: 'Liam Rosen',
     title: 'Marketing and Operations',
     blurb: [
-      'Prior to COVID Trial Dash, Liam helped start GetUsPPE, the largest US nonprofit helping link donors of personal protective equipment to facilities in need. Outside of nonprofit work, he is the CEO of TopScore, a sports technology company.',
+      'Prior to COVID Trial Volunteer Dash, Liam helped start GetUsPPE, the largest US nonprofit helping link donors of personal protective equipment to facilities in need. Outside of nonprofit work, he is the CEO of TopScore, a sports technology company.',
     ],
     link: { title: 'Website', url: 'https://liamrosen.com/' },
     image: Liam,

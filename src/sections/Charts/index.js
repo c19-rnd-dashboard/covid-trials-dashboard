@@ -90,6 +90,16 @@ const PieConfig = () => ({
 
 export const Charts = ({ pins: assets }) => (
   <MaxWidth>
+    <h1 style={{ fontSize: '48px' }}>
+      {' '}
+      Coronavirus (COVID-19) Vaccination Candidate Trials Tracker{' '}
+    </h1>
+    <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
+      {' '}
+      When will a Coronavirus (COVID-19) Vaccine be available? Use this
+      dashboard to view COVID Vaccine progress by stage, molecule type,
+      therapeutic approach, and more.{' '}
+    </h2>
     {chartList.map(
       ({
         title,
@@ -107,36 +117,42 @@ export const Charts = ({ pins: assets }) => (
         const config =
           ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
         return (
-          <ChartWrapper key={title} title={`By ${title}`}>
-            <ChartComponent
-              data={data}
-              theme={{
-                axis: {
-                  ticks: {
-                    line: {
-                      stroke: fontColor,
+          <>
+            <h1 style={{ fontSize: '36px' }}>
+              {' '}
+              Coronavirus (COVID-19) Vaccinations by {title}{' '}
+            </h1>
+            <ChartWrapper key={title} title={`By ${title}`}>
+              <ChartComponent
+                data={data}
+                theme={{
+                  axis: {
+                    ticks: {
+                      line: {
+                        stroke: fontColor,
+                      },
+                      text: {
+                        fill: fontColor,
+                      },
                     },
+                    legend: {
+                      text: {
+                        fill: fontColor,
+                      },
+                    },
+                  },
+                  label: {
                     text: {
                       fill: fontColor,
                     },
                   },
-                  legend: {
-                    text: {
-                      fill: fontColor,
-                    },
-                  },
-                },
-                label: {
-                  text: {
-                    fill: fontColor,
-                  },
-                },
-              }}
-              colorBy='index'
-              {...config}
-              {...chartAttribites}
-            />
-          </ChartWrapper>
+                }}
+                colorBy='index'
+                {...config}
+                {...chartAttribites}
+              />
+            </ChartWrapper>
+          </>
         )
       }
     )}

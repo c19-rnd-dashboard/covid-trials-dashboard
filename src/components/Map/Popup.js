@@ -202,18 +202,6 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
           ) : (
             <CardContent>
               <DisplayField
-                label={`Trial ${sponsorPlural}`}
-                content={sponsorNames}
-              />
-              <DisplayField
-                onlyMobile
-                label='Trial Sponsor'
-                content={firstSponsor}
-              />
-              <DisplayField label='Product' content={preferredName} />
-              <DividerWithMargin />
-              <DisplayField label='Phase' content={phase} alwaysShow />
-              <DisplayField
                 // alwaysShow
                 label='Accepts Healthy Volunteers?'
                 content={
@@ -230,6 +218,18 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                   )
                 }
               />
+              <DisplayField
+                label={`Trial ${sponsorPlural}`}
+                content={sponsorNames}
+              />
+              <DisplayField
+                onlyMobile
+                label='Trial Sponsor'
+                content={firstSponsor}
+              />
+              <DisplayField label='Product' content={preferredName} />
+              <DividerWithMargin />
+              <DisplayField label='Phase' content={phase} alwaysShow />
               <DisplayField
                 label='Trial Registry Link'
                 alwaysShow
