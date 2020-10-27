@@ -111,8 +111,8 @@ export const MapContainer = ({ pins }) => (
     </h1>
     <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
       {' '}
-      Interested in supporting the development of vaccines and treatments? You
-      can volunteer to be exposed to the coronavirus.
+      Interested in supporting the development of vaccines? You can volunteer
+      for a trial.
     </h2>
     <MapDiv>
       <Map pins={pins} />
