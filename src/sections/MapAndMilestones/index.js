@@ -120,7 +120,7 @@ export const MapContainer = ({ pins }) => {
         Volunteer for COVID-19 Vaccination Trials near you
       </Typography>
       {isBigEnough && (
-        <Typography variant='h2'>
+        <Typography style={{ fontSize: '1.3em' }} gutterBottom variant='h2'>
           {' '}
           Interested in supporting the development of vaccines? You can
           volunteer for a trial.
@@ -129,16 +129,6 @@ export const MapContainer = ({ pins }) => {
       <MapDiv>
         <Map pins={pins} />
       </MapDiv>
-      {!isBigEnough && (
-        <Typography
-          style={{ fontSize: '1.3em', marginTop: '0.4em' }}
-          variant='h2'
-        >
-          {' '}
-          Interested in supporting the development of vaccines? You can
-          volunteer for a trial.
-        </Typography>
-      )}
       <HowYouCanHelp />
     </Tile>
   )
