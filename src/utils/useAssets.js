@@ -5,36 +5,30 @@ import { splitVaccinesAndTreatments } from './utils'
 
 export const categoryOptions = [
   {
-    label: 'Home + Trials Map',
+    label: 'Vaccines',
     menu: [
-      { label: 'Home + Trials Map', route: '/coronavirus-volunteer-map' },
+      { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
+      { label: 'Why Volunteer', route: '/volunteer-covid-trial' },
+      { label: 'Vaccines Trial Summary ', route: '/covid-trials-summary' },
       {
-        label: 'Vaccines Timeline Tracker',
+        label: 'Timelines',
         route: '/coronavirus-timeline-tracker',
       },
       {
-        label: 'Vaccines Progress by Indicator',
+        label: 'Charts',
         route: '/covid-trial-vaccine-charts',
       },
-      { label: 'Vaccines Summary ', route: '/covid-trials-summary' },
     ],
   },
   {
     label: 'About',
     menu: [
       // { label: 'About Us', route: '/about' },
-      { label: 'Why and How to Volunteer', route: '/volunteer-covid-trial' },
-      { label: 'About Us', route: '/team' },
+      { label: 'Team', route: '/team' },
       { label: 'FAQ', route: '/faq' },
       { label: 'Contact Us', route: '/contact' },
     ],
   },
-  // {
-  //   label: 'Volunteer',
-  //   options: [
-  //
-  //   ],
-  // },
 ]
 
 export const allCategoryMenuItems = () => {
