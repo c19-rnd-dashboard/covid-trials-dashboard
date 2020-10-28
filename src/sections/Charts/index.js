@@ -14,7 +14,6 @@ import { snake, sentence } from 'case'
 import { filterAndSortMilestones } from 'components/MilestonesGraph/mapAssetToMilestones'
 import { fontColor } from 'constants/colors'
 import MaxWidth from 'components/MaxWidth'
-import { useTheme } from '@material-ui/core'
 
 const getChartData = mapper => pipe([countBy(mapper), converCountIntoChartData])
 
