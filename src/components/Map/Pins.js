@@ -1,4 +1,3 @@
-import { useTheme } from '@material-ui/core'
 import React from 'react'
 import { Marker } from 'react-map-gl'
 
@@ -9,8 +8,7 @@ const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,
 const SIZE = 20
 
 // Important for perf: the markers never change, avoid rerender when the map viewport changes
-export default ({ data, onClick }) => {
-  const theme = useTheme()
+export default ({ data, onClick, prefersDarkMode }) => {
   if (data) {
     return data.map(product =>
       product.siteLocations.map((location, index) => (
@@ -24,7 +22,7 @@ export default ({ data, onClick }) => {
             viewBox='0 0 24 24'
             style={{
               cursor: 'pointer',
-              fill: theme.palette.primary,
+              fill: `${prefersDarkMode ? '#0da4ff' : '#E89741'}`,
               stroke: 'none',
               transform: `translate(${-SIZE / 2}px,${-SIZE}px)`,
             }}
