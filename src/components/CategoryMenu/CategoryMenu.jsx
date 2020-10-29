@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   button: {
     marginRight: theme.spacing(1),
+    color: 'white',
   },
 }))
 
@@ -22,6 +23,9 @@ const StyledMenuItem = withStyles(theme => ({
       backgroundColor: theme.palette.primary.main,
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
+      },
+      '.MuiButton-contained': {
+        backgroundColor: theme.secondary,
       },
     },
   },
@@ -65,6 +69,7 @@ export const SpreadCategoryButtons = ({
             {...getSelectedCategoryProps(option)}
             endIcon={<ExpandMoreIcon id={option.label} />}
             id={option.label}
+            color='secondary'
           >
             {option.label}
           </Button>
@@ -105,9 +110,7 @@ export const CategoryMenu = ({
   allOptions: options,
   selectedRoute,
   onChange,
-  width,
 }) => {
-  console.log(width, 'WIDRTH')
   const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
@@ -165,7 +168,6 @@ const defaultProps = {
 
 CategoryMenu.propTypes = {
   ...propTypes,
-  width: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   allOptions: PropTypes.arrayOf(PropTypes.shape({})),
 }
 CategoryMenu.defaultProps = defaultProps

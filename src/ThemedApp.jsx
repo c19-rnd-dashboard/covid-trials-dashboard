@@ -15,7 +15,7 @@ export const ThemedApp = () => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#00275B',
+            main: '#2D5686',
           },
           secondary: {
             main: '#FF5761',
