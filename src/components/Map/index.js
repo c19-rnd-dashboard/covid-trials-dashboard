@@ -65,12 +65,7 @@ const Map = ({ pins, handleSelectedId }) => {
       width='100%'
       height='100%'
     >
-      <Pins
-        data={pins}
-        onClick={onClick}
-        prefersDarkMode={prefersDarkMode}
-        handleSelectedId={handleSelectedId}
-      />
+      <Pins data={pins} onClick={onClick} handleSelectedId={handleSelectedId} />
       <PopUpDisplay popupInfo={popUp} onClose={onClose} />
       <FullscreenControlDiv>
         <FullscreenControl />

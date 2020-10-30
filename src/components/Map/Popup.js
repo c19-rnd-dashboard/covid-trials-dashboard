@@ -196,7 +196,9 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 <DisplayField label='Notes' content={participation.notes} />
               </CardContent>
               <CardActions>
-                <Button onClick={handleClick}>BACK TO DETAILS</Button>
+                <Button onClick={handleClick} variant='contained'>
+                  BACK TO DETAILS
+                </Button>
               </CardActions>
             </>
           ) : (
@@ -210,7 +212,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                       color='success.main'
                       style={{ display: 'flex', alignItems: 'center' }}
                     >
-                      <CheckCircleIcon />
+                      <CheckCircleIcon style={{ paddingRight: '2px' }} />
                       Yes
                     </Box>
                   ) : (

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { store } from '../../store'
 import PropTypes from 'prop-types'
 import { prop, pipe, map } from 'sanctuary'
 import { ChartWrapper } from 'components/ChartWrapper'
@@ -12,7 +13,6 @@ import {
 } from 'components/MilestonesGraph/constants'
 import { snake, sentence } from 'case'
 import { filterAndSortMilestones } from 'components/MilestonesGraph/mapAssetToMilestones'
-import { fontColor } from 'constants/colors'
 import MaxWidth from 'components/MaxWidth'
 
 const getChartData = mapper => pipe([countBy(mapper), converCountIntoChartData])
@@ -88,76 +88,84 @@ const PieConfig = props => ({
   margin: { top: 30, bottom: 30 },
 })
 
-export const Charts = ({ pins: assets }) => (
-  <MaxWidth>
-    <h1 style={{ fontSize: '48px' }}>
-      {' '}
-      Coronavirus (COVID-19) Vaccination Candidate Trials Tracker{' '}
-    </h1>
-    <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
-      {' '}
-      When will a Coronavirus (COVID-19) Vaccine be available? Use this
-      dashboard to view COVID Vaccine progress by stage, molecule type,
-      therapeutic approach, and more.{' '}
-    </h2>
-    {chartList.map(
-      ({
-        title,
-        mapper,
-        mapChartData = a => a,
-        mapEntireData = a => a,
-        chartAttribites = {},
-      }) => {
-        const data = pipe([
-          getChartData(mapper),
-          map(mapChartData),
-          mapEntireData,
-        ])(assets)
-        const ChartComponent = data.length > 4 ? ResponsiveBar : ResponsivePie
-        const config =
-          ChartComponent === ResponsiveBar ? BarConfig({ title }) : PieConfig()
-        return (
-          <>
-            <h1 style={{ fontSize: '36px' }}>
-              {' '}
-              Coronavirus (COVID-19) Vaccinations by {title}{' '}
-            </h1>
-            <ChartWrapper key={title} title={`By ${title}`}>
-              <ChartComponent
-                data={data}
-                theme={{
-                  axis: {
-                    ticks: {
-                      line: {
-                        stroke: fontColor,
+export const Charts = ({ pins: assets }) => {
+  const {
+    state: { prefersDarkMode },
+  } = useContext(store) || { state: { prefersDarkMode: false } }
+  const fontColor = prefersDarkMode ? 'white' : 'black'
+  return (
+    <MaxWidth>
+      <h1 style={{ fontSize: '48px' }}>
+        {' '}
+        Coronavirus (COVID-19) Vaccination Candidate Trials Tracker{' '}
+      </h1>
+      <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
+        {' '}
+        When will a Coronavirus (COVID-19) Vaccine be available? Use this
+        dashboard to view COVID Vaccine progress by stage, molecule type,
+        therapeutic approach, and more.{' '}
+      </h2>
+      {chartList.map(
+        ({
+          title,
+          mapper,
+          mapChartData = a => a,
+          mapEntireData = a => a,
+          chartAttribites = {},
+        }) => {
+          const data = pipe([
+            getChartData(mapper),
+            map(mapChartData),
+            mapEntireData,
+          ])(assets)
+          const ChartComponent = data.length > 4 ? ResponsiveBar : ResponsivePie
+          const config =
+            ChartComponent === ResponsiveBar
+              ? BarConfig({ title, fontColor })
+              : PieConfig({ fontColor })
+          return (
+            <>
+              <h1 style={{ fontSize: '36px' }}>
+                {' '}
+                Coronavirus (COVID-19) Vaccinations by {title}{' '}
+              </h1>
+              <ChartWrapper key={title} title={`By ${title}`}>
+                <ChartComponent
+                  data={data}
+                  theme={{
+                    axis: {
+                      ticks: {
+                        line: {
+                          stroke: fontColor,
+                        },
+                        text: {
+                          fill: fontColor,
+                        },
                       },
+                      legend: {
+                        text: {
+                          fill: fontColor,
+                        },
+                      },
+                    },
+                    label: {
                       text: {
                         fill: fontColor,
                       },
                     },
-                    legend: {
-                      text: {
-                        fill: fontColor,
-                      },
-                    },
-                  },
-                  label: {
-                    text: {
-                      fill: fontColor,
-                    },
-                  },
-                }}
-                colorBy='index'
-                {...config}
-                {...chartAttribites}
-              />
-            </ChartWrapper>
-          </>
-        )
-      }
-    )}
-  </MaxWidth>
-)
+                  }}
+                  colorBy='index'
+                  {...config}
+                  {...chartAttribites}
+                />
+              </ChartWrapper>
+            </>
+          )
+        }
+      )}
+    </MaxWidth>
+  )
+}
 
 Charts.propTypes = {
   pins: PropTypes.array.isRequired,
