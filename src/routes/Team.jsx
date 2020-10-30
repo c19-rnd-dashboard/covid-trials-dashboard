@@ -61,7 +61,7 @@ export default function Team() {
             </Typography> */}
             <Typography variant='h4' align='left' paragraph>
               This website was developed by a group of 40+ volunteers starting
-              on March 22, 2020. It was inspired by{' '}
+              on March 17, 2020. It was inspired by{' '}
               <Link
                 href='https://www.effectivealtruism.org/'
                 target='_blank'
@@ -80,6 +80,16 @@ export default function Team() {
                 underline='always'
               >
                 Help with COVID
+              </Link>
+              and{' '}
+              <Link
+                href='https://www.giveshop.app/'
+                target='_blank'
+                rel='noopener noreferrer'
+                color='textPrimary'
+                underline='always'
+              >
+                GiveShop
               </Link>
               .
             </Typography>
