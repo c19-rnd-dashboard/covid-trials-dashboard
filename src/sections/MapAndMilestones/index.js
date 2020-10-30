@@ -17,6 +17,7 @@ import {
   useTheme,
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
+import { Section, SectionsContainer } from 'components/Sections'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -129,6 +130,21 @@ export const MapContainer = ({ pins }) => {
       <MapDiv>
         <Map pins={pins} />
       </MapDiv>
+      <SectionsContainer>
+        <Section
+          title={'COVID Trial Dash is a resource for people who want to join the fight against COVID.'}
+          content={'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'}
+          action={'More About Us'}
+          image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
+        />
+        <Section
+          alter
+          title={'COVID Trial Dash is a resource for people who want to join the fight against COVID.'}
+          content={'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'}
+          action={'More About Us'}
+          image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
+        />
+      </SectionsContainer>
       <HowYouCanHelp />
     </Tile>
   )
