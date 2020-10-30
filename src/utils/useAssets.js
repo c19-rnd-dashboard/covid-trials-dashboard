@@ -9,6 +9,10 @@ export const categoryOptions = [
     menu: [
       { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
       { label: 'Why Volunteer', route: '/volunteer-covid-trial' },
+      {
+        label: 'Vaccines Overview',
+        route: '/vaccines/overview',
+      },
       { label: 'Vaccines Trial Summary ', route: '/covid-trials-summary' },
       {
         label: 'Timelines',
@@ -28,10 +32,6 @@ export const categoryOptions = [
       { label: 'FAQ', route: '/faq' },
       { label: 'Contact Us', route: '/contact' },
     ],
-  },
-  {
-    label: 'Overview',
-    route: '/vaccines/overview',
   },
 ]
 
