@@ -26,7 +26,7 @@ const initialState = {
   loading: false,
   assets: [],
   selectedFilters: {},
-  prefersDarkMode: true,
+  prefersDarkMode: false,
 }
 const store = createContext()
 const { Provider } = store
@@ -49,8 +49,7 @@ const StateProvider = ({ children }) => {
     case 'fetchDataFailure':
       return { ...state, error: action.payload, loading: false }
     case 'tooglePrefersDarkMode':
-      return state // disabled until light theme is ready
-      // return { ...state, prefersDarkMode: !state.prefersDarkMode }
+      return { ...state, prefersDarkMode: !state.prefersDarkMode }
     case TOGGLE_FILTER:
       return {
         ...state,

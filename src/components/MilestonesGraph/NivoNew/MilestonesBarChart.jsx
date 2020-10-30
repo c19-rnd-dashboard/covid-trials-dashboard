@@ -36,7 +36,6 @@ const commonProps = {
 }
 
 export const MilestonesBarChart = () => {
-  // console.log(commonProps.data)
   return (
     <div style={{ height: 350 }}>
       <ResponsiveBar

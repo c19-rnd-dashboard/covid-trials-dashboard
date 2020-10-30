@@ -7,7 +7,15 @@ import styled from 'styled-components'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
 import { howYouCanHelpUrl } from 'constants/config'
-import { Button, Dialog, DialogTitle, Link } from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  Link,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 
 const MapDiv = styled.div`
@@ -103,23 +111,28 @@ const HowYouCanHelp = () => {
   )
 }
 
-export const MapContainer = ({ pins }) => (
-  <Tile>
-    <h1 style={{ fontSize: '36px' }}>
-      {' '}
-      Volunteer for COVID-19 Vaccination Trials near you
-    </h1>
-    <h2 style={{ fontSize: '24px', fontWeight: 'normal' }}>
-      {' '}
-      Interested in supporting the development of vaccines? You can volunteer
-      for a trial.
-    </h2>
-    <MapDiv>
-      <Map pins={pins} />
-    </MapDiv>
-    <HowYouCanHelp />
-  </Tile>
-)
+export const MapContainer = ({ pins }) => {
+  const theme = useTheme()
+  const isBigEnough = useMediaQuery(theme.breakpoints.up('sm'))
+  return (
+    <Tile>
+      <Typography variant='h1' style={{ fontSize: '2em' }} gutterBottom>
+        Volunteer for COVID-19 Vaccination Trials near you
+      </Typography>
+      {isBigEnough && (
+        <Typography style={{ fontSize: '1.3em' }} gutterBottom variant='h2'>
+          {' '}
+          Interested in supporting the development of vaccines? You can
+          volunteer for a trial.
+        </Typography>
+      )}
+      <MapDiv>
+        <Map pins={pins} />
+      </MapDiv>
+      <HowYouCanHelp />
+    </Tile>
+  )
+}
 
 const MapAndMilestones = ({ pins }) => {
   const tabs = [

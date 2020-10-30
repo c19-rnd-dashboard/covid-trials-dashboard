@@ -22,7 +22,7 @@ export const Container = ({ location, history, width }) => {
     history.push(selectedRoute)
   }
   const CategoryMenuProps = {
-    selectedRoute: selectedRoute ? selectedRoute.label : 'Vaccine',
+    selectedRoute: selectedRoute ? selectedRoute.label : 'Vaccines',
     onChange: handleChange,
   }
   return ['xs', 'sm'].includes(width) ? (
@@ -35,7 +35,7 @@ export const Container = ({ location, history, width }) => {
     <SpreadCategoryButtons
       {...CategoryMenuProps}
       options={categoryOptions}
-      selectedCategory={selectedCategory ? selectedCategory.label : 'Vaccine'}
+      selectedCategory={selectedCategory ? selectedCategory.label : 'Vaccines'}
     />
   )
 }

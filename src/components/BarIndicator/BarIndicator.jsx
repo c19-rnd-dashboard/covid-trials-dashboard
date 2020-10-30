@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Indicator, Dot, Label } from './styles'
+import { useStyles } from './styles'
 
 const propTypes = {
   children: PropTypes.node,
@@ -12,12 +12,15 @@ const defaultProps = {
   children: '',
 }
 
-export const BarIndicator = ({ children, length }) => (
-  <Indicator length={length}>
-    <Dot />
-    <Label>{children}</Label>
-  </Indicator>
-)
+export const BarIndicator = ({ children, length }) => {
+  const classes = useStyles({ length })
+  return (
+    <div className={classes.indicator}>
+      <div className={classes.dot} />
+      <div className={classes.label}>{children}</div>
+    </div>
+  )
+}
 
 BarIndicator.propTypes = propTypes
 BarIndicator.defaultProps = defaultProps

@@ -5,8 +5,22 @@ import { MilestonesTooltip } from '../MilestonesTooltip'
 import { BarIndicator } from '../BarIndicator'
 import moment from 'moment'
 import './MilestonesGraph.css'
+import { makeStyles, Typography } from '@material-ui/core'
 
-// const colorBgStyles = ['blue', 'red', 'yellow', 'purple', 'lightblue']
+const useStyles = makeStyles(theme => ({
+  axis: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    color: theme.palette.text.primary,
+  },
+  axisDates: {
+    textAlign: 'center',
+    padding: '0.5rem',
+  },
+  axisStartDate: {
+    marginLeft: '-7em',
+  },
+}))
 
 const propTypes = {
   milestones: PropTypes.arrayOf(
@@ -61,6 +75,7 @@ export const getTotalMilestoneDurationInDays = ({ values }) => {
 }
 
 export const MilestonesGraph = ({ milestones }) => {
+  const classes = useStyles()
   const dates = getAllDatesFromMilestones(milestones)
 
   const earliestDate = getEarliestDate(
@@ -77,9 +92,9 @@ export const MilestonesGraph = ({ milestones }) => {
     <div className='milestones-graph'>
       <div className='labels'>
         {milestones.map(({ name }) => (
-          <div key={name} data-test-id='label' className='label'>
+          <Typography key={name} data-test-id='label' className='label'>
             {name}
-          </div>
+          </Typography>
         ))}
       </div>
       <div className='bars'>
@@ -103,27 +118,27 @@ export const MilestonesGraph = ({ milestones }) => {
             />
           </div>
         ))}
-        <div data-test-id='x-axis' className='x-axis'>
+        <div data-test-id='x-axis' className={classes.axis}>
           {earliestDate && (
-            <div className='dates start-date'>
+            <div className={[classes.axisDates, classes.axisStartDate]}>
               <div
                 data-test-id='start-date'
                 data-test-value={moment(earliestDate).toISOString()}
               >
                 {moment(earliestDate).format('LL')}
               </div>
-              <div>Start Date</div>
+              <Typography>Start Date</Typography>
             </div>
           )}
           {milestones.length > 1 && latestDate && (
-            <div className='dates'>
-              <div
+            <div className={classes.axisDates}>
+              <Typography
                 data-test-id='end-date'
                 data-test-value={moment(latestDate).toISOString()}
               >
                 {moment(latestDate).format('LL')}
-              </div>
-              <div>End Date</div>
+              </Typography>
+              <Typography>End Date</Typography>
             </div>
           )}
         </div>

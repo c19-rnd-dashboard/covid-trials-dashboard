@@ -56,9 +56,11 @@ const Map = ({ pins, handleSelectedId }) => {
     <ReactMapGL
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapStyle={`mapbox://styles/mapbox/${
-        prefersDarkMode ? 'dark' : 'light'
-      }-v10?optimize=true`}
+      mapStyle={
+        prefersDarkMode
+          ? 'mapbox://styles/mapbox/dark-v10?optimize=true'
+          : 'mapbox://styles/adibi2011/ckgtx36fp09lk19n2csgrxnu4'
+      }
       mapboxApiAccessToken={mapboxApiKey}
       width='100%'
       height='100%'

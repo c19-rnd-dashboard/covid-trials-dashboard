@@ -116,5 +116,6 @@ MilestonesGraphContainer.propTypes = {
 }
 
 MilestonesGraphContainer.defaultProps = {
-  // selectedAsset: {},
+  selectedAsset: {},
+  handleSelectedId: () => {},
 }

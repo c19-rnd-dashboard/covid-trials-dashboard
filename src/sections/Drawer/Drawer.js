@@ -17,9 +17,8 @@ import { ThemeModeSelectorConsumerPropTypes } from 'components/ThemeModeSelector
 import { ThemeModeSelector } from 'components/ThemeModeSelector/ThemeModeSelector'
 import { FilterList } from 'components/MaterialFilter/FilterListContainer'
 
-// Theme button disabled until light theme is ready
 const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => (
-  <ListItem button disabled onClick={onChange}>
+  <ListItem button onClick={onChange}>
     <ListItemIcon>
       {prefersDarkMode ? <Brightness2Icon /> : <Brightness5Icon />}
     </ListItemIcon>
