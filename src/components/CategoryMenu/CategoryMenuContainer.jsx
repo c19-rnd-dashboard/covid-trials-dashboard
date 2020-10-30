@@ -7,6 +7,7 @@ import { CategoryMenu } from './CategoryMenu'
 import { categoryOptions, allCategoryMenuItems } from 'utils/useAssets'
 
 export const Container = ({ location, history, width }) => {
+  console.log({ location, categoryOptions })
   const selectedCategory = categoryOptions.find(option =>
     option.menu.find(menuItem => menuItem.route === location.pathname)
   )
