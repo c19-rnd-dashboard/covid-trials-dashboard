@@ -1,5 +1,5 @@
 import JonSanders from '../assets/images/jonsanders.jpg'
-import Mats from '../assets/images/MatsOlsen.jpg'
+import Mats from '../assets/images/mats.jpg'
 import Liam from '../assets/images/liam_headshot.jpg'
 import Nestor from '../assets/images/nestor.png'
 import Nafi from '../assets/images/Nafi.jpg'
@@ -8,12 +8,10 @@ import Vinny from '../assets/images/vinny.jpg'
 
 export default [
   {
-    name: 'Mats Olson',
+    name: 'Mats Olsen',
     title: 'Founder',
     blurb: [
-      'Founded COVID Dash on March 17, 2020.',
-      '13 years clinical trial industry experience.',
-      'SVP of clinical trial technology solution provider, Prevail InfoWork.',
+      'Founded COVID Dash on March 17, 2020. 13 years clinical trial industry experience. SVP of clinical trial technology solution provider, Prevail InfoWorks.',
     ],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/mats-olsen/' },
     image: Mats,
