@@ -12,11 +12,10 @@ import HowToHelp from './HowYouCanHelp'
 
 import {
   // spreadsheetDataSource,
-  // howYouCanHelpUrl,
-  faqUrl,
   vaccineStatusSummaryUrl,
   // contactUsUrl,
 } from 'constants/config'
+import { FAQs } from 'sections/FAQs'
 
 const Routes = () => {
   const { filteredAssets } = useAssets()
@@ -36,7 +35,7 @@ const Routes = () => {
         render={() => <Charts pins={filteredAssets} />}
       />
       <Route path={'/team'} render={() => <Team />} />{' '}
-      <Route path={'/faq'} render={() => <Iframe url={faqUrl} title='FAQ' />} />
+      <Route path={'/faq'} component={FAQs} />
       <Route path={'/contact'} render={() => <ContactUs />} />
       <Route
         path={'/volunteer-covid-trial'}
