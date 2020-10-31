@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     maxWidth: theme.spacing(100),
     margin: `${theme.spacing(4)}px auto`,
   },
+  title: {
+    margin: theme.spacing(2),
+    fontSize: theme.typography.pxToRem(30),
+    textAlign: 'center',
+  },
   details: {
     flexDirection: 'column',
   },
@@ -23,9 +28,14 @@ const useStyles = makeStyles(theme => ({
 export const FAQs = () => {
   const classes = useStyles()
   const { t } = useTranslation()
-  const questionsAndAnswers = t('faqs', { returnObjects: true })
+  const questionsAndAnswers = t('faqs.questionsAndAnswers', {
+    returnObjects: true,
+  })
   return (
     <Paper className={classes.root}>
+      <Typography className={classes.title} component='h1'>
+        {t('faqs.title')}
+      </Typography>
       {questionsAndAnswers.map(({ question, answer }) => (
         <Accordion key={question}>
           <AccordionSummary
