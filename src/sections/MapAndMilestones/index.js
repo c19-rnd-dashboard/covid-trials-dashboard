@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 import { Section } from 'components/Sections'
+import { useTranslation } from 'react-i18next'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -115,6 +116,8 @@ const HowYouCanHelp = () => {
 export const MapContainer = ({ pins }) => {
   const theme = useTheme()
   const isBigEnough = useMediaQuery(theme.breakpoints.up('sm'))
+  const { t } = useTranslation()
+
   return (
     <div>
       <Typography
@@ -122,7 +125,7 @@ export const MapContainer = ({ pins }) => {
         style={{ fontSize: '2em', margin: '0.5rem' }}
         gutterBottom
       >
-        Volunteer for COVID-19 Vaccination Trials near you
+        {t('title')}
       </Typography>
       {isBigEnough && (
         <Typography
@@ -130,33 +133,21 @@ export const MapContainer = ({ pins }) => {
           gutterBottom
           variant='h2'
         >
-          {' '}
-          Interested in supporting the development of vaccines? You can
-          volunteer for a trial.
+          {t('subtitle')}
         </Typography>
       )}
       <MapDiv>
         <Map pins={pins} />
       </MapDiv>
       <Section
-        title={
-          'COVID Trial Dash is a resource for people who want to join the fight against COVID.'
-        }
-        content={
-          'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'
-        }
-        action={'More About Us'}
+        title={t('section1.title')}
+        content={t('section1.content')}
         image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
       />
       <Section
         alter
-        title={
-          'COVID Trial Dash is a resource for people who want to join the fight against COVID.'
-        }
-        content={
-          'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'
-        }
-        action={'More About Us'}
+        title={t('section2.title')}
+        content={t('section2.content')}
         image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
       />
     </div>
