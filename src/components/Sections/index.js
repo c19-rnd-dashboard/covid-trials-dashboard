@@ -1,2 +1,1 @@
-export {SectionsContainer} from './SectionsContainer'
-export {Section} from './Section'
+export { Section } from './Section'

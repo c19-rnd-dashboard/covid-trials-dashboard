@@ -17,7 +17,7 @@ import {
   useTheme,
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
-import { Section, SectionsContainer } from 'components/Sections'
+import { Section } from 'components/Sections'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -116,12 +116,20 @@ export const MapContainer = ({ pins }) => {
   const theme = useTheme()
   const isBigEnough = useMediaQuery(theme.breakpoints.up('sm'))
   return (
-    <Tile>
-      <Typography variant='h1' style={{ fontSize: '2em' }} gutterBottom>
+    <div>
+      <Typography
+        variant='h1'
+        style={{ fontSize: '2em', margin: '0.5rem' }}
+        gutterBottom
+      >
         Volunteer for COVID-19 Vaccination Trials near you
       </Typography>
       {isBigEnough && (
-        <Typography style={{ fontSize: '1.3em' }} gutterBottom variant='h2'>
+        <Typography
+          style={{ fontSize: '1.3em', margin: '0.5rem' }}
+          gutterBottom
+          variant='h2'
+        >
           {' '}
           Interested in supporting the development of vaccines? You can
           volunteer for a trial.
@@ -130,23 +138,28 @@ export const MapContainer = ({ pins }) => {
       <MapDiv>
         <Map pins={pins} />
       </MapDiv>
-      <SectionsContainer>
-        <Section
-          title={'COVID Trial Dash is a resource for people who want to join the fight against COVID.'}
-          content={'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'}
-          action={'More About Us'}
-          image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
-        />
-        <Section
-          alter
-          title={'COVID Trial Dash is a resource for people who want to join the fight against COVID.'}
-          content={'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'}
-          action={'More About Us'}
-          image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
-        />
-      </SectionsContainer>
-      <HowYouCanHelp />
-    </Tile>
+      <Section
+        title={
+          'COVID Trial Dash is a resource for people who want to join the fight against COVID.'
+        }
+        content={
+          'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'
+        }
+        action={'More About Us'}
+        image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
+      />
+      <Section
+        alter
+        title={
+          'COVID Trial Dash is a resource for people who want to join the fight against COVID.'
+        }
+        content={
+          'We help you keep track of vaccine progress with timelines, terminology, and more, as well as provide information on ongoing vaccine trials near you!'
+        }
+        action={'More About Us'}
+        image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
+      />
+    </div>
   )
 }
 
