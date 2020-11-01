@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   details: {
     flexDirection: 'column',
   },
+  question: {
+    fontWeight: 'bold',
+  },
 }))
 
 export const FAQs = () => {
@@ -42,7 +45,7 @@ export const FAQs = () => {
             expandIcon={<ExpandMore />}
             aria-controls={`${question}-content`}
           >
-            <Typography>{question}</Typography>
+            <Typography className={classes.question}>{question}</Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.details}>
             {answer.split('\n').map(a => (
