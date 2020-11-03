@@ -36,10 +36,11 @@ export const SpreadCategoryButtons = ({
   selectedCategory,
   selectedRoute,
   onChange,
+  handleChangeNonMenu,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [menuOpen, setMenuOpen] = React.useState(null)
-  const handleClick = event => {
+  const handleClickMenu = event => {
     setAnchorEl(event.currentTarget)
     setMenuOpen(event.target.textContent || event.currentTarget.id)
   }
@@ -61,45 +62,61 @@ export const SpreadCategoryButtons = ({
     <div>
       {options.map(option => (
         <span key={option.label}>
-          <Button
-            // disableElevation
-            className={classes.button}
-            onClick={handleClick}
-            key={option.label}
-            {...getSelectedCategoryProps(option)}
-            endIcon={<ExpandMoreIcon id={option.label} />}
-            id={option.label}
-            color='secondary'
-          >
-            {option.label}
-          </Button>
-          <Menu
-            id='customized-menu'
-            anchorEl={anchorEl}
-            keepMounted
-            open={!!anchorEl && menuOpen === option.label}
-            onClose={handleClose}
-            elevation={0}
-            getContentAnchorEl={null}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-          >
-            {option.menu.map(menuOption => (
-              <StyledMenuItem
-                key={menuOption.label}
-                onClick={onClick}
-                selected={menuOption.label === selectedRoute}
+          {option.menu ? (
+            <>
+              <Button
+                // disableElevation
+                className={classes.button}
+                onClick={handleClickMenu}
+                key={option.label}
+                {...getSelectedCategoryProps(option)}
+                endIcon={<ExpandMoreIcon id={option.label} />}
+                id={option.label}
+                color='secondary'
               >
-                <ListItemText primary={menuOption.label} />
-              </StyledMenuItem>
-            ))}
-          </Menu>
+                {option.label}
+              </Button>
+              <Menu
+                id='customized-menu'
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl && menuOpen === option.label}
+                onClose={handleClose}
+                elevation={0}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                {option.menu.map(menuOption => (
+                  <StyledMenuItem
+                    key={menuOption.label}
+                    onClick={onClick}
+                    selected={menuOption.label === selectedRoute}
+                  >
+                    <ListItemText primary={menuOption.label} />
+                  </StyledMenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <Button
+              // disableElevation
+              className={classes.button}
+              onClick={handleChangeNonMenu}
+              key={option.label}
+              {...getSelectedCategoryProps(option)}
+              id={option.label}
+              color='secondary'
+            >
+              {option.label}
+            </Button>
+          )}
         </span>
       ))}
     </div>

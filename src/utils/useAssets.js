@@ -8,7 +8,6 @@ export const categoryOptions = [
     label: 'Vaccines',
     menu: [
       { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
-      { label: 'Why Volunteer', route: '/volunteer-covid-trial' },
       {
         label: 'Vaccines Overview',
         route: '/vaccines/overview',
@@ -33,11 +32,17 @@ export const categoryOptions = [
       { label: 'Contact Us', route: '/contact' },
     ],
   },
+  { label: 'Why Volunteer', route: '/volunteer-covid-trial' },
 ]
 
 export const allCategoryMenuItems = () => {
   const optionArrays = categoryOptions.map(option => option.menu)
-  return [].concat.apply([], optionArrays)
+  const withOuterLinks = [
+    ...optionArrays,
+    categoryOptions.map(option => option.route && option),
+  ]
+  const allRoutes = [].concat.apply([], withOuterLinks)
+  return allRoutes.filter(obj => obj && obj)
 }
 
 export const useAssets = () => {
