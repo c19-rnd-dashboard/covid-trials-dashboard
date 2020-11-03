@@ -7,7 +7,8 @@ export const categoryOptions = [
   {
     label: 'Vaccines',
     menu: [
-      { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
+      // TODO add back once there is a homepage with extra stuff, so this will be the route to just the map.
+      // { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
       {
         label: 'Vaccines Overview',
         route: '/vaccines/overview',
