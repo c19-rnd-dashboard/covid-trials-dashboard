@@ -7,9 +7,10 @@ import { CategoryMenu } from './CategoryMenu'
 import { categoryOptions, allCategoryMenuItems } from 'utils/useAssets'
 
 export const Container = ({ location, history, width }) => {
-  console.log({ location, categoryOptions })
   const selectedCategory = categoryOptions.find(option =>
-    option.menu.find(menuItem => menuItem.route === location.pathname)
+    option.menu
+      ? option.menu.find(menuItem => menuItem.route === location.pathname)
+      : option.route === location.pathname
   )
 
   const selectedRoute = allCategoryMenuItems().find(
@@ -22,9 +23,17 @@ export const Container = ({ location, history, width }) => {
     ).route
     history.push(selectedRoute)
   }
+
+  const handleChangeNonMenu = optionLabel => {
+    const selectedRoute = categoryOptions.find(
+      option => option.label === optionLabel.target.textContent
+    ).route
+    history.push(selectedRoute)
+  }
   const CategoryMenuProps = {
     selectedRoute: selectedRoute ? selectedRoute.label : 'Vaccines',
     onChange: handleChange,
+    handleChangeNonMenu: handleChangeNonMenu,
   }
   return ['xs', 'sm'].includes(width) ? (
     <CategoryMenu
