@@ -57,7 +57,7 @@ const Navbar = ({ width }) => {
               {width !== 'xs' && (
                 <img
                   className={`${classes.space} ${classes.logo}`}
-                  src='logos/covidDash-FinalLogos_Mark-White.png'
+                  src='logos/red-logo.svg'
                   alt='Covid Dash Logo White'
                 />
               )}
