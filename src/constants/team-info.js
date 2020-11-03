@@ -17,7 +17,7 @@ export default [
     image: Mats,
   },
   {
-    name: 'Nestor Torbon',
+    name: 'Nestor Tobon',
     title: 'Software Developer',
     blurb: ['Software developer at Splunk.'],
     link: { title: 'Github', url: 'https://github.com/Nestyko' },
