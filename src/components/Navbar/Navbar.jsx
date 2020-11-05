@@ -32,7 +32,9 @@ const useStyles = makeStyles(theme => ({
   },
   space: {
     marginLeft: theme.spacing(1),
-    fontWeight: 'bold',
+    fontWeight: '500',
+    fontStyle: 'normal',
+    fontFamily: 'pragmatica-slabserif, sans-serif', // idk why this isn't showing up.  The T should show lines coming down from the two sides of the top
   },
   logo: {
     height: '2rem',
