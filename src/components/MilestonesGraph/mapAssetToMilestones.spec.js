@@ -17,7 +17,7 @@ it('should not take too long', () => {
   const { duration } = profileTime(() =>
     assetsWithMilestones.map(asset => mapAssetToMilestones(now)(asset))
   )
-  expect(duration).toBeLessThan(2500)
+  expect(duration).toBeLessThan(3000)
 })
 
 it('should return the expected result', () => {
