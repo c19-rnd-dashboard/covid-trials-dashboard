@@ -24,7 +24,7 @@ return(
 
 const initialState = {
   loading: false,
-  assets: [],
+  assets: assets,
   selectedFilters: {},
   prefersDarkMode: false,
 }
