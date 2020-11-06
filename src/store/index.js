@@ -51,7 +51,6 @@ const StateProvider = ({ children }) => {
     case 'fetchDataFailure':
       return { ...state, error: action.payload, loading: false }
     case 'tooglePrefersDarkMode':
-      console.log('TOGGLE TOGGLE')
       setDarkMode(!state.prefersDarkMode)
       return { ...state, prefersDarkMode: !state.prefersDarkMode }
     case TOGGLE_FILTER:
