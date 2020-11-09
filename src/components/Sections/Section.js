@@ -60,6 +60,20 @@ export const Section = ({ title, content, action, alter, image }) => {
   )
 }
 
+export const SectionWithChildren = ({ children, alter }) => {
+  const classes = useStyles(alter)()
+  return <div className={classes.root}>{children}</div>
+}
+
+SectionWithChildren.propTypes = {
+  children: PropTypes.node.isRequired,
+  alter: PropTypes.bool,
+}
+
+SectionWithChildren.defaultProps = {
+  alter: false,
+}
+
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
