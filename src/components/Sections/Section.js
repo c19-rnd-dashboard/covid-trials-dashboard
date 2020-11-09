@@ -7,7 +7,7 @@ const useStyles = alter =>
     root: {
       backgroundColor: alter
         ? theme.palette.secondary.main
-        : theme.palette.background,
+        : theme.palette.background.paper,
       display: 'flex',
       [theme.breakpoints.down('sm')]: {
         flexDirection: 'column',
