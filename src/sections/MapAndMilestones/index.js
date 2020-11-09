@@ -17,8 +17,8 @@ import {
   useTheme,
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
-import { Section } from 'components/Sections'
 import { useTranslation } from 'react-i18next'
+import { HomeSections } from 'sections/HomeSections'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -139,17 +139,7 @@ export const MapContainer = ({ pins }) => {
       <MapDiv>
         <Map pins={pins} />
       </MapDiv>
-      <Section
-        title={t('section1.title')}
-        content={t('section1.content')}
-        image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
-      />
-      <Section
-        alter
-        title={t('section2.title')}
-        content={t('section2.content')}
-        image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
-      />
+      <HomeSections />
     </div>
   )
 }
