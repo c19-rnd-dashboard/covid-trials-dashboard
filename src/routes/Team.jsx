@@ -60,8 +60,8 @@ export default function Team() {
               Who developed this website?
             </Typography> */}
             <Typography variant='h4' align='left' paragraph>
-              This website was developed by a group of 40+ volunteers starting
-              on March 17, 2020. It was inspired by{' '}
+              COVID Trial Dash was developed by a group of 40+ volunteers starting
+              in March 2020. It was inspired by{' '}
               <Link
                 href='https://www.effectivealtruism.org/'
                 target='_blank'
@@ -81,7 +81,7 @@ export default function Team() {
               >
                 Help with COVID
               </Link>
-              and{' '}
+               and{' '}
               <Link
                 href='https://www.giveshop.app/'
                 target='_blank'
@@ -99,15 +99,13 @@ export default function Team() {
               color='textSecondary'
               paragraph
             >
-              The following volunteers contributed to this project and agreed to
-              be named: Mats Olsen, Nestor Luis Tobon Arrieta, Jonathan Sanders,
-              Vincent Brandon, Liam Rosen, Priya Kaur, Justin Albright, Gabbie
+              Thanks also to other volunteers, including, but not limited to: Priya Kaur, Justin Albright, Gabbie
               Wilson, Harsh Desai, Anusha Joshi, Andy Zhou, Joshua Yon, Natalie
               Tang, Ivanna Leon, Okezi Obrutu, Azmi Rahman, Sloane Parker, Meg
               Wilson, Jack Carew, Param Patel, Purab Patel, Daisy Gresham,
               Kristine Su, James Smith, Stephen Hellens, Matthew Rittenhouse,
               Mohamed Arshath, Andrew Chen, Hanna Mass, Enoch Chung, Sara Young,
-              Tatum Braun, Bill Young, Lisa Young.
+              Tatum Braun, Bill Young, and Lisa Young.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify='center'>
