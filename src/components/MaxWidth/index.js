@@ -8,17 +8,18 @@ const CenterMain = styled.div`
 `
 const MainWidth = styled.div`
   display: block;
-  width: 1100px;
-  max-width: 98vw;
+  width: ${props => (props.max ? props.max : '1100px')};
+  max-width: '98vw';
 `
 
-const MaxWidth = ({ children }) => (
+const MaxWidth = ({ children, max }) => (
   <CenterMain>
-    <MainWidth>{children}</MainWidth>
+    <MainWidth max={max}>{children}</MainWidth>
   </CenterMain>
 )
 
 MaxWidth.propTypes = {
   children: PropTypes.node,
+  max: PropTypes.string,
 }
 export default MaxWidth
