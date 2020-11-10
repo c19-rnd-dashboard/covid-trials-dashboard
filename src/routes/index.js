@@ -8,10 +8,11 @@ import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesG
 import { Charts } from 'sections/Charts'
 import Iframe from 'components/Iframe'
 import { VaccinesOverview } from 'components/VaccinesOverview'
+import HowToHelp from './HowYouCanHelp'
 
 import {
   // spreadsheetDataSource,
-  howYouCanHelpUrl,
+  // howYouCanHelpUrl,
   faqUrl,
   vaccineStatusSummaryUrl,
   // contactUsUrl,
@@ -40,7 +41,8 @@ const Routes = () => {
       <Route
         path={'/volunteer-covid-trial'}
         render={() => (
-          <Iframe url={howYouCanHelpUrl} title='How and Why to Volunteer' />
+          // <Iframe url={howYouCanHelpUrl} title='How and Why to Volunteer' />
+          <HowToHelp />
         )}
       />
       <Route
