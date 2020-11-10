@@ -19,6 +19,7 @@ import {
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 import { useTranslation } from 'react-i18next'
 import { HomeSections } from 'sections/HomeSections'
+import MaxWidth from 'components/MaxWidth'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -120,25 +121,31 @@ export const MapContainer = ({ pins }) => {
 
   return (
     <div>
-      <Typography
-        variant='h1'
-        style={{ fontSize: '2em', margin: '0.5rem' }}
-        gutterBottom
-      >
-        {t('title')}
-      </Typography>
-      {isBigEnough && (
+      <MaxWidth>
         <Typography
-          style={{ fontSize: '1.3em', margin: '0.5rem' }}
+          variant='h1'
+          style={{ fontSize: '2em', marginTop: '1.3rem', marginLeft: '0.5rem' }}
           gutterBottom
-          variant='h2'
         >
-          {t('subtitle')}
+          {t('title')}
         </Typography>
-      )}
-      <MapDiv>
-        <Map pins={pins} />
-      </MapDiv>
+        {isBigEnough && (
+          <Typography
+            style={{
+              fontSize: '1.3em',
+              marginBottom: '1.3rem',
+              marginLeft: '0.5rem',
+            }}
+            gutterBottom
+            variant='h2'
+          >
+            {t('subtitle')}
+          </Typography>
+        )}
+        <MapDiv>
+          <Map pins={pins} />
+        </MapDiv>
+      </MaxWidth>
       <HomeSections />
     </div>
   )
