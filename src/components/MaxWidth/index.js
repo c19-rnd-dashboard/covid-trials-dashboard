@@ -8,8 +8,8 @@ const CenterMain = styled.div`
 `
 const MainWidth = styled.div`
   display: block;
-  width: ${props => (props.max ? props.max : '1100px')};
-  max-width: '98vw';
+  max-width: ${props => (props.max ? props.max : '1100px')};
+  width: 98vw;
 `
 
 const MaxWidth = ({ children, max }) => (

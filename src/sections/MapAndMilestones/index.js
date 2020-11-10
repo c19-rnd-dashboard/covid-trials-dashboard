@@ -35,6 +35,10 @@ const StyledImg = styled.img`
   width: 100%;
 `
 
+const Wrapper = styled.div`
+  width: 100%;
+`
+
 const HowYouCanHelp = () => {
   const [exampleOpen, setExampleOpen] = useState(false)
   return (
@@ -120,7 +124,7 @@ export const MapContainer = ({ pins }) => {
   const { t } = useTranslation()
 
   return (
-    <div>
+    <Wrapper>
       <MaxWidth>
         <Typography
           variant='h1'
@@ -147,7 +151,7 @@ export const MapContainer = ({ pins }) => {
         </MapDiv>
       </MaxWidth>
       <HomeSections />
-    </div>
+    </Wrapper>
   )
 }
 

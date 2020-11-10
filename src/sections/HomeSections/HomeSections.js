@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
   },
   imagesContainer: {
     display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+    },
     alignItems: 'center',
     justifyContent: 'space-around',
     width: '100%',
@@ -23,6 +29,9 @@ const useStyles = makeStyles(theme => ({
   },
   pressLink: {
     width: theme.spacing(20),
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(6),
+    },
   },
   pressImg: {
     maxWidth: theme.spacing(20),
