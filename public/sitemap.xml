@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://www.coviddash.org</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/coronavirus-volunteer-map</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/coronavirus-timeline-tracker</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/covid-trial-vaccine</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/team</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/faq</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/contact</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/volunteer-covid-trial</loc>
+    </url>
+    <url>
+      <loc>https://www.coviddash.org/covid-trials-summary</loc>
+    </url>
+</urlset>
