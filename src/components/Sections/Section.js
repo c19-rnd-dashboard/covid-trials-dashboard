@@ -54,9 +54,19 @@ export const Section = ({ title, content, action, alter, image }) => {
             <Typography variant='h5' className={classes.title}>
               {title}
             </Typography>
-            <Typography variant='p' className={classes.content}>
-              {content}
-            </Typography>
+
+            {content.split('\n').map((p, index) => (
+              <Typography
+                key={index}
+                variant='p'
+                component='p'
+                className={classes.content}
+                gutterBottom
+              >
+                {p}
+              </Typography>
+            ))}
+
             <div>{action}</div>
           </div>
           <div className={`${[classes.half, classes.media].join(' ')}`}>
