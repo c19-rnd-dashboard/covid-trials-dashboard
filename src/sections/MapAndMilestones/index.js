@@ -17,6 +17,9 @@ import {
   useTheme,
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
+import { useTranslation } from 'react-i18next'
+import { HomeSections } from 'sections/HomeSections'
+import MaxWidth from 'components/MaxWidth'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -29,6 +32,10 @@ const StyledInstructions = styled.div`
 
 const StyledImg = styled.img`
   height: 100%;
+  width: 100%;
+`
+
+const Wrapper = styled.div`
   width: 100%;
 `
 
@@ -114,23 +121,37 @@ const HowYouCanHelp = () => {
 export const MapContainer = ({ pins }) => {
   const theme = useTheme()
   const isBigEnough = useMediaQuery(theme.breakpoints.up('sm'))
+  const { t } = useTranslation()
+
   return (
-    <Tile>
-      <Typography variant='h1' style={{ fontSize: '2em' }} gutterBottom>
-        Volunteer for COVID-19 Vaccination Trials near you
-      </Typography>
-      {isBigEnough && (
-        <Typography style={{ fontSize: '1.3em' }} gutterBottom variant='h2'>
-          {' '}
-          Interested in supporting the development of vaccines? You can
-          volunteer for a trial.
+    <Wrapper>
+      <MaxWidth>
+        <Typography
+          variant='h1'
+          style={{ fontSize: '2em', marginTop: '1.3rem', marginLeft: '0.5rem' }}
+          gutterBottom
+        >
+          {t('title')}
         </Typography>
-      )}
-      <MapDiv>
-        <Map pins={pins} />
-      </MapDiv>
-      <HowYouCanHelp />
-    </Tile>
+        {isBigEnough && (
+          <Typography
+            style={{
+              fontSize: '1.3em',
+              marginBottom: '1.3rem',
+              marginLeft: '0.5rem',
+            }}
+            gutterBottom
+            variant='h2'
+          >
+            {t('subtitle')}
+          </Typography>
+        )}
+        <MapDiv>
+          <Map pins={pins} />
+        </MapDiv>
+      </MaxWidth>
+      <HomeSections />
+    </Wrapper>
   )
 }
 

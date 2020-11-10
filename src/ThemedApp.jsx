@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { Suspense, useContext } from 'react'
 import { ThemeProvider, CssBaseline, createMuiTheme } from '@material-ui/core'
 import Navbar from 'components/Navbar/Navbar'
 import { Content } from 'styles'
@@ -28,10 +28,12 @@ export const ThemedApp = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar />
-      <Content>
-        <Router />
-      </Content>
+      <Suspense fallback='Loading...'>
+        <Navbar />
+        <Content>
+          <Router />
+        </Content>
+      </Suspense>
     </ThemeProvider>
   )
 }

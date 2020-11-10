@@ -6,6 +6,7 @@ import { QueryParamProvider } from 'use-query-params'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import './index.css'
+import './i18n'
 
 if (process.env.NODE_ENV === 'production') {
   LogRocket.init(process.env.REACT_APP_LOG_ROCKET_KEY)
