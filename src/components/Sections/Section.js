@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles, Typography } from '@material-ui/core'
+import { Button, makeStyles, Typography } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import MaxWidth from 'components/MaxWidth'
+import { Link } from 'react-router-dom'
 
 const useStyles = alter =>
   makeStyles(theme => ({
@@ -25,6 +26,9 @@ const useStyles = alter =>
       flex: '1',
       padding: '2rem',
     },
+    actionButton: {
+      marginTop: theme.spacing(2),
+    },
     title: {
       color: alter
         ? theme.palette.primary.contrastText
@@ -44,7 +48,14 @@ const useStyles = alter =>
     },
   }))
 
-export const Section = ({ title, content, action, alter, image }) => {
+export const Section = ({
+  title,
+  content,
+  action,
+  alter,
+  image,
+  actionLink,
+}) => {
   const classes = useStyles(alter)()
   return (
     <div className={classes.root}>
@@ -66,8 +77,15 @@ export const Section = ({ title, content, action, alter, image }) => {
                 {p}
               </Typography>
             ))}
-
-            <div>{action}</div>
+            <Link to={actionLink} style={{ textDecoration: 'none' }}>
+              <Button
+                className={classes.actionButton}
+                variant='contained'
+                color={alter ? 'primary' : 'secondary'}
+              >
+                {action}
+              </Button>
+            </Link>
           </div>
           <div className={`${[classes.half, classes.media].join(' ')}`}>
             <img className={classes.image} src={image} alt='section' />
@@ -98,6 +116,7 @@ Section.propTypes = {
   image: PropTypes.string,
   action: PropTypes.element,
   alter: PropTypes.bool,
+  actionLink: PropTypes.string,
 }
 
 Section.defaultProps = {
@@ -105,4 +124,5 @@ Section.defaultProps = {
   image: '',
   action: null,
   alter: false,
+  actionLink: null,
 }

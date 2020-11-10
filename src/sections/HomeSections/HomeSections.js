@@ -60,12 +60,16 @@ export const HomeSections = () => {
         title={t('section1.title')}
         content={t('section1.content')}
         image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
+        action={t('section1.button')}
+        actionLink='/team'
       />
       <Section
         alter
         title={t('section2.title')}
         content={t('section2.content')}
         image='https://live.staticflickr.com/7833/46628342315_b73f6a7198_b.jpg'
+        action={t('section2.button')}
+        actionLink='/volunteer-covid-trial'
       />
       <SectionWithChildren>
         <div className={classes.container}>
