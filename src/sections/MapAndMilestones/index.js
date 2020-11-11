@@ -125,31 +125,37 @@ export const MapContainer = ({ pins }) => {
 
   return (
     <Wrapper>
-      <MaxWidth>
-        <Typography
-          variant='h1'
-          style={{ fontSize: '2em', marginTop: '1.3rem', marginLeft: '0.5rem' }}
-          gutterBottom
-        >
-          {t('title')}
-        </Typography>
-        {isBigEnough && (
+      <div style={{ paddingBottom: '3rem' }}>
+        <MaxWidth>
           <Typography
+            variant='h1'
             style={{
-              fontSize: '1.3em',
-              marginBottom: '1.3rem',
+              fontSize: '2em',
+              marginTop: '1.3rem',
               marginLeft: '0.5rem',
             }}
             gutterBottom
-            variant='h2'
           >
-            {t('subtitle')}
+            {t('title')}
           </Typography>
-        )}
-        <MapDiv>
-          <Map pins={pins} />
-        </MapDiv>
-      </MaxWidth>
+          {isBigEnough && (
+            <Typography
+              style={{
+                fontSize: '1.3em',
+                marginBottom: '1.3rem',
+                marginLeft: '0.5rem',
+              }}
+              gutterBottom
+              variant='h2'
+            >
+              {t('subtitle')}
+            </Typography>
+          )}
+          <MapDiv>
+            <Map pins={pins} />
+          </MapDiv>
+        </MaxWidth>
+      </div>
       <HomeSections />
     </Wrapper>
   )
