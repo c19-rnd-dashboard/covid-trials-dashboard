@@ -48,7 +48,7 @@ export const ThemedApp = () => {
                   href='https://twitter.com/COVIDTrialDash'
                   rel='noopener noreferrer'
                 >
-                  <img src={Twitter} />
+                  <img src={Twitter} alt='twitter' />
                 </a>
               ),
               title: (
