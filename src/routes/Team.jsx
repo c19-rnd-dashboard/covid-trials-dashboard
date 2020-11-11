@@ -60,8 +60,8 @@ export default function Team() {
               Who developed this website?
             </Typography> */}
             <Typography variant='h4' align='left' paragraph>
-              This website was developed by a group of 40+ volunteers starting
-              on March 17, 2020. It was inspired by{' '}
+              COVID Trial Dash was developed by a group of 40+ volunteers
+              starting in March 2020. It was inspired by{' '}
               <Link
                 href='https://www.effectivealtruism.org/'
                 target='_blank'
@@ -80,7 +80,7 @@ export default function Team() {
                 underline='always'
               >
                 Help with COVID
-              </Link>
+              </Link>{' '}
               and{' '}
               <Link
                 href='https://www.giveshop.app/'
@@ -93,38 +93,6 @@ export default function Team() {
               </Link>
               .
             </Typography>
-            <Typography
-              variant='body1'
-              align='left'
-              color='textSecondary'
-              paragraph
-            >
-              The following volunteers contributed to this project and agreed to
-              be named: Mats Olsen, Nestor Luis Tobon Arrieta, Jonathan Sanders,
-              Vincent Brandon, Liam Rosen, Priya Kaur, Justin Albright, Gabbie
-              Wilson, Harsh Desai, Anusha Joshi, Andy Zhou, Joshua Yon, Natalie
-              Tang, Ivanna Leon, Okezi Obrutu, Azmi Rahman, Sloane Parker, Meg
-              Wilson, Jack Carew, Param Patel, Purab Patel, Daisy Gresham,
-              Kristine Su, James Smith, Stephen Hellens, Matthew Rittenhouse,
-              Mohamed Arshath, Andrew Chen, Hanna Mass, Enoch Chung, Sara Young,
-              Tatum Braun, Bill Young, Lisa Young.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
-                <Typography>
-                  To help with this website, email{' '}
-                  <Link
-                    href='mailto:info@coviddash.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    color='secondary'
-                    underline='always'
-                  >
-                    info@coviddash.org
-                  </Link>
-                </Typography>
-              </Grid>
-            </div>
           </Box>
         </Container>
       </div>
@@ -169,6 +137,43 @@ export default function Team() {
           ))}
         </Grid>
       </Container>
+      <div className={classes.heroContent}>
+        <Container maxWidth={false} className={classes.container}>
+          <Box maxWidth='1080px'>
+            <Typography
+              variant='body1'
+              align='left'
+              color='textSecondary'
+              paragraph
+            >
+              Thanks also to our other volunteers, including Priya Kaur, Justin
+              Albright, Gabbie Wilson, Harsh Desai, Anusha Joshi, Andy Zhou,
+              Joshua Yon, Natalie Tang, Ivanna Leon, Okezi Obrutu, Azmi Rahman,
+              Sloane Parker, Meg Wilson, Jack Carew, Param Patel, Purab Patel,
+              Daisy Gresham, Kristine Su, James Smith, Stephen Hellens, Matthew
+              Rittenhouse, Mohamed Arshath, Andrew Chen, Hanna Mass, Enoch
+              Chung, Sara Young, Tatum Braun, Bill Young, and Lisa Young, and
+              more!
+            </Typography>
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify='center'>
+                <Typography>
+                  To help with this website, email{' '}
+                  <Link
+                    href='mailto:info@coviddash.org'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    color='secondary'
+                    underline='always'
+                  >
+                    info@coviddash.org
+                  </Link>
+                </Typography>
+              </Grid>
+            </div>
+          </Box>
+        </Container>
+      </div>
     </React.Fragment>
   )
 }
