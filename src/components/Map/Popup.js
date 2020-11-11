@@ -161,6 +161,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                     alwaysShow
                     content={
                       <Link
+                        onClick={() =>
+                          ReactGA.event({
+                            category: 'volunteer website',
+                            action: 'Volunteer website link clicked',
+                            label: `${participation.website} clicked`,
+                          })
+                        }
                         href={participation.website}
                         target='_blank'
                         rel='noopener noreferrer'
@@ -178,6 +185,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                   content={
                     participation.email ? (
                       <DontBreakOutLink
+                        onClick={() =>
+                          ReactGA.event({
+                            category: 'email link',
+                            action: 'Volunteer email link clicked',
+                            label: `${participation.email} clicked`,
+                          })
+                        }
                         href={`mailto:${participation.email}`}
                         style={{ color: theme.palette.text.primary }}
                       >
