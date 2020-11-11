@@ -81,7 +81,7 @@ export default function Team() {
               >
                 Help with COVID
               </Link>
-               and{' '}
+              and{' '}
               <Link
                 href='https://www.giveshop.app/'
                 target='_blank'
@@ -93,38 +93,7 @@ export default function Team() {
               </Link>
               .
             </Typography>
-            <Typography
-              variant='body1'
-              align='left'
-              color='textSecondary'
-              paragraph
-            >
-              Thanks also to other volunteers, including, but not limited to: Priya Kaur, Justin Albright, Gabbie
-              Wilson, Harsh Desai, Anusha Joshi, Andy Zhou, Joshua Yon, Natalie
-              Tang, Ivanna Leon, Okezi Obrutu, Azmi Rahman, Sloane Parker, Meg
-              Wilson, Jack Carew, Param Patel, Purab Patel, Daisy Gresham,
-              Kristine Su, James Smith, Stephen Hellens, Matthew Rittenhouse,
-              Mohamed Arshath, Andrew Chen, Hanna Mass, Enoch Chung, Sara Young,
-              Tatum Braun, Bill Young, and Lisa Young.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
-                <Typography>
-                  To help with this website, email{' '}
-                  <Link
-                    href='mailto:info@coviddash.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    color='secondary'
-                    underline='always'
-                  >
-                    info@coviddash.org
-                  </Link>
-                </Typography>
-              </Grid>
-            </div>
-          </Box>
-        </Container>
+            </Container>     
       </div>
       <Container className={classes.cardGrid} maxWidth='lg'>
         {/* End hero unit */}
@@ -167,6 +136,41 @@ export default function Team() {
           ))}
         </Grid>
       </Container>
+       <div className={classes.heroContent}>
+        <Container maxWidth={false} className={classes.container}>
+         <Box maxWidth='1080px'>
+          <Typography
+              variant='body1'
+              align='left'
+              color='textSecondary'
+              paragraph
+            >
+              Thanks also to our other volunteers, including Priya Kaur, Justin Albright, Gabbie
+              Wilson, Harsh Desai, Anusha Joshi, Andy Zhou, Joshua Yon, Natalie
+              Tang, Ivanna Leon, Okezi Obrutu, Azmi Rahman, Sloane Parker, Meg
+              Wilson, Jack Carew, Param Patel, Purab Patel, Daisy Gresham,
+              Kristine Su, James Smith, Stephen Hellens, Matthew Rittenhouse,
+              Mohamed Arshath, Andrew Chen, Hanna Mass, Enoch Chung, Sara Young,
+              Tatum Braun, Bill Young, and Lisa Young, and more!
+            </Typography>
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify='center'>
+                <Typography>
+                  To help with this website, email{' '}
+                  <Link
+                    href='mailto:info@coviddash.org'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    color='secondary'
+                    underline='always'
+                  >
+                    info@coviddash.org
+                  </Link>
+                </Typography>
+              </Grid>
+            </div>
+          </Box>
+        </Container>  
     </React.Fragment>
   )
 }
