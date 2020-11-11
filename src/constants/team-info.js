@@ -11,7 +11,7 @@ export default [
     name: 'Mats Olsen',
     title: 'Founder',
     blurb: [
-      'Founded COVID Dash on March 17, 2020. 13 years clinical trial industry experience. SVP of clinical trial technology solution provider, Prevail InfoWorks.',
+      'Founded COVID Trial Dash on March 17, 2020. 13 years clinical trial industry experience. SVP of clinical trial technology solution provider, Prevail InfoWorks.',
     ],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/mats-olsen/' },
     image: Mats,
