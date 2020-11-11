@@ -9,10 +9,10 @@ export const categoryOptions = [
     menu: [
       // TODO add back once there is a homepage with extra stuff, so this will be the route to just the map.
       // { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
-      {
-        label: 'Vaccines Overview',
-        route: '/vaccines/overview',
-      },
+      // {
+      //   label: 'Vaccines Overview',
+      //   route: '/vaccines/overview',
+      // },
       { label: 'Vaccines Trial Summary ', route: '/covid-trials-summary' },
       {
         label: 'Timelines',
