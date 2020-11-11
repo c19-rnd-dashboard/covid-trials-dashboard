@@ -13765,6 +13765,13 @@ rc-checkbox@^2.2.0:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
 
+rc-footer@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/rc-footer/-/rc-footer-0.6.3.tgz#74908d5fc2f84d0b1550e3ac9a93433144db6c5e"
+  integrity sha512-36S/9CAcYTH8e8XhHN67DkPqeHg7SC1GOenrk4xxyNJfL0dEdR0OUIm1p1RcbM/V1wtEWzghPRDFllS5dHIW/g==
+  dependencies:
+    classnames "^2.2.1"
+
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.8:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
