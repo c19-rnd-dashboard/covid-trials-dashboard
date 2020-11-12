@@ -1,7 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { get } from 'axios'
-import { apiUrl, useHardcodeData } from '../constants/config'
 import assets from '../mocks/assets.json'
 import ReactGA from 'react-ga'
 import { useMediaQuery } from '@material-ui/core'
@@ -69,19 +67,7 @@ const StateProvider = ({ children }) => {
     dispatch({
       type: 'fetchData',
     })
-    if (process.env.NODE_ENV !== 'production' || useHardcodeData) {
-      dispatch({ type: 'fetchDataSuccess', payload: assets })
-    } else {
-      get(`${apiUrl}/assets`)
-        .then(({ data }) => {
-          dispatch({ type: 'fetchDataSuccess', payload: data })
-        })
-        .catch(e => {
-          console.error(e)
-          //TODO: handle errors
-          dispatch({ type: 'fetchDataFailure', payload: e })
-        })
-    }
+    dispatch({ type: 'fetchDataSuccess', payload: [] })
   }, [dispatch, prefersDarkMode])
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
