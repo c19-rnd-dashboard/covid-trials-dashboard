@@ -5,6 +5,9 @@ import Nestor from '../assets/images/nestor.png'
 import Nafi from '../assets/images/Nafi.jpg'
 import Sunny from '../assets/images/sunny.png'
 import Vinny from '../assets/images/vinny.jpg'
+import Matthew from '../assets/images/matthew.png'
+import Sara from '../assets/images/sarah.png'
+import Enoch from '../assets/images/enoch.png'
 
 export default [
   {
@@ -60,5 +63,41 @@ export default [
     blurb: [''],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/sunnylsu/' },
     image: Sunny,
+  },
+  {
+    name: 'Matthew Rittenhouse',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Biology MSc with a focus in epidemiology. Data Analyst with Fit4Less gyms in Canada.',
+    ],
+    link: {
+      title: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    },
+    image: Matthew,
+  },
+  {
+    name: 'Sara Young',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Medical Student passionate about accessible health & working with underserved populations, interested in internal medicine & women\'s health.',
+    ],
+    // link: {
+    //   title: 'LinkedIn',
+    //   url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    // },
+    image: Sara,
+  },
+  {
+    name: 'Enoch Chung',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Medical Student with an interest in research, healthcare accessibility, and quality improvement in Medicine.',
+    ],
+    // link: {
+    //   title: 'LinkedIn',
+    //   url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    // },
+    image: Enoch,
   },
 ]
