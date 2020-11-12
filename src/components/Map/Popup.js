@@ -62,7 +62,7 @@ const DisplayField = ({
     </Typography>
     <Typography
       style={{
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         wordBreak: 'break-word',
       }}
       gutterBottom
@@ -168,22 +168,23 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                             label: `${participation.website} clicked`,
                           })
                         }
-                        href={participation.website}
                         target='_blank'
                         rel='noopener noreferrer'
-                        style={{ color: theme.palette.text.primary }}
+                        style={{
+                          color: theme.palette.primary.main,
+                          textDecoration: 'underline',
+                        }}
                       >
                         {participation.website}
                       </Link>
                     }
                   />
                 )}
-                <DividerWithMargin />
-                <DisplayField
-                  alwaysShow
-                  label='email'
-                  content={
-                    participation.email ? (
+                {participation.email && (
+                  <DisplayField
+                    alwaysShow
+                    label='email'
+                    content={
                       <DontBreakOutLink
                         onClick={() =>
                           ReactGA.event({
@@ -193,21 +194,30 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                           })
                         }
                         href={`mailto:${participation.email}`}
-                        style={{ color: theme.palette.text.primary }}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        style={{
+                          color: theme.palette.primary.main,
+                          textDecoration: 'underline',
+                        }}
                       >
                         {participation.email}
                       </DontBreakOutLink>
-                    ) : (
-                      '__'
-                    )
-                  }
-                />
+                    }
+                  />
+                )}
                 <DisplayField
                   label='Phone Number'
                   alwaysShow
                   content={participation.phone}
                 />
-                <DisplayField label='Notes' content={participation.notes} />
+                {participation.notes && (
+                  <DisplayField
+                    label='Notes'
+                    content={participation.notes}
+                    alwaysShow
+                  />
+                )}
               </CardContent>
               <CardActions>
                 <Button onClick={handleClick} variant='contained'>
@@ -246,24 +256,32 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
               <DisplayField label='Product' content={preferredName} />
               <DividerWithMargin />
               <DisplayField label='Phase' content={phase} alwaysShow />
-              <DisplayField
-                label='Trial Registry Link'
-                alwaysShow
-                content={
-                  registryLink ? (
+              {registryLink && (
+                <DisplayField
+                  label='Trial Registry Link'
+                  alwaysShow
+                  content={
                     <Link
+                      onClick={() =>
+                        ReactGA.event({
+                          category: 'Trial Registry Link',
+                          action: 'Trial Registry link clicked',
+                          label: `Trial Registry ${registryLink} clicked`,
+                        })
+                      }
                       href={registryLink}
                       target='_blank'
                       rel='noopener noreferrer'
-                      style={{ color: theme.palette.text.primary }}
+                      style={{
+                        color: theme.palette.primary.main,
+                        textDecoration: 'underline',
+                      }}
                     >
                       Click Here
                     </Link>
-                  ) : (
-                    '__'
-                  )
-                }
-              />
+                  }
+                />
+              )}
               <CardActions>
                 <Button
                   onClick={handleClick}
