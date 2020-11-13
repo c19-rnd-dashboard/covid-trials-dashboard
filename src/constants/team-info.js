@@ -61,4 +61,10 @@ export default [
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/sunnylsu/' },
     image: Sunny,
   },
+  {
+    name: 'Parker Place',
+    title: 'Software Developer, Growth',
+    blurb: 'Developer of www.getrecipecart.com',
+    link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/hodler' },
+  },
 ]

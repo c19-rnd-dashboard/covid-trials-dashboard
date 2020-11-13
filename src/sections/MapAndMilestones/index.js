@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactGA from 'react-ga'
 import PropTypes from 'prop-types'
 import Tabs from '../../components/Tabs'
 import Map from '../../components/Map'
@@ -20,6 +21,20 @@ import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 import { useTranslation } from 'react-i18next'
 import { HomeSections } from 'sections/HomeSections'
 import MaxWidth from 'components/MaxWidth'
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  PinterestShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+} from 'react-share'
+import {
+  EmailIcon,
+  FacebookIcon,
+  PinterestIcon,
+  WhatsappIcon,
+  TwitterIcon,
+} from 'react-share'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -149,6 +164,87 @@ export const MapContainer = ({ pins }) => {
         <MapDiv>
           <Map pins={pins} />
         </MapDiv>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+        >
+          <FacebookShareButton
+            style={{ marginRight: '0.5rem' }}
+            url={'https://www.coviddash.org'}
+            quote={'Volunteer for COVID-19 Vaccination trials near you'}
+            onClick={() => {
+              ReactGA.event({
+                category: 'volunteer',
+                action: 'Clicked share via facebook',
+              })
+            }}
+          >
+            <FacebookIcon size={48} round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton
+            style={{ marginRight: '0.5rem' }}
+            url={'https://www.coviddash.org'}
+            title={'Volunteer for COVID-19 Vaccination trials near you'}
+            hashtags={['COVID-19', 'Volunteer', 'Coronavirus', 'Vaccines']}
+            onClick={() => {
+              ReactGA.event({
+                category: 'volunteer',
+                action: 'Clicked share via twitter',
+              })
+            }}
+          >
+            <TwitterIcon size={48} round={true} />
+          </TwitterShareButton>
+          <PinterestShareButton
+            url={'https://www.coviddash.org'}
+            style={{ marginRight: '0.5rem' }}
+            media={'https://coviddash.org/CovidTrialVolunteer.png'}
+            className='mr-2'
+            onClick={() => {
+              ReactGA.event({
+                category: 'volunteer',
+                action: 'Clicked share via pinterest',
+              })
+            }}
+          >
+            <PinterestIcon size={48} round={true} />
+          </PinterestShareButton>
+          <EmailShareButton
+            style={{ marginRight: '0.5rem' }}
+            subject={
+              'I thought you might be interested in volunteering for COVID-19 Vaccination trials'
+            }
+            body={`I thought you may be interested in volunteering to help save lives. <a href=${'https://www.coviddash.org'}>COVID Dash</a> helps you find vaccination trials near you.<br><br>`}
+            url={'https://www.coviddash.org'}
+            className='mr-2'
+            openShareDialogOnClick={true}
+            onClick={() => {
+              ReactGA.event({
+                category: 'volunteer',
+                action: 'Clicked share via email',
+              })
+            }}
+          >
+            <EmailIcon size={48} round={true} />
+          </EmailShareButton>
+          <WhatsappShareButton
+            style={{ marginRight: '0.5rem' }}
+            url={'https://www.coviddash.org'}
+            title='Volunteer for COVID Vaccination trials in your area.'
+            className='mr-2'
+            onClick={() => {
+              ReactGA.event({
+                category: 'volunteer',
+                action: 'Clicked share via whatsapp',
+              })
+            }}
+          >
+            <WhatsappIcon size={48} round={true} />
+          </WhatsappShareButton>
+        </div>
       </MaxWidth>
       <HomeSections />
     </Wrapper>
