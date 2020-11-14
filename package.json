@@ -41,6 +41,7 @@
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
     "rebass": "^4.0.7",
+    "remark-gfm": "^1.0.0",
     "sanctuary": "^3.0.0",
     "styled-components": "^5.1.0",
     "theme-ui": "^0.3.1",
