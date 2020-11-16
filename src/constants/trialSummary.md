@@ -168,6 +168,7 @@
 - [TrialSiteNews](https://www.trialsitenews.com/the-covid-19-vaccine-race-status-update-as-of-july-5-2020/)
 - [Milken Tracker](https://covid-19tracker.milkeninstitute.org/#vaccines_intro)
 - [NYT Vaccine Tracker](https://www.nytimes.com/interactive/2020/science/coronavirus-vaccine-tracker.html)
+- [McGill Vaccine Tracker](https://covid19.trackvaccines.org/vaccines/)
 - [WHO Draft Landscape](https://www.who.int/publications/m/item/draft-landscape-of-covid-19-candidate-vaccines)
 - [RA Capital Tracker](https://www.racap.com/covid-19)
 - [BioWorld Tracker](https://www.bioworld.com/COVID19products)
