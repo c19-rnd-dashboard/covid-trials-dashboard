@@ -53,7 +53,8 @@ const press = [
     name: 'webmd',
   },
   {
-    logo: 'https://www.advisory.com/-/media/Advisory-com/AB_Logo_new.jpg',
+    logo:
+      'https://advisory-prod.azureedge.net/-/media/project/advisoryboard/advisory/ab-header-logo.svg?rev=072f384505bd4acca75420252582b5ef&w=114&hash=289F4F61DE3CEC06089A067BFDA91EC4',
     name: 'advisory',
     link:
       'https://www.advisory.com/daily-briefing/2020/08/07/vaccine-volunteer',
