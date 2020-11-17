@@ -33,7 +33,11 @@ const Legend = props => {
   }
   return (
     <div className={classes.root}>
-      <Breadcrumbs separator='>' aria-label='breadcrumb'>
+      <Breadcrumbs
+        itemsBeforeCollapse={Infinity}
+        separator='>'
+        aria-label='breadcrumb'
+      >
         {items.map(item => (
           <BigFontTooltip
             onClick={() => onChange(item)}

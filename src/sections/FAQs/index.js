@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     fontSize: theme.typography.pxToRem(30),
     textAlign: 'center',
+    paddingTop: '1rem',
   },
   details: {
     flexDirection: 'column',
@@ -35,27 +36,29 @@ export const FAQs = () => {
     returnObjects: true,
   })
   return (
-    <Paper className={classes.root}>
-      <Typography className={classes.title} component='h1'>
-        {t('faqs.title')}
-      </Typography>
-      {questionsAndAnswers.map(({ question, answer }) => (
-        <Accordion key={question}>
-          <AccordionSummary
-            expandIcon={<ExpandMore />}
-            aria-controls={`${question}-content`}
-          >
-            <Typography className={classes.question}>{question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails className={classes.details}>
-            {answer.split('\n').map(a => (
-              <Typography key={a} component='p' gutterBottom>
-                {a}
-              </Typography>
-            ))}
-          </AccordionDetails>
-        </Accordion>
-      ))}
-    </Paper>
+    <div style={{ minHeight: '100vh' }}>
+      <Paper className={classes.root}>
+        <Typography className={classes.title} component='h1'>
+          {t('faqs.title')}
+        </Typography>
+        {questionsAndAnswers.map(({ question, answer }) => (
+          <Accordion key={question}>
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls={`${question}-content`}
+            >
+              <Typography className={classes.question}>{question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.details}>
+              {answer.split('\n').map(a => (
+                <Typography key={a} component='p' gutterBottom>
+                  {a}
+                </Typography>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Paper>
+    </div>
   )
 }

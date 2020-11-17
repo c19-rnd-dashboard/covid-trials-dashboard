@@ -6,15 +6,15 @@ import ContactUs from './ContactUs'
 import { useAssets } from 'utils/useAssets'
 import { MilestonesGraphContainer } from 'components/MilestonesGraph/MilestonesGraphContainer'
 import { Charts } from 'sections/Charts'
-import Iframe from 'components/Iframe'
+// import Iframe from 'components/Iframe'
 import { VaccinesOverview } from 'components/VaccinesOverview'
 import HowToHelp from './HowYouCanHelp'
+import TrialSummary from './TrialSummary'
 
-import {
-  // spreadsheetDataSource,
-  vaccineStatusSummaryUrl,
-  // contactUsUrl,
-} from 'constants/config'
+import // spreadsheetDataSource,
+// vaccineStatusSummaryUrl,
+// contactUsUrl,
+'constants/config'
 import { FAQs } from 'sections/FAQs'
 
 const Routes = () => {
@@ -47,10 +47,11 @@ const Routes = () => {
       <Route
         path={'/covid-trials-summary'}
         render={() => (
-          <Iframe
-            url={vaccineStatusSummaryUrl}
-            title='Vaccine Trials Summary'
-          />
+          // <Iframe
+          //   url={vaccineStatusSummaryUrl}
+          //   title='Vaccine Trials Summary'
+          // />
+          <TrialSummary />
         )}
       />
       <Route path={'/'} render={() => <Vaccines assets={filteredAssets} />} />

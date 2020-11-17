@@ -62,7 +62,7 @@ const DisplayField = ({
     </Typography>
     <Typography
       style={{
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         wordBreak: 'break-word',
       }}
       gutterBottom
@@ -161,39 +161,63 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                     alwaysShow
                     content={
                       <Link
-                        href={participation.website}
+                        onClick={() =>
+                          ReactGA.event({
+                            category: 'volunteer website',
+                            action: 'Volunteer website link clicked',
+                            label: `${participation.website} clicked`,
+                          })
+                        }
                         target='_blank'
                         rel='noopener noreferrer'
-                        style={{ color: theme.palette.text.primary }}
+                        style={{
+                          color: theme.palette.primary.main,
+                          textDecoration: 'underline',
+                        }}
                       >
                         {participation.website}
                       </Link>
                     }
                   />
                 )}
-                <DividerWithMargin />
-                <DisplayField
-                  alwaysShow
-                  label='email'
-                  content={
-                    participation.email ? (
+                {participation.email && (
+                  <DisplayField
+                    alwaysShow
+                    label='email'
+                    content={
                       <DontBreakOutLink
-                        href={`mailto:${participation.email}`}
-                        style={{ color: theme.palette.text.primary }}
+                        onClick={() =>
+                          ReactGA.event({
+                            category: 'email link',
+                            action: 'Volunteer email link clicked',
+                            label: `${participation.email} clicked`,
+                          })
+                        }
+                        href={`mailto:${participation.email}?subject=I am interested in volunteering for your clinical trial&body=Hello,%0d%0dI found your study on www.coviddash.org and I am interested in participating in your clinical trial for a COVID-19 vaccine. I am a healthy subject who has not had COVID-19 and is not experiencing COVID-19 symptoms. I am located in ((ENTER CITY)) and can be reached at this email. Please let me known the next steps for potentially being screened and enrolled in this important study.`}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        style={{
+                          color: theme.palette.primary.main,
+                          textDecoration: 'underline',
+                        }}
                       >
                         {participation.email}
                       </DontBreakOutLink>
-                    ) : (
-                      '__'
-                    )
-                  }
-                />
+                    }
+                  />
+                )}
                 <DisplayField
                   label='Phone Number'
                   alwaysShow
                   content={participation.phone}
                 />
-                <DisplayField label='Notes' content={participation.notes} />
+                {participation.notes && (
+                  <DisplayField
+                    label='Notes'
+                    content={participation.notes}
+                    alwaysShow
+                  />
+                )}
               </CardContent>
               <CardActions>
                 <Button onClick={handleClick} variant='contained'>
@@ -232,24 +256,32 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
               <DisplayField label='Product' content={preferredName} />
               <DividerWithMargin />
               <DisplayField label='Phase' content={phase} alwaysShow />
-              <DisplayField
-                label='Trial Registry Link'
-                alwaysShow
-                content={
-                  registryLink ? (
+              {registryLink && (
+                <DisplayField
+                  label='Trial Registry Link'
+                  alwaysShow
+                  content={
                     <Link
+                      onClick={() =>
+                        ReactGA.event({
+                          category: 'Trial Registry Link',
+                          action: 'Trial Registry link clicked',
+                          label: `Trial Registry ${registryLink} clicked`,
+                        })
+                      }
                       href={registryLink}
                       target='_blank'
                       rel='noopener noreferrer'
-                      style={{ color: theme.palette.text.primary }}
+                      style={{
+                        color: theme.palette.primary.main,
+                        textDecoration: 'underline',
+                      }}
                     >
                       Click Here
                     </Link>
-                  ) : (
-                    '__'
-                  )
-                }
-              />
+                  }
+                />
+              )}
               <CardActions>
                 <Button
                   onClick={handleClick}

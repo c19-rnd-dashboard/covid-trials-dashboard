@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     justifyContent: 'center',
+    minHeight: '100vh',
   },
 }))
 

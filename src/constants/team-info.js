@@ -5,13 +5,17 @@ import Nestor from '../assets/images/nestor.png'
 import Nafi from '../assets/images/Nafi.jpg'
 import Sunny from '../assets/images/sunny.png'
 import Vinny from '../assets/images/vinny.jpg'
+import Matthew from '../assets/images/matthew.png'
+import Sara from '../assets/images/sarah.png'
+import Enoch from '../assets/images/enoch.png'
+import Parker from '../assets/images/parker.png'
 
 export default [
   {
     name: 'Mats Olsen',
     title: 'Founder',
     blurb: [
-      'Founded COVID Dash on March 17, 2020. 13 years clinical trial industry experience. SVP of clinical trial technology solution provider, Prevail InfoWorks.',
+      'Founded COVID Trial Dash on March 17, 2020. 13 years clinical trial industry experience. SVP of clinical trial technology solution provider, Prevail InfoWorks.',
     ],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/mats-olsen/' },
     image: Mats,
@@ -34,7 +38,7 @@ export default [
     name: 'Liam Rosen',
     title: 'Marketing and Operations',
     blurb: [
-      'Prior to COVID Trial Volunteer Dash, Liam helped start GetUsPPE, the largest US nonprofit helping link donors of personal protective equipment to facilities in need. Outside of nonprofit work, he is the CEO of TopScore, a sports technology company.',
+      'Helped start GetUsPPE, the largest nonprofit helping link donors of personal protective equipment to facilities in need. CEO at TopScore, a sports technology company.',
     ],
     link: { title: 'Website', url: 'https://liamrosen.com/' },
     image: Liam,
@@ -62,9 +66,46 @@ export default [
     image: Sunny,
   },
   {
+    name: 'Matthew Rittenhouse',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Biology MSc with a focus in epidemiology. Data Analyst with Fit4Less gyms in Canada.',
+    ],
+    link: {
+      title: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    },
+    image: Matthew,
+  },
+  {
     name: 'Parker Place',
     title: 'Software Developer, Growth',
-    blurb: 'Developer of www.getrecipecart.com',
+    blurb: ['Developer of GetRecipeCart'],
     link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/hodler' },
+    image: Parker,
+  },
+  {
+    name: 'Sara Young',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Medical Student passionate about accessible health & working with underserved populations, interested in internal medicine & women\'s health.',
+    ],
+    // link: {
+    //   title: 'LinkedIn',
+    //   url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    // },
+    image: Sara,
+  },
+  {
+    name: 'Enoch Chung',
+    title: 'Subject Matter Expert',
+    blurb: [
+      'Medical Student with an interest in research, healthcare accessibility, and quality improvement in Medicine.',
+    ],
+    // link: {
+    //   title: 'LinkedIn',
+    //   url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
+    // },
+    image: Enoch,
   },
 ]

@@ -3,9 +3,10 @@ import ReactMarkdown from 'react-markdown'
 import raw from 'raw.macro'
 import MaxWidth from 'components/MaxWidth'
 import gfm from 'remark-gfm'
+import '../constants/markdown.css'
 
-const HowToHelp = () => {
-  const markdown = raw('../constants/howToHelpMarkdown.md')
+const TrialSummary = () => {
+  const markdown = raw('../constants/trialSummary.md')
   return (
     <div style={{ marginTop: '20px' }}>
       <MaxWidth max='800px'>
@@ -15,4 +16,4 @@ const HowToHelp = () => {
   )
 }
 
-export default HowToHelp
+export default TrialSummary

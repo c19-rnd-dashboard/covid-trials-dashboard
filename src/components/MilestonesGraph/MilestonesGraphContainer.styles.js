@@ -3,6 +3,7 @@ import { Paper } from '@material-ui/core'
 
 export const WrapperDiv = styled.div`
   margin-bottom: 4em;
+  padding: 1em;
 `
 
 export const Title = styled.div`
