@@ -40,6 +40,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
+    "react-share": "^4.3.1",
     "rebass": "^4.0.7",
     "remark-gfm": "^1.0.0",
     "sanctuary": "^3.0.0",
