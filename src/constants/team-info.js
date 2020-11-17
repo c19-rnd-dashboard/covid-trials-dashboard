@@ -8,6 +8,7 @@ import Vinny from '../assets/images/vinny.jpg'
 import Matthew from '../assets/images/matthew.png'
 import Sara from '../assets/images/sarah.png'
 import Enoch from '../assets/images/enoch.png'
+import Parker from '../assets/images/parker.png'
 
 export default [
   {
@@ -75,6 +76,13 @@ export default [
       url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
     },
     image: Matthew,
+  },
+  {
+    name: 'Parker Place',
+    title: 'Software Developer, Growth',
+    blurb: ['Developer of GetRecipeCart'],
+    link: { title: 'LinkedIn', url: 'https://www.linkedin.com/in/hodler' },
+    image: Parker,
   },
   {
     name: 'Sara Young',
