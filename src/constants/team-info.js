@@ -9,6 +9,7 @@ import Matthew from '../assets/images/matthew.png'
 import Sara from '../assets/images/sarah.png'
 import Enoch from '../assets/images/enoch.png'
 import Parker from '../assets/images/parker.png'
+import Jim from '../assets/images/jim.png'
 
 export default [
   {
@@ -107,5 +108,15 @@ export default [
     //   url: 'https://www.linkedin.com/in/matthew-arlan-rittenhouse/',
     // },
     image: Enoch,
+  },
+  {
+    name: 'Jim Xu',
+    title: 'Marketing & Data',
+    blurb: ['Currently advisory at PwC.'],
+    link: {
+      title: 'LinkedIn',
+      url: 'http://www.linkedin.com/in/zijingxu',
+    },
+    image: Jim,
   },
 ]
