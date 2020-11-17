@@ -6,7 +6,7 @@ One little known fact about the development of new vaccines and treatments is th
 
 So how big of an impact could you and other volunteers have? It is difficult to estimate due to uncertainty around the rate of COVID-19 spread and mitigating factors. However, **accelerating a successful vaccine would likely** **save tens if not hundreds of thousands of lives**. Since April 1st 2020, COVID has killed 5,480 people per day on average, and that number has been trending upwards and is likely an [undercount](https://jamanetwork.com/journals/jama/fullarticle/2768086). If each additional approved vaccine could prevent 10% of these deaths, speeding up just one vaccine could save 548 lives per day or 16,659 per month.
 
-![vaccines](https://lh6.googleusercontent.com/aZJfPEL8EdTczg_TEEtEHtscHndFH1dkN4v4cqaDPh445xrJX_No9rKUXBuaKK0hSkC9kNhbsm0BQ6kLgqXsD8CbBm1wIdZPivt2MM9MZbo9AhuKavtIoo3YJTLkm0tjkDc4WnoO)
+![vaccines](https://user-images.githubusercontent.com/74199077/99320055-bc750f80-2838-11eb-8032-10ca6dd48a88.png)
 
 You might also benefit personally from volunteering as you would get access to a vaccine or treatment sooner than the general population if the following conditions are met: you are placed in the investigational treatment arm of the study (as opposed to the arm with the placebo or an already available treatment; you will not know which arm you are assigned) AND the vaccine or treatment turns out to be effective. If either condition is not met, you should still take satisfaction that you helped advance the product or that you helped further medical knowledge. You will also receive a thorough medical exam and a COVID-19 test as part of the standard of care, plus a stipend for your time and/or travel up to \$1,250 (in the US).
 
