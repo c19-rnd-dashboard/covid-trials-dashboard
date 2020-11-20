@@ -69,7 +69,7 @@ export const Section = ({
             {content.split('\n').map((p, index) => (
               <Typography
                 key={index}
-                variant='p'
+                // variant='p'
                 component='p'
                 className={classes.content}
                 gutterBottom
@@ -114,7 +114,7 @@ Section.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   image: PropTypes.string,
-  action: PropTypes.element,
+  action: PropTypes.string,
   alter: PropTypes.bool,
   actionLink: PropTypes.string,
 }

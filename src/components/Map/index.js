@@ -42,11 +42,6 @@ const Map = ({ pins, handleSelectedId }) => {
     }
   }, [])
 
-  const onClose = () => {
-    setPopUp(null)
-    handleSelectedId('clear')
-  }
-
   const PinComponent = useMemo(() => {
     const onClick = popupInfo => {
       setPopUp(popupInfo)
@@ -56,6 +51,34 @@ const Map = ({ pins, handleSelectedId }) => {
       <Pins data={pins} onClick={onClick} handleSelectedId={handleSelectedId} />
     )
   }, [pins, handleSelectedId])
+
+  const PopUpComponent = useMemo(() => {
+    const onClose = () => {
+      setPopUp(null)
+      handleSelectedId('clear')
+    }
+    return (
+      <>
+        <PopUpDisplay popupInfo={popUp} onClose={onClose} />
+      </>
+    )
+  }, [popUp, handleSelectedId])
+
+  const Controls = useMemo(() => {
+    return (
+      <>
+        <FullscreenControlDiv>
+          <FullscreenControl />
+        </FullscreenControlDiv>
+        <NavDiv>
+          <NavigationControl />
+        </NavDiv>
+        <ScaleControlDiv>
+          <ScaleControl />
+        </ScaleControlDiv>
+      </>
+    )
+  }, [])
 
   return (
     <ReactMapGL
@@ -71,16 +94,8 @@ const Map = ({ pins, handleSelectedId }) => {
       height='100%'
     >
       {PinComponent}
-      <PopUpDisplay popupInfo={popUp} onClose={onClose} />
-      <FullscreenControlDiv>
-        <FullscreenControl />
-      </FullscreenControlDiv>
-      <NavDiv>
-        <NavigationControl />
-      </NavDiv>
-      <ScaleControlDiv>
-        <ScaleControl />
-      </ScaleControlDiv>
+      {PopUpComponent}
+      {Controls}
     </ReactMapGL>
   )
 }
