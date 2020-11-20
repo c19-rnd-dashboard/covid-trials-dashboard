@@ -73,7 +73,6 @@ export const CustomDrawer = () => {
                 target='__blank'
                 key={name}
               >
-                {console.log(name, 'name')}
                 {Icon && (
                   <ListItemIcon>
                     <Icon />
