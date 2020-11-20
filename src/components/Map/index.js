@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Pins from './Pins'
 import PopUpDisplay from './Popup'
@@ -47,10 +47,15 @@ const Map = ({ pins, handleSelectedId }) => {
     handleSelectedId('clear')
   }
 
-  const onClick = popupInfo => {
-    setPopUp(popupInfo)
-    handleSelectedId(popupInfo.productId)
-  }
+  const PinComponent = useMemo(() => {
+    const onClick = popupInfo => {
+      setPopUp(popupInfo)
+      handleSelectedId(popupInfo.productId)
+    }
+    return (
+      <Pins data={pins} onClick={onClick} handleSelectedId={handleSelectedId} />
+    )
+  }, [pins, handleSelectedId])
 
   return (
     <ReactMapGL
@@ -65,7 +70,7 @@ const Map = ({ pins, handleSelectedId }) => {
       width='100%'
       height='100%'
     >
-      <Pins data={pins} onClick={onClick} handleSelectedId={handleSelectedId} />
+      {PinComponent}
       <PopUpDisplay popupInfo={popUp} onClose={onClose} />
       <FullscreenControlDiv>
         <FullscreenControl />
