@@ -38,9 +38,9 @@ export const FAQs = () => {
   return (
     <div style={{ minHeight: '100vh' }}>
       <Paper className={classes.root}>
-        {/* <Typography className={classes.title} component='h1'>
+        <Typography className={classes.title} component='h1'>
           {t('faqs.title')}
-        </Typography> */}
+        </Typography>
         {questionsAndAnswers.map(({ question, answer }) => (
           <Accordion key={question}>
             <AccordionSummary
