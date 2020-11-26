@@ -109,8 +109,6 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
       contact = [{}],
       sponsors,
     } = popupInfo
-    // const registryLink = ['https://www.google.com', 'https://goog.com']
-    // console.log(registryLink, 'link')
     const participation = contact[0]
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
     const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
