@@ -168,6 +168,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                             label: `${participation.website} clicked`,
                           })
                         }
+                        href={participation.website}
                         target='_blank'
                         rel='noopener noreferrer'
                         style={{
@@ -258,27 +259,52 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
               <DisplayField label='Phase' content={phase} alwaysShow />
               {registryLink && (
                 <DisplayField
-                  label='Trial Registry Link'
+                  label='Trial Registry Link(s)'
                   alwaysShow
                   content={
-                    <Link
-                      onClick={() =>
-                        ReactGA.event({
-                          category: 'Trial Registry Link',
-                          action: 'Trial Registry link clicked',
-                          label: `Trial Registry ${registryLink} clicked`,
-                        })
-                      }
-                      href={registryLink}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{
-                        color: theme.palette.primary.main,
-                        textDecoration: 'underline',
-                      }}
-                    >
-                      Click Here
-                    </Link>
+                    Array.isArray(registryLink) ? (
+                      registryLink.map((link, index) => (
+                        <Link
+                          key={`${link}${index}`}
+                          onClick={() =>
+                            ReactGA.event({
+                              category: 'Trial Registry Link',
+                              action: 'Trial Registry link clicked',
+                              label: `Trial Registry ${link} clicked`,
+                            })
+                          }
+                          href={link}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          style={{
+                            color: theme.palette.primary.main,
+                            textDecoration: 'underline',
+                            marginRight: '5px',
+                          }}
+                        >
+                          {index > 0 ? `Link ${index + 1}` : 'Link'}
+                        </Link>
+                      ))
+                    ) : (
+                      <Link
+                        onClick={() =>
+                          ReactGA.event({
+                            category: 'Trial Registry Link',
+                            action: 'Trial Registry link clicked',
+                            label: `Trial Registry ${registryLink} clicked`,
+                          })
+                        }
+                        href={registryLink}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        style={{
+                          color: theme.palette.primary.main,
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        Click Here
+                      </Link>
+                    )
                   }
                 />
               )}
@@ -321,7 +347,10 @@ PopUpDisplay.propTypes = {
     therapeuticApproach: PropTypes.string,
     repurposed: PropTypes.string,
     acceptsHealthySubjects: PropTypes.string,
-    registryLink: PropTypes.string,
+    registryLink: PropTypes.oneOf([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
     contact: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   onClose: PropTypes.func,
