@@ -168,6 +168,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                             label: `${participation.website} clicked`,
                           })
                         }
+                        href={participation.website}
                         target='_blank'
                         rel='noopener noreferrer'
                         style={{
