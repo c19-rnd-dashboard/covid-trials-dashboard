@@ -43,7 +43,7 @@ export const SpreadCategoryButtons = ({
   const [menuOpen, setMenuOpen] = React.useState(null)
   const handleClickMenu = event => {
     setAnchorEl(event.currentTarget)
-    setMenuOpen(event.target.textContent || event.currentTarget.id)
+    setMenuOpen(event.currentTarget.id)
   }
   const handleClose = () => {
     setAnchorEl(null)
@@ -55,8 +55,8 @@ export const SpreadCategoryButtons = ({
   }
   const getSelectedCategoryProps = option =>
     option.label === selectedCategory ? selectedProps : {}
-  const onClick = event => {
-    onChange(event)
+  const onClick = optionLabel => () => {
+    onChange(optionLabel)
     handleClose()
   }
   const { t } = useTranslation('menu')
@@ -98,7 +98,7 @@ export const SpreadCategoryButtons = ({
                 {option.menu.map(menuOption => (
                   <StyledMenuItem
                     key={menuOption.label}
-                    onClick={onClick}
+                    onClick={onClick(menuOption.label)}
                     selected={menuOption.label === selectedRoute}
                   >
                     <ListItemText primary={t(menuOption.label)} />
@@ -110,7 +110,7 @@ export const SpreadCategoryButtons = ({
             <Button
               // disableElevation
               className={classes.button}
-              onClick={handleChangeNonMenu}
+              onClick={() => handleChangeNonMenu(option.label)}
               key={option.label}
               {...getSelectedCategoryProps(option)}
               id={option.label}
