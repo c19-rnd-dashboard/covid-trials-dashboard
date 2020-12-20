@@ -83,7 +83,7 @@ export const HomeSections = () => {
       />
       <SectionWithChildren>
         <div className={classes.container}>
-          <Typography variant='h4'>Press Coverage</Typography>
+          <Typography variant='h4'>{t('pressCoverage')}</Typography>
           <div className={classes.imagesContainer}>
             {press.map(({ logo, link, name }) => (
               <a

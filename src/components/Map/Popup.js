@@ -15,6 +15,7 @@ import {
   Box,
 } from '@material-ui/core'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import { useTranslation } from 'react-i18next'
 
 const DontBreakOutLink = styled(Link)`
   /* These are technically the same, but use both */
@@ -99,6 +100,8 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
   useEffect(() => {
     setLearnMoreOpen(false)
   }, [isPopupAndClicked])
+  const { t } = useTranslation('mapPopup')
+
   if (popupInfo) {
     const {
       clickedLocation,
@@ -111,7 +114,8 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
     } = popupInfo
     const participation = contact[0]
     const sponsorNames = sponsors.map(sponsor => sponsor.sponsorName).join(', ')
-    const sponsorPlural = sponsors.length > 1 ? 'Sponsors' : 'Sponsor'
+    const sponsorPlural =
+      sponsors.length > 1 ? t('sponsorPlural') : t('sponsorPlural')
     const firstSponsor = sponsors[0] && sponsors[0].sponsorName
     const StyledPopup = styled(Popup)`
       .mapboxgl-popup-content {
@@ -151,13 +155,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 {participation.name && (
                   <DisplayField
                     alwaysShow
-                    label='Name'
+                    label={t('name')}
                     content={participation.name}
                   />
                 )}
                 {participation.website && (
                   <DisplayField
-                    label='Website'
+                    label={t('website')}
                     alwaysShow
                     content={
                       <Link
@@ -184,7 +188,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                 {participation.email && (
                   <DisplayField
                     alwaysShow
-                    label='email'
+                    label={t('email')}
                     content={
                       <DontBreakOutLink
                         onClick={() =>
@@ -208,13 +212,13 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                   />
                 )}
                 <DisplayField
-                  label='Phone Number'
+                  label={t('phoneNumber')}
                   alwaysShow
                   content={participation.phone}
                 />
                 {participation.notes && (
                   <DisplayField
-                    label='Notes'
+                    label={t('notes')}
                     content={participation.notes}
                     alwaysShow
                   />
@@ -222,7 +226,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
               </CardContent>
               <CardActions>
                 <Button onClick={handleClick} variant='contained'>
-                  BACK TO DETAILS
+                  {t('backToDetails')}
                 </Button>
               </CardActions>
             </>
@@ -230,7 +234,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
             <CardContent>
               <DisplayField
                 // alwaysShow
-                label='Accepts Healthy Volunteers?'
+                label={t('acceptsHealthyVolunteers')}
                 content={
                   acceptsHealthySubjects === 'Yes' ? (
                     <Box
@@ -238,28 +242,25 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                       style={{ display: 'flex', alignItems: 'center' }}
                     >
                       <CheckCircleIcon style={{ paddingRight: '2px' }} />
-                      Yes
+                      {t('yes')}
                     </Box>
                   ) : (
-                    'No'
+                    t('no')
                   )
                 }
               />
-              <DisplayField
-                label={`Trial ${sponsorPlural}`}
-                content={sponsorNames}
-              />
+              <DisplayField label={`${sponsorPlural}`} content={sponsorNames} />
               <DisplayField
                 onlyMobile
-                label='Trial Sponsor'
+                label={t('trialSponsor')}
                 content={firstSponsor}
               />
-              <DisplayField label='Product' content={preferredName} />
+              <DisplayField label={t('product')} content={preferredName} />
               <DividerWithMargin />
-              <DisplayField label='Phase' content={phase} alwaysShow />
+              <DisplayField label={t('phase')} content={phase} alwaysShow />
               {registryLink && (
                 <DisplayField
-                  label='Trial Registry Link(s)'
+                  label={t('trialRegistryLinks')}
                   alwaysShow
                   content={
                     Array.isArray(registryLink) ? (
@@ -302,7 +303,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                           textDecoration: 'underline',
                         }}
                       >
-                        Click Here
+                        {t('clickHere')}
                       </Link>
                     )
                   }
@@ -314,7 +315,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                   variant='contained'
                   color='secondary'
                 >
-                  HOW TO VOLUNTEER
+                  {t('howToVolunteer')}
                 </Button>
               </CardActions>
             </CardContent>

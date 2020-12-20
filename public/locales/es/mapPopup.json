@@ -1,0 +1,20 @@
+{
+  "name": "Nombre",
+  "website": "Sitio Web",
+  "email": "Email",
+  "phoneNumber": "Teléfono",
+  "notes": "Notas",
+  "backToDetails": "VOLVER",
+  "acceptsHealthyVolunteers": "Acepta Voluntarios Sanos?",
+  "yes": "Si",
+  "no": "No",
+  "sponsorSingular": "Patrocinante",
+  "sponsorPlural": "Patrocinantes",
+  "trialSponsor": "Patrocinante",
+  "trial": "Prueba",
+  "product": "Producto",
+  "phase": "Fase",
+  "trialRegistryLinks": "Enlace a Registro de Prueba",
+  "clickHere": "Click Aqui",
+  "howToVolunteer": "Cómo ser voluntario"
+}
