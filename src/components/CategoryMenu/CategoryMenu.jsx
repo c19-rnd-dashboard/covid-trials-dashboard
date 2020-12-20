@@ -9,6 +9,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -58,6 +59,7 @@ export const SpreadCategoryButtons = ({
     onChange(event)
     handleClose()
   }
+  const { t } = useTranslation('menu')
   return (
     <div>
       {options.map(option => (
@@ -74,7 +76,7 @@ export const SpreadCategoryButtons = ({
                 id={option.label}
                 color='secondary'
               >
-                {option.label}
+                {t(option.label)}
               </Button>
               <Menu
                 id='customized-menu'
@@ -99,7 +101,7 @@ export const SpreadCategoryButtons = ({
                     onClick={onClick}
                     selected={menuOption.label === selectedRoute}
                   >
-                    <ListItemText primary={menuOption.label} />
+                    <ListItemText primary={t(menuOption.label)} />
                   </StyledMenuItem>
                 ))}
               </Menu>
@@ -114,7 +116,7 @@ export const SpreadCategoryButtons = ({
               id={option.label}
               color='secondary'
             >
-              {option.label}
+              {t(option.label)}
             </Button>
           )}
         </span>

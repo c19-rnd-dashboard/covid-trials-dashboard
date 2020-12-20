@@ -7,6 +7,7 @@ import { sentenceCase } from 'change-case'
 import { ListSubheader } from '@material-ui/core'
 import { store } from 'store'
 import { toggleFilter } from 'store/filters'
+import { useTranslation } from 'react-i18next'
 
 export const FilterList = () => {
   const {
@@ -36,13 +37,14 @@ export const FilterList = () => {
       ],
     })
   }, [assets])
+  const { t } = useTranslation('filters')
   return (
     <>
-      <ListSubheader>Filters</ListSubheader>
+      <ListSubheader>{t('filters')}</ListSubheader>
       {Object.entries(filterOptions).map(([key, values]) => (
         <Filter
           key={key}
-          name={sentenceCase(key)}
+          name={t(sentenceCase(key))}
           selected={selectedFilters[key] || []}
           options={values}
           onSelect={option => dispatch(toggleFilter(key)(option))}

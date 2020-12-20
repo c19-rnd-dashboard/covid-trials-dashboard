@@ -16,15 +16,22 @@ import { drawerLinks } from './DrawerLinks'
 import { ThemeModeSelectorConsumerPropTypes } from 'components/ThemeModeSelector/ThemeModeSelector'
 import { ThemeModeSelector } from 'components/ThemeModeSelector/ThemeModeSelector'
 import { FilterList } from 'components/MaterialFilter/FilterListContainer'
+import { useTranslation } from 'react-i18next'
+import { LanguageSelector } from 'components/LanguageSelector'
 
-const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => (
-  <ListItem button onClick={onChange}>
-    <ListItemIcon>
-      {prefersDarkMode ? <Brightness2Icon /> : <Brightness5Icon />}
-    </ListItemIcon>
-    <ListItemText primary={`${prefersDarkMode ? 'Dark' : 'Light'} theme`} />
-  </ListItem>
-)
+const ThemeToogleConsumerListItem = ({ onChange, prefersDarkMode }) => {
+  const { t } = useTranslation('menu')
+  return (
+    <ListItem button onClick={onChange}>
+      <ListItemIcon>
+        {prefersDarkMode ? <Brightness2Icon /> : <Brightness5Icon />}
+      </ListItemIcon>
+      <ListItemText
+        primary={prefersDarkMode ? t('darkTheme') : t('lightTheme')}
+      />
+    </ListItem>
+  )
+}
 
 ThemeToogleConsumerListItem.propTypes = ThemeModeSelectorConsumerPropTypes
 
@@ -65,6 +72,7 @@ export const CustomDrawer = () => {
         <div className={classes.drawer}>
           <List>
             <ThemeToogleListItem />
+            <LanguageSelector />
             {drawerLinks.map(({ name, url, Icon }) => (
               <ListItem
                 button
