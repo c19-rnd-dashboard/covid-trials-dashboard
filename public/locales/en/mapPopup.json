@@ -1,0 +1,20 @@
+{
+  "name": "Name",
+  "website": "Website",
+  "email": "Email",
+  "phoneNumber": "Phone Number",
+  "notes": "Notes",
+  "backToDetails": "BACK TO DETAILS",
+  "acceptsHealthyVolunteers": "Accepts Healthy Volunteers?",
+  "yes": "Yes",
+  "no": "No",
+  "sponsorSingular": "Sponsor",
+  "sponsorPlural": "Sponsors",
+  "trialSponsor": "Trial Sponsor",
+  "trial": "Trial",
+  "product": "Product",
+  "phase": "Phase",
+  "trialRegistryLinks": "Trial Registry Link(s)",
+  "clickHere": "Click Here",
+  "howToVolunteer": "HOW TO VOLUNTEER"
+}

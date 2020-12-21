@@ -9,6 +9,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -42,7 +43,7 @@ export const SpreadCategoryButtons = ({
   const [menuOpen, setMenuOpen] = React.useState(null)
   const handleClickMenu = event => {
     setAnchorEl(event.currentTarget)
-    setMenuOpen(event.target.textContent || event.currentTarget.id)
+    setMenuOpen(event.currentTarget.id)
   }
   const handleClose = () => {
     setAnchorEl(null)
@@ -54,10 +55,11 @@ export const SpreadCategoryButtons = ({
   }
   const getSelectedCategoryProps = option =>
     option.label === selectedCategory ? selectedProps : {}
-  const onClick = event => {
-    onChange(event)
+  const onClick = optionLabel => () => {
+    onChange(optionLabel)
     handleClose()
   }
+  const { t } = useTranslation('menu')
   return (
     <div>
       {options.map(option => (
@@ -74,7 +76,7 @@ export const SpreadCategoryButtons = ({
                 id={option.label}
                 color='secondary'
               >
-                {option.label}
+                {t(option.label)}
               </Button>
               <Menu
                 id='customized-menu'
@@ -96,10 +98,10 @@ export const SpreadCategoryButtons = ({
                 {option.menu.map(menuOption => (
                   <StyledMenuItem
                     key={menuOption.label}
-                    onClick={onClick}
+                    onClick={onClick(menuOption.label)}
                     selected={menuOption.label === selectedRoute}
                   >
-                    <ListItemText primary={menuOption.label} />
+                    <ListItemText primary={t(menuOption.label)} />
                   </StyledMenuItem>
                 ))}
               </Menu>
@@ -108,13 +110,13 @@ export const SpreadCategoryButtons = ({
             <Button
               // disableElevation
               className={classes.button}
-              onClick={handleChangeNonMenu}
+              onClick={() => handleChangeNonMenu(option.label)}
               key={option.label}
               {...getSelectedCategoryProps(option)}
               id={option.label}
               color='secondary'
             >
-              {option.label}
+              {t(option.label)}
             </Button>
           )}
         </span>
@@ -129,6 +131,7 @@ export const CategoryMenu = ({
   onChange,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const { t } = useTranslation('menu')
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -160,10 +163,10 @@ export const CategoryMenu = ({
         {options.map(option => (
           <StyledMenuItem
             key={option.label}
-            onClick={onClick}
+            onClick={() => onClick(option.label)}
             selected={option.label === selectedRoute}
           >
-            <ListItemText primary={option.label} />
+            <ListItemText primary={t(option.label)} />
           </StyledMenuItem>
         ))}
       </Menu>

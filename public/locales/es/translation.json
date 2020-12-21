@@ -1,19 +1,19 @@
 {
-  "title": "Volunteer for COVID-19 vaccine trials near you",
-  "subtitle": "Choose a trial from the map below to learn how to participate:",
-  "contactUs": "Contact Us",
-  "learnMoreFaqs": "Learn More (FAQ)",
-  "footerMessage": "Made with ❤️ by Volunteers",
-  "pressCoverage": "Press Coverage",
+  "title": "Encuentre dónde ser voluntario para las pruebas COVID-19 cerca de usted",
+  "subtitle": "Escoja una prueba en el mapa para aprender como participar",
+  "contactUs": "Contáctenos",
+  "learnMoreFaqs": "Aprenda más (FAQ)",
+  "footerMessage": "Hecho con ❤️ por Voluntarios",
+  "pressCoverage": "Menciones en Noticieros",
   "section1": {
-    "title": "Vaccines are being delayed because of a worldwide shortage of volunteers for clinical trials.",
-    "content": "Over 70 coronavirus vaccines are currently in development, representing the largest vaccine effort of in history. Because of the unprecedented number of vaccines in clinical trials, pharmaceutical companies are not able to find a diverse set of volunteers quickly enough, delaying the release of vaccines and threatening continued exposure of billions around the world to COVID-19. \nCOVID Trial Dash is a grassroots, all-volunteer effort from a group of clinical trials experts and tech industry professionals who teamed up to solve this problem with our up-to-date interactive map that shows every known SARS-CoV-2 vaccine trial worldwide and provides easy contact information for those looking to volunteer.",
-    "button": "About Us"
+    "title": "Las Vacunas estan siendo retrasadas debido a la carencia que existe a nivel mundial de voluntarios para las pruebas clinicas.",
+    "button": "Acerca de nosotros",
+    "content": "Más de 70 vacunas contra el coronavirus están actualmente en desarrollo, lo que representa el mayor esfuerzo en la historia para el desarrollo de vacunas. El número de vacunas es pruebas clínicas no tiene precedentes, debido a esto, compañías farmacéuticas no son capaces de encontrar un diverso grupo de voluntarios lo suficiente rápido, retrasando el lanzamiento de la vacuna y amenazando exposición continua de billones alrededor del mundo al COVID-19. \nCOVID Trial Dash es de base, un esfuerzo completamente voluntario de un grupo de expertos en pruebas clínicas y profesionales en la industria tecnológica quienes se juntaron para resolver este problema con un mapa interactivo y actualizado que muestra cada prueba de vacuna SARS-CoV-2 disponible alrededor del mundo y provee fácil acceso a la información de contacto para quienes quieran ser voluntarios."
   },
   "section2": {
-    "title": "Why Volunteer?",
-    "content": "By volunteering for a trial, you will have the chance to save lives, many of them in the poorest countries around the world, by accelerating vaccine progress. You will also have a chance to receive a vaccine early, in addition to a thorough medical exam and complimentary COVID-19 tests. Finally, your expenses for participating in the trial will be covered, and you may receive a stipend of up to $1200 for your time and effort.",
-    "button": "Why Volunteer"
+    "title": "Por qué ser Voluntario?",
+    "content": "Al ser voluntario de una prueba clínica, tendrás la oportunidad de salvar vidas, muchas de ellas en los países más pobres alrededor del mundo, al acelerar el progreso de las vacunas. También tendrás la oportunidad de recibir la vacuna primero, además de una completa examinación médica y pruebas complementarias de COVID-19. Finalmente, los gastos por participar en la prueba serán cubiertos, y pudieses incluso recibir un estipendio por hasta $1200 USD por tu tiempo y esfuerzo.",
+    "button": "Por qué ser Voluntario?"
   },
   "faqs": {
     "title": "Vaccines FAQs",

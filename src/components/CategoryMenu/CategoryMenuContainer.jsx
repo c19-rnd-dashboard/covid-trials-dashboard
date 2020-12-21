@@ -19,14 +19,14 @@ export const Container = ({ location, history, width }) => {
 
   const handleChange = optionLabel => {
     const selectedRoute = allCategoryMenuItems().find(
-      ({ label }) => label === optionLabel.target.textContent
+      ({ label }) => label === optionLabel
     ).route
     history.push(selectedRoute)
   }
 
   const handleChangeNonMenu = optionLabel => {
     const selectedRoute = categoryOptions.find(
-      option => option.label === optionLabel.target.textContent
+      option => option.label === optionLabel
     ).route
     history.push(selectedRoute)
   }

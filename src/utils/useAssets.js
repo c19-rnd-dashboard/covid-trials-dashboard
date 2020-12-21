@@ -7,13 +7,7 @@ export const categoryOptions = [
   {
     label: 'Vaccines',
     menu: [
-      // TODO add back once there is a homepage with extra stuff, so this will be the route to just the map.
-      // { label: 'Volunteer Trials Map', route: '/coronavirus-volunteer-map' },
-      // {
-      //   label: 'Vaccines Overview',
-      //   route: '/vaccines/overview',
-      // },
-      { label: 'Vaccines Trial Summary ', route: '/covid-trials-summary' },
+      { label: 'Vaccines Trial Summary', route: '/covid-trials-summary' },
       {
         label: 'Timelines',
         route: '/coronavirus-timeline-tracker',
@@ -27,7 +21,6 @@ export const categoryOptions = [
   {
     label: 'About',
     menu: [
-      // { label: 'About Us', route: '/about' },
       { label: 'Team', route: '/team' },
       { label: 'FAQ', route: '/faq' },
       { label: 'Contact Us', route: '/contact' },
