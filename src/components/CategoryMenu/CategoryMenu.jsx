@@ -131,6 +131,7 @@ export const CategoryMenu = ({
   onChange,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const { t } = useTranslation('menu')
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -162,10 +163,10 @@ export const CategoryMenu = ({
         {options.map(option => (
           <StyledMenuItem
             key={option.label}
-            onClick={onClick}
+            onClick={() => onClick(option.label)}
             selected={option.label === selectedRoute}
           >
-            <ListItemText primary={option.label} />
+            <ListItemText primary={t(option.label)} />
           </StyledMenuItem>
         ))}
       </Menu>
