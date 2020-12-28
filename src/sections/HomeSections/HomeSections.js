@@ -72,6 +72,7 @@ export const HomeSections = () => {
         image='https://c.pxhere.com/images/cb/5f/7b1ec91deafcf5160707d7d2ecfe-1608798.jpg!d'
         action={t('section1.button')}
         actionLink='/team'
+        style={{ backgroundColor: '#fafafa' }}
       />
       <Section
         alter
@@ -80,9 +81,13 @@ export const HomeSections = () => {
         image='https://live.staticflickr.com/7833/46628342315_b73f6a7198_b.jpg'
         action={t('section2.button')}
         actionLink='/volunteer-covid-trial'
+        style={{ backgroundColor: '#fafafa' }}
       />
-      <SectionWithChildren>
-        <div className={classes.container}>
+      <SectionWithChildren style={{ backgroundColor: '#fafafa' }}>
+        <div
+          className={classes.container}
+          style={{ backgroundColor: '#fafafa' }}
+        >
           <Typography variant='h4'>{t('pressCoverage')}</Typography>
           <div className={classes.imagesContainer}>
             {press.map(({ logo, link, name }) => (
