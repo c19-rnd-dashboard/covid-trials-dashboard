@@ -11,7 +11,7 @@ const useStyles = alter =>
         ? theme.palette.secondary.main
         : theme.palette.background.paper,
 
-      padding: '1rem',
+      margin: '1rem',
     },
     container: {
       display: 'flex',
