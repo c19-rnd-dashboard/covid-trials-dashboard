@@ -9,13 +9,13 @@ import { Charts } from 'sections/Charts'
 // import Iframe from 'components/Iframe'
 import { VaccinesOverview } from 'components/VaccinesOverview'
 import HowToHelp from './HowYouCanHelp'
+import FAQ from './FAQ'
 import TrialSummary from './TrialSummary'
 
-import // spreadsheetDataSource,
-// vaccineStatusSummaryUrl,
-// contactUsUrl,
-'constants/config'
-import { FAQs } from 'sections/FAQs'
+// import // spreadsheetDataSource,
+// // vaccineStatusSummaryUrl,
+// // contactUsUrl,
+// 'constants/config'
 
 const Routes = () => {
   const { filteredAssets } = useAssets()
@@ -34,8 +34,8 @@ const Routes = () => {
         path={'/covid-trial-vaccine-charts'}
         render={() => <Charts pins={filteredAssets} />}
       />
-      <Route path={'/team'} render={() => <Team />} />{' '}
-      <Route path={'/faq'} component={FAQs} />
+      <Route path={'/team'} render={() => <Team />} />
+      <Route path={'/faq'} render={() => <FAQ />} />
       <Route path={'/contact'} render={() => <ContactUs />} />
       <Route
         path={'/volunteer-covid-trial'}
