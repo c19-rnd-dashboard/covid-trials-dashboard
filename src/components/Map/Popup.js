@@ -198,7 +198,7 @@ const PopUpDisplay = ({ popupInfo, onClose }) => {
                             label: `${participation.email} clicked`,
                           })
                         }
-                        href={`mailto:${participation.email}?subject=I am interested in volunteering for your clinical trial&body=Hello,%0d%0dI found your study on www.coviddash.org and I am interested in participating in your clinical trial for a COVID-19 vaccine. I am a healthy subject who has not had COVID-19 and is not experiencing COVID-19 symptoms. I am located in ((ENTER CITY)) and can be reached at this email. Please let me known the next steps for potentially being screened and enrolled in this important study.`}
+                        href={`mailto:${participation.email}?subject=I am interested in volunteering for your clinical trial&body=Hello,%0d%0dI found your study on www.coviddash.org and I am interested in participating in your clinical trial for a COVID-19 vaccine. I am a healthy subject who has not had COVID-19 and is not experiencing COVID-19 symptoms. I am located in ((ENTER CITY)) and can be reached at this email. Please let me know the next steps for potentially being screened and enrolled in this study.`}
                         target='_blank'
                         rel='noopener noreferrer'
                         style={{
