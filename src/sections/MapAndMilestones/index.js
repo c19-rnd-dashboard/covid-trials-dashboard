@@ -16,6 +16,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  TextField,
 } from '@material-ui/core'
 import howToVolunteerExampleGif from '../../assets/ExampleHowToVolunteer.gif'
 import { useTranslation } from 'react-i18next'
@@ -35,6 +36,7 @@ import {
   WhatsappIcon,
   TwitterIcon,
 } from 'react-share'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 const MapDiv = styled.div`
   width: 100%;
@@ -137,7 +139,7 @@ export const MapContainer = ({ pins }) => {
   const theme = useTheme()
   const isBigEnough = useMediaQuery(theme.breakpoints.up('sm'))
   const { t } = useTranslation()
-
+  const [email, setEmail] = useState()
   return (
     <Wrapper>
       <div style={{ paddingBottom: '2rem' }}>
@@ -251,6 +253,65 @@ export const MapContainer = ({ pins }) => {
             >
               <WhatsappIcon size={30} round={true} />
             </WhatsappShareButton>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ fontSize: '17px' }}>
+              If you can&apos;t find a study now, or you&apos;d like to stay up
+              to date, sign up for our email list!
+            </div>
+            <MailchimpSubscribe
+              url={process.env.REACT_APP_MAILCHIMP_URL}
+              render={({ subscribe, status, message }) => (
+                <div style={{ marginTop: '1rem', width: '280px' }}>
+                  <form
+                    onSubmit={event => {
+                      event.preventDefault()
+                      subscribe({ EMAIL: email })
+                    }}
+                  >
+                    <TextField
+                      id='subscribe'
+                      label='Your email'
+                      variant='outlined'
+                      style={{ width: '100%' }}
+                      onChange={e => setEmail(e.target.value)}
+                    />
+                    <div style={{ marginTop: '1rem' }}>
+                      <Button
+                        type='submit'
+                        fullWidth
+                        variant='contained'
+                        color='primary'
+                      >
+                        Subscribe
+                      </Button>
+                    </div>
+                  </form>
+                  {status === 'sending' && (
+                    <p style={{ color: 'blue', textAlign: 'center' }}>
+                      Sending...
+                    </p>
+                  )}
+                  {status === 'error' && (
+                    <p
+                      style={{ color: 'red', textAlign: 'center' }}
+                      dangerouslySetInnerHTML={{ __html: message }}
+                    />
+                  )}
+                  {status === 'success' && (
+                    <p style={{ color: 'green', textAlign: 'center' }}>
+                      Subscribed!
+                    </p>
+                  )}
+                </div>
+              )}
+            />
           </div>
         </MaxWidth>
       </div>
