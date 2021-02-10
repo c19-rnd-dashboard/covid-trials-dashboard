@@ -312,6 +312,9 @@ export const MapContainer = ({ pins }) => {
                 </div>
               )}
             />
+            <div style={{ fontSize: '17px', paddingTop: '2rem' }}>
+              For immediate assistance, call us at +1 (224) 444-0082
+            </div>
           </div>
         </MaxWidth>
       </div>
