@@ -1,5 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
+
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CustomDrawer } from 'sections/Drawer/Drawer'
@@ -68,6 +70,18 @@ const Navbar = ({ width }) => {
           <CategoryMenu />
         </Toolbar>
       </AppBar>
+      <Alert severity='info'>
+        This website is longer actively updated. To find recruiting clinical
+        studies in COVID-19 please visit{' '}
+        <a
+          style={{ color: '#2196f3' }}
+          href='https://clinicaltrials.gov/ct2/results?cond=COVID-19'
+        >
+          ClinicalTrials.gov
+        </a>
+        . Thank you to all the trial volunteers who helped get COVID vaccines to
+        market.
+      </Alert>
     </div>
   )
 }
