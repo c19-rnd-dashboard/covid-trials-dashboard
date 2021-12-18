@@ -62,13 +62,13 @@ The data comes from publicly available sources of information. For the clinical 
 
 ### How do I provide feedback or notify you about an error in your data?
 
-Please contact us at [info@coviddash.org](mailto:info@coviddash.org). If you are a sponsor we would love to receive input, either general input or detailed feedback on your clinical trials, your actual timelines or on timeline projections. We would be more than happy to remove any information if requested, or (preferably) replace the information with a sponsor’s suggestions. If you don’t work for the sponsor but have identified an error, please let us know as well at [info@coviddash.org](mailto:info@coviddash.org), we would appreciate you letting us know!
+Please contact us at [covidrnd@gmail.com](mailto:covidrnd@gmail.com). If you are a sponsor we would love to receive input, either general input or detailed feedback on your clinical trials, your actual timelines or on timeline projections. We would be more than happy to remove any information if requested, or (preferably) replace the information with a sponsor’s suggestions. If you don’t work for the sponsor but have identified an error, please let us know as well at [covidrnd@gmail.com](mailto:covidrnd@gmail.com), we would appreciate you letting us know!
 
 <p>&nbsp;</p>
 
 ### Why don’t I see a particular company or intervention?
 
-We might have missed it or haven’t heard about it yet! If so, please email us at [info@coviddash.org](mailto:info@coviddash.org) and let us know. Alternatively, you might not see a company or intervention because we have tried to only include companies that are exploring one or a select few product candidates in the “discovery” stage of development and have thus excluded companies that are screening candidates amongst vast libraries of compounds. We have also excluded diagnostics, medical devices and digital health products as they have different goals and/or very different regulatory pathways and timelines.
+We might have missed it or haven’t heard about it yet! If so, please email us at [covidrnd@gmail.com](mailto:covidrnd@gmail.com) and let us know. Alternatively, you might not see a company or intervention because we have tried to only include companies that are exploring one or a select few product candidates in the “discovery” stage of development and have thus excluded companies that are screening candidates amongst vast libraries of compounds. We have also excluded diagnostics, medical devices and digital health products as they have different goals and/or very different regulatory pathways and timelines.
 
 <p>&nbsp;</p>
 
@@ -108,4 +108,4 @@ Yes, the data is meant to be shared with whoever might benefit from using it. Yo
 
 ### How can I help with this website?
 
-Please email us at [info@coviddash.org](mailto:info@coviddash.org) or check out the bottom of our [How You Can Help](https://coviddash.org/vt#) page!
+Please email us at [covidrnd@gmail.com](mailto:covidrnd@gmail.com) or check out the bottom of our [How You Can Help](https://coviddash.org/vt#) page!
