@@ -64,7 +64,7 @@ People who have recovered from COVID-19 develop antibodies in the blood against 
 6. [Flyer: Consider Donating Blood Plasma - Houston Methodist ](https://www.houstonmethodist.org/-/media/pdf/for-patients/Coronavirus/Blood-Plasma-Donation-Flyer_final.ashx)(US)
 7. [National COVID-19 Convalescent Plasma Project](https://ccpp19.org/) (US)
 8. [Plasma Protein Therapeutics Association](https://www.donatingplasma.org/) (US)
-9. Know of any others? Please contact info@coviddash.org
+9. Know of any others? Please contact covidrnd@gmail.com
 
 ## Initiatives for Accelerating Vaccine Development:
 

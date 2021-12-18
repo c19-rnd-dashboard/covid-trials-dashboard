@@ -160,13 +160,13 @@ export default function Team() {
                 <Typography>
                   To help with this website, email{' '}
                   <Link
-                    href='mailto:info@coviddash.org'
+                    href='mailto:covidrnd@gmail.com'
                     target='_blank'
                     rel='noopener noreferrer'
                     color='secondary'
                     underline='always'
                   >
-                    info@coviddash.org
+                    covidrnd@gmail.com
                   </Link>
                 </Typography>
               </Grid>
